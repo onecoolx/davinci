@@ -1,5 +1,5 @@
 /* ANSI-C code produced by gperf version 3.0.3 */
-/* Command-line: gperf -CDEot -L ANSI-C -N findColor -D -s 2 /home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf  */
+/* Command-line: gperf -CDEot -L ANSI-C -N findColor -D -s 2 /home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf  */
 /* Computed positions: -k'3-4,6-8,12-13' */
 
 #if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
@@ -29,7 +29,7 @@
 #error "gperf generated tables don't work with this execution character set. Please report a bug to <bug-gnu-gperf@gnu.org>."
 #endif
 
-#line 1 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 1 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
 struct NamedColor { const char *name; int RGBValue; };
 /* maximum key range = 573, duplicates = 0 */
 
@@ -125,303 +125,303 @@ findColor (register const char *str, register unsigned int len)
 
   static const struct NamedColor wordlist[] =
     {
-#line 58 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 58 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"green", 0x008000},
-#line 147 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 147 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"wheat", 0xf5deb3},
-#line 12 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 12 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"blue", 0x0000ff},
-#line 64 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 64 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"ivory", 0xfffff0},
-#line 90 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 90 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"maroon", 0x800000},
-#line 5 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 5 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"aqua", 0x00ffff},
-#line 19 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 19 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"coral", 0xff7f50},
-#line 89 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 89 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"magenta", 0xff00ff},
-#line 118 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 118 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"peru", 0xcd853f},
-#line 7 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 7 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"azure", 0xf0ffff},
-#line 75 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 75 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightgrey", 0xd3d3d3},
-#line 76 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 76 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightgreen", 0x90ee90},
-#line 74 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 74 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightgray", 0xd3d3d3},
-#line 141 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 141 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"teal", 0x008080},
-#line 8 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 8 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"beige", 0xf5f5dc},
-#line 50 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 50 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"forestgreen", 0x228b22},
-#line 136 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 136 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"slategrey", 0x708090},
-#line 145 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 145 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"violet", 0xee82ee},
-#line 140 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 140 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"tan", 0xd2b48c},
-#line 135 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 135 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"slategray", 0x708090},
-#line 88 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 88 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"linen", 0xfaf0e6},
-#line 23 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 23 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"cyan", 0x00ffff},
-#line 148 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 148 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"white", 0xffffff},
-#line 131 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 131 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"sienna", 0xa0522d},
-#line 146 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 146 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"violetred", 0xd02090},
-#line 15 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 15 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"burlywood", 0xdeb887},
-#line 78 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 78 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightsalmon", 0xffa07a},
-#line 123 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 123 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"red", 0xff0000},
-#line 73 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 73 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightgoldenrodyellow", 0xfafad2},
-#line 138 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 138 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"springgreen", 0x00ff7f},
-#line 6 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 6 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"aquamarine", 0x7fffd4},
-#line 83 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 83 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightslategrey", 0x778899},
-#line 150 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 150 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"yellow", 0xffff00},
-#line 79 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 79 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightseagreen", 0x20b2aa},
-#line 82 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 82 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightslategray", 0x778899},
-#line 10 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 10 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"black", 0x000000},
-#line 111 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 111 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"orchid", 0xda70d6},
-#line 84 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 84 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightsteelblue", 0xb0c4de},
-#line 71 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 71 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightcoral", 0xf08080},
-#line 66 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 66 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lavender", 0xe6e6fa},
-#line 151 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 151 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"yellowgreen", 0x9acd32},
-#line 54 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 54 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"gold", 0xffd700},
-#line 17 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 17 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"chartreuse", 0x7fff00},
-#line 59 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 59 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"greenyellow", 0xadff2f},
-#line 113 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 113 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"palegreen", 0x98fb98},
-#line 85 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 85 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightyellow", 0xffffe0},
-#line 81 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 81 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightslateblue", 0x8470ff},
-#line 55 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 55 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"goldenrod", 0xdaa520},
-#line 107 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 107 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"olive", 0x808000},
-#line 62 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 62 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"indianred", 0xcd5c5c},
-#line 63 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 63 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"indigo", 0x4b0082},
-#line 139 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 139 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"steelblue", 0x4682b4},
-#line 65 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 65 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"khaki", 0xf0e68c},
-#line 70 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 70 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightblue", 0xadd8e6},
-#line 53 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 53 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"ghostwhite", 0xf8f8ff},
-#line 108 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 108 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"olivedrab", 0x6b8e23},
-#line 101 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 101 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mintcream", 0xf5fffa},
-#line 31 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 31 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkmagenta", 0x8b008b},
-#line 134 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 134 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"slateblue", 0x6a5acd},
-#line 13 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 13 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"blueviolet", 0x8a2be2},
-#line 100 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 100 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"midnightblue", 0x191970},
-#line 137 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 137 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"snow", 0xfffafa},
-#line 14 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 14 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"brown", 0xa52a2a},
-#line 61 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 61 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"hotpink", 0xff69b4},
-#line 86 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 86 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lime", 0x00ff00},
-#line 119 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 119 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"pink", 0xffc0cb},
-#line 106 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 106 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"oldlace", 0xfdf5e6},
-#line 67 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 67 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lavenderblush", 0xfff0f5},
-#line 120 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 120 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"plum", 0xdda0dd},
-#line 52 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 52 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"gainsboro", 0xdcdcdc},
-#line 47 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 47 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"dodgerblue", 0x1e90ff},
-#line 132 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 132 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"silver", 0xc0c0c0},
-#line 143 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 143 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"tomato", 0xff6347},
-#line 94 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 94 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumpurple", 0x9370d8},
-#line 116 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 116 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"papayawhip", 0xffefd5},
-#line 51 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 51 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"fuchsia", 0xff00ff},
-#line 16 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 16 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"cadetblue", 0x5f9ea0},
-#line 92 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 92 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumblue", 0x0000cd},
-#line 127 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 127 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"salmon", 0xfa8072},
-#line 48 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 48 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"firebrick", 0xb22222},
-#line 60 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 60 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"honeydew", 0xf0fff0},
-#line 29 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 29 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkgreen", 0x006400},
-#line 128 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 128 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"sandybrown", 0xf4a460},
-#line 11 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 11 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"blanchedalmond", 0xffebcd},
-#line 122 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 122 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"purple", 0x800080},
-#line 112 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 112 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"palegoldenrod", 0xeee8aa},
-#line 102 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 102 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mistyrose", 0xffe4e1},
-#line 98 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 98 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumturquoise", 0x48d1cc},
-#line 95 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 95 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumseagreen", 0x3cb371},
-#line 87 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 87 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"limegreen", 0x32cd32},
-#line 149 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 149 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"whitesmoke", 0xf5f5f5},
-#line 93 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 93 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumorchid", 0xba55d3},
-#line 115 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 115 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"palevioletred", 0xd87093},
-#line 3 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 3 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"aliceblue", 0xf0f8ff},
-#line 109 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 109 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"orange", 0xffa500},
-#line 129 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 129 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"seagreen", 0x2e8b57},
-#line 57 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 57 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"grey", 0x808080},
-#line 97 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 97 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumspringgreen", 0x00fa9a},
-#line 25 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 25 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkcyan", 0x008b8b},
-#line 56 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 56 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"gray", 0x808080},
-#line 110 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 110 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"orangered", 0xff4500},
-#line 33 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 33 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkorange", 0xff8c00},
-#line 103 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 103 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"moccasin", 0xffe4b5},
-#line 77 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 77 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightpink", 0xffb6c1},
-#line 104 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 104 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"navajowhite", 0xffdead},
-#line 22 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 22 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"crimson", 0xdc143c},
-#line 18 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 18 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"chocolate", 0xd2691e},
-#line 42 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 42 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkviolet", 0x9400d3},
-#line 142 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 142 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"thistle", 0xd8bfd8},
-#line 68 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 68 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lawngreen", 0x7cfc00},
-#line 43 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 43 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"deeppink", 0xff1493},
-#line 34 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 34 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkorchid", 0x9932cc},
-#line 4 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 4 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"antiquewhite", 0xfaebd7},
-#line 30 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 30 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkkhaki", 0xbdb76b},
-#line 96 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 96 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumslateblue", 0x7b68ee},
-#line 144 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 144 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"turquoise", 0x40e0d0},
-#line 99 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 99 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumvioletred", 0xc71585},
-#line 44 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 44 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"deepskyblue", 0x00bfff},
-#line 24 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 24 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkblue", 0x00008b},
-#line 21 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 21 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"cornsilk", 0xfff8dc},
-#line 26 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 26 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkgoldenrod", 0xb8860b},
-#line 105 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 105 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"navy", 0x000080},
-#line 69 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 69 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lemonchiffon", 0xfffacd},
-#line 130 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 130 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"seashell", 0xfff5ee},
-#line 72 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 72 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightcyan", 0xe0ffff},
-#line 121 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 121 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"powderblue", 0xb0e0e6},
-#line 133 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 133 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"skyblue", 0x87ceeb},
-#line 38 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 38 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkslateblue", 0x483d8b},
-#line 36 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 36 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darksalmon", 0xe9967a},
-#line 49 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 49 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"floralwhite", 0xfffaf0},
-#line 126 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 126 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"saddlebrown", 0x8b4513},
-#line 91 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 91 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"mediumaquamarine", 0x66cdaa},
-#line 114 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 114 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"paleturquoise", 0xafeeee},
-#line 125 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 125 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"royalblue", 0x4169e1},
-#line 37 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 37 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkseagreen", 0x8fbc8f},
-#line 35 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 35 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkred", 0x8b0000},
-#line 80 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 80 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"lightskyblue", 0x87cefa},
-#line 45 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 45 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"dimgray", 0x696969},
-#line 32 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 32 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkolivegreen", 0x556b2f},
-#line 20 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 20 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"cornflowerblue", 0x6495ed},
-#line 9 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 9 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"bisque", 0xffe4c4},
-#line 28 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 28 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkgrey", 0xa9a9a9},
-#line 27 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 27 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkgray", 0xa9a9a9},
-#line 117 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 117 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"peachpuff", 0xffdab9},
-#line 41 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 41 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkturquoise", 0x00ced1},
-#line 124 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 124 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"rosybrown", 0xbc8f8f},
-#line 40 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 40 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkslategrey", 0x2f4f4f},
-#line 39 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 39 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"darkslategray", 0x2f4f4f},
-#line 46 "/home/jpzhang/mbrowser/source/webcore/platform/ColorData.gperf"
+#line 46 "/home/zhangjipeng/macross-browser/source/webcore/platform/ColorData.gperf"
       {"dimgrey", 0x696969}
     };
 

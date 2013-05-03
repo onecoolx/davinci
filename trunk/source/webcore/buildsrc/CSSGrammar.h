@@ -1,26 +1,23 @@
 #ifndef CSSGrammar_h
 #define CSSGrammar_h
-/* A Bison parser, made by GNU Bison 2.3.  */
+/* A Bison parser, made by GNU Bison 2.5.  */
 
-/* Skeleton interface for Bison's Yacc-like parsers in C
-
-   Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
-   Free Software Foundation, Inc.
-
-   This program is free software; you can redistribute it and/or modify
+/* Bison interface for Yacc-like parsers in C
+   
+      Copyright (C) 1984, 1989-1990, 2000-2011 Free Software Foundation, Inc.
+   
+   This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
-   any later version.
-
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-
+   
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,9 +28,10 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-
+   
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
+
 
 /* Tokens.  */
 #ifndef YYTOKENTYPE
@@ -93,65 +91,16 @@
      UNICODERANGE = 307
    };
 #endif
-/* Tokens.  */
-#define UNIMPORTANT_TOK 258
-#define WHITESPACE 259
-#define SGML_CD 260
-#define INCLUDES 261
-#define DASHMATCH 262
-#define BEGINSWITH 263
-#define ENDSWITH 264
-#define CONTAINS 265
-#define STRING 266
-#define IDENT 267
-#define HEX 268
-#define IDSEL 269
-#define IMPORT_SYM 270
-#define PAGE_SYM 271
-#define MEDIA_SYM 272
-#define FONT_FACE_SYM 273
-#define CHARSET_SYM 274
-#define NAMESPACE_SYM 275
-#define WEBKIT_RULE_SYM 276
-#define WEBKIT_DECLS_SYM 277
-#define WEBKIT_VALUE_SYM 278
-#define WEBKIT_MEDIAQUERY_SYM 279
-#define IMPORTANT_SYM 280
-#define MEDIA_ONLY 281
-#define MEDIA_NOT 282
-#define MEDIA_AND 283
-#define QEMS 284
-#define EMS 285
-#define EXS 286
-#define PXS 287
-#define CMS 288
-#define MMS 289
-#define INS 290
-#define PTS 291
-#define PCS 292
-#define DEGS 293
-#define RADS 294
-#define GRADS 295
-#define MSECS 296
-#define SECS 297
-#define HERZ 298
-#define KHERZ 299
-#define DIMEN 300
-#define PERCENTAGE 301
-#define FLOATTOKEN 302
-#define INTEGER 303
-#define URI 304
-#define FUNCTION 305
-#define NOTFUNCTION 306
-#define UNICODERANGE 307
-
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 125 "/home/jpzhang/mbrowser/source/webcore/css/CSSGrammar.y"
 {
+
+/* Line 2068 of yacc.c  */
+#line 125 "/home/zhangjipeng/macross-browser/source/webcore/css/CSSGrammar.y"
+
     CSSRule* rule;
     CSSSelector* selector;
     bool ok;
@@ -173,14 +122,17 @@ typedef union YYSTYPE
     MediaQueryExp* mediaQueryExp;
     Vector<MediaQueryExp*>* mediaQueryExpList;
     MediaQuery::Restrictor mediaQueryRestrictor;
-}
-/* Line 1489 of yacc.c.  */
-#line 177 "CSSGrammar.hpp"
-	YYSTYPE;
+
+
+
+/* Line 2068 of yacc.c  */
+#line 128 "CSSGrammar.hpp"
+} YYSTYPE;
+# define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
-# define YYSTYPE_IS_TRIVIAL 1
 #endif
+
 
 
 

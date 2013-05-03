@@ -29,7 +29,7 @@
 
 #include "config.h"
 #ifdef AVOID_STATIC_CONSTRUCTORS
-//#define DOM_HTMLNAMES_HIDE_GLOBALS 1
+#define DOM_HTMLNAMES_HIDE_GLOBALS 1
 #else
 #define QNAME_DEFAULT_CONSTRUCTOR 1
 #endif
