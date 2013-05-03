@@ -15,6 +15,9 @@ typedef int             int32_t;
 typedef long long int   int64_t;
 typedef int			        intptr_t;
 typedef unsigned int        uintptr_t;
+#else
+#include <stddef.h>
+#include <stdint.h>
 #endif
 
 #ifdef __cplusplus

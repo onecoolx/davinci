@@ -481,7 +481,7 @@ MC_STATUS macross_menu_update(MC_POPUP_MENU* menu, const MC_RECT* rect)
     Settings *settings = Settings::globalSettings();
 	ps_canvas * canvas = ps_canvas_create_with_data(menu->buffer, pixelFormat(), 
 										menu->rect.w, menu->rect.h, menu->pitch);
-	ps_context* context = ps_context_create(canvas, 0);
+	ps_context* context = ps_context_create(canvas);
 	ps_set_text_antialias(context, settings->textAntialias() ? True : False);
 	GraphicsContext gc(context);
     PopupMenu * popup = (PopupMenu *)menu->handle;

@@ -1557,32 +1557,28 @@ WEBCORE_SOURCES_GUI=\
 		$(NULL)
 
 WEBCORE_SOURCES_UNICODE=\
-		platform/unicode/UcaseMg.c \
-		platform/unicode/UcaseMg.h \
-		platform/unicode/UcmndataMg.h \
-		platform/unicode/UtrieMg.h \
-		platform/unicode/UtrieMg.c \
-		platform/unicode/UtypesMg.h \
-		platform/unicode/UcharMg.h \
-		platform/unicode/UcharMg.c \
-		platform/unicode/Ubidi_propsMg.h \
-		platform/unicode/Ubidi_propsMg.c \
-		platform/unicode/UstrcaseMg.c \
-		platform/unicode/UstrcaseMg.h \
-		platform/unicode/UnormMg.cpp \
-		platform/unicode/UnormMg.h \
-		platform/unicode/UnisetMg.h \
-		platform/unicode/UnisetMg.cpp \
-		platform/unicode/UpropsMg.c \
-		platform/unicode/UpropsMg.h \
-		platform/unicode/TextboundaryMg.c \
-		platform/unicode/TextboundaryMg.h \
-		platform/unicode/linebreakMg.c \
-		platform/unicode/linebreakMg.h \
-		platform/unicode/uidna.c \
-		platform/unicode/uidna.h \
-		platform/unicode/Utextcodec.h \
-		platform/unicode/Utextcodec.cpp \
+		platform/unicode/UnicodeCase.h \
+		platform/unicode/UnicodeCase.cpp \
+		platform/unicode/UnicodeTrie.h \
+		platform/unicode/UnicodeTrie.cpp \
+		platform/unicode/UnicodeChar.h \
+		platform/unicode/UnicodeChar.cpp \
+		platform/unicode/BidiProperty.h \
+		platform/unicode/BidiProperty.cpp \
+		platform/unicode/StringCase.h \
+		platform/unicode/StringCase.cpp \
+		platform/unicode/Normalize.h \
+		platform/unicode/Normalize.cpp \
+		platform/unicode/UnicodeSet.h \
+		platform/unicode/UnicodeSet.cpp \
+		platform/unicode/UnicodeProperty.h \
+		platform/unicode/UnicodeProperty.cpp \
+		platform/unicode/TextBoundary.h \
+		platform/unicode/TextBoundary.cpp \
+		platform/unicode/UnicodeIDNA.h \
+		platform/unicode/UnicodeIDNA.cpp \
+		platform/unicode/TextCodecUnicode.h \
+		platform/unicode/TextCodecUnicode.cpp \
 		platform/unicode/charset.h \
 		platform/unicode/charset.cpp \
 		platform/unicode/gbk_map.h \

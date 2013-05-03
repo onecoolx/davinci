@@ -1,5 +1,6 @@
 
-#include  "TextBoundary.h"
+#include <string.h>
+#include "TextBoundary.h"
 
 typedef struct {
     unsigned int   startcode;
@@ -7,13 +8,13 @@ typedef struct {
 }CODEAREA;
 
 typedef enum {
-	DIRECT_BRK,
-	INDIRECT_BRK, 		
-	COMBINING_INDIRECT_BRK, 	
-	COMBINING_PROHIBITED_BRK, 	
-	PROHIBITED_BRK,
-	EXPLICIT_BRK,
-	HANGUL_SPACE_BRK,
+    DIRECT_BRK,
+    INDIRECT_BRK,       
+    COMBINING_INDIRECT_BRK,     
+    COMBINING_PROHIBITED_BRK,   
+    PROHIBITED_BRK,
+    EXPLICIT_BRK,
+    HANGUL_SPACE_BRK,
 }BREAKACTION;
 
 
@@ -282,7 +283,7 @@ int FirstCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo)
     int ch_len,index;
     CHARS_TYPE   ch_type;
     
-    if(NULL ==text || NULL ==pCBKinfo)
+    if (!text || !pCBKinfo)
         return -1;
         
     pCBKinfo->current =-1;
@@ -331,7 +332,7 @@ int NextCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo)
         pCBKinfo->current =-1;
         pCBKinfo->char_type =c_ERROR_TYPE;
 
-		return FirstCharsBreak(mchar,textlength,pCBKinfo);
+        return FirstCharsBreak(mchar,textlength,pCBKinfo);
     }
     
     while(index <textlength)
@@ -386,8 +387,8 @@ int NextCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo)
         //just wether there is boundary
         switch(pCBKinfo->char_type)
         {
-			case c_ERROR_TYPE:
-				break;
+            case c_ERROR_TYPE:
+                break;
             case  CR:
             {
                 pCBKinfo->current =index;
@@ -604,10 +605,10 @@ int PrecedingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
         
     index =offset -1;
 
-	if(index <0)
-		return -1;
-	if(0 ==index)
-		return 0;    //the beginning is a starter
+    if(index <0)
+        return -1;
+    if(0 ==index)
+        return 0;    //the beginning is a starter
     if(index >=textlength)
         index =textlength -1;
         
@@ -665,9 +666,9 @@ int PrecedingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
         {
             switch(ch_type)
             {
-				case  c_ERROR_TYPE:
-				case  EXTEND:
-					break;
+                case  c_ERROR_TYPE:
+                case  EXTEND:
+                    break;
                 case  CR:
                 case  CONTROL:
                 case  c_TYPE_ANY:
@@ -680,34 +681,34 @@ int PrecedingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                 case  LF:
                 {
                     seindex =index;
-					previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
-					if(c_ERROR_TYPE ==previous_type)
-					{
-						if(0 ==index)
-						{
-							pCBKinfo->current =index;
-                        	pCBKinfo->char_type =LF;
-							return 0;
-						}
-		
-						return -1;
-					}
+                    previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
+                    if(c_ERROR_TYPE ==previous_type)
+                    {
+                        if(0 ==index)
+                        {
+                            pCBKinfo->current =index;
+                            pCBKinfo->char_type =LF;
+                            return 0;
+                        }
+        
+                        return -1;
+                    }
                     else if(CR !=previous_type)
                     {
                         pCBKinfo->current =index;
                         pCBKinfo->char_type =ch_type;
 
-						return index;
+                        return index;
                     }
                     else
                     {
                         pCBKinfo->current =seindex;
                         pCBKinfo->char_type =CR;
 
-						index =seindex -1;
-						if(index <0)
-							return 0;        //already reach the beginning of the text ,it is the start
-						continue;
+                        index =seindex -1;
+                        if(index <0)
+                            return 0;        //already reach the beginning of the text ,it is the start
+                        continue;
                     }
                 }
                 break;
@@ -716,34 +717,34 @@ int PrecedingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                 case  LVT:
                 {
                     seindex =index;
-					previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
-					if(c_ERROR_TYPE ==previous_type)
-					{
-						if(0 ==index)
-						{
-							pCBKinfo->current =index;
-                        	pCBKinfo->char_type =ch_type;
-							return 0;
-						}
+                    previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
+                    if(c_ERROR_TYPE ==previous_type)
+                    {
+                        if(0 ==index)
+                        {
+                            pCBKinfo->current =index;
+                            pCBKinfo->char_type =ch_type;
+                            return 0;
+                        }
 
-						return -1;
-					}
+                        return -1;
+                    }
                     else if(L !=previous_type)
                     {
                         pCBKinfo->current =index;
                         pCBKinfo->char_type =ch_type;
 
-						return index;
+                        return index;
                     }
                     else
                     {
                         pCBKinfo->current =seindex;
                         pCBKinfo->char_type =L;
                         
-						index =seindex -1;
-						if(index <0)        //the beginning is a starter
-							return 0;
-						continue;
+                        index =seindex -1;
+                        if(index <0)        //the beginning is a starter
+                            return 0;
+                        continue;
                     }
                 }
                 break;
@@ -751,33 +752,33 @@ int PrecedingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                 {
                     seindex =index;
                     previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
-					if(c_ERROR_TYPE ==previous_type)
-					{
-						if(0 ==index)
-						{
-							pCBKinfo->current =index;
-                        	pCBKinfo->char_type =ch_type;
-							return 0;
-						}
+                    if(c_ERROR_TYPE ==previous_type)
+                    {
+                        if(0 ==index)
+                        {
+                            pCBKinfo->current =index;
+                            pCBKinfo->char_type =ch_type;
+                            return 0;
+                        }
 
-						return -1;
-					}
+                        return -1;
+                    }
                     else if(L ==previous_type || V ==previous_type || LV ==previous_type)
                     {
                         pCBKinfo->current =seindex;
                         pCBKinfo->char_type =previous_type;
                         
-						index =seindex -1;
-						if(index <0)        //the beginning is a starter
-							return 0;
-						continue;
+                        index =seindex -1;
+                        if(index <0)        //the beginning is a starter
+                            return 0;
+                        continue;
                     }
                     else
                     {
                         pCBKinfo->current =index;
                         pCBKinfo->char_type =ch_type;
 
-						return index;
+                        return index;
                     }
                 }
                 break;
@@ -785,33 +786,33 @@ int PrecedingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                 {
                     seindex =index;
                     previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
-					if(c_ERROR_TYPE ==previous_type)
-					{
-						if(0 ==index)
-						{
-							pCBKinfo->current =index;
-                        	pCBKinfo->char_type =ch_type;
-							return 0;
-						}
+                    if(c_ERROR_TYPE ==previous_type)
+                    {
+                        if(0 ==index)
+                        {
+                            pCBKinfo->current =index;
+                            pCBKinfo->char_type =ch_type;
+                            return 0;
+                        }
 
-						return -1;
-					}
+                        return -1;
+                    }
                     else if(T ==previous_type || V ==previous_type || LV ==previous_type || LVT ==previous_type)
                     {
                         pCBKinfo->current =seindex;
                         pCBKinfo->char_type =previous_type;
 
-						index =seindex -1;
-						if(index <0)        //the beginning is a starter
-							return 0;
-						continue;
+                        index =seindex -1;
+                        if(index <0)        //the beginning is a starter
+                            return 0;
+                        continue;
                     }
                     else
                     {
                         pCBKinfo->current =index;
                         pCBKinfo->char_type =ch_type;
 
-						return index;
+                        return index;
                     }
                 }
             }
@@ -834,7 +835,7 @@ int FollowingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
         
     index =offset <0?0:offset +1;
     if(index >=textlength)
-		return -1;
+        return -1;
         
     if(0 ==pCBKinfo->current && 0 ==pCBKinfo->char_type)
     {
@@ -892,9 +893,9 @@ int FollowingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
         {
             switch(ch_type)
             {
-				case c_ERROR_TYPE:
-				case EXTEND:
-					break;
+                case c_ERROR_TYPE:
+                case EXTEND:
+                    break;
                 case  CR:
                 case  CONTROL:
                 case  c_TYPE_ANY:
@@ -907,23 +908,23 @@ int FollowingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                 case  LF:
                 {
                     seindex =index;
-					previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
-					if(c_ERROR_TYPE ==previous_type)
-					{
-						if(0 ==index)
-						{
-							pCBKinfo->current =index;
-                        	pCBKinfo->char_type =LF;
-							return 0;         
-						}
-						return -1;       //error
-					}
+                    previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
+                    if(c_ERROR_TYPE ==previous_type)
+                    {
+                        if(0 ==index)
+                        {
+                            pCBKinfo->current =index;
+                            pCBKinfo->char_type =LF;
+                            return 0;         
+                        }
+                        return -1;       //error
+                    }
                     else if(CR !=previous_type)
                     {
                         pCBKinfo->current =index;
                         pCBKinfo->char_type =ch_type;
 
-						return index;
+                        return index;
                     }
                     else
                     {
@@ -940,23 +941,23 @@ int FollowingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                 case  LVT:
                 {
                     seindex =index;
-					previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
-					if(c_ERROR_TYPE ==previous_type)
-					{
-						if(0 ==index)
-						{
-							pCBKinfo->current =index;
-                        	pCBKinfo->char_type =ch_type;
-							return 0;         
-						}
-						return -1;       //error
-					}
+                    previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
+                    if(c_ERROR_TYPE ==previous_type)
+                    {
+                        if(0 ==index)
+                        {
+                            pCBKinfo->current =index;
+                            pCBKinfo->char_type =ch_type;
+                            return 0;         
+                        }
+                        return -1;       //error
+                    }
                     else if(L !=previous_type)
                     {
                         pCBKinfo->current =index;
                         pCBKinfo->char_type =ch_type;
 
-						return index;
+                        return index;
                     }
                     else
                     {
@@ -972,16 +973,16 @@ int FollowingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                 {
                     seindex =index;
                     previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
-					if(c_ERROR_TYPE ==previous_type)
-					{
-						if(0 ==index)
-						{
-							pCBKinfo->current =index;
-                        	pCBKinfo->char_type =ch_type;
-							return 0;         
-						}
-						return -1;       //error
-					}
+                    if(c_ERROR_TYPE ==previous_type)
+                    {
+                        if(0 ==index)
+                        {
+                            pCBKinfo->current =index;
+                            pCBKinfo->char_type =ch_type;
+                            return 0;         
+                        }
+                        return -1;       //error
+                    }
                     else if(L ==previous_type || V ==previous_type || LV ==previous_type)
                     {
                         if(index +ch_len>=textlength)
@@ -995,7 +996,7 @@ int FollowingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                         pCBKinfo->current =index;
                         pCBKinfo->char_type =ch_type;
 
-						return index;
+                        return index;
                     }
                 }
                 break;
@@ -1003,29 +1004,29 @@ int FollowingCharsBreak(const UChar* text, int textlength, CHARS_BREAK* pCBKinfo
                 {
                     seindex =index;
                     previous_type =getpreviousgraphemeclustertype(mchar,textlength,&seindex);
-					if(c_ERROR_TYPE ==previous_type)
-					{
-						if(0 ==index)
-						{
-							pCBKinfo->current =index;
-                        	pCBKinfo->char_type =ch_type;
-							return 0;         
-						}
-						return -1;       //error
-					}
+                    if(c_ERROR_TYPE ==previous_type)
+                    {
+                        if(0 ==index)
+                        {
+                            pCBKinfo->current =index;
+                            pCBKinfo->char_type =ch_type;
+                            return 0;         
+                        }
+                        return -1;       //error
+                    }
                     else if(T ==previous_type || V ==previous_type || LV ==previous_type || LVT ==previous_type)
                     {
                         if(index +ch_len>=textlength)
                             return -1;        //there is no boundary after the offset
                         index +=ch_len; 
-						continue;
+                        continue;
                     }
                     else
                     {
                         pCBKinfo->current =index;
                         pCBKinfo->char_type =ch_type;
 
-						return index;
+                        return index;
                     }
                 }
             }
@@ -1268,11 +1269,11 @@ int NextWordBreak(const UChar* text, int textlength, WORD_BREAK* pwordinfo)
 
     index =pwordinfo->current;
 
-	if(index+1 ==textlength)
-	{
-		pwordinfo->current = textlength;
-		return textlength;    //will reach the end of text so return the textlength
-	}
+    if(index+1 ==textlength)
+    {
+        pwordinfo->current = textlength;
+        return textlength;    //will reach the end of text so return the textlength
+    }
 
     if(0 ==pwordinfo->current && 0 ==pwordinfo->word_type)
     {
@@ -1295,19 +1296,19 @@ int NextWordBreak(const UChar* text, int textlength, WORD_BREAK* pwordinfo)
         
     while(index <textlength)
     {
-		if((index+1) == textlength) 
-		{
-			pwordinfo->current =textlength;
-			return textlength;
-		}
-		if(0x0085 ==mchar[index] && 0x0300 ==mchar[index +1])
-		{
-		    pwordinfo->current =index +1;
+        if((index+1) == textlength) 
+        {
+            pwordinfo->current =textlength;
+            return textlength;
+        }
+        if(0x0085 ==mchar[index] && 0x0300 ==mchar[index +1])
+        {
+            pwordinfo->current =index +1;
             pwordinfo->word_type =w_TYPE_ANY;
             
             return index +1;
-		}
-		memset(&graphemecluster,0,sizeof(CHARS_BREAK));
+        }
+        memset(&graphemecluster,0,sizeof(CHARS_BREAK));
         index =FollowingCharsBreak(mchar,textlength,&graphemecluster,index);
         if(-1 ==index)
         {
@@ -1346,17 +1347,17 @@ int NextWordBreak(const UChar* text, int textlength, WORD_BREAK* pwordinfo)
         {
             switch(pwordinfo->word_type)
             {
-				case w_ERROR_TYPE:
-				{
-					return -1;
-				}
-				case FORMAT:
-				{
-					pwordinfo->current =index;
+                case w_ERROR_TYPE:
+                {
+                    return -1;
+                }
+                case FORMAT:
+                {
+                    pwordinfo->current =index;
                     pwordinfo->word_type =ch_type;
 
-					return index;
-				}
+                    return index;
+                }
                 case  ALETTER:
                 {
                     pwordinfo->current =index;
@@ -1458,8 +1459,8 @@ int NextWordBreak(const UChar* text, int textlength, WORD_BREAK* pwordinfo)
                         tmp_type =getpreviouschar_wordtype(mchar,textlength,pwordinfo->current,&seindex);
                         if(ALETTER ==tmp_type)
                         {
-							pwordinfo->current =index;
-                    		pwordinfo->word_type =ch_type;
+                            pwordinfo->current =index;
+                            pwordinfo->word_type =ch_type;
 
                             continue;
                         }
@@ -1469,30 +1470,30 @@ int NextWordBreak(const UChar* text, int textlength, WORD_BREAK* pwordinfo)
                             if(ALETTER ==getpreviouschar_wordtype(mchar,textlength,thindex,&seindex))
                             {
                                 pwordinfo->current =index;
-                        		pwordinfo->word_type =ch_type;
+                                pwordinfo->word_type =ch_type;
     
                                 continue;
                             }
                             else
                             {
                                 pwordinfo->current =index;
-                        		pwordinfo->word_type =ch_type;
+                                pwordinfo->word_type =ch_type;
     
-    							return index;
+                                return index;
                             }
                         }
-						else
-						{
-							pwordinfo->current =index;
-                    		pwordinfo->word_type =ch_type;
+                        else
+                        {
+                            pwordinfo->current =index;
+                            pwordinfo->word_type =ch_type;
 
-							return index;
-						}
+                            return index;
+                        }
                     }
                     else
                     {
-						pwordinfo->current =index;
-                    	pwordinfo->word_type =ch_type;
+                        pwordinfo->current =index;
+                        pwordinfo->word_type =ch_type;
 
                         return index;
                     }
@@ -1505,8 +1506,8 @@ int NextWordBreak(const UChar* text, int textlength, WORD_BREAK* pwordinfo)
                         tmp_type =getpreviouschar_wordtype(mchar,textlength,pwordinfo->current,&seindex);
                         if(NUMERIC ==tmp_type)
                         {
-							pwordinfo->current =index;
-                    		pwordinfo->word_type =ch_type;
+                            pwordinfo->current =index;
+                            pwordinfo->word_type =ch_type;
 
                             continue;
                         }
@@ -1516,30 +1517,30 @@ int NextWordBreak(const UChar* text, int textlength, WORD_BREAK* pwordinfo)
                             if(NUMERIC ==getpreviouschar_wordtype(mchar,textlength,thindex,&seindex))
                             {
                                 pwordinfo->current =index;
-                        		pwordinfo->word_type =ch_type;
+                                pwordinfo->word_type =ch_type;
     
                                 continue;
                             }
                             else
                             {
                                 pwordinfo->current =index;
-                        		pwordinfo->word_type =ch_type;
+                                pwordinfo->word_type =ch_type;
     
                                 return index;
                             }
                         }
-						else
-						{
-							pwordinfo->current =index;
-                    		pwordinfo->word_type =ch_type;
+                        else
+                        {
+                            pwordinfo->current =index;
+                            pwordinfo->word_type =ch_type;
 
-							return index;
-						}
+                            return index;
+                        }
                     }
                     else
                     {
-						pwordinfo->current =index;
-                    	pwordinfo->word_type =ch_type;
+                        pwordinfo->current =index;
+                        pwordinfo->word_type =ch_type;
 
                         return index;
                     }
@@ -1592,55 +1593,55 @@ int NextWordBreak(const UChar* text, int textlength, WORD_BREAK* pwordinfo)
 #define   MAX_CCH     1
 
 // Define some short-cuts for the table
-#define oo DIRECT_BRK				// '_' break allowed
-#define SS INDIRECT_BRK				// '%' only break across space (aka 'indirect break' below)
-#define cc COMBINING_INDIRECT_BRK	// '#' indirect break for combining marks
-#define CC COMBINING_PROHIBITED_BRK	// '@' indirect break for combining marks
-#define XX PROHIBITED_BRK			// '^' no break allowed_BRK
-#define xS HANGUL_SPACE_BRK			// break allowed, except when spaces are used with Hangul (not used)
+#define oo DIRECT_BRK               // '_' break allowed
+#define SS INDIRECT_BRK             // '%' only break across space (aka 'indirect break' below)
+#define cc COMBINING_INDIRECT_BRK   // '#' indirect break for combining marks
+#define CC COMBINING_PROHIBITED_BRK // '@' indirect break for combining marks
+#define XX PROHIBITED_BRK           // '^' no break allowed_BRK
+#define xS HANGUL_SPACE_BRK         // break allowed, except when spaces are used with Hangul (not used)
 
 // Line Break Pair Table corresponding to Table 2 of UAX#14, Version 5.0.0 
 // plus Korean Syllable Block extensions - for details see that document
 
 static BREAKACTION brkPairs[][JT+1]=
 {   //                ---     'after'  class  ------
-	//		1	2	3	4	5	6	7	8	9  10  11  12  13  14  15  16  17  18  19  20  21   22  23  24  25  26  
-	//     OP, CL, QU, GL, NS, EX, SY, IS, PR, PO, NU, AL, ID, IN, HY, BA, BB, B2, ZW, CM, WJ,  H2, H3, JL, JV, JT, = after class
-	/*OP*/ {XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, CC, XX,  XX, XX, XX, XX, XX}, // OP open
-	/*CL*/ {oo, XX, SS, SS, XX, XX, XX, XX, SS, SS, SS, SS, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // CL close
-	/*QU*/ {XX, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, SS, SS, SS, SS, SS, SS, XX, cc, XX,  SS, SS, SS, SS, SS}, // QU quotation
-	/*GL*/ {SS, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, SS, SS, SS, SS, SS, SS, XX, cc, XX,  SS, SS, SS, SS, SS}, // GL glue
-	/*NS*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // NS no-start
-	/*EX*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // EX exclamation/interrogation
-	/*SY*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // SY Syntax (slash)
-	/*IS*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // IS infix (numeric) separator
-	/*PR*/ {SS, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, SS, oo, SS, SS, oo, oo, XX, cc, XX,  SS, SS, SS, SS, SS}, // PR prefix
-	/*PO*/ {SS, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // NU numeric
-	/*NU*/ {SS, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // AL alphabetic
-	/*AL*/ {SS, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // AL alphabetic
-	/*ID*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // ID ideograph (atomic)
-	/*IN*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // IN inseparable
+    //      1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21   22  23  24  25  26  
+    //     OP, CL, QU, GL, NS, EX, SY, IS, PR, PO, NU, AL, ID, IN, HY, BA, BB, B2, ZW, CM, WJ,  H2, H3, JL, JV, JT, = after class
+    /*OP*/ {XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, XX, CC, XX,  XX, XX, XX, XX, XX}, // OP open
+    /*CL*/ {oo, XX, SS, SS, XX, XX, XX, XX, SS, SS, SS, SS, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // CL close
+    /*QU*/ {XX, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, SS, SS, SS, SS, SS, SS, XX, cc, XX,  SS, SS, SS, SS, SS}, // QU quotation
+    /*GL*/ {SS, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, SS, SS, SS, SS, SS, SS, XX, cc, XX,  SS, SS, SS, SS, SS}, // GL glue
+    /*NS*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // NS no-start
+    /*EX*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // EX exclamation/interrogation
+    /*SY*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // SY Syntax (slash)
+    /*IS*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // IS infix (numeric) separator
+    /*PR*/ {SS, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, SS, oo, SS, SS, oo, oo, XX, cc, XX,  SS, SS, SS, SS, SS}, // PR prefix
+    /*PO*/ {SS, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // NU numeric
+    /*NU*/ {SS, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // AL alphabetic
+    /*AL*/ {SS, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // AL alphabetic
+    /*ID*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // ID ideograph (atomic)
+    /*IN*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // IN inseparable
 #ifdef v500
 // Version 5.0.0
-	/*HY*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // HY hyphens and spaces
-	/*BA*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // BA break after 
+    /*HY*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // HY hyphens and spaces
+    /*BA*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // BA break after 
 #else
 // Version 5.0.1
-	/*HY*/ {oo, XX, SS, oo, SS, XX, XX, XX, oo, oo, SS, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // HY hyphens and spaces
-	/*BA*/ {oo, XX, SS, oo, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // BA break after 
+    /*HY*/ {oo, XX, SS, oo, SS, XX, XX, XX, oo, oo, SS, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // HY hyphens and spaces
+    /*BA*/ {oo, XX, SS, oo, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // BA break after 
 #endif
-	/*BB*/ {SS, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, SS, SS, SS, SS, SS, SS, XX, cc, XX,  SS, SS, SS, SS, SS}, // BB break before 
-	/*B2*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, XX, XX, cc, XX,  oo, oo, oo, oo, oo}, // B2 break either side, but not pair
-	/*ZW*/ {oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, XX, oo, oo,  oo, oo, oo, oo, oo}, // ZW zero width space
-	/*CM*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // CM combining mark
-	/*WJ*/ {SS, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, SS, SS, SS, SS, SS, SS, XX, cc, XX,  SS, SS, SS, SS, SS}, // WJ word joiner
-																							    
-	/*H2*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, SS, SS}, // Hangul 2 Jamo syllable
-	/*H3*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, SS}, // Hangul 3 Jamo syllable
-	/*JL*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  SS, SS, SS, SS, oo}, // Jamo Leading Consonant
-	/*JV*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, SS, SS}, // Jamo Vowel
-	/*JT*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, SS}, // Jamo Trailing Consonant
-	
+    /*BB*/ {SS, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, SS, SS, SS, SS, SS, SS, XX, cc, XX,  SS, SS, SS, SS, SS}, // BB break before 
+    /*B2*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, oo, oo, oo, oo, SS, SS, oo, XX, XX, cc, XX,  oo, oo, oo, oo, oo}, // B2 break either side, but not pair
+    /*ZW*/ {oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, oo, XX, oo, oo,  oo, oo, oo, oo, oo}, // ZW zero width space
+    /*CM*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, oo, SS, SS, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, oo}, // CM combining mark
+    /*WJ*/ {SS, XX, SS, SS, SS, XX, XX, XX, SS, SS, SS, SS, SS, SS, SS, SS, SS, SS, XX, cc, XX,  SS, SS, SS, SS, SS}, // WJ word joiner
+                                                                                                
+    /*H2*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, SS, SS}, // Hangul 2 Jamo syllable
+    /*H3*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, SS}, // Hangul 3 Jamo syllable
+    /*JL*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  SS, SS, SS, SS, oo}, // Jamo Leading Consonant
+    /*JV*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, SS, SS}, // Jamo Vowel
+    /*JT*/ {oo, XX, SS, SS, SS, XX, XX, XX, oo, SS, oo, oo, oo, SS, SS, SS, oo, oo, XX, cc, XX,  oo, oo, oo, oo, SS}, // Jamo Trailing Consonant
+    
 };
 
 
@@ -1782,7 +1783,7 @@ static int findLineBrk(BREAKCLASS *pcls, BREAKACTION *pbrk, int cch, int fLEGACY
 {
     int ich;
     BREAKACTION brk;
-	BREAKCLASS cls;
+    BREAKCLASS cls;
     
     if (cch <= 0) 
         return 0;
@@ -1852,7 +1853,7 @@ static int findLineBrk(BREAKCLASS *pcls, BREAKACTION *pbrk, int cch, int fLEGACY
                 if (!fLEGACY_CM)                        // new: SP is not a base
                     pbrk[ich-1] = COMBINING_INDIRECT_BRK;    // apply rule SP ?
                 else {
-                    pbrk[ich-1] = PROHIBITED_BRK;		// legacy: keep SP CM together
+                    pbrk[ich-1] = PROHIBITED_BRK;       // legacy: keep SP CM together
                     if (ich > 1)
                         pbrk[ich-2] = ((pcls[ich - 2] == SP) ? INDIRECT_BRK : DIRECT_BRK);
                 }
@@ -2167,17 +2168,17 @@ int FollowingLineBreak(const UChar* text, int textlength, LINE_BREAK* pLBKinfo, 
         return textlength;
     }
     else {
-		/*
+        /*
         if(text[Followingpos +1] >=0xD800 && text[Followingpos +1] <=0xDBFF) {
-			printf("adjustedpos =Followingpos +2;[%d]\n",Followingpos);
+            printf("adjustedpos =Followingpos +2;[%d]\n",Followingpos);
             adjustedpos =Followingpos +2;
         }
         else {
-			printf("adjustedpos =Followingpos +1;[%d]\n",Followingpos);
+            printf("adjustedpos =Followingpos +1;[%d]\n",Followingpos);
             adjustedpos =Followingpos +1;
         }
-		*/
-		adjustedpos =Followingpos ;
+        */
+        adjustedpos =Followingpos ;
     }
     
     if (adjustedpos +1 >=textlength)

@@ -25,6 +25,7 @@
 
 #include "Platform.h"
 #include <stdlib.h>
+#include <string.h>
 
 namespace WTF {
     void *fastMalloc(size_t n);

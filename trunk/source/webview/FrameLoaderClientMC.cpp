@@ -34,13 +34,6 @@
 #include <sys/utsname.h>
 #endif
 
-#if ENABLE(PLUGIN)
-#include "HTMLPlugInElement.h" 
-#include "PluginViewPS.h"
-#include "PluginDatabasePS.h"
-#include "PlugInInfoStore.h"
-#endif 
-
 #include "WebCallback.h"
 #include "WebEngine.h"
 #include "WebView.h"
@@ -240,11 +233,6 @@ bool FrameLoaderClientMC::canShowMIMEType(const String& MIMEType) const
     if (MIMETypeRegistry::isSupportedNonImageMIMEType(MIMEType))
         return true;
 
-#if ENABLE(PLUGIN)
-    if (PlugInInfoStore::supportsMIMEType(MIMEType))
-        return true;
-#endif
-
     return false;
 }
 
@@ -325,14 +313,6 @@ Widget* FrameLoaderClientMC::createPlugin(const IntSize& pluginSize, Element* ow
                                             const Vector<String>& paramNames, const Vector<String>& paramValues,
 		                                    const String& mimeType, bool loadManually)
 {
-//#warning need implements
-		/*
-#if ENABLE(PLUGIN)
-	PluginViewMC* pluginView = PluginDatabaseMg::instancePlugins()->createPluginView(m_frame, pluginSize, ownerElement, URL, paramNames, paramValues, mimeType, loadManually);
-	if (pluginView && pluginView->status() == PluginStatusLoadedSuccessfully)
-		return pluginView;
-#endif //ENABLE(PLUGIN)
-	return NULL;*/
 	return NULL;
 }
 
@@ -446,11 +426,6 @@ ObjectContentType FrameLoaderClientMC::objectContentType(const KURL& url, const 
 
     if (MIMETypeRegistry::isSupportedImageMIMEType(mimeType))
         return ObjectContentImage;
-
-#if ENABLE(PLUGIN)
-    if (PlugInInfoStore::supportsMIMEType(mimeType))
-        return ObjectContentNetscapePlugin;
-#endif
 
     if (MIMETypeRegistry::isSupportedNonImageMIMEType(mimeType))
         return ObjectContentFrame;

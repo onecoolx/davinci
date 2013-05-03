@@ -28,6 +28,7 @@
 namespace WTF {
 
     template <typename T> class PassRefPtr;
+    template <typename T> PassRefPtr<T> adoptRef(T*);
 
     template <typename T> class RefPtr
     {

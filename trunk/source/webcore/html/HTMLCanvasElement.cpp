@@ -219,7 +219,7 @@ void HTMLCanvasElement::paint(GraphicsContext* p, const IntRect& rect)
 void HTMLCanvasElement::createImageData() const
 {
 	m_data = ps_canvas_create(pixelFormat(), m_size.width(), m_size.height());
-	ps_context * tg = ps_context_create(m_data, 0);
+	ps_context * tg = ps_context_create(m_data);
 	ps_color c = {1,1,1,1};
 	ps_set_source_color(tg, &c);
 	ps_clear(tg); //clear canvas with white color
@@ -249,7 +249,7 @@ void HTMLCanvasElement::createDrawingContext() const
     if (!m_data)
 		createImageData();
 
-    m_pdc = ps_context_create(m_data, 0);
+    m_pdc = ps_context_create(m_data);
 #endif
     m_drawingContext = new GraphicsContext(m_pdc);
     m_drawingContext->scale(FloatSize(w / unscaledWidth, h / unscaledHeight));
