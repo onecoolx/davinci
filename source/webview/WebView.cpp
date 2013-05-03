@@ -60,7 +60,7 @@ public:
 		, m_canvas(0), m_context(0), m_drawRect(0, 0, 0, 0), m_minLayoutSize(0, 0), m_oldLayoutSize(0, 0)
 	{
 		m_canvas = ps_canvas_create_with_data(buf, pixelFormat(), w, h, p);
-		m_context = ps_context_create(m_canvas, getGlobalContext());
+		m_context = ps_context_create(m_canvas);
 		ps_set_filter(m_context, FILTER_NEAREST);
 	}
 
@@ -80,7 +80,7 @@ public:
 		m_height = h;
 
 		m_canvas = ps_canvas_create_with_data(buf, pixelFormat(), w, h, p);
-		m_context = ps_context_create(m_canvas, getGlobalContext());
+		m_context = ps_context_create(m_canvas);
 		ps_set_filter(m_context, FILTER_NEAREST);
 	}
 

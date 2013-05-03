@@ -49,7 +49,7 @@ static const UChar ACE_PREFIX[] ={ 0x0078,0x006E,0x002d,0x002d } ;
 #define FULL_STOP        0x002E
 
 
-#include  "UnicodeIDNA_Data.cpp"
+#include  "UnicodeIDNA_data.cpp"
 
 
 //find wether the UNICODE codepoint is in the UIDNADB struct array

@@ -138,7 +138,7 @@ static bool context_init = false;
 static void global_context_init(void)
 {
 	g_canvas = ps_canvas_create(g_pixel_format, 10, 10);
-	g_context = ps_context_create(g_canvas, 0);
+	g_context = ps_context_create(g_canvas);
 	context_init = true;
 }
 
