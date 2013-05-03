@@ -1,4 +1,4 @@
-/* Automatically generated from /home/jpzhang/mbrowser/source/webcore/bindings/js/JSDOMExceptionConstructor.cpp using /home/jpzhang/mbrowser/source/webcore/../javascript/kjs/create_hash_table. DO NOT EDIT ! */
+/* Automatically generated from /home/zhangjipeng/macross-browser/source/webcore/bindings/js/JSDOMExceptionConstructor.cpp using /home/zhangjipeng/macross-browser/source/webcore/../javascript/kjs/create_hash_table. DO NOT EDIT ! */
 
 namespace KJS {
 
