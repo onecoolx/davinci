@@ -1,0 +1,374 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ(2.59)
+AC_INIT(MaCross, 1.0, onecoolx@gmail.com)
+
+VERSION_MAJOR=1
+VERSION_MINOR=0
+VERSION_MICRO=0
+VERSION=$VERSION_MAJOR.$VERSION_MINOR.$VERSION_MICRO
+AC_SUBST(VERSION_MAJOR)
+AC_SUBST(VERSION_MINOR)
+AC_SUBST(VERSION_MICRO)
+AC_SUBST(VERSION)
+
+AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, $VERSION)
+AC_CONFIG_HEADER(mconfig.h)
+
+# Checks for programs.
+AC_PROG_YACC
+AC_PROG_LEX
+AC_PROG_CXX
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_PROG_LIBTOOL
+
+AC_PATH_PROG(PERF, gperf, , $PATH)
+if test "x$PERF" = "x"; then
+    AC_MSG_ERROR([Couldn't find   gperf]
+    [ ** you should install this program first!**])
+fi
+
+AC_PATH_PROG(PERL, perl, , $PATH)
+if test "x$PERL" = "x"; then
+    AC_MSG_ERROR([Couldn't find   perl]
+    [ ** you should install this program first!**])
+fi
+
+AC_PATH_PROG(CURLCFG, curl-config, , $PATH)
+if test "x$CURLCFG" = "x"; then
+    AC_MSG_ERROR([Couldn't find   curl-config]
+    [ ** you should install LIBCURL first!**])
+fi
+
+AC_PREFIX_DEFAULT(/usr/local)
+
+#user define macores
+build_cookies="yes"
+build_focusring_drawing="no"
+build_cookies_files="yes"
+build_system_malloc="no"
+build_xml="yes"
+build_xslt="yes"
+build_xpath="yes"
+build_ssl="yes"
+build_ssl_files="yes"
+build_png="yes"
+build_jpeg="yes"
+build_gif="yes"
+build_ftpdir="yes"
+build_filesystem="yes"
+build_schemeextension="yes"
+build_plugin="yes"
+build_jsnativebinding="yes"
+build_nativeerror="no"
+build_lowbanddisplay="no"
+build_ajax="yes"
+build_http_cache="yes"
+
+build_charset_gb2312="yes"
+build_charset_gbk="yes"
+build_charset_big5="yes"
+build_charset_euckr="yes"
+build_charset_eucjp="yes"
+build_charset_shiftjis="yes"
+
+#Check user define macores.
+AC_ARG_ENABLE(cookies,
+[  --enable-cookies      build cookie support <default=yes>],
+build_cookies=$enableval)
+
+AC_ARG_ENABLE(cookies_files,
+[  --enable-cookies_files     build file support with cookies <default=yes>],
+build_cookies_files=$enableval)
+
+AC_ARG_ENABLE(plugin,
+[  --enable-plugin     build file support with plugin <default=yes>],
+build_plugin=$enableval)
+
+AC_ARG_ENABLE(focusring_drawing,
+[  --enable-focusring_drawing      support focus ring of the owner drawing style <default=no>],
+build_focusring_drawing=$enableval)
+
+AC_ARG_ENABLE(system_malloc,
+[  --enable-system_malloc      build std libc malloc functions instead of FastMalloc <default=no>],
+build_system_malloc=$enableval)
+
+AC_ARG_ENABLE(xml,
+[  --enable-xml      build XML support <default=yes>],
+build_xml=$enableval)
+
+AC_ARG_ENABLE(xslt,
+[  --enable-xslt      build XSLT support <default=yes>],
+build_xslt=$enableval)
+
+AC_ARG_ENABLE(xpath,
+[  --enable-xpath      build XPATH support <default=yes>],
+build_xpath=$enableval)
+
+AC_ARG_ENABLE(ssl,
+[  --enable-ssl      build SSL support <default=no>],
+build_ssl=$enableval)
+
+AC_ARG_ENABLE(ssl_files,
+[  --enable-ssl_files      build file support with ssl <default=yes>],
+build_ssl_files=$enableval)
+
+AC_ARG_ENABLE(png,
+[  --enable-png      build support PNG image format <default=yes>],
+build_png=$enableval)
+
+AC_ARG_ENABLE(jpeg,
+[  --enable-jpeg     build support JPEG image format <default=yes>],
+build_jpeg=$enableval)
+
+AC_ARG_ENABLE(gif,
+[  --enable-gif      build support BMP image format <default=yes>],
+build_gif=$enableval)
+
+AC_ARG_ENABLE(ftpdir,
+[  --enable-ftpdir   build support list ftp dir <default=yes>],
+build_ftpdir=$enableval)
+
+AC_ARG_ENABLE(filesystem,
+[  --enable-filesystem   build support file system <default=yes>],
+build_filesystem=$enableval)
+
+AC_ARG_ENABLE(schemeextension,
+[  --enable-schemeextension   build support scheme extension <default=yes>],
+build_schemeextension=$enableval)
+
+AC_ARG_ENABLE(jsnativebinding,
+[  --enable-jsnativebinding build support javascript native binding <default=yes>],
+build_jsnativebinding=$enableval)
+
+AC_ARG_ENABLE(nativeerror,
+[  --enable-nativeerror   build support native error <default=no>],
+build_nativeerror=$enableval)
+
+AC_ARG_ENABLE(lowbanddisplay,
+[  --enable-lowbanddisplay   build support low band display with transform <default=no>],
+build_lowbanddisplay=$enableval)
+
+AC_ARG_ENABLE(ajax,
+[  --enable-ajax    build support ajax <default=yes>],
+build_ajax=$enableval)
+
+AC_ARG_ENABLE(http_cache,
+[  --enable-http_cache     build http disk cache support <default=yes>],
+build_http_cache=$enableval)
+
+AC_ARG_ENABLE(charset-gb2312,
+[  --enable-charset-gb2312    build support charset GB2312  <default=yes>],
+build_charset_gb2312=$enableval)
+
+AC_ARG_ENABLE(charset-gbk,
+[  --enable-charset-gbk    build support charset GBK  <default=yes>],
+build_charset_gbk=$enableval)
+
+AC_ARG_ENABLE(charset-big5,
+[  --enable-charset-big5    build support charset BIG5  <default=yes>],
+build_charset_big5=$enableval)
+
+AC_ARG_ENABLE(charset-euckr,
+[  --enable-charset-euckr    build support charset EUCKR  <default=yes>],
+build_charset_euckr=$enableval)
+
+AC_ARG_ENABLE(charset-eucjp,
+[  --enable-charset-eucjp    build support charset EUCJP  <default=yes>],
+build_charset_eucjp=$enableval)
+
+AC_ARG_ENABLE(charset-shiftjis,
+[  --enable-charset-shiftjis    build support charset SHIFTJIS  <default=yes>],
+build_charset_shiftjis=$enableval)
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(picasso.h errno.h fcntl.h float.h ieeefp.h inttypes.h limits.h locale.h malloc.h stddef.h stdint.h stdlib.h string.h strings.h sys/param.h sys/time.h sys/timeb.h unistd.h pthread_np.h)
+
+#user define macores
+if test "x$build_cookies" = "xyes"; then
+    AC_DEFINE(ENABLE_COOKIES, 1, [Define if cookie is supported.])
+    if test "x$build_cookies_files" = "xyes"; then
+        AC_DEFINE(ENABLE_FILECOOKIE, 1, [Define if cookies support file.])
+    fi
+fi
+
+if test "x$build_plugin" = "xyes"; then
+    AC_DEFINE(ENABLE_PLUGIN, 1, [Define if plugin is supported.])
+fi
+
+if test "x$build_focusring_drawing" = "xyes"; then
+    AC_DEFINE(FOCUSRING_DRAWING, 1, [Define if focus ring of the owner drawing style is supported.])
+fi
+
+if test "x$build_system_malloc" = "xyes"; then
+    AC_DEFINE(USE_SYSTEM_MALLOC, 1, [Define if use std libc malloc functions.])
+fi
+
+if test "x$build_ssl" = "xyes"; then
+    AC_DEFINE(ENABLE_SSL, 1, [Define if SSL is supported.])
+    if test "x$build_ssl_files" = "xyes"; then
+        AC_DEFINE(ENABLE_SSLFILE, 1, [Define if ssl support file.])
+    fi
+fi
+
+if test "x$build_png" = "xyes"; then
+    AC_CHECK_LIB(png, png_check_sig, LIBS="$LIBS -lpng -lz", AC_MSG_ERROR([Couldn't find libpng ** you should install this package first! **]))
+    AC_CHECK_HEADER(png.h, ,AC_MSG_ERROR([][** Couldn't find libpng headers in your include path **]))
+    AC_DEFINE(PNG_SUPPORT, 1, [Define if PNG image is supported.])
+fi
+
+if test "x$build_jpeg" = "xyes"; then
+    AC_CHECK_LIB(jpeg, jpeg_std_error, LIBS="$LIBS -ljpeg", AC_MSG_ERROR([Couldn't find libjpeg ** you should install this package first! **]))
+    AC_CHECK_HEADER(jpeglib.h, ,AC_MSG_ERROR([][** Couldn't find libjpeg headers in your include path **]))
+    AC_DEFINE(JPEG_SUPPORT, 1, [Define if JPEG image is supported.])
+fi
+
+if test "x$build_xml" = "xyes"; then
+    AC_PATH_PROG(XMLCFG, xml2-config, , $PATH)
+    if test "x$XMLCFG" = "x"; then
+        AC_MSG_ERROR([Couldn't find   xml2-config]
+            [ ** you should install LIBXML2 first!**])
+    fi
+    AC_DEFINE(ENABLE_XML, 1, [Define if XML is supported.])
+
+    if test "x$build_xslt" = "xyes"; then
+        AC_PATH_PROG(XSLTCFG, xslt-config, , $PATH)
+        if test "x$XSLTCFG" = "x"; then
+            AC_MSG_ERROR([Couldn't find   xslt-config]
+                [ ** you should install LIBXSLT first!**])
+        fi
+        AC_DEFINE(ENABLE_XSLT, 1, [Define if XSLT is supported.])
+    fi
+
+    if test "x$build_xpath" = "xyes"; then
+        AC_DEFINE(ENABLE_XPATH, 1, [Define if XPATH is supported.])
+    fi
+fi
+
+if test "x$build_gif" = "xyes"; then
+    AC_DEFINE(GIF_SUPPORT, 1, [Define if GIF image is supported.])
+fi
+
+if test "x$build_ftpdir" = "xyes"; then
+    AC_DEFINE(ENABLE_FTPDIR, 1, [Define if FTPDIR is supported.])
+fi
+
+if test "x$build_filesystem" = "xyes"; then
+    AC_DEFINE(ENABLE_FILESYSTEM, 1, [Define if FILESYSTEM is supported.])
+fi
+
+if test "x$build_schemeextension" = "xyes"; then
+    AC_DEFINE(ENABLE_SCHEMEEXTENSION, 1, [Define if SCHEMEEXTENSION is supported.])
+fi
+
+if test "x$build_jsnativebinding" = "xyes"; then
+    AC_DEFINE(ENABLE_JSNATIVEBINDING, 1, [Define if JSNATIVEBINDING is supported.])
+fi
+
+if test "x$build_nativeerror" = "xyes"; then
+    AC_DEFINE(ENABLE_NATIVEERROR, 1, [Define if NATIVEERROR is supported.])
+fi
+
+if test "x$build_lowbanddisplay" = "xyes"; then
+    AC_DEFINE(WTF_USE_LOW_BANDWIDTH_DISPLAY, 1, [Define if LOWBAND WIDTH DISPLAY is supported.])
+fi
+
+if test "x$build_ajax" = "xyes"; then
+    AC_DEFINE(ENABLE_AJAX, 1, [Define if AJAX is supported.])
+fi
+
+if test "x$build_http_cache" = "xyes"; then
+    AC_DEFINE(ENABLE_HTTPCACHE, 1, [Define if HTTP disk cache is supported.])
+fi
+
+if test "x$build_charset_gb2312" = "xyes"; then
+    AC_DEFINE(ENABLE_GB2312_SUPPORT, 1, [Define if Charset GB2312 is supported.])
+fi
+
+if test "x$build_charset_gbk" = "xyes"; then
+    AC_DEFINE(ENABLE_GBK_SUPPORT, 1, [Define if Charset GBK is supported.])
+fi
+
+if test "x$build_charset_big5" = "xyes"; then
+    AC_DEFINE(ENABLE_BIG5_SUPPORT, 1, [Define if Charset BIG5 is supported.])
+fi
+
+if test "x$build_charset_euckr" = "xyes"; then
+    AC_DEFINE(ENABLE_EUCKR_SUPPORT, 1, [Define if Charset EUCKR is supported.])
+fi
+
+if test "x$build_charset_eucjp" = "xyes"; then
+    AC_DEFINE(ENABLE_EUCJP_SUPPORT, 1, [Define if Charset EUCJP is supported.])
+fi
+
+if test "x$build_charset_shiftjis" = "xyes"; then
+    AC_DEFINE(ENABLE_SHIFTJIS_SUPPORT, 1, [Define if Charset SHIFTJIS is supported.])
+fi
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_CONST
+AC_C_INLINE
+AC_TYPE_OFF_T
+AC_C_RESTRICT
+AC_TYPE_SIZE_T
+AC_HEADER_TIME
+AC_STRUCT_TM
+AC_STRUCT_TIMEZONE
+AC_C_VOLATILE
+AC_CHECK_TYPES(ptrdiff_t)
+
+# Checks for library functions.
+AC_FUNC_ERROR_AT_LINE
+AC_FUNC_MALLOC
+AC_FUNC_MEMCMP
+AC_FUNC_MKTIME
+AC_FUNC_MMAP
+AC_FUNC_REALLOC
+AC_FUNC_SELECT_ARGTYPES
+AC_TYPE_SIGNAL
+AC_FUNC_STRFTIME
+AC_FUNC_STRTOD
+AC_FUNC_VPRINTF
+
+AC_CHECK_FUNCS(posix_memalign finite _finite isnan isinf sbrk mmap bzero floor ftime getpagesize gettimeofday localeconv localtime_r memmove memset mkdir munmap pow regcomp select setlocale sqrt strchr strdup strndup strncasecmp strstr strtol)
+
+# add curl to build option
+CFLAGS="$CFLAGS `curl-config --cflags`"
+CXXFLAGS="$CXXFLAGS `curl-config --cflags`"
+LIBS="$LIBS `curl-config --libs`"
+
+# add xml2 to build option
+if test "x$build_xml" = "xyes"; then
+CFLAGS="$CFLAGS `xml2-config --cflags`"
+CXXFLAGS="$CXXFLAGS `xml2-config --cflags`"
+LIBS="$LIBS `xml2-config --libs`"
+
+# add xslt to build option
+if test "x$build_xslt" = "xyes"; then
+CFLAGS="$CFLAGS `xslt-config --cflags`"
+CXXFLAGS="$CXXFLAGS `xslt-config --cflags`"
+LIBS="$LIBS `xslt-config --libs`"
+fi
+fi
+
+CFLAGS="$CFLAGS -Wall -pipe -fPIC" 
+CXXFLAGS="$CXXFLAGS -Wall -Wno-strict-aliasing -pipe -fPIC"
+LIBS="$LIBS -lpicasso -lpthread"
+
+AC_CONFIG_FILES(
+Makefile
+include/Makefile
+source/Makefile
+source/javascript/Makefile
+source/javascript/kjs/Makefile
+source/javascript/pcre/Makefile
+source/webcore/Makefile
+source/webview/Makefile
+)
+AC_OUTPUT
+
