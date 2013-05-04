@@ -670,6 +670,7 @@ WEBCORE_SOURCES_PLATFORM=\
 		platform/Logging.cpp \
 		platform/MIMETypeRegistry.cpp \
 		platform/PlatformScrollBar.h \
+		platform/PlugInInfoStoreNone.cpp \
 		platform/RegularExpression.cpp \
 		platform/ScrollBar.cpp \
 		platform/SegmentedString.cpp \
