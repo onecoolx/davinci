@@ -1666,7 +1666,9 @@ BOOL inescq = FALSE;
 #endif
 BOOL groupsetfirstbyte = FALSE;
 const pcre_uchar *ptr = *ptrptr;
-const pcre_uchar *tempptr;
+#if !JAVASCRIPT
+const pcre_uchar *tempptr = NULL;
+#endif
 uschar *previous = NULL;
 uschar *previous_callout = NULL;
 uschar classbits[32];
@@ -3429,7 +3431,9 @@ for (;; ptr++)
     for validity in the pre-compiling pass. */
 
     case '\\':
+#if !JAVASCRIPT
     tempptr = ptr;
+#endif
     c = check_escape(&ptr, patternEnd, errorcodeptr, *brackets, options, FALSE);
 
     /* Handle metacharacters introduced by \. For ones like \d, the ESC_ values
