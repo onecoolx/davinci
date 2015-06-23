@@ -8,9 +8,11 @@
     ['OS=="win"', {
       'defines': [
         'WIN32',
+        '_WIN32',
         'DLL_EXPORT',
         '_USE_MATH_DEFINES',
-        '_CRT_SECURE_NO_WARNINGS' 
+        '_CRT_SECURE_NO_WARNINGS',
+        '_CRT_NONSTDC_NO_WARNINGS',
       ],
     }],
   ],
