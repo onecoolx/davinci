@@ -112,7 +112,7 @@
 
 #define JPEG_SUPPORT 1
 
-//#define PNG_SUPPORT 1
+#define PNG_SUPPORT 1
 
 #define FOCUSRING_DRAWING 1
 
