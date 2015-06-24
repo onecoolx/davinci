@@ -50,6 +50,84 @@
       ],
     }],
   ],
+  'conditions': [
+    ['OS=="win"', {
+      'include_dirs': [
+        '$(OutDir)/include',
+      ],
+      'actions': [
+       {
+        'action_name': 'install_header1',
+        'inputs': [
+          '<(lib_dir)/zconf.h', 
+         ],
+        'outputs': [
+          '$(OutDir)/include/zconf.h' 
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/include/zconf.h',
+        ],
+        'msvs_cygwin_shell': 0,
+       },
+       {
+        'action_name': 'install_header2',
+        'inputs': [
+          '<(lib_dir)/zlib.h', 
+         ],
+        'outputs': [
+          '$(OutDir)/include/zlib.h' 
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/include/zlib.h',
+        ],
+        'msvs_cygwin_shell': 0,
+       },
+      ],
+    }],
+    ['OS=="linux"', {
+      'include_dirs': [
+        '$(builddir)/include',
+      ],
+      'actions': [
+       {
+        'action_name': 'install_header1',
+        'inputs': [
+          '<(lib_dir)/zconf.h', 
+        ],
+        'outputs': [
+          '$(builddir)/include/zconf.h', 
+        ],
+        'action': [
+        'python',
+        'tools/cp.py',
+        '<(_inputs)',
+        '$(builddir)/include/zconf.h',
+        ],
+       },
+       {
+        'action_name': 'install_header2',
+        'inputs': [
+          '<(lib_dir)/zlib.h', 
+        ],
+        'outputs': [
+          '$(builddir)/include/zlib.h', 
+        ],
+        'action': [
+        'python',
+        'tools/cp.py',
+        '<(_inputs)',
+        '$(builddir)/include/zlib.h',
+        ],
+       },
+      ],
+    }],
+  ],
   'includes': [
     '../build/configs.gypi',
     '../build/defines.gypi',
