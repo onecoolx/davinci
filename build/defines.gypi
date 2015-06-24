@@ -11,6 +11,7 @@
         '_WIN32',
         'DLL_EXPORT',
         '_USE_MATH_DEFINES',
+        '_CRT_SECURE_NO_DEPRECATE',
         '_CRT_SECURE_NO_WARNINGS',
         '_CRT_NONSTDC_NO_WARNINGS',
       ],

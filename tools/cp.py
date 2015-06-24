@@ -11,10 +11,15 @@ This module works much like the cp posix command - it takes 2 arguments:
 
 import shutil
 import sys
+import os
 
 
 def Main(src, dst):
   # Use copy instead of copyfile to ensure the executable bit is copied.
+  path = os.path.dirname(dst)
+  is_exit = os.path.exists(path)
+  if not is_exit:
+      os.makedirs(path)
   return shutil.copy(src, dst)
 
 
