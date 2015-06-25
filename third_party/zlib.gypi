@@ -6,14 +6,7 @@
 {
   'variables': {
       'lib_dir': 'zlib-1.2.8',
-      'conditions': [
-        ['OS=="win"', {
-          'lib_name': 'zlib',
-        }],
-        ['OS=="linux"', {
-          'lib_name': 'z',
-        }],
-      ],
+      'lib_name': 'zlib',
   },
   'target_name': '<(lib_name)',
   'type': 'shared_library',

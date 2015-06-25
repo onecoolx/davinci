@@ -10,17 +10,8 @@
   },
   'target_name': '<(lib_name)',
   'type': 'shared_library',
-  'conditions': [
-    ['OS=="win"', {
-      'dependencies': [
-        'zlib',
-      ],
-    }],
-    ['OS=="linux"', {
-      'dependencies': [
-        'z',
-    ],
-    }],
+  'dependencies': [
+    'zlib',
   ],
   'defines': [
     'ZLIB_DLL',
