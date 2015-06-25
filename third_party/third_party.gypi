@@ -15,6 +15,11 @@
             './libpng.gypi'
           ],
        },
+       {
+          'includes': [
+            './libjpeg.gypi'
+          ],
+       },
    ],
 }
 
