@@ -408,12 +408,12 @@ quantize (JCOEFPTR coef_block, DCTELEM * divisors, DCTELEM * workspace)
       temp = -temp;
       product = (UDCTELEM2)(temp + corr) * recip;
       product >>= shift + sizeof(DCTELEM)*8;
-      temp = product;
+      temp = (DCTELEM)product;
       temp = -temp;
     } else {
       product = (UDCTELEM2)(temp + corr) * recip;
       product >>= shift + sizeof(DCTELEM)*8;
-      temp = product;
+      temp = (DCTELEM)product;
     }
     output_ptr[i] = (JCOEF) temp;
   }

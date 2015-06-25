@@ -5,8 +5,8 @@
 
 {
   'variables': {
-      'lib_dir': 'zlib-1.2.8',
-      'lib_name': 'zlib',
+    'lib_dir': 'zlib-1.2.8',
+    'lib_name': 'zlib',
   },
   'target_name': '<(lib_name)',
   'type': 'shared_library',
