@@ -21,6 +21,8 @@ def Main(src, dst):
   if not is_exit:
       os.makedirs(path)
   if os.path.isdir(src):
+      if os.path.exists(dst):
+          shutil.rmtree(dst)
       return shutil.copytree(src, dst)
   else:
       return shutil.copy(src, dst)

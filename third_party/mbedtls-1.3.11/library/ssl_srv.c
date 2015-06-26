@@ -2952,7 +2952,7 @@ static int ssl_parse_encrypted_pms( ssl_context *ssl,
     }
     ssl->handshake->pmslen = 48;
 
-    mask = ( diff | - diff ) >> ( sizeof( size_t ) * 8 - 1 );
+    mask = ( diff | - (int)diff ) >> ( sizeof( size_t ) * 8 - 1 );
     mask = (unsigned char)( - ( ret != 0 ) ); /* mask = diff ? 0xff : 0x00 */
     for( i = 0; i < ssl->handshake->pmslen; i++ )
         pms[i] = ( mask & fake_pms[i] ) | ( (~mask) & peer_pms[i] );

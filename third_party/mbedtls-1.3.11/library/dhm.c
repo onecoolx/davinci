@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  Diffie-Hellman-Merkle key exchange
  *
  *  Copyright (C) 2006-2014, ARM Limited, All Rights Reserved

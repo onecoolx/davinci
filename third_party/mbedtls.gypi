@@ -14,7 +14,7 @@
   ],
   'defines': [
     '_USRDLL',
-    'MBEDTLS',
+    'MBEDTLS_EXPORTS',
   ],
   'include_dirs': [
     '<(lib_dir)',
