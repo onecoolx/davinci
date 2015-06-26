@@ -30,12 +30,12 @@
 			  'DebugInformationFormat': '3'
             },
             'VCLinkerTool': {
-				'LinkIncremental': '1',
-				'SuppressStartupBanner': 'true',
-				'GenerateDebugInformation': 'true',
-				'RandomizedBaseAddress': '1',
-				'DataExecutionPrevention': '0',
-				'TargetMachine': '1'
+              'LinkIncremental': '1',
+              'SuppressStartupBanner': 'true',
+              'GenerateDebugInformation': 'true',
+              'RandomizedBaseAddress': '1',
+              'DataExecutionPrevention': '0',
+              'TargetMachine': '1'
             },
           },
         }],
@@ -67,7 +67,7 @@
           },
           'msvs_settings': {
             'VCCLCompilerTool': {
-			  'Optimization': '3',
+			  'Optimization': '2',
 			  'InlineFunctionExpansion': '2',
 			  'FavorSizeOrSpeed': '1',
 			  'WholeProgramOptimization': 'true',
@@ -85,14 +85,14 @@
 			  'DebugInformationFormat': '3'
             },
             'VCLinkerTool': {
-				'LinkIncremental': '1',
-				'SuppressStartupBanner': 'true',
-				'GenerateDebugInformation': 'false',
-				'GenerateMapFile': 'true',
-				'LinkTimeCodeGeneration': '1',
-				'RandomizedBaseAddress': '1',
-				'DataExecutionPrevention': '0',
-				'TargetMachine': '1'
+			  'LinkIncremental': '1',
+			  'SuppressStartupBanner': 'true',
+			  'GenerateDebugInformation': 'false',
+			  'GenerateMapFile': 'true',
+			  'LinkTimeCodeGeneration': '1',
+			  'RandomizedBaseAddress': '1',
+			  'DataExecutionPrevention': '0',
+			  'TargetMachine': '1'
             },
           },
         }],
