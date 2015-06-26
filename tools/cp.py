@@ -20,7 +20,10 @@ def Main(src, dst):
   is_exit = os.path.exists(path)
   if not is_exit:
       os.makedirs(path)
-  return shutil.copy(src, dst)
+  if os.path.isdir(src):
+      return shutil.copytree(src, dst)
+  else:
+      return shutil.copy(src, dst)
 
 
 if __name__ == '__main__':

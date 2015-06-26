@@ -20,6 +20,11 @@
             './libjpeg.gypi'
           ],
        },
+       {
+          'includes': [
+            './mbedtls.gypi'
+          ],
+       },
    ],
 }
 
