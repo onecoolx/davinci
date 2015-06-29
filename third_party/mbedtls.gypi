@@ -9,12 +9,10 @@
     'lib_name': 'mbedtls',
   },
   'target_name': '<(lib_name)',
-  'type': 'shared_library',
+  'type': 'static_library',
   'dependencies': [
   ],
   'defines': [
-    '_USRDLL',
-    'MBEDTLS_EXPORTS',
   ],
   'include_dirs': [
     '<(lib_dir)',

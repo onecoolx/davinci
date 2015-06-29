@@ -131,21 +131,67 @@
   ],
   'conditions': [
     ['OS=="win"', {
+      'msvs_settings': {
+        'VCLinkerTool': {
+          'AdditionalDependencies': [
+            'ws2_32.lib',
+          ],
+        },
+      },
       'include_dirs': [
         '$(OutDir)/include',
+      ],
+      'defines': [
+        'CURL_PULL_WS2TCPIP_H',
+        'CURL_DISABLE_LDAPS',
+        'CURL_DISABLE_LDAP',
       ],
       'sources': [
         '<(lib_dir)/lib/idn_win32.c',
         '<(lib_dir)/lib/libcurl.rc',
       ],
+      'actions': [
+       {
+        'action_name': 'install_headers',
+        'inputs': [
+          '<(lib_dir)/include/curl', 
+         ],
+        'outputs': [
+          '$(OutDir)/include/curl',
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/include/curl',
+        ],
+        'msvs_cygwin_shell': 0,
+       }],
     }],
     ['OS=="linux"', {
       'include_dirs': [
         '$(builddir)/include',
       ],
       'defines': [
+        'CURL_PULL_SYS_SOCKET_H',
         'HAVE_CONFIG_H',
       ],
+      'actions': [
+       {
+        'action_name': 'install_headers',
+        'inputs': [
+          '<(lib_dir)/include/curl', 
+        ],
+        'outputs': [
+          '$(builddir)/include/curl', 
+        ],
+        'action': [
+        'python',
+        'tools/cp.py',
+        '<(_inputs)',
+        '$(builddir)/include/curl',
+        ],
+       }],
     }],
   ],
   'includes': [

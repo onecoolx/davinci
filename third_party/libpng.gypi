@@ -50,13 +50,6 @@
   ],
   'conditions': [
     ['OS=="win"', {
-      'msvs_settings': {
-        'VCLinkerTool': {
-          'AdditionalDependencies': [
-            '$(OutDir)/zlib.lib',
-          ],
-        },
-      },
       'include_dirs': [
         '$(OutDir)/include',
       ],

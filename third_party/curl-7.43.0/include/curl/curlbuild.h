@@ -140,14 +140,14 @@
 
 /* Configure process defines this to 1 when it finds out that system  */
 /* header file inttypes.h must be included by the external interface. */
-#define CURL_PULL_INTTYPES_H 1
+/* CURL_PULL_INTTYPES_H 1 */
 #ifdef CURL_PULL_INTTYPES_H
 #  include <inttypes.h>
 #endif
 
 /* Configure process defines this to 1 when it finds out that system    */
 /* header file sys/socket.h must be included by the external interface. */
-#define CURL_PULL_SYS_SOCKET_H 1
+/* #define CURL_PULL_SYS_SOCKET_H 1*/
 #ifdef CURL_PULL_SYS_SOCKET_H
 #  include <sys/socket.h>
 #endif
