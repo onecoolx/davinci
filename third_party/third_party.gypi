@@ -25,6 +25,11 @@
             './mbedtls.gypi'
           ],
        },
+       {
+          'includes': [
+            './curl.gypi'
+          ],
+       },
    ],
 }
 
