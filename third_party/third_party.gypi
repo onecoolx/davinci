@@ -35,6 +35,11 @@
             './libxml2.gypi'
           ],
        },
+       {
+          'includes': [
+            './libxslt.gypi'
+          ],
+       },
    ],
 }
 
