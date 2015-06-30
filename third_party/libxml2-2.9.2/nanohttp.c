@@ -1038,16 +1038,17 @@ xmlNanoHTTPConnectAttempt(struct sockaddr *addr)
 static SOCKET
 xmlNanoHTTPConnectHost(const char *host, int port)
 {
+#if !defined(HAVE_GETADDRINFO) || !defined(_WIN32)
     struct hostent *h;
-    struct sockaddr *addr = NULL;
     struct in_addr ia;
+#endif
     struct sockaddr_in sockin;
+    struct sockaddr *addr = NULL;
 
 #ifdef SUPPORT_IP6
     struct in6_addr ia6;
     struct sockaddr_in6 sockin6;
 #endif
-    int i;
     SOCKET s;
 
     memset (&sockin, 0, sizeof(sockin));
@@ -1166,7 +1167,7 @@ xmlNanoHTTPConnectHost(const char *host, int port)
 	    return INVALID_SOCKET;
 	}
 
-	for (i = 0; h->h_addr_list[i]; i++) {
+	for (int i = 0; h->h_addr_list[i]; i++) {
 	    if (h->h_addrtype == AF_INET) {
 		/* A records (IPv4) */
 		if ((unsigned int) h->h_length > sizeof(ia)) {

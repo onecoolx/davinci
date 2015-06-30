@@ -79,7 +79,7 @@ int compute_minrun(uint64_t size) /* {{{ */
 {
   const int top_bit = 64 - CLZ(size);
   const int shift = MAX(top_bit, 6) - 6;
-  const int minrun = size >> shift;
+  const int minrun = (int)(size >> shift);
   const uint64_t mask = (MK_UINT64(1) << shift) - 1;
   if (mask & size) return minrun + 1;
   return minrun;
@@ -190,7 +190,7 @@ static void BINARY_INSERTION_SORT_START(SORT_TYPE *dst, const size_t start, cons
 
     /* Else we need to find the right place, shift everything over, and squeeze in */
     x = dst[i];
-    location = BINARY_INSERTION_FIND(dst, x, i);
+    location = BINARY_INSERTION_FIND(dst, x, (size_t)i);
     for (j = i - 1; j >= location; j--)
     {
       dst[j + 1] = dst[j];
@@ -264,7 +264,7 @@ if (run < minrun) run = minrun;\
 if (run > (int64_t) size - curr) run = size - curr;\
 if (run > len)\
 {\
-  BINARY_INSERTION_SORT_START(&dst[curr], len, run);\
+  BINARY_INSERTION_SORT_START(&dst[curr], (size_t)len, (size_t)run);\
   len = run;\
 }\
 {\
@@ -339,13 +339,13 @@ static void TIM_SORT_MERGE(SORT_TYPE *dst, const TIM_SORT_RUN_T *stack, const in
   SORT_TYPE *storage;
   int64_t i, j, k;
 
-  TIM_SORT_RESIZE(store, MIN(A, B));
+  TIM_SORT_RESIZE(store, (size_t)MIN(A, B));
   storage = store->storage;
 
   /* left merge */
   if (A < B)
   {
-    memcpy(storage, &dst[curr], A * sizeof(SORT_TYPE));
+    memcpy(storage, &dst[curr], (size_t)(A * sizeof(SORT_TYPE)));
     i = 0;
     j = curr + A;
 
@@ -369,7 +369,7 @@ static void TIM_SORT_MERGE(SORT_TYPE *dst, const TIM_SORT_RUN_T *stack, const in
   /* right merge */
   else
   {
-    memcpy(storage, &dst[curr + A], B * sizeof(SORT_TYPE));
+    memcpy(storage, &dst[curr + A], (size_t)(B * sizeof(SORT_TYPE)));
     i = B - 1;
     j = curr + A - 1;
 

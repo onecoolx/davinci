@@ -90,7 +90,12 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the thread support is configured in
  */
+#if 1
+#if defined(_REENTRANT) || defined(__MT__) || \
+    (defined(_POSIX_C_SOURCE) && (_POSIX_C_SOURCE - 0 >= 199506L))
 #define LIBXML_THREAD_ENABLED
+#endif
+#endif
 
 /**
  * LIBXML_THREAD_ALLOC_ENABLED:
@@ -169,7 +174,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the FTP support is configured in
  */
-#if 0
+#if 1
 #define LIBXML_FTP_ENABLED
 #endif
 
@@ -196,7 +201,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the HTML support is configured in
  */
-#if 0
+#if 1
 #define LIBXML_HTML_ENABLED
 #endif
 
@@ -232,7 +237,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the SGML Docbook support is configured in
  */
-#if 0
+#if 1
 #define LIBXML_DOCB_ENABLED
 #endif
 
@@ -277,7 +282,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether icu support is available
  */
-#if 1
+#if 0
 #define LIBXML_ICU_ENABLED
 #endif
 
@@ -286,7 +291,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether ISO-8859-* support is made available in case iconv is not
  */
-#if 1
+#if 0
 #define LIBXML_ISO8859X_ENABLED
 #endif
 
@@ -295,7 +300,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether Debugging module is configured in
  */
-#if 0
+#if 1
 #define LIBXML_DEBUG_ENABLED
 #endif
 
@@ -376,14 +381,14 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the module interfaces are compiled in
  */
-#if 0
+#if 1
 #define LIBXML_MODULES_ENABLED
 /**
  * LIBXML_MODULE_EXTENSION:
  *
  * the string suffix used by dynamic modules (usually shared libraries)
  */
-#define LIBXML_MODULE_EXTENSION "" 
+#define LIBXML_MODULE_EXTENSION ".dll" 
 #endif
 
 /**
@@ -391,7 +396,7 @@ XMLPUBFUN void XMLCALL xmlCheckVersion(int version);
  *
  * Whether the Zlib support is compiled in
  */
-#if 1
+#if 0
 #define LIBXML_ZLIB_ENABLED
 #endif
 
