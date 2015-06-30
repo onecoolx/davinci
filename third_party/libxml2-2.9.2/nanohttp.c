@@ -1039,6 +1039,7 @@ static SOCKET
 xmlNanoHTTPConnectHost(const char *host, int port)
 {
 #if !defined(HAVE_GETADDRINFO) || !defined(_WIN32)
+    int i;
     struct hostent *h;
     struct in_addr ia;
 #endif
@@ -1167,7 +1168,7 @@ xmlNanoHTTPConnectHost(const char *host, int port)
 	    return INVALID_SOCKET;
 	}
 
-	for (int i = 0; h->h_addr_list[i]; i++) {
+	for (i = 0; h->h_addr_list[i]; i++) {
 	    if (h->h_addrtype == AF_INET) {
 		/* A records (IPv4) */
 		if ((unsigned int) h->h_length > sizeof(ia)) {

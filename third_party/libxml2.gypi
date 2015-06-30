@@ -76,11 +76,8 @@
         },
       },
       'include_dirs': [
+        '<(lib_dir)/win32',
         '$(OutDir)/include',
-      ],
-      'defines': [
-      ],
-      'sources': [
       ],
       'actions': [
        {
@@ -102,6 +99,7 @@
     }],
     ['OS=="linux"', {
       'include_dirs': [
+        '<(lib_dir)/linux',
         '$(builddir)/include',
       ],
       'actions': [
