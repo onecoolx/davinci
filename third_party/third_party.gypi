@@ -30,6 +30,11 @@
             './curl.gypi'
           ],
        },
+       {
+          'includes': [
+            './libxml2.gypi'
+          ],
+       },
    ],
 }
 
