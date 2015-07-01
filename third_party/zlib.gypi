@@ -23,10 +23,6 @@
     '<(lib_dir)/compress.c',
     '<(lib_dir)/crc32.c',
     '<(lib_dir)/deflate.c',
-    '<(lib_dir)/gzclose.c',
-    '<(lib_dir)/gzlib.c',
-    '<(lib_dir)/gzread.c',
-    '<(lib_dir)/gzwrite.c',
     '<(lib_dir)/infback.c',
     '<(lib_dir)/inffast.c',
     '<(lib_dir)/inflate.c',
@@ -38,6 +34,10 @@
   'conditions': [
     ['OS=="win"', {
       'sources': [
+        '<(lib_dir)/gzclose.c',
+        '<(lib_dir)/gzlib.c',
+        '<(lib_dir)/gzread.c',
+        '<(lib_dir)/gzwrite.c',
         '<(lib_dir)/win32/zlib.def',
         '<(lib_dir)/win32/zlib1.rc',
       ],

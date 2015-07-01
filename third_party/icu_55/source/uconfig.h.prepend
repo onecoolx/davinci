@@ -1,0 +1,8 @@
+
+/* ICU customizations: put these lines at the top of uconfig.h */
+
+ /* -DU_DISABLE_RENAMING=1 */
+#define U_DISABLE_RENAMING 1
+
+/* End of uconfig.h.prepend ------------ */
+

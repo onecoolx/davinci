@@ -43,14 +43,14 @@
           'defines': [
             '_DEBUG',
           ],
-          'cflags_cc': [
+          'cflags': [
             '-O0',
             '-Wall',
             '-g',
             '-fPIC',
-            '-fno-rtti',
+          ],
+          'cflags_cc': [
             '-fno-exceptions',
-            '-Wno-unused-result',
           ],
         }],
       ],
@@ -100,13 +100,13 @@
           'defines': [
             'NDEBUG',
           ],
-          'cflags_cc': [
+          'cflags': [
             '-O2',
             '-Wall',
             '-fPIC',
-            '-fno-rtti',
+          ],
+          'cflags_cc': [
             '-fno-exceptions',
-            '-Wno-unused-result',
           ],
         }],
       ],
