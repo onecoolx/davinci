@@ -230,6 +230,7 @@
         '$(builddir)/include',
       ],
       'defines': [
+        'U_ATTRIBUTE_DEPRECATED=',
       ],
       'actions': [
        {
