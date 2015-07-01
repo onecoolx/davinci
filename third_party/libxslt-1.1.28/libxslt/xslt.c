@@ -1,4 +1,4 @@
-/*
+﻿/*
  * xslt.c: Implemetation of an XSL Transformation 1.0 engine
  *
  * Reference:

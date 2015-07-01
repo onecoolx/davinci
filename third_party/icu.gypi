@@ -202,7 +202,7 @@
         '$(OutDir)/include',
       ],
       'defines': [
-        'U_ATTRIBUTE_DEPRECATED',
+        'U_ATTRIBUTE_DEPRECATED=',
       ],
       'sources': [ 
         '<(lib_dir)/source/common/common.rc',
@@ -224,6 +224,7 @@
         ],
         'msvs_cygwin_shell': 0,
        }],
+       'msvs_disabled_warnings': [4251, 4244],
     }],
     ['OS=="linux"', {
       'include_dirs': [
