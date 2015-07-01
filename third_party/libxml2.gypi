@@ -68,16 +68,12 @@
   ],
   'conditions': [
     ['OS=="win"', {
-      'msvs_settings': {
-        'VCLinkerTool': {
-          'AdditionalDependencies': [
-            'ws2_32.lib',
-          ],
-        },
-      },
       'include_dirs': [
         '<(lib_dir)/win32',
         '$(OutDir)/include',
+      ],
+      'libraries': [
+        '-lws2_32',
       ],
       'actions': [
        {

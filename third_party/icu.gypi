@@ -207,6 +207,9 @@
       'sources': [ 
         '<(lib_dir)/source/common/common.rc',
       ],
+      'libraries': [
+        '$(OutDir)/lib/icudt.lib',
+      ],
       'actions': [
        {
         'action_name': 'install_headers',
@@ -221,6 +224,38 @@
           'tools/cp.py',
           '<(_inputs)',
           '$(OutDir)/include/unicode',
+        ],
+        'msvs_cygwin_shell': 0,
+       },
+       {
+        'action_name': 'install_dll',
+        'inputs': [
+          '<(lib_dir)/win32/icudt55.dll', 
+         ],
+        'outputs': [
+          '$(OutDir)/icudt55.dll',
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/icudt55.dll',
+        ],
+        'msvs_cygwin_shell': 0,
+       },
+       {
+        'action_name': 'install_libs',
+        'inputs': [
+          '<(lib_dir)/win32/icudt.lib', 
+         ],
+        'outputs': [
+          '$(OutDir)/lib/icudt.lib',
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/lib/icudt.lib',
         ],
         'msvs_cygwin_shell': 0,
        }],

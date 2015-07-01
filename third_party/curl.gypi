@@ -131,13 +131,6 @@
   ],
   'conditions': [
     ['OS=="win"', {
-      'msvs_settings': {
-        'VCLinkerTool': {
-          'AdditionalDependencies': [
-            'ws2_32.lib',
-          ],
-        },
-      },
       'include_dirs': [
         '$(OutDir)/include',
       ],
@@ -149,6 +142,9 @@
       'sources': [
         '<(lib_dir)/lib/idn_win32.c',
         '<(lib_dir)/lib/libcurl.rc',
+      ],
+      'libraries': [
+        '-lws2_32',
       ],
       'actions': [
        {
