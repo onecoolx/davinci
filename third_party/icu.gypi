@@ -268,6 +268,9 @@
       'defines': [
         'U_ATTRIBUTE_DEPRECATED=',
       ],
+      'sources': [ 
+        '<(lib_dir)/linux/icudtl_dat.S',
+      ],
       'actions': [
        {
         'action_name': 'install_headers',
