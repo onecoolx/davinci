@@ -10,5 +10,5 @@ make
 windows:
 ./build_proj.bat
 cd vcproj
-<open with visual studio>
+<open "all.sln" with visual studio>
 
