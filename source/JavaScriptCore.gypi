@@ -5,6 +5,7 @@
 
 {
   'variables': {
+    'lib_dir': 'webkit-2.2.8/Source/JavaScriptCore',
     'lib_name': 'JavaScriptCore',
   },
   'target_name': '<(lib_name)',
@@ -15,8 +16,11 @@
   ],
   'include_dirs': [
   ],
+  'cflags_cc': [
+    '-fno-rtti',
+  ],
   'sources': [ 
-  #  '<(lib_dir)/source/common/appendable.cpp',
+    '<(lib_dir)/AllInOneFile.cpp',
   ],
   'conditions': [
     ['OS=="win"', {

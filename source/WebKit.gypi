@@ -5,11 +5,11 @@
 
 {
   'targets': [
-#       {
-#          'includes': [
-#           './JavaScriptCore.gypi'
-#           ],
-#       },
+       {
+          'includes': [
+           './JavaScriptCore.gypi'
+           ],
+       },
 #       {
 #          'includes': [
 #            './WebCore.gypi'
