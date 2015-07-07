@@ -5,6 +5,7 @@
 
 {
   'variables': {
+    'lib_dir': 'webkit-2.2.8/Source/WebCore',
     'lib_name': 'WebCore',
   },
   'target_name': '<(lib_name)',
