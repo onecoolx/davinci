@@ -7,14 +7,19 @@
   'targets': [
        {
           'includes': [
+           './WTF.gypi'
+           ],
+       },
+       {
+          'includes': [
            './JavaScriptCore.gypi'
            ],
        },
-#       {
-#          'includes': [
-#            './WebCore.gypi'
-#          ],
-#       },
+       {
+          'includes': [
+            './WebCore.gypi'
+          ],
+       },
    ],
 }
 
