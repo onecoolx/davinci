@@ -14,6 +14,7 @@
         '_CRT_SECURE_NO_DEPRECATE',
         '_CRT_SECURE_NO_WARNINGS',
         '_CRT_NONSTDC_NO_WARNINGS',
+        '_SCL_SECURE_NO_WARNINGS',
         '_HAS_EXCEPTIONS=0',
       ],
     }],

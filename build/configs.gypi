@@ -10,6 +10,7 @@
         ['OS=="win"', {
           'defines': [
             '_DEBUG',
+            'BUILDING_DAVINCI__',
           ],
           'msvs_configuration_attributes': {
             'ConfigurationType': '2',
@@ -42,6 +43,7 @@
         ['OS=="linux"', {
           'defines': [
             '_DEBUG',
+            'BUILDING_DAVINCI__',
           ],
           'cflags': [
             '-O0',
@@ -51,7 +53,6 @@
           ],
           'cflags_cc': [
             '-fno-exceptions',
-            '-Wno-c++0x-compat',
           ],
         }],
       ],
@@ -61,6 +62,7 @@
         ['OS=="win"', {
           'defines': [
             'NDEBUG',
+            'BUILDING_DAVINCI__',
           ],
           'msvs_configuration_attributes': {
             'ConfigurationType': '2',
@@ -100,6 +102,7 @@
         ['OS=="linux"', {
           'defines': [
             'NDEBUG',
+            'BUILDING_DAVINCI__',
           ],
           'cflags': [
             '-O2',
@@ -108,7 +111,6 @@
           ],
           'cflags_cc': [
             '-fno-exceptions',
-            '-Wno-c++0x-compat',
           ],
         }],
       ],

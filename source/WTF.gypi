@@ -5,6 +5,7 @@
 
 {
   'variables': {
+    'lib_root_dir': 'webkit-2.2.8/Source',
     'lib_dir': 'webkit-2.2.8/Source/WTF',
     'lib_name': 'WTF',
   },
@@ -15,8 +16,10 @@
     'zlib',
   ],
   'defines': [
+    'BUILDING_WTF',
   ],
   'include_dirs': [
+    '<(lib_root_dir)',
     '<(lib_dir)',
     '<(lib_dir)/wtf',
   ],
@@ -75,7 +78,6 @@
     '<(lib_dir)/wtf/text/StringImpl.cpp',
     '<(lib_dir)/wtf/text/StringStatics.cpp',
     '<(lib_dir)/wtf/text/WTFString.cpp',
-    '<(lib_dir)/wtf/threads/BinarySemaphore.cpp',
     '<(lib_dir)/wtf/unicode/CollatorDefault.cpp',
     '<(lib_dir)/wtf/unicode/UTF8.cpp',
     '<(lib_dir)/wtf/unicode/icu/CollatorICU.cpp',
@@ -84,6 +86,7 @@
     ['OS=="win"', {
       'include_dirs': [
         '$(OutDir)/include',
+        '<(lib_dir)/wtf/threads',
       ],
       'defines': [
       ],
@@ -92,8 +95,9 @@
         '<(lib_dir)/wtf/ThreadSpecificWin.cpp',
         '<(lib_dir)/wtf/ThreadingWin.cpp',
         '<(lib_dir)/wtf/win/OwnPtrWin.cpp',
+        '<(lib_dir)/wtf/threads/win/BinarySemaphoreWin.cpp',
       ],
-#      'msvs_disabled_warnings': [4251, 4244],
+      'msvs_disabled_warnings': [4800, 4355, 4396, 4244],
     }],
     ['OS=="linux"', {
       'include_dirs': [
@@ -111,6 +115,7 @@
         '-lpthread',
       ],
       'sources': [ 
+        '<(lib_dir)/wtf/threads/BinarySemaphore.cpp',
         '<(lib_dir)/wtf/OSAllocatorPosix.cpp',
         '<(lib_dir)/wtf/ThreadIdentifierDataPthreads.cpp',
         '<(lib_dir)/wtf/ThreadingPthreads.cpp',
