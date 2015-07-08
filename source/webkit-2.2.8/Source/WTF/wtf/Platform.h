@@ -449,7 +449,9 @@
 #elif defined(BUILDING_BLACKBERRY__)
 #define WTF_PLATFORM_BLACKBERRY 1
 #elif defined(BUILDING_DAVINCI__)
+// davinci platform special.
 #define WTF_PLATFORM_DAVINCI 1
+#define WTF_USE_EXPORT_MACROS 1
 #elif OS(DARWIN)
 #define WTF_PLATFORM_MAC 1
 #elif OS(WINDOWS)
