@@ -4,6 +4,7 @@
 # Contact: onecoolx@gmail.com
 
 {
+# icuuc
   'variables': {
     'lib_dir': 'icu_55',
     'lib_name': 'icuuc',
@@ -217,13 +218,13 @@
           '<(lib_dir)/source/common/unicode', 
          ],
         'outputs': [
-          '$(OutDir)/include/unicode',
+          '$(OutDir)/include/uc/unicode',
          ],
         'action': [
           'python',
           'tools/cp.py',
           '<(_inputs)',
-          '$(OutDir)/include/unicode',
+          '$(OutDir)/include/uc/unicode',
         ],
         'msvs_cygwin_shell': 0,
        },
@@ -278,13 +279,13 @@
           '<(lib_dir)/source/common/unicode', 
         ],
         'outputs': [
-          '$(builddir)/include/unicode', 
+          '$(builddir)/include/uc/unicode', 
         ],
         'action': [
         'python',
         'tools/cp.py',
         '<(_inputs)',
-        '$(builddir)/include/unicode',
+        '$(builddir)/include/uc/unicode',
         ],
        }],
     }],
@@ -294,4 +295,3 @@
     '../build/defines.gypi',
   ],
 }
-
