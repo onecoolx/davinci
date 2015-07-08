@@ -32,7 +32,12 @@
        },
        {
           'includes': [
-            './icu.gypi'
+            './icuuc.gypi'
+          ],
+       },
+       {
+          'includes': [
+            './icui18n.gypi'
           ],
        },
        {
