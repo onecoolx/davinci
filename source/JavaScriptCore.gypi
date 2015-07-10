@@ -5,19 +5,39 @@
 
 {
   'variables': {
+    'lib_root_dir': 'webkit-2.2.8/Source',
     'lib_dir': 'webkit-2.2.8/Source/JavaScriptCore',
     'lib_name': 'JavaScriptCore',
   },
   'target_name': '<(lib_name)',
   'type': 'shared_library',
   'dependencies': [
+    'WTF',
   ],
   'defines': [
   ],
   'include_dirs': [
-  ],
-  'cflags_cc': [
-    '-fno-rtti',
+    '<(lib_root_dir)',
+    '<(lib_root_dir)/WTF',
+    '<(lib_dir)',
+	'<(lib_dir)/API',
+	'<(lib_dir)/ForwardingHeaders',
+	'<(lib_dir)/assembler',
+	'<(lib_dir)/bytecode',
+	'<(lib_dir)/bytecompiler',
+	'<(lib_dir)/debugger',
+	'<(lib_dir)/dfg',
+	'<(lib_dir)/disassembler',
+	'<(lib_dir)/ftl',
+	'<(lib_dir)/heap',
+	'<(lib_dir)/interpreter',
+	'<(lib_dir)/jit',
+	'<(lib_dir)/llint',
+	'<(lib_dir)/parser',
+	'<(lib_dir)/profiler',
+	'<(lib_dir)/runtime',
+	'<(lib_dir)/tools',
+	'<(lib_dir)/yarr',
   ],
   'sources': [ 
     '<(lib_dir)/AllInOneFile.cpp',
@@ -39,11 +59,18 @@
       ],
       'defines': [
       ],
+      'cflags': [
+        '-fstrict-aliasing',
+      ],
+      'cflags_cc': [
+        '-fno-rtti',
+      ],
       'sources': [ 
       ],
+      'libraries': [
+        '-lpthread',
+      ],
     }],
-  ],
-  'libraries': [
   ],
   'includes': [
     '../build/configs.gypi',
