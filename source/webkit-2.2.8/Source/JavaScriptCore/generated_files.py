@@ -30,6 +30,13 @@ def Main(src_dir, dst_dir):
   # step 3, Lexer.lut.h
   p = subprocess.Popen("perl "+src_dir+"/create_hash_table "+src_dir+"/parser/Keywords.table", shell=True, stdout=subprocess.PIPE)
   WriteLinesToFile(p, dst_dir+"/Lexer.lut.h")
+  # step 4, %.lut.h
+  file_list = []
+  for file_name in os.listdir(src_dir+"/runtime/"):
+    if os.path.splitext(file_name)[1] in (".cpp"):
+      p = subprocess.Popen("perl "+src_dir+"/create_hash_table "+src_dir+"/runtime/"+file_name+" -i", shell=True, stdout=subprocess.PIPE)
+      WriteLinesToFile(p, dst_dir+"/"+os.path.splitext(file_name)[0]+".lut.h")
+
 
   return 0
 
