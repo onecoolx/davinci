@@ -13,8 +13,11 @@
   'type': 'shared_library',
   'dependencies': [
     'WTF',
+    'icuuc',
+    'icui18n',
   ],
   'defines': [
+    'BUILDING_JavaScriptCore',
   ],
   'include_dirs': [
     '<(lib_dir)',

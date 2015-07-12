@@ -37,7 +37,6 @@ def Main(src_dir, dst_dir):
       p = subprocess.Popen("perl "+src_dir+"/create_hash_table "+src_dir+"/runtime/"+file_name+" -i", shell=True, stdout=subprocess.PIPE)
       WriteLinesToFile(p, dst_dir+"/"+os.path.splitext(file_name)[0]+".lut.h")
 
-
   return 0
 
 
