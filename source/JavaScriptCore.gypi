@@ -983,17 +983,39 @@
     ['OS=="win"', {
       'include_dirs': [
         '$(OutDir)/include',
+        '$(OutDir)/include\uc',
+        '$(OutDir)/include\i18n',
+        '$(OutDir)/<(lib_name)',
       ],
       'defines': [
       ],
       'sources': [ 
         '<(lib_dir)/JavaScriptCore.vcxproj/resource.h',
       ],
-#      'msvs_disabled_warnings': [4251, 4244],
+      'actions': [
+      {
+       'action_name': 'generated_files',
+       'inputs': [
+         '<(lib_dir)',
+       ],
+       'outputs': [
+         '$(OutDir)/<(lib_name)',
+       ],
+       'action': [
+       'python',
+       '<(lib_dir)/generated_files.py',
+       '<(_inputs)',
+       '$(OutDir)/<(lib_name)',
+       ],
+       'msvs_cygwin_shell': 0,
+      }],
+      'msvs_disabled_warnings': [4800, 4355, 4396, 4244, 4251, 4344],
     }],
     ['OS=="linux"', {
       'include_dirs': [
         '$(builddir)/include',
+        '$(builddir)/include\uc',
+        '$(builddir)/include\i18n',
         '$(builddir)/<(lib_name)',
       ],
       'defines': [

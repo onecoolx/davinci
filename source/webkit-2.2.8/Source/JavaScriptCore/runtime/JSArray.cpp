@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  Copyright (C) 1999-2000 Harri Porten (porten@kde.org)
  *  Copyright (C) 2003, 2007, 2008, 2009, 2012 Apple Inc. All rights reserved.
  *  Copyright (C) 2003 Peter Kelly (pmk@post.com)

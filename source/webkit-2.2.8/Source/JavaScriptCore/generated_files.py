@@ -13,7 +13,7 @@ def MakeDirIfNotExists(path):
 
 # write file
 def WriteLinesToFile(p, path):
-  f = open(path, "a+")
+  f = open(path, "wb")
   contents = p.stdout.readlines()
   for line in contents:
     f.write(line)
