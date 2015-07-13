@@ -9,6 +9,7 @@
   'includes': [
     './third_party/third_party.gypi',
     './source/WebKit.gypi',
+    './example/test.gypi',
   ]
 }
 

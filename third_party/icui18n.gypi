@@ -248,22 +248,27 @@
       'defines': [
         'U_ATTRIBUTE_DEPRECATED=',
       ],
+      'cflags': [
+        '-fstrict-aliasing',
+        '-fvisibility=hidden',
+        '-fvisibility-inlines-hidden',
+      ],
       'actions': [
-       {
-        'action_name': 'install_headers',
-        'inputs': [
-          '<(lib_dir)/source/i18n/unicode', 
-        ],
-        'outputs': [
-          '$(builddir)/include/i18n/unicode', 
-        ],
-        'action': [
-        'python',
-        'tools/cp.py',
-        '<(_inputs)',
-        '$(builddir)/include/i18n/unicode',
-        ],
-       }],
+      {
+       'action_name': 'install_headers',
+       'inputs': [
+         '<(lib_dir)/source/i18n/unicode', 
+       ],
+       'outputs': [
+         '$(builddir)/include/i18n/unicode', 
+       ],
+       'action': [
+       'python',
+       'tools/cp.py',
+       '<(_inputs)',
+       '$(builddir)/include/i18n/unicode',
+       ],
+      }],
     }],
   ],
   'includes': [

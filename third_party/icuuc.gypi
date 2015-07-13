@@ -272,22 +272,27 @@
       'sources': [ 
         '<(lib_dir)/linux/icudtl_dat.S',
       ],
+      'cflags': [
+        '-fstrict-aliasing',
+        '-fvisibility=hidden',
+        '-fvisibility-inlines-hidden',
+      ],
       'actions': [
-       {
-        'action_name': 'install_headers',
-        'inputs': [
-          '<(lib_dir)/source/common/unicode', 
-        ],
-        'outputs': [
-          '$(builddir)/include/uc/unicode', 
-        ],
-        'action': [
-        'python',
-        'tools/cp.py',
-        '<(_inputs)',
-        '$(builddir)/include/uc/unicode',
-        ],
-       }],
+      {
+       'action_name': 'install_headers',
+       'inputs': [
+         '<(lib_dir)/source/common/unicode', 
+       ],
+       'outputs': [
+         '$(builddir)/include/uc/unicode', 
+       ],
+       'action': [
+       'python',
+       'tools/cp.py',
+       '<(_inputs)',
+       '$(builddir)/include/uc/unicode',
+       ],
+      }],
     }],
   ],
   'includes': [

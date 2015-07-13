@@ -286,6 +286,8 @@
       ],
       'cflags': [
         '-fstrict-aliasing',
+        '-fvisibility=hidden',
+        '-fvisibility-inlines-hidden',
       ],
       'cflags_cc': [
         '-fno-rtti',
