@@ -5,6 +5,7 @@
 
 {
   'sources': [
+    # built sources
     # dom
     '<(lib_dir)/dom/ActiveDOMObject.cpp',
     '<(lib_dir)/dom/Attr.cpp',

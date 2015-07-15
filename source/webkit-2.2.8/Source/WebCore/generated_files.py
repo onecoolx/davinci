@@ -24,8 +24,9 @@ def Main(src_dir, dst_dir):
   # make output dir.
   MakeDirIfNotExists(dst_dir)
 
-  # step 1, KeywordLookup.h 
-  #subprocess.call(["python", src_dir+"/KeywordLookupGenerator.py", src_dir+"/parser/Keywords.table", ">", dst_dir+"/KeywordLookup.h"])
+  # step 1, XPathGrammar.h XPathGrammar.cpp
+  subprocess.call(["perl", src_dir+"/css/makegrammar.pl", "--outputDir" ,dst_dir, "--bison", "bison", "--symbolsPrefix", "xpathyy", src_dir+"/xml/XPathGrammar.y"])
+
   # step 2, RegExpJitTables.h 
   #subprocess.call(["python", src_dir+"/create_regex_tables", ">", dst_dir+"/RegExpJitTables.h"])
   # step 3, Lexer.lut.h
