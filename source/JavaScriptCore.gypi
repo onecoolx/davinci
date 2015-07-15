@@ -1002,10 +1002,10 @@
          '$(OutDir)/<(lib_name)',
        ],
        'action': [
-       'python',
-       '<(lib_dir)/generated_files.py',
-       '<(_inputs)',
-       '$(OutDir)/<(lib_name)',
+         'python',
+         '<(lib_dir)/generated_files.py',
+         '<(_inputs)',
+         '$(OutDir)/<(lib_name)',
        ],
        'msvs_cygwin_shell': 0,
       }],
@@ -1023,9 +1023,9 @@
       'cflags': [
         '-fstrict-aliasing',
         '-fvisibility=hidden',
-        '-fvisibility-inlines-hidden',
       ],
       'cflags_cc': [
+        '-fvisibility-inlines-hidden',
         '-fno-rtti',
       ],
       'sources': [ 
@@ -1040,10 +1040,10 @@
          '$(builddir)/<(lib_name)', 
        ],
        'action': [
-       'python',
-       '<(lib_dir)/generated_files.py',
-       '<(_inputs)',
-       '$(builddir)/<(lib_name)',
+         'python',
+         '<(lib_dir)/generated_files.py',
+         '<(_inputs)',
+         '$(builddir)/<(lib_name)',
        ],
       }],
       'libraries': [

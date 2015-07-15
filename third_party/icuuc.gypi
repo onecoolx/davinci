@@ -275,6 +275,8 @@
       'cflags': [
         '-fstrict-aliasing',
         '-fvisibility=hidden',
+      ],
+      'cflags_cc': [
         '-fvisibility-inlines-hidden',
       ],
       'actions': [

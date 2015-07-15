@@ -23,6 +23,7 @@ def WriteLinesToFile(p, path):
 def Main(src_dir, dst_dir):
   # make output dir.
   MakeDirIfNotExists(dst_dir)
+
   # step 1, KeywordLookup.h 
   subprocess.call(["python", src_dir+"/KeywordLookupGenerator.py", src_dir+"/parser/Keywords.table", ">", dst_dir+"/KeywordLookup.h"])
   # step 2, RegExpJitTables.h 
