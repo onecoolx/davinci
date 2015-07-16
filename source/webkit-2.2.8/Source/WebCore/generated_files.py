@@ -19,13 +19,27 @@ def WriteLinesToFile(p, path):
     f.write(line)
   f.close()
 
+# read file
+def ReadLinesFromFile(path):
+  ret = ''
+  f = open(path, "r")
+  contents = f.readlines()
+  for line in contents:
+    ret = ret + line.strip('\n')
+  f.close()
+  return ret
+
 # generate files
 def Main(src_dir, dst_dir):
   # make output dir.
   MakeDirIfNotExists(dst_dir)
 
+  feature_list = ReadLinesFromFile(src_dir+"/WebKitFeatures.txt")
+
   # step 1, XPathGrammar.h XPathGrammar.cpp
   subprocess.call(["perl", src_dir+"/css/makegrammar.pl", "--outputDir" ,dst_dir, "--bison", "bison", "--symbolsPrefix", "xpathyy", src_dir+"/xml/XPathGrammar.y"])
+
+  print feature_list
 
   # step 2, RegExpJitTables.h 
   #subprocess.call(["python", src_dir+"/create_regex_tables", ">", dst_dir+"/RegExpJitTables.h"])
