@@ -54,6 +54,7 @@
           'cflags_cc': [
             '-fno-exceptions',
             '-Wno-c++0x-compat',
+            '-Wno-c++11-compat',
           ],
         }],
       ],
@@ -113,6 +114,7 @@
           'cflags_cc': [
             '-fno-exceptions',
             '-Wno-c++0x-compat',
+            '-Wno-c++11-compat',
           ],
         }],
       ],
