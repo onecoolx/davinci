@@ -39,13 +39,20 @@ def Main(src_dir, dst_dir):
   # step 1, XPathGrammar.h XPathGrammar.cpp
   subprocess.call(["perl", src_dir+"/css/makegrammar.pl", "--outputDir" ,dst_dir, "--bison", "bison", "--symbolsPrefix", "xpathyy", src_dir+"/xml/XPathGrammar.y"])
 
-  print feature_list
+  # step 2, MathMLNames.h MathMLNames.cpp MathMLElementFactory.h MathMLElementFactory.cpp
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_names.pl", src_dir+"/bindings/scripts/Hasher.pm",\
+  src_dir+"/bindings/scripts/StaticString.pm", src_dir+"/mathml/mathtags.in", src_dir+"/mathml/mathattrs.in", "--tags",\
+  src_dir+"/mathml/mathtags.in", "--attrs", src_dir+"/mathml/mathattrs.in", "--factory", "--wrapperFactory", "--outputDir", dst_dir])
 
-  # step 2, RegExpJitTables.h 
-  #subprocess.call(["python", src_dir+"/create_regex_tables", ">", dst_dir+"/RegExpJitTables.h"])
-  # step 3, Lexer.lut.h
-  #p = subprocess.Popen("perl "+src_dir+"/create_hash_table "+src_dir+"/parser/Keywords.table", shell=True, stdout=subprocess.PIPE)
-  #WriteLinesToFile(p, dst_dir+"/Lexer.lut.h")
+  # step 3, SVGNames.h SVGNames.cpp SVGElementFactory.h SVGElementFactory.cpp
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_names.pl", src_dir+"/bindings/scripts/Hasher.pm",\
+  src_dir+"/bindings/scripts/StaticString.pm", src_dir+"/svg/svgtags.in", src_dir+"/svg/svgattrs.in", "--tags",\
+  src_dir+"/svg/svgtags.in", "--attrs", src_dir+"/svg/svgattrs.in", "--extraDefines", feature_list, "--factory", "--wrapperFactory", "--outputDir", dst_dir])
+
+  # step 4, XLinkNames.h XLinkNames.cpp
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_names.pl", src_dir+"/bindings/scripts/Hasher.pm",\
+  src_dir+"/bindings/scripts/StaticString.pm", src_dir+"/svg/xlinkattrs.in", "--attrs", src_dir+"/svg/xlinkattrs.in", "--outputDir", dst_dir])
+
   # step 4, %.lut.h
   #file_list = []
   #for file_name in os.listdir(src_dir+"/runtime/"):
