@@ -35,6 +35,27 @@ def ReadFromFile(path):
   f.close()
   return ret
 
+# get files list
+def GetFileListDir(path, exts, base):
+  file_list = []
+  for file_name in os.listdir(path):
+    if os.path.splitext(file_name)[1] in (exts):
+      file_list.append(base+file_name)
+  return file_list
+
+# remove item match
+def RemoveItemMatch(slist, matchs):
+  file_list = []
+  for file_name in slist:
+    finded = 0
+    for match in matchs:
+      if file_name.find(match) != -1:
+        finded = 1
+        continue
+    if finded == 0:
+      file_list.append(file_name)
+  return file_list
+
 # generate files
 def Main(src_dir, dst_dir):
   curr_dir = os.getcwd()
@@ -44,7 +65,7 @@ def Main(src_dir, dst_dir):
   feature_list = ReadFromFile(src_dir+"/WebKitFeatures.txt")
 
   # step 1, XPathGrammar.h XPathGrammar.cpp
-  subprocess.call(["perl", src_dir+"/css/makegrammar.pl", "--outputDir" ,dst_dir, "--bison", "bison", "--symbolsPrefix", "xpathyy", src_dir+"/xml/XPathGrammar.y"])
+  subprocess.call(["perl", src_dir+"/css/makegrammar.pl", "--outputDir", dst_dir, "--bison", "bison", "--symbolsPrefix", "xpathyy", src_dir+"/xml/XPathGrammar.y"])
 
   # step 2, MathMLNames.h MathMLNames.cpp MathMLElementFactory.h MathMLElementFactory.cpp
   subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_names.pl", src_dir+"/bindings/scripts/Hasher.pm",\
@@ -82,9 +103,18 @@ def Main(src_dir, dst_dir):
   subprocess.call(["python", src_dir+"/html/parser/create-html-entity-table", "-o", dst_dir+"/HTMLEntityTable.cpp", src_dir+"/html/parser/HTMLEntityNames.in"])
 
   # step 9, CSSGrammar.h CSSGrammar.cpp
-  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/css/makegrammar.pl", "--extraDefines",\
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/css/makegrammar.pl", "--extraDefines", \
   feature_list, "--outputDir", dst_dir, "--bison", "bison", "--symbolsPrefix", "cssyy", src_dir+"/css/CSSGrammar.y.in"])
 
+  # step10, UserAgentStyleSheets.h PlugInsResources.h
+  files = GetFileListDir(src_dir+"/css", ['.css'], "css/")
+  files = RemoveItemMatch(files, ['BlackBerry', 'Qt', 'Efl', 'Win', 'Gtk', 'QuickTime'])
+  os.chdir(src_dir)
+  subprocess.call(["perl", "-Ibindings/scripts", "css/make-css-file-arrays.pl", "--defines", feature_list, \
+  dst_dir+"/UserAgentStyleSheets.h", dst_dir+"/UserAgentStyleSheetsData.cpp"] + files)
+  subprocess.call(["perl", "-Ibindings/scripts", "css/make-css-file-arrays.pl", "--defines", feature_list, \
+  dst_dir+"/PlugInsResources.h", dst_dir+"/PlugInsResourcesData.cpp", "Resources/plugIns.js"])
+  os.chdir(curr_dir)
 
 
 
