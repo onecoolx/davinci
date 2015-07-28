@@ -131,6 +131,7 @@
     ['OS=="win"', {
       'include_dirs': [
         '$(OutDir)/include',
+        '$(OutDir)/<(lib_name)',
       ],
       'defines': [
       ],
@@ -141,6 +142,7 @@
     ['OS=="linux"', {
       'include_dirs': [
         '$(builddir)/include',
+        '$(builddir)/<(lib_name)',
       ],
       'defines': [
       ],

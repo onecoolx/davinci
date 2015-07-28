@@ -116,8 +116,31 @@ def Main(src_dir, dst_dir):
   dst_dir+"/PlugInsResources.h", dst_dir+"/PlugInsResourcesData.cpp", "Resources/plugIns.js"])
   os.chdir(curr_dir)
 
+  # step11, HTMLNames.h HTMLNames.cpp HTMLElementFactory.h HTMLElementFactory.cpp
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_names.pl", src_dir+"/bindings/scripts/Hasher.pm",\
+  src_dir+"/bindings/scripts/StaticString.pm", src_dir+"/html/HTMLTagNames.in", src_dir+"/html/HTMLAttributeNames.in", "--tags",\
+  src_dir+"/html/HTMLTagNames.in", "--attrs", src_dir+"/html/HTMLAttributeNames.in", "--extraDefines", feature_list, "--factory",\
+  "--wrapperFactory", "--outputDir", dst_dir])
 
+  # step12, XMLNSNames.h XMLNames.h
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_names.pl", src_dir+"/bindings/scripts/Hasher.pm",\
+  src_dir+"/bindings/scripts/StaticString.pm", src_dir+"/xml/xmlnsattrs.in", "--attrs", src_dir+"/xml/xmlnsattrs.in", "--outputDir", dst_dir])
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_names.pl", src_dir+"/bindings/scripts/Hasher.pm",\
+  src_dir+"/bindings/scripts/StaticString.pm", src_dir+"/xml/xmlattrs.in", "--attrs", src_dir+"/xml/xmlattrs.in", "--outputDir", dst_dir])
 
+  # step13, EventHeaders.h EventInterfaces.h EventTargetHeaders.h EventTargetInterfaces.h
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_event_factory.pl", src_dir+"/dom/EventNames.in",\
+  "--input", src_dir+"/dom/EventNames.in", "--outputDir", dst_dir])
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_event_factory.pl", src_dir+"/dom/EventTargetFactory.in",\
+  "--input", src_dir+"/dom/EventTargetFactory.in", "--outputDir", dst_dir])
+
+  # step14, ExceptionCodeDescription.h ExceptionCodeDescription.cpp ExceptionInterfaces.h ExceptionInterfaces.h   
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_dom_exceptions.pl", src_dir+"/dom/DOMExceptions.in",\
+  "--input", src_dir+"/dom/DOMExceptions.in", "--outputDir", dst_dir])
+
+  # step15, SettingsMacros.h InternalSettingsGenerated.cpp InternalSettingsGenerated.h
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/page/make_settings.pl", src_dir+"/page/Settings.in",\
+  "--input", src_dir+"/page/Settings.in", "--outputDir", dst_dir])
 
 
 
