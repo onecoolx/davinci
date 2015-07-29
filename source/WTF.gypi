@@ -279,17 +279,17 @@
     ['OS=="linux"', {
       'include_dirs': [
         '$(builddir)/include',
-        '$(builddir)/include\uc',
-        '$(builddir)/include\i18n',
+        '$(builddir)/include/uc',
+        '$(builddir)/include/i18n',
       ],
       'defines': [
       ],
       'cflags': [
         '-fstrict-aliasing',
         '-fvisibility=hidden',
-        '-fvisibility-inlines-hidden',
       ],
       'cflags_cc': [
+        '-fvisibility-inlines-hidden',
         '-fno-rtti',
       ],
       'libraries': [

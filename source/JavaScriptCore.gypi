@@ -983,8 +983,8 @@
     ['OS=="win"', {
       'include_dirs': [
         '$(OutDir)/include',
-        '$(OutDir)/include\uc',
-        '$(OutDir)/include\i18n',
+        '$(OutDir)/include/uc',
+        '$(OutDir)/include/i18n',
         '$(OutDir)/<(lib_name)',
       ],
       'defines': [
@@ -1014,8 +1014,8 @@
     ['OS=="linux"', {
       'include_dirs': [
         '$(builddir)/include',
-        '$(builddir)/include\uc',
-        '$(builddir)/include\i18n',
+        '$(builddir)/include/uc',
+        '$(builddir)/include/i18n',
         '$(builddir)/<(lib_name)',
       ],
       'defines': [
