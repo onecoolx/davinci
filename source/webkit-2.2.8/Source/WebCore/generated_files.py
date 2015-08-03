@@ -142,6 +142,21 @@ def Main(src_dir, dst_dir):
   subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/page/make_settings.pl", src_dir+"/page/Settings.in",\
   "--input", src_dir+"/page/Settings.in", "--outputDir", dst_dir])
 
+  # step16, InspectorProtocolVersion.h 
+  subprocess.call(["python", src_dir+"/inspector/generate-inspector-protocol-version", "-o", dst_dir+"/InspectorProtocolVersion.h",\
+  src_dir+"/inspector/Inspector.json"])
+
+  # step17, InspectorBackendDispatcher.cpp
+  subprocess.call(["python", src_dir+"/inspector/CodeGeneratorInspector.py", src_dir+"/inspector/Inspector.json",\
+  "--output_h_dir", dst_dir, "--output_cpp_dir", dst_dir, "--output_js_dir", dst_dir])
+
+  # step18, InspectorOverlayPage.h InjectedScriptCanvasModuleSource.h InjectedScriptSource.h
+  subprocess.call(["perl", src_dir+"/inspector/xxd.pl", "InspectorOverlayPage_html", src_dir+"/inspector/InspectorOverlayPage.html",\
+  dst_dir+"/InspectorOverlayPage.h"])
+  subprocess.call(["perl", src_dir+"/inspector/xxd.pl", "InjectedScriptCanvasModuleSource_js", src_dir+"/inspector/InjectedScriptCanvasModuleSource.js",\
+  dst_dir+"/InjectedScriptCanvasModuleSource.h"])
+  subprocess.call(["perl", src_dir+"/inspector/xxd.pl", "InjectedScriptSource_js", src_dir+"/inspector/InjectedScriptSource.js",\
+  dst_dir+"/InjectedScriptSource.h"])
 
 
 
