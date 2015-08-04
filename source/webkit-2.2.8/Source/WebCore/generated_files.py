@@ -158,6 +158,13 @@ def Main(src_dir, dst_dir):
   subprocess.call(["perl", src_dir+"/inspector/xxd.pl", "InjectedScriptSource_js", src_dir+"/inspector/InjectedScriptSource.js",\
   dst_dir+"/InjectedScriptSource.h"])
 
+  # step19, glslang_tab.cpp
+  subprocess.call(["bison", "--no-lines", "--defines="+dst_dir+"/glslang_tab.h",\
+  "--skeleton=yacc.c", "--output="+dst_dir+"/glslang_tab.cpp", src_dir+"/../ThirdParty/ANGLE/src/compiler/glslang.y"])
+
+  # step20, ANGLE tokenizer & parser
+  subprocess.call(["flex", "--noline", "--nounistd", "--outfile="+dst_dir+"/glslang.cpp",\
+  src_dir+"/../ThirdParty/ANGLE/src/compiler/glslang.l", dst_dir+"/glslang_tab.cpp"])
 
 
   #for file_name in os.listdir(src_dir+"/runtime/"):
