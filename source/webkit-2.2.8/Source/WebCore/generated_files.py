@@ -18,6 +18,13 @@ def WriteLinesToFile(contents, path):
     f.write(line)
   f.close()
 
+# write lines to br file
+def WriteLinesWithBrToFile(contents, path):
+  f = open(path, "wb")
+  for line in contents:
+    f.write(line+"\n")
+  f.close()
+
 # read lines file
 def ReadLinesFromFile(path):
   f = open(path, "r")
@@ -36,12 +43,23 @@ def ReadFromFile(path):
   return ret
 
 # get files list
-def GetFileListDir(path, exts, base):
+def GetFileListDir(path, exts, base, r):
   file_list = []
-  for file_name in os.listdir(path):
-    if os.path.splitext(file_name)[1] in (exts):
+  files = os.listdir(path)
+  files = RemoveItemMatch(files, ['.lproj', '.vcxproj', '.xcodeproj'])
+  for file_name in files:
+    if (r and os.path.isdir(path+"/"+file_name)):
+      file_list = file_list + GetFileListDir(path+"/"+file_name, exts, base+file_name+"/", True)
+    elif os.path.splitext(file_name)[1] in (exts):
       file_list.append(base+file_name)
   return file_list
+
+# list to string
+def ListToString(slist):
+  ret = ''
+  for line in slist:
+    ret = ret + line + " "
+  return ret
 
 # remove item match
 def RemoveItemMatch(slist, matchs):
@@ -107,7 +125,7 @@ def Main(src_dir, dst_dir):
   feature_list, "--outputDir", dst_dir, "--bison", "bison", "--symbolsPrefix", "cssyy", src_dir+"/css/CSSGrammar.y.in"])
 
   # step10, UserAgentStyleSheets.h PlugInsResources.h
-  files = GetFileListDir(src_dir+"/css", ['.css'], "css/")
+  files = GetFileListDir(src_dir+"/css", ['.css'], "css/", False)
   files = RemoveItemMatch(files, ['BlackBerry', 'Qt', 'Efl', 'Win', 'Gtk', 'QuickTime'])
   os.chdir(src_dir)
   subprocess.call(["perl", "-Ibindings/scripts", "css/make-css-file-arrays.pl", "--defines", feature_list, \
@@ -166,6 +184,18 @@ def Main(src_dir, dst_dir):
   subprocess.call(["flex", "--noline", "--nounistd", "--outfile="+dst_dir+"/glslang.cpp",\
   src_dir+"/../ThirdParty/ANGLE/src/compiler/glslang.l", dst_dir+"/glslang_tab.cpp"])
 
+  # step21, idl files generator
+  idl_files = GetFileListDir(src_dir, ['.idl'], "", True)
+  idl_files.append(dst_dir + "/InternalSettingsGenerated.idl")
+  idl_files_list = dst_dir+"/idl_files_list"
+  WriteLinesWithBrToFile(idl_files, idl_files_list)
+  os.chdir(src_dir)
+  subprocess.call(["perl", "-I"+curr_dir+"/"+src_dir+"/bindings/scripts", curr_dir+"/"+src_dir+"/bindings/scripts/preprocess-idls.pl", "--defines",\
+  "\"LANGUAGE_JAVASCRIPT=1 "+feature_list+"\"","--idlFilesList", idl_files_list, "--windowConstructorsFile", dst_dir+"/DOMWindowConstructors.idl",\
+  "--workerGlobalScopeConstructorsFile", dst_dir+"/WorkerGlobalScopeConstructors.idl", "--sharedWorkerGlobalScopeConstructorsFile",\
+  dst_dir+"/SharedWorkerGlobalScopeConstructors.idl", "--dedicatedWorkerGlobalScopeConstructorsFile", dst_dir+"/DedicatedWorkerGlobalScopeConstructors.idl",\
+  "--supplementalDependencyFile", dst_dir+"/idl_supplemental_dependencies"])
+  os.chdir(curr_dir)
 
   #for file_name in os.listdir(src_dir+"/runtime/"):
   #  if os.path.splitext(file_name)[1] in (".cpp"):
