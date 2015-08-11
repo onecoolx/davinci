@@ -197,10 +197,15 @@ def Main(src_dir, dst_dir):
   "--supplementalDependencyFile", dst_dir+"/idl_supplemental_dependencies"])
   os.chdir(curr_dir)
 
-  #for file_name in os.listdir(src_dir+"/runtime/"):
-  #  if os.path.splitext(file_name)[1] in (".cpp"):
-  #    p = subprocess.Popen("perl "+src_dir+"/create_hash_table "+src_dir+"/runtime/"+file_name+" -i", shell=True, stdout=subprocess.PIPE)
-  #    WriteLinesToFile(p, dst_dir+"/"+os.path.splitext(file_name)[0]+".lut.h")
+  # step22, idl to JS files
+  for file_name in idl_files:
+    print "Generate idl file : " + file_name
+    base_name = os.path.splitext(file_name)[0]
+    os.chdir(src_dir)
+    subprocess.call(["perl", "-I"+curr_dir+"/"+src_dir+"/bindings/scripts", curr_dir+"/"+src_dir+"/bindings/scripts/generate-bindings.pl", file_name,\
+    "--outputDir", dst_dir, "--defines", "\"LANGUAGE_JAVASCRIPT=1 "+feature_list+"\"", "--generator", "JS", "--idlAttributesFile",\
+    curr_dir+"/"+src_dir+"/bindings/scripts/IDLAttributes.txt", "--supplementalDependencyFile", dst_dir+"/idl_supplemental_dependencies", dst_dir+"/"+"JS"+base_name+".h"])
+    os.chdir(curr_dir)
 
   return 0
 
