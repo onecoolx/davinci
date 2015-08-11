@@ -186,7 +186,7 @@ def Main(src_dir, dst_dir):
 
   # step21, idl files generator
   idl_files = GetFileListDir(src_dir, ['.idl'], "", True)
-  idl_files.append(dst_dir + "/InternalSettingsGenerated.idl")
+  idl_files.insert(0, dst_dir + "/InternalSettingsGenerated.idl")
   idl_files_list = dst_dir+"/idl_files_list"
   WriteLinesWithBrToFile(idl_files, idl_files_list)
   os.chdir(src_dir)
@@ -198,6 +198,10 @@ def Main(src_dir, dst_dir):
   os.chdir(curr_dir)
 
   # step22, idl to JS files
+  idl_files.append(dst_dir + "/DOMWindowConstructors.idl")
+  idl_files.append(dst_dir + "/WorkerGlobalScopeConstructors.idl")
+  idl_files.append(dst_dir + "/SharedWorkerGlobalScopeConstructors.idl")
+  idl_files.append(dst_dir + "/DedicatedWorkerGlobalScopeConstructors.idl")
   for file_name in idl_files:
     print "Generate idl file : " + file_name
     base_name = os.path.splitext(file_name)[0]
