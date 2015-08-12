@@ -207,7 +207,7 @@ def Main(src_dir, dst_dir):
     base_name = os.path.splitext(file_name)[0]
     os.chdir(src_dir)
     subprocess.call(["perl", "-I"+curr_dir+"/"+src_dir+"/bindings/scripts", curr_dir+"/"+src_dir+"/bindings/scripts/generate-bindings.pl", file_name,\
-    "--outputDir", dst_dir, "--defines", "\"LANGUAGE_JAVASCRIPT=1 "+feature_list+"\"", "--generator", "JS", "--idlAttributesFile",\
+    "--outputDir", dst_dir, "--include", dst_dir, "--defines", "\"LANGUAGE_JAVASCRIPT=1 "+feature_list+"\"", "--generator", "JS", "--idlAttributesFile",\
     curr_dir+"/"+src_dir+"/bindings/scripts/IDLAttributes.txt", "--supplementalDependencyFile", dst_dir+"/idl_supplemental_dependencies", dst_dir+"/"+"JS"+base_name+".h"])
     os.chdir(curr_dir)
 
