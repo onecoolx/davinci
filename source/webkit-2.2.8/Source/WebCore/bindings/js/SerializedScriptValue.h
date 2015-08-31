@@ -126,7 +126,7 @@ private:
     SerializedScriptValue(Vector<unsigned char>&, Vector<String>& blobURLs, PassOwnPtr<ArrayBufferContentsArray>);
     Vector<unsigned char> m_data;
     OwnPtr<ArrayBufferContentsArray> m_arrayBufferContentsArray;
-    Vector<Vector<uint16_t>> m_blobURLs;
+    Vector<Vector<uint16_t> > m_blobURLs;
 };
 
 }
