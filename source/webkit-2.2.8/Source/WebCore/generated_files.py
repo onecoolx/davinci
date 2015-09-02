@@ -18,6 +18,13 @@ def WriteLinesToFile(contents, path):
     f.write(line)
   f.close()
 
+# write lines file
+def AppendLinesToFile(contents, path):
+  f = open(path, "ab")
+  for line in contents:
+    f.write(line)
+  f.close()
+
 # write lines to br file
 def WriteLinesWithBrToFile(contents, path):
   f = open(path, "wb")
@@ -102,13 +109,17 @@ def Main(src_dir, dst_dir):
   # step 5, CSSPropertyNames.h CSSPropertyNames.cpp
   css_props = ReadLinesFromFile(src_dir+"/css/CSSPropertyNames.in")
   WriteLinesToFile(css_props, dst_dir+"/CSSPropertyNames.in")
+  css_props = ReadLinesFromFile(src_dir+"/css/SVGCSSPropertyNames.in")
+  AppendLinesToFile(css_props, dst_dir+"/CSSPropertyNames.in")
   os.chdir(dst_dir)
   subprocess.call(["perl", "-I"+curr_dir+"/"+src_dir+"/bindings/scripts", curr_dir+"/"+src_dir+"/css/makeprop.pl", "--defines", feature_list])
   os.chdir(curr_dir)
 
   # step 6, CSSValueKeywords.h CSSValueKeywords.cpp
-  css_props = ReadLinesFromFile(src_dir+"/css/CSSValueKeywords.in")
-  WriteLinesToFile(css_props, dst_dir+"/CSSValueKeywords.in")
+  css_values = ReadLinesFromFile(src_dir+"/css/CSSValueKeywords.in")
+  WriteLinesToFile(css_values, dst_dir+"/CSSValueKeywords.in")
+  css_values = ReadLinesFromFile(src_dir+"/css/SVGCSSValueKeywords.in")
+  AppendLinesToFile(css_values, dst_dir+"/CSSValueKeywords.in")
   os.chdir(dst_dir)
   subprocess.call(["perl", "-I"+curr_dir+"/"+src_dir+"/bindings/scripts", curr_dir+"/"+src_dir+"/css/makevalues.pl", "--defines", feature_list])
   os.chdir(curr_dir)
