@@ -163,23 +163,28 @@ def Main(src_dir, dst_dir):
   subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_event_factory.pl", src_dir+"/dom/EventTargetFactory.in",\
   "--input", src_dir+"/dom/EventTargetFactory.in", "--outputDir", dst_dir])
 
-  # step14, ExceptionCodeDescription.h ExceptionCodeDescription.cpp ExceptionInterfaces.h ExceptionInterfaces.h   
+  # step14, WebKitFontFamilyNames.cpp WebKitFontFamilyNames.h
+  subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_names.pl", src_dir+"/bindings/scripts/Hasher.pm",\
+  src_dir+"/bindings/scripts/StaticString.pm", src_dir+"/css/WebKitFontFamilyNames.in", "--fonts", src_dir+"/css/WebKitFontFamilyNames.in",\
+  "--outputDir", dst_dir])
+
+  # step15, ExceptionCodeDescription.h ExceptionCodeDescription.cpp ExceptionInterfaces.h ExceptionInterfaces.h   
   subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/dom/make_dom_exceptions.pl", src_dir+"/dom/DOMExceptions.in",\
   "--input", src_dir+"/dom/DOMExceptions.in", "--outputDir", dst_dir])
 
-  # step15, SettingsMacros.h InternalSettingsGenerated.cpp InternalSettingsGenerated.h
+  # step16, SettingsMacros.h InternalSettingsGenerated.cpp InternalSettingsGenerated.h
   subprocess.call(["perl", "-I"+src_dir+"/bindings/scripts", src_dir+"/page/make_settings.pl", src_dir+"/page/Settings.in",\
   "--input", src_dir+"/page/Settings.in", "--outputDir", dst_dir])
 
-  # step16, InspectorProtocolVersion.h 
+  # step17, InspectorProtocolVersion.h 
   subprocess.call(["python", src_dir+"/inspector/generate-inspector-protocol-version", "-o", dst_dir+"/InspectorProtocolVersion.h",\
   src_dir+"/inspector/Inspector.json"])
 
-  # step17, InspectorBackendDispatcher.cpp
+  # step18, InspectorBackendDispatcher.cpp
   subprocess.call(["python", src_dir+"/inspector/CodeGeneratorInspector.py", src_dir+"/inspector/Inspector.json",\
   "--output_h_dir", dst_dir, "--output_cpp_dir", dst_dir, "--output_js_dir", dst_dir])
 
-  # step18, InspectorOverlayPage.h InjectedScriptCanvasModuleSource.h InjectedScriptSource.h
+  # step19, InspectorOverlayPage.h InjectedScriptCanvasModuleSource.h InjectedScriptSource.h
   subprocess.call(["perl", src_dir+"/inspector/xxd.pl", "InspectorOverlayPage_html", src_dir+"/inspector/InspectorOverlayPage.html",\
   dst_dir+"/InspectorOverlayPage.h"])
   subprocess.call(["perl", src_dir+"/inspector/xxd.pl", "InjectedScriptCanvasModuleSource_js", src_dir+"/inspector/InjectedScriptCanvasModuleSource.js",\
@@ -187,15 +192,15 @@ def Main(src_dir, dst_dir):
   subprocess.call(["perl", src_dir+"/inspector/xxd.pl", "InjectedScriptSource_js", src_dir+"/inspector/InjectedScriptSource.js",\
   dst_dir+"/InjectedScriptSource.h"])
 
-  # step19, glslang_tab.cpp
+  # step20, glslang_tab.cpp
   subprocess.call(["bison", "--no-lines", "--defines="+dst_dir+"/glslang_tab.h",\
   "--skeleton=yacc.c", "--output="+dst_dir+"/glslang_tab.cpp", src_dir+"/../ThirdParty/ANGLE/src/compiler/glslang.y"])
 
-  # step20, ANGLE tokenizer & parser
+  # step21, ANGLE tokenizer & parser
   subprocess.call(["flex", "--noline", "--nounistd", "--outfile="+dst_dir+"/glslang.cpp",\
   src_dir+"/../ThirdParty/ANGLE/src/compiler/glslang.l", dst_dir+"/glslang_tab.cpp"])
 
-  # step21, idl files generator
+  # step22, idl files generator
   idl_files = GetFileListDir(src_dir, ['.idl'], "", True)
   idl_files.insert(0, dst_dir + "/InternalSettingsGenerated.idl")
   idl_files_list = dst_dir+"/idl_files_list"
@@ -208,7 +213,7 @@ def Main(src_dir, dst_dir):
   "--supplementalDependencyFile", dst_dir+"/idl_supplemental_dependencies"])
   os.chdir(curr_dir)
 
-  # step22, idl to JS files
+  # step23, idl to JS files
   idl_files.append(dst_dir + "/DOMWindowConstructors.idl")
   idl_files.append(dst_dir + "/WorkerGlobalScopeConstructors.idl")
   idl_files.append(dst_dir + "/SharedWorkerGlobalScopeConstructors.idl")
