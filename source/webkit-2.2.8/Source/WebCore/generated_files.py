@@ -85,10 +85,18 @@ def RemoveItemMatch(slist, matchs):
 def GenerateMacrosHeader(path, out):
   f = open(path, "r")
   fo = open(out, "a+")
+  fo.write("#ifndef _DAV_FEATURES_DEFINES_H_\n")
+  fo.write("#define _DAV_FEATURES_DEFINES_H_\n")
+  fo.write("\n")
   contents = f.readlines()
   for line in contents:
     slist = line.split('=')
-    fo.write("#define "+slist[0]+" "+slist[1]+"\n")
+    fo.write("#if defined("+slist[0]+")\n")
+    fo.write("#undef "+slist[0]+"\n")
+    fo.write("#define "+slist[0]+" "+slist[1])
+    fo.write("#endif"+"\n")
+    fo.write("\n")
+  fo.write("#endif /*_DAV_FEATURES_DEFINES_H_*/\n")
   f.close()
   fo.close()
   
