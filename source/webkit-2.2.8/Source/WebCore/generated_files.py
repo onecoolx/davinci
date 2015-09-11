@@ -81,6 +81,18 @@ def RemoveItemMatch(slist, matchs):
       file_list.append(file_name)
   return file_list
 
+# generate defined macros header.
+def GenerateMacrosHeader(path, out):
+  f = open(path, "r")
+  fo = open(out, "a+")
+  contents = f.readlines()
+  for line in contents:
+    slist = line.split('=')
+    fo.write("#define "+slist[0]+" "+slist[1]+"\n")
+  f.close()
+  fo.close()
+  
+
 # generate files
 def Main(src_dir, dst_dir):
   curr_dir = os.getcwd()
@@ -88,6 +100,7 @@ def Main(src_dir, dst_dir):
   MakeDirIfNotExists(dst_dir)
 
   feature_list = ReadFromFile(src_dir+"/WebKitFeatures.txt")
+  GenerateMacrosHeader(src_dir+"/WebKitFeatures.txt", dst_dir+"/DavinciFeatureDefines.h")
 
   # step 1, XPathGrammar.h XPathGrammar.cpp
   subprocess.call(["perl", src_dir+"/css/makegrammar.pl", "--outputDir", dst_dir, "--bison", "bison", "--symbolsPrefix", "xpathyy", src_dir+"/xml/XPathGrammar.y"])
