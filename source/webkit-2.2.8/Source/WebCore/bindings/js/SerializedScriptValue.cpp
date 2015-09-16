@@ -1714,16 +1714,20 @@ SerializedScriptValue::SerializedScriptValue(Vector<uint8_t>& buffer)
 SerializedScriptValue::SerializedScriptValue(Vector<uint8_t>& buffer, Vector<String>& blobURLs)
 {
     m_data.swap(buffer);
-    for (auto& string : blobURLs)
+    for (int i = 0; i < blobURLs.size(); i++) {
+        String& string = blobURLs[i];
         addBlobURL(string);
+    }
 }
 
 SerializedScriptValue::SerializedScriptValue(Vector<uint8_t>& buffer, Vector<String>& blobURLs, PassOwnPtr<ArrayBufferContentsArray> arrayBufferContentsArray)
     : m_arrayBufferContentsArray(arrayBufferContentsArray)
 {
     m_data.swap(buffer);
-    for (auto& string : blobURLs)
+    for (int i = 0; i < blobURLs.size(); i++) {
+        String& string = blobURLs[i];
         addBlobURL(string);
+    }
 }
 
 PassOwnPtr<SerializedScriptValue::ArrayBufferContentsArray> SerializedScriptValue::transferArrayBuffers(
