@@ -45,11 +45,44 @@
       'include_dirs': [
         '$(OutDir)/include',
       ],
+      'actions': [
+       {
+        'action_name': 'install_headers',
+        'inputs': [
+          '<(lib_dir)/libxslt', 
+         ],
+        'outputs': [
+          '$(OutDir)/include/libxslt',
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/include/libxslt',
+        ],
+        'msvs_cygwin_shell': 0,
+       }],
     }],
     ['OS=="linux"', {
       'include_dirs': [
         '$(builddir)/include',
       ],
+      'actions': [
+       {
+        'action_name': 'install_headers',
+        'inputs': [
+          '<(lib_dir)/libxslt', 
+        ],
+        'outputs': [
+          '$(builddir)/include/libxslt', 
+        ],
+        'action': [
+        'python',
+        'tools/cp.py',
+        '<(_inputs)',
+        '$(builddir)/include/libxslt',
+        ],
+       }],
     }],
   ],
   'includes': [
