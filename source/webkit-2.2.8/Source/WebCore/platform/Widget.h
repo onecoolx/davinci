@@ -69,6 +69,10 @@ typedef QObject* PlatformWidget;
 typedef void* PlatformWidget;
 #endif
 
+#if PLATFORM(DAVINCI)
+typedef void* PlatformWidget;
+#endif
+
 #if PLATFORM(EFL)
 #if USE(EO)
 typedef struct _Eo Evas_Object;

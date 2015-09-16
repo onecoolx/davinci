@@ -70,7 +70,7 @@ template <typename ElementType> ChildIteratorAdapter<ElementType, Node> children
 
 template <typename ElementType>
 inline ChildIterator<ElementType>::ChildIterator()
-    : m_current(nullptr)
+    : m_current(0)
 #ifndef NDEBUG
     , m_initialDOMTreeVersion(0)
 #endif

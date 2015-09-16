@@ -134,7 +134,7 @@ private:
     Vector<RefPtr<CSSStyleSheet> > m_activeAuthorStyleSheets;
 
     // This is a mirror of m_activeAuthorStyleSheets that gets populated on demand for activeStyleSheetsContains().
-    mutable OwnPtr<HashSet<const CSSStyleSheet*>> m_weakCopyOfActiveStyleSheetListForFastLookup;
+    mutable OwnPtr<HashSet<const CSSStyleSheet*> > m_weakCopyOfActiveStyleSheetListForFastLookup;
 
     // Track the number of currently loading top-level stylesheets needed for rendering.
     // Sheets loaded using the @import directive are not included in this count.

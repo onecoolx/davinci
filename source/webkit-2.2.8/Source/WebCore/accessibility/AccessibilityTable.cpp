@@ -125,7 +125,7 @@ bool AccessibilityTable::isDataTable() const
         return true;    
 
     // if there's a colgroup or col element, it's probably a data table.
-    for (auto child = elementChildren(tableElement).begin(), end = elementChildren(tableElement).end(); child != end; ++child) {
+    for (ChildIterator<Element> child = elementChildren(tableElement).begin(), end = elementChildren(tableElement).end(); child != end; ++child) {
         if (child->hasTagName(colTag) || child->hasTagName(colgroupTag))
             return true;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011 Apple Inc. All rights reserved.
+ * Copyright (C) 2008 Apple Computer, Inc.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -10,7 +10,7 @@
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
  *
- * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY
+ * THIS SOFTWARE IS PROVIDED BY APPLE AND ITS CONTRIBUTORS "AS IS" AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
@@ -23,16 +23,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#if USE(CG)
-#include "ImageBufferDataCG.h"
-#elif USE(CAIRO)
-#include "ImageBufferDataCairo.h"
-#elif PLATFORM(QT)
-#include "ImageBufferDataQt.h"
-#elif USE(WINGDI)
-#include "ImageBufferDataWince.h"
-#elif PLATFORM(BLACKBERRY)
-#include "ImageBufferDataBlackBerry.h"
-#elif PLATFORM(DAVINCI)
-#include "ImageBufferDataDavinci.h"
-#endif
+#include "config.h"
+#include "DNS.h"
+
+#include "NotImplemented.h"
+
+namespace WebCore {
+
+void prefetchDNS(const String& /* hostname */)
+{
+    notImplemented();
+}
+
+}

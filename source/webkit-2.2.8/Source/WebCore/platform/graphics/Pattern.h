@@ -43,6 +43,8 @@ typedef cairo_pattern_t* PlatformPatternPtr;
 #elif PLATFORM(QT)
 #include <QBrush>
 typedef QBrush PlatformPatternPtr;
+#elif PLATFORM(DAVINCI)
+typedef void* PlatformPatternPtr;
 #elif USE(WINGDI)
 typedef void* PlatformPatternPtr;
 #endif

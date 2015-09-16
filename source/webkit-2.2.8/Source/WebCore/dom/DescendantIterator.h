@@ -72,7 +72,7 @@ template <typename ElementType> DescendantIteratorAdapter<ElementType, Node> des
 template <typename ElementType>
 inline DescendantIterator<ElementType>::DescendantIterator(const ContainerNode* root)
     : m_root(root)
-    , m_current(nullptr)
+    , m_current(0)
 #ifndef NDEBUG
     , m_initialDOMTreeVersion(0)
 #endif

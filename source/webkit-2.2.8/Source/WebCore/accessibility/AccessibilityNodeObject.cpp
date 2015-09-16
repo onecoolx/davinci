@@ -1123,7 +1123,8 @@ static Element* siblingWithAriaRole(String role, Node* node)
     if (!parent)
         return 0;
 
-    for (auto sibling = elementChildren(parent).begin(), end = elementChildren(parent).end(); sibling != end; ++sibling) {
+    for (ChildIterator<Element> sibling = elementChildren(parent).begin(),
+         end = elementChildren(parent).end(); sibling != end; ++sibling) {
         const AtomicString& siblingAriaRole = sibling->fastGetAttribute(roleAttr);
         if (equalIgnoringCase(siblingAriaRole, role))
             return &*sibling;

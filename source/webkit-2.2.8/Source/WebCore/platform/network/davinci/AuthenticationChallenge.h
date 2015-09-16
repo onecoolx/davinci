@@ -1,7 +1,5 @@
 /*
- * Copyright (C) 2004, 2005, 2006 Apple Computer, Inc.  All rights reserved.
- * Copyright (C) 2007-2008 Torch Mobile, Inc.
- * Copyright (C) 2012 Company 100 Inc.
+ * Copyright (C) 2007 Apple Inc.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -24,55 +22,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
+#ifndef AuthenticationChallenge_h
+#define AuthenticationChallenge_h
 
-#ifndef NativeImagePtr_h
-#define NativeImagePtr_h
-
-#if USE(CG)
-typedef struct CGImage* CGImageRef;
-#elif PLATFORM(QT)
-#include "NativeImageQt.h"
-#include <qglobal.h>
-QT_BEGIN_NAMESPACE
-class QPixmap;
-QT_END_NAMESPACE
-#elif USE(CAIRO)
-#include "RefPtrCairo.h"
-#elif USE(WINGDI)
-#include "SharedBitmap.h"
-#elif PLATFORM(BLACKBERRY)
-namespace BlackBerry {
-namespace Platform {
-namespace Graphics {
-class TiledImage;
-}
-}
-}
-#endif
+#include "AuthenticationChallengeBase.h"
+#include "AuthenticationClient.h"
+#include <wtf/RefPtr.h>
 
 namespace WebCore {
 
-// FIXME: NativeImagePtr and PassNativeImagePtr should be smart
-// pointers (see SVGImage::nativeImageForCurrentFrame()).
-#if USE(CG)
-typedef CGImageRef NativeImagePtr;
-#elif PLATFORM(QT)
-typedef QPixmap* NativeImagePtr;
-#elif USE(CAIRO)
-typedef RefPtr<cairo_surface_t> NativeImagePtr;
-typedef PassRefPtr<cairo_surface_t> PassNativeImagePtr;
-#elif USE(WINGDI)
-typedef RefPtr<SharedBitmap> NativeImagePtr;
-#elif PLATFORM(BLACKBERRY)
-typedef BlackBerry::Platform::Graphics::TiledImage* NativeImagePtr;
-#elif PLATFORM(DAVINCI)
-//FIXME: need smart pointer
-typedef void* NativeImagePtr;
-#endif
+class AuthenticationChallenge : public AuthenticationChallengeBase {
+public:
+    AuthenticationChallenge()
+    {
+    }
 
-#if !USE(CAIRO)
-typedef NativeImagePtr PassNativeImagePtr;
-#endif
+    AuthenticationChallenge(const ProtectionSpace& protectionSpace, const Credential& proposedCredential, unsigned previousFailureCount, const ResourceResponse& response, const ResourceError& error)
+        : AuthenticationChallengeBase(protectionSpace, proposedCredential, previousFailureCount, response, error)
+    {
+    }
+
+    AuthenticationClient* authenticationClient() const { return m_authenticationClient.get(); }
+    void setAuthenticationClient(AuthenticationClient* client) { m_authenticationClient = client; }
+
+    RefPtr<AuthenticationClient> m_authenticationClient;
+};
 
 }
 

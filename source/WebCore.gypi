@@ -123,6 +123,8 @@
     '<(lib_dir)/workers',
     '<(lib_dir)/xml',
     '<(lib_dir)/xml/parser',
+    '<(lib_dir)/platform/network/davinci',
+    '<(lib_dir)/platform/graphics/davinci',
     '<(lib_root_dir)',
     '<(lib_root_dir)/JavaScriptCore',
     '<(lib_root_dir)/JavaScriptCore/API',

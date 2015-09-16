@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011 Apple Inc. All rights reserved.
+ * Copyright (C) 2008 Apple Computer, Inc.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -20,19 +20,44 @@
  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#ifndef FormDataStreamCurl_h
+#define FormDataStreamCurl_h
 
-#if USE(CG)
-#include "ImageBufferDataCG.h"
-#elif USE(CAIRO)
-#include "ImageBufferDataCairo.h"
-#elif PLATFORM(QT)
-#include "ImageBufferDataQt.h"
-#elif USE(WINGDI)
-#include "ImageBufferDataWince.h"
-#elif PLATFORM(BLACKBERRY)
-#include "ImageBufferDataBlackBerry.h"
-#elif PLATFORM(DAVINCI)
-#include "ImageBufferDataDavinci.h"
-#endif
+#include "config.h"
+
+#include "FileSystem.h"
+#include "ResourceHandle.h"
+#include <stdio.h>
+
+namespace WebCore {
+
+class FormDataStream {
+public:
+    FormDataStream(ResourceHandle* handle)
+        : m_resourceHandle(handle)
+        , m_file(0)
+        , m_formDataElementIndex(0)
+        , m_formDataElementDataOffset(0)
+    {
+    }
+
+    ~FormDataStream();
+
+    size_t read(void* ptr, size_t blockSize, size_t numberOfBlocks);
+    bool hasMoreElements() const;
+
+private:
+    // We can hold a weak reference to our ResourceHandle as it holds a strong reference
+    // to us through its ResourceHandleInternal.
+    ResourceHandle* m_resourceHandle;
+
+    FILE* m_file;
+    size_t m_formDataElementIndex;
+    size_t m_formDataElementDataOffset;
+};
+
+} // namespace WebCore
+
+#endif // FormDataStreamCurl_h
