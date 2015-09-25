@@ -313,10 +313,10 @@ void CSSToStyleMap::mapFillMaskSourceType(CSSPropertyID, FillLayer* layer, CSSVa
     CSSPrimitiveValue* primitiveValue = static_cast<CSSPrimitiveValue*>(value);
     switch (primitiveValue->getValueID()) {
     case CSSValueAlpha:
-        type = EMaskSourceType::MaskAlpha;
+        type = MaskAlpha;
         break;
     case CSSValueLuminance:
-        type = EMaskSourceType::MaskLuminance;
+        type = MaskLuminance;
         break;
     case CSSValueAuto:
         break;

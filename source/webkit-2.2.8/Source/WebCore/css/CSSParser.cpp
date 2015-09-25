@@ -9284,7 +9284,7 @@ PassRefPtr<WebKitCSSFilterValue> CSSParser::parseBuiltinFilterArguments(CSSParse
     return filterValue.release();
 }
 
-bool CSSParser::parseFilter(CSSParserValueList* valueList, RefPtr<CSSValue>& value)
+bool CSSParser::parseFilter(CSSParserValueList* valueList, RefPtr<CSSValue>& rvalue)
 {
     if (!valueList)
         return false;
@@ -9338,7 +9338,7 @@ bool CSSParser::parseFilter(CSSParserValueList* valueList, RefPtr<CSSValue>& val
         }
     }
 
-    value = list;
+    rvalue = list;
 
     return true;
 }

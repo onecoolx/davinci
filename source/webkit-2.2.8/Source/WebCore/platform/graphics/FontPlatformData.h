@@ -159,6 +159,9 @@ public:
 #endif
         uintptr_t hashCodes[3] = { (uintptr_t)m_font, m_widthVariant, static_cast<uintptr_t>(m_isPrinterFont << 3 | m_orientation << 2 | m_syntheticBold << 1 | m_syntheticOblique) };
         return StringHasher::hashMemory<sizeof(hashCodes)>(hashCodes);
+#elif PLATFORM(DAVINCI)
+        uintptr_t hashCodes[3] = { (uintptr_t)m_font, m_widthVariant, static_cast<uintptr_t>(m_isPrinterFont << 3 | m_orientation << 2 | m_syntheticBold << 1 | m_syntheticOblique) };
+        return StringHasher::hashMemory<sizeof(hashCodes)>(hashCodes);
 #elif USE(CAIRO)
         return PtrHash<cairo_scaled_font_t*>::hash(m_scaledFont);
 #endif
@@ -174,7 +177,7 @@ public:
             && m_syntheticOblique == other.m_syntheticOblique
             && m_isColorBitmapFont == other.m_isColorBitmapFont
             && m_isCompositeFontReference == other.m_isCompositeFontReference
-#if OS(DARWIN)
+#if OS(DARWIN) || PLATFORM(DAVINCI)
             && m_isPrinterFont == other.m_isPrinterFont
 #endif
             && m_orientation == other.m_orientation
@@ -186,6 +189,8 @@ public:
 #if PLATFORM(WIN) && !USE(CAIRO)
         return m_font.isHashTableDeletedValue();
 #elif OS(DARWIN)
+        return m_font == hashTableDeletedFontValue();
+#elif PLATFORM(DAVINCI)
         return m_font == hashTableDeletedFontValue();
 #elif USE(CAIRO)
         return m_scaledFont == hashTableDeletedFontValue();
@@ -208,6 +213,8 @@ private:
     // Load various data about the font specified by |nsFont| with the size fontSize into the following output paramters:
     void loadFont(NSFont*, float fontSize, NSFont*& outNSFont, CGFontRef&);
     static NSFont* hashTableDeletedFontValue() { return reinterpret_cast<NSFont *>(-1); }
+#elif PLATFORM(DAVINCI)
+    static void* hashTableDeletedFontValue() { return reinterpret_cast<void *>(-1); }
 #elif PLATFORM(WIN)
     void platformDataInit(HFONT, float size, HDC, WCHAR* faceName);
 #endif
@@ -230,6 +237,10 @@ private:
     RefPtr<RefCountedGDIHandle<HFONT> > m_font;
 #endif
 
+#if PLATFORM(DAVINCI)
+    void* m_font; // temporary type will replace by real font object pointer.
+#endif
+
 #if USE(CG)
 #if PLATFORM(WIN)
     RetainPtr<CGFontRef> m_cgFont;
@@ -245,7 +256,7 @@ private:
 
     bool m_isColorBitmapFont;
     bool m_isCompositeFontReference;
-#if OS(DARWIN)
+#if OS(DARWIN) || PLATFORM(DAVINCI)
     bool m_isPrinterFont;
 #endif
 
