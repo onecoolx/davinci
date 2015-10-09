@@ -103,7 +103,7 @@ static void completeURLs(DocumentFragment* fragment, const String& baseURL)
 
     KURL parsedBaseURL(ParsedURLString, baseURL);
 
-    for (auto element = elementDescendants(fragment).begin(), end = elementDescendants(fragment).end(); element != end; ++element) {
+    for (DescendantIterator<Element> element = elementDescendants(fragment).begin(), end = elementDescendants(fragment).end(); element != end; ++element) {
         if (!element->hasAttributes())
             continue;
         unsigned length = element->attributeCount();

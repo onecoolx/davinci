@@ -444,7 +444,7 @@ void ApplyStyleCommand::cleanupUnstyledAppleStyleSpans(Node* dummySpanAncestor)
     // all the children of the dummy's parent
 
     Vector<Element*> toRemove;
-    for (auto child = elementChildren(dummySpanAncestor).begin(), end = elementChildren(dummySpanAncestor).end(); child != end; ++child) {
+    for (ChildIterator<Element> child = elementChildren(dummySpanAncestor).begin(), end = elementChildren(dummySpanAncestor).end(); child != end; ++child) {
         if (isSpanWithoutAttributesOrUnstyledStyleSpan(&*child))
             toRemove.append(&*child);
     }
@@ -1524,7 +1524,7 @@ void ApplyStyleCommand::joinChildTextNodes(Node* node, const Position& start, co
     Position newStart = start;
     Position newEnd = end;
 
-    Vector<RefPtr<Text>> textNodes;
+    Vector<RefPtr<Text> > textNodes;
     for (Text* textNode = TextNodeTraversal::firstChild(node); textNode; textNode = TextNodeTraversal::nextSibling(textNode))
         textNodes.append(textNode);
 

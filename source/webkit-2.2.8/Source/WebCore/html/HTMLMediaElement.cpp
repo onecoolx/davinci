@@ -928,7 +928,7 @@ void HTMLMediaElement::selectMediaResource()
         // Otherwise, if the media element does not have a src attribute but has a source 
         // element child, then let mode be children and let candidate be the first such 
         // source element child in tree order.
-        auto source = childrenOfType<HTMLSourceElement>(this).begin();
+        ChildIterator<HTMLSourceElement> source = childrenOfType<HTMLSourceElement>(this).begin();
         if (source != childrenOfType<HTMLSourceElement>(this).end()) {
             mode = children;
             m_nextChildNodeToConsider = &*source;
@@ -1652,7 +1652,7 @@ void HTMLMediaElement::cancelPendingEventsAndCallbacks()
     LOG(Media, "HTMLMediaElement::cancelPendingEventsAndCallbacks");
     m_asyncEventQueue->cancelAllEvents();
 
-    for (auto source = Traversal<HTMLSourceElement>::firstChild(this); source; source = Traversal<HTMLSourceElement>::nextSibling(source))
+    for (HTMLSourceElement* source = Traversal<HTMLSourceElement>::firstChild(this); source; source = Traversal<HTMLSourceElement>::nextSibling(source))
         source->cancelPendingErrorEvent();
 }
 

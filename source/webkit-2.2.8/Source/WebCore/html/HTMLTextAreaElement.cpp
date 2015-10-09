@@ -409,7 +409,7 @@ void HTMLTextAreaElement::setDefaultValue(const String& defaultValue)
     RefPtr<Node> protectFromMutationEvents(this);
 
     // To preserve comments, remove only the text nodes, then add a single text node.
-    Vector<RefPtr<Text>> textNodes;
+    Vector<RefPtr<Text> > textNodes;
     for (Text* textNode = TextNodeTraversal::firstChild(this); textNode; textNode = TextNodeTraversal::nextSibling(textNode))
         textNodes.append(textNode);
 

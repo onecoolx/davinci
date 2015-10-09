@@ -2418,7 +2418,7 @@ void Element::clearBeforePseudoElement()
     if (!hasRareData())
         return;
     disconnectPseudoElement(elementRareData()->beforePseudoElement());
-    elementRareData()->setBeforePseudoElement(nullptr);
+    elementRareData()->setBeforePseudoElement(0);
 }
 
 void Element::clearAfterPseudoElement()
@@ -2426,7 +2426,7 @@ void Element::clearAfterPseudoElement()
     if (!hasRareData())
         return;
     disconnectPseudoElement(elementRareData()->afterPseudoElement());
-    elementRareData()->setAfterPseudoElement(nullptr);
+    elementRareData()->setAfterPseudoElement(0);
 }
 
 // ElementTraversal API

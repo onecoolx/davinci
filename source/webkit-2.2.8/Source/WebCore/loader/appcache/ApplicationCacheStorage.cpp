@@ -1158,7 +1158,7 @@ PassRefPtr<ApplicationCache> ApplicationCacheStorage::loadCache(unsigned storage
 
     if (!cache->manifestResource()) {
         LOG_ERROR("Could not load application cache because there was no manifest resource");
-        return nullptr;
+        return 0;
     }
 
     // Load the online whitelist
@@ -1394,7 +1394,6 @@ bool ApplicationCacheStorage::cacheGroupSize(const String& manifestURL, int64_t*
 
 bool ApplicationCacheStorage::deleteCacheGroupRecord(const String& manifestURL)
 {
-    ASSERT(SQLiteDatabaseTracker::hasTransactionInProgress());
     SQLiteStatement idStatement(m_database, "SELECT id FROM CacheGroups WHERE manifestURL=?");
     if (idStatement.prepare() != SQLResultOk)
         return false;

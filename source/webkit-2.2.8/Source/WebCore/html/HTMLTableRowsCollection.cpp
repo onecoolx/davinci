@@ -70,7 +70,7 @@ HTMLTableRowElement* HTMLTableRowsCollection::rowAfter(HTMLTableElement* table, 
 
     // Start by looking for the next row in this section. Continue only if there is none.
     if (previous && previous->parentNode() != table) {
-        if (auto row = Traversal<HTMLTableRowElement>::nextSibling(previous))
+        if (HTMLTableRowElement* row = Traversal<HTMLTableRowElement>::nextSibling(previous))
             return row;
     }
 
@@ -83,7 +83,7 @@ HTMLTableRowElement* HTMLTableRowsCollection::rowAfter(HTMLTableElement* table, 
         child = ElementTraversal::nextSibling(previous->parentNode());
     for (; child; child = ElementTraversal::nextSibling(child)) {
         if (child->hasTagName(theadTag)) {
-            if (auto row = Traversal<HTMLTableRowElement>::firstChild(child))
+            if (HTMLTableRowElement* row = Traversal<HTMLTableRowElement>::firstChild(child))
                 return row;
         }
     }
@@ -99,7 +99,7 @@ HTMLTableRowElement* HTMLTableRowsCollection::rowAfter(HTMLTableElement* table, 
         if (isHTMLTableRowElement(child))
             return toHTMLTableRowElement(child);
         if (child->hasTagName(tbodyTag)) {
-            if (auto row = Traversal<HTMLTableRowElement>::firstChild(child))
+            if (HTMLTableRowElement* row = Traversal<HTMLTableRowElement>::firstChild(child))
                 return row;
         }
     }
@@ -111,7 +111,7 @@ HTMLTableRowElement* HTMLTableRowsCollection::rowAfter(HTMLTableElement* table, 
         child = ElementTraversal::nextSibling(previous->parentNode());
     for (; child; child = ElementTraversal::nextSibling(child)) {
         if (child->hasTagName(tfootTag)) {
-            if (auto row = Traversal<HTMLTableRowElement>::firstChild(child))
+            if (HTMLTableRowElement* row = Traversal<HTMLTableRowElement>::firstChild(child))
                 return row;
         }
     }
@@ -121,25 +121,25 @@ HTMLTableRowElement* HTMLTableRowsCollection::rowAfter(HTMLTableElement* table, 
 
 HTMLTableRowElement* HTMLTableRowsCollection::lastRow(HTMLTableElement* table)
 {
-    for (auto child = ElementTraversal::lastChild(table); child; child = ElementTraversal::previousSibling(child)) {
+    for (Element* child = ElementTraversal::lastChild(table); child; child = ElementTraversal::previousSibling(child)) {
         if (child->hasTagName(tfootTag)) {
-            if (auto row = Traversal<HTMLTableRowElement>::lastChild(child))
+            if (HTMLTableRowElement* row = Traversal<HTMLTableRowElement>::lastChild(child))
                 return row;
         }
     }
 
-    for (auto child = ElementTraversal::lastChild(table); child; child = ElementTraversal::previousSibling(child)) {
+    for (Element* child = ElementTraversal::lastChild(table); child; child = ElementTraversal::previousSibling(child)) {
         if (isHTMLTableRowElement(child))
             return toHTMLTableRowElement(child);
         if (child->hasTagName(tbodyTag)) {
-            if (auto row = Traversal<HTMLTableRowElement>::lastChild(child))
+            if (HTMLTableRowElement* row = Traversal<HTMLTableRowElement>::lastChild(child))
                 return row;
         }
     }
 
-    for (auto child = ElementTraversal::lastChild(table); child; child = ElementTraversal::previousSibling(child)) {
+    for (Element* child = ElementTraversal::lastChild(table); child; child = ElementTraversal::previousSibling(child)) {
         if (child->hasTagName(theadTag)) {
-            if (auto row = Traversal<HTMLTableRowElement>::lastChild(child))
+            if (HTMLTableRowElement* row = Traversal<HTMLTableRowElement>::lastChild(child))
                 return row;
         }
     }

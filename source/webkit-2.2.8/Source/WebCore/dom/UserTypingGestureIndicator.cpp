@@ -41,7 +41,7 @@ bool UserTypingGestureIndicator::processingUserTypingGesture()
 
 static RefPtr<Node>& focusedNode()
 {
-    static NeverDestroyed<RefPtr<Node>> node;
+    static NeverDestroyed<RefPtr<Node> > node;
     return node;
 }
 
