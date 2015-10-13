@@ -1276,7 +1276,7 @@ void Page::setVisibilityState(PageVisibilityState visibilityState, bool isInitia
     m_visibilityState = visibilityState;
 
     if (!isInitialState) {
-        Vector<RefPtr<Document>> documents;
+        Vector<RefPtr<Document> > documents;
         for (Frame* frame = m_mainFrame.get(); frame; frame = frame->tree().traverseNext())
             documents.append(frame->document());
         for (size_t i = 0, size = documents.size(); i < size; ++i)

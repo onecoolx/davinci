@@ -84,7 +84,7 @@ def RemoveItemMatch(slist, matchs):
 # generate defined macros header.
 def GenerateMacrosHeader(path, out):
   f = open(path, "r")
-  fo = open(out, "a+")
+  fo = open(out, "w")
   fo.write("#ifndef _DAV_FEATURES_DEFINES_H_\n")
   fo.write("#define _DAV_FEATURES_DEFINES_H_\n")
   fo.write("\n")
@@ -93,8 +93,8 @@ def GenerateMacrosHeader(path, out):
     slist = line.split('=')
     fo.write("#if defined("+slist[0]+")\n")
     fo.write("#undef "+slist[0]+"\n")
-    fo.write("#define "+slist[0]+" "+slist[1])
     fo.write("#endif"+"\n")
+    fo.write("#define "+slist[0]+" "+slist[1])
     fo.write("\n")
   fo.write("#endif /*_DAV_FEATURES_DEFINES_H_*/\n")
   f.close()

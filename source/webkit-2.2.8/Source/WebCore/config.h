@@ -27,11 +27,10 @@
 #endif
 #endif
 
-#include <wtf/Platform.h>
-
-#if PLATFORM(DAVINCI)
+// platform davinci
 #include "DavinciFeatureDefines.h"
-#endif
+
+#include <wtf/Platform.h>
 
 #if PLATFORM(MAC) || PLATFORM(IOS)
 #define WTF_USE_FILE_LOCK 1
