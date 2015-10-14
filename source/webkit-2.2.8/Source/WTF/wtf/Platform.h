@@ -912,6 +912,10 @@
 #define WTF_USE_GRAPHICS_SURFACE 1
 #endif
 
+#if ENABLE(WEBGL) && PLATFORM(DAVINCI)
+#define WTF_USE_OPENGL_ES_2 1
+#endif
+
 /* Qt always uses Texture Mapper */
 #if PLATFORM(QT)
 #define WTF_USE_TEXTURE_MAPPER 1

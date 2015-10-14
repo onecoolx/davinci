@@ -1472,7 +1472,7 @@ unsigned GraphicsContext3D::getChannelBitsByFormat(GC3Denum format)
     }
 }
 
-#if !PLATFORM(BLACKBERRY) && !PLATFORM(QT) && !PLATFORM(GTK) && !PLATFORM(EFL) && !PLATFORM(MAC) && !PLATFORM(WIN)
+#if !PLATFORM(BLACKBERRY) && !PLATFORM(QT) && !PLATFORM(GTK) && !PLATFORM(EFL) && !PLATFORM(MAC) && !PLATFORM(WIN) && !PLATFORM(DAVINCI)
 PlatformGraphicsContext3D GraphicsContext3D::platformGraphicsContext3D() const
 {
     return NullPlatformGraphicsContext3D;

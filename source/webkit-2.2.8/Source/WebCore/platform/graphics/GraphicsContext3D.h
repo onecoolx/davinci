@@ -50,7 +50,7 @@
 #undef VERSION
 #endif
 
-#if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(EFL) || PLATFORM(BLACKBERRY) || PLATFORM(WIN)
+#if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(EFL) || PLATFORM(BLACKBERRY) || PLATFORM(WIN) || PLATFORM(DAVINCI)
 #include "ANGLEWebKitBridge.h"
 #endif
 
@@ -498,7 +498,7 @@ public:
 
     bool makeContextCurrent();
 
-#if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(EFL) || PLATFORM(BLACKBERRY) || PLATFORM(WIN)
+#if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(EFL) || PLATFORM(BLACKBERRY) || PLATFORM(WIN) || PLATFORM(DAVINCI)
     // With multisampling on, blit from multisampleFBO to regular FBO.
     void prepareTexture();
 #endif
@@ -781,7 +781,7 @@ public:
 #elif PLATFORM(QT)
     void paintToCanvas(const unsigned char* imagePixels, int imageWidth, int imageHeight,
                        int canvasWidth, int canvasHeight, QPainter* context);
-#elif PLATFORM(BLACKBERRY) || USE(CG)
+#elif PLATFORM(BLACKBERRY) || USE(CG) || PLATFORM(DAVINCI)
     void paintToCanvas(const unsigned char* imagePixels, int imageWidth, int imageHeight,
                        int canvasWidth, int canvasHeight, GraphicsContext*);
 #endif
@@ -924,7 +924,7 @@ private:
     // Destination data will have no gaps between rows.
     static bool packPixels(const uint8_t* sourceData, DataFormat sourceDataFormat, unsigned width, unsigned height, unsigned sourceUnpackAlignment, unsigned destinationFormat, unsigned destinationType, AlphaOp, void* destinationData, bool flipY);
 
-#if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(EFL) || PLATFORM(BLACKBERRY) || PLATFORM(WIN)
+#if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(EFL) || PLATFORM(BLACKBERRY) || PLATFORM(WIN) || PLATFORM(DAVINCI)
     // Take into account the user's requested context creation attributes,
     // in particular stencil and antialias, and determine which could or
     // could not be honored based on the capabilities of the OpenGL
@@ -964,7 +964,7 @@ private:
     void* m_context;
 #endif
 
-#if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(EFL) || PLATFORM(BLACKBERRY) || PLATFORM(WIN)
+#if PLATFORM(MAC) || PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(EFL) || PLATFORM(BLACKBERRY) || PLATFORM(WIN) || PLATFORM(DAVINCI)
     struct SymbolInfo {
         SymbolInfo()
             : type(0)
@@ -1032,7 +1032,7 @@ private:
     ANGLEWebKitBridge m_compiler;
 #endif
 
-#if PLATFORM(BLACKBERRY) || (PLATFORM(QT) && defined(QT_OPENGL_ES_2)) || ((PLATFORM(GTK) || PLATFORM(EFL) || PLATFORM(WIN)) && USE(OPENGL_ES_2))
+#if PLATFORM(BLACKBERRY) || (PLATFORM(QT) && defined(QT_OPENGL_ES_2)) || ((PLATFORM(GTK) || PLATFORM(EFL) || PLATFORM(WIN) || PLATFORM(DAVINCI)) && USE(OPENGL_ES_2))
     friend class Extensions3DOpenGLES;
     OwnPtr<Extensions3DOpenGLES> m_extensions;
 #else
