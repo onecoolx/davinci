@@ -12,6 +12,11 @@
        },
        {
           'includes': [
+           './sqlite.gypi'
+           ],
+       },
+       {
+          'includes': [
             './libpng.gypi'
           ],
        },
