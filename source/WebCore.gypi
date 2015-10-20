@@ -14,6 +14,7 @@
   'dependencies': [
     'WTF',
     'JavaScriptCore',
+    'sqlite',
     'curl',
     'icuuc',
     'icui18n',
