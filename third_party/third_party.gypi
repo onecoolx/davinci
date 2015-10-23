@@ -37,6 +37,11 @@
        },
        {
           'includes': [
+            './freetype2.gypi'
+          ],
+       },
+       {
+          'includes': [
             './icuuc.gypi'
           ],
        },

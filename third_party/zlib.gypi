@@ -52,10 +52,10 @@
        {
         'action_name': 'install_header1',
         'inputs': [
-          '<(lib_dir)/zconf.h', 
+          '<(lib_dir)/zconf.h',
          ],
         'outputs': [
-          '$(OutDir)/include/zconf.h' 
+          '$(OutDir)/include/zconf.h',
          ],
         'action': [
           'python',
@@ -68,10 +68,10 @@
        {
         'action_name': 'install_header2',
         'inputs': [
-          '<(lib_dir)/zlib.h', 
+          '<(lib_dir)/zlib.h',
          ],
         'outputs': [
-          '$(OutDir)/include/zlib.h' 
+          '$(OutDir)/include/zlib.h',
          ],
         'action': [
           'python',
@@ -91,10 +91,10 @@
        {
         'action_name': 'install_header1',
         'inputs': [
-          '<(lib_dir)/zconf.h', 
+          '<(lib_dir)/zconf.h',
         ],
         'outputs': [
-          '$(builddir)/include/zconf.h', 
+          '$(builddir)/include/zconf.h',
         ],
         'action': [
         'python',
@@ -106,10 +106,10 @@
        {
         'action_name': 'install_header2',
         'inputs': [
-          '<(lib_dir)/zlib.h', 
+          '<(lib_dir)/zlib.h',
         ],
         'outputs': [
-          '$(builddir)/include/zlib.h', 
+          '$(builddir)/include/zlib.h',
         ],
         'action': [
         'python',
