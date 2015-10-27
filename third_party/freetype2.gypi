@@ -11,6 +11,8 @@
   'target_name': '<(lib_name)',
   'type': 'shared_library',
   'dependencies': [
+    'png',
+    'zlib',
   ],
   'defines': [
     'FT2_BUILD_LIBRARY',
@@ -45,6 +47,10 @@
     '<(lib_dir)/src/base/md5.h',
     '<(lib_dir)/src/base/ftbase.h',
     '<(lib_dir)/src/base/ftbase.c',
+    '<(lib_dir)/src/bdf/bdf.h',
+    '<(lib_dir)/src/bdf/bdfdrivr.h',
+    '<(lib_dir)/src/bdf/bdferror.h',
+    '<(lib_dir)/src/bdf/bdf.c',
   ],
   'conditions': [
     ['OS=="win"', {
