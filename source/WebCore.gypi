@@ -169,6 +169,7 @@
         '$(builddir)/include',
         '$(builddir)/include/uc',
         '$(builddir)/include/i18n',
+        '$(builddir)/include/harfbuzz',
         '$(builddir)/<(lib_name)',
       ],
       'defines': [
