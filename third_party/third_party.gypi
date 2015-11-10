@@ -42,6 +42,11 @@
        },
        {
           'includes': [
+            './fontconfig.gypi'
+          ],
+       },
+       {
+          'includes': [
             './icuuc.gypi'
           ],
        },

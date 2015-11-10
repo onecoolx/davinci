@@ -3864,7 +3864,6 @@
 	'<(lib_dir)/platform/graphics/filters/SpotLightSource.h',
 	'<(lib_dir)/platform/graphics/freetype/FontCacheFreeType.cpp',
 	'<(lib_dir)/platform/graphics/freetype/FontCustomPlatformDataFreeType.cpp',
-	'<(lib_dir)/platform/graphics/freetype/GlyphPageTreeNodeFreeType.cpp',
 	'<(lib_dir)/platform/graphics/freetype/SimpleFontDataFreeType.cpp',
 	'<(lib_dir)/platform/graphics/freetype/UTF16UChar32Iterator.h',
 	'<(lib_dir)/platform/graphics/gpu/Texture.cpp',
