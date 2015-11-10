@@ -47,6 +47,11 @@
        },
        {
           'includes': [
+            './harfbuzz.gypi'
+          ],
+       },
+       {
+          'includes': [
             './icuuc.gypi'
           ],
        },

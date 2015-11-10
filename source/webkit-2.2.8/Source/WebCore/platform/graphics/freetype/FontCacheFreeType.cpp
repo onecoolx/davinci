@@ -33,6 +33,7 @@
 #include <cairo-ft.h>
 #include <cairo.h>
 #endif
+#include <fontconfig/fontconfig.h>
 #include <fontconfig/fcfreetype.h>
 #include <wtf/Assertions.h>
 #include <wtf/text/CString.h>
