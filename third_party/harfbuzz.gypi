@@ -9,7 +9,7 @@
     'lib_name': 'harfbuzz',
   },
   'target_name': '<(lib_name)',
-  'type': 'shared_library',
+  'type': 'static_library',
   'dependencies': [
     'freetype2',
   ],
@@ -127,12 +127,19 @@
   ],
   'conditions': [
     ['OS=="win"', {
+      'defines': [
+        'HAVE_UNISCRIBE',
+        'HAVE_USP10_H',
+        'HAVE_WINDOWS_H',
+      ],
       'sources': [
         '<(lib_dir)/src/hb-uniscribe.cc',
         '<(lib_dir)/src/hb-uniscribe.h',
       ],
       'include_dirs': [
         '$(OutDir)/include',
+        '$(OutDir)/include/uc',
+        '$(OutDir)/include/i18n',
       ],
       'actions': [
        {
@@ -150,12 +157,18 @@
           '$(OutDir)/include/harfbuzz',
         ],
         'msvs_cygwin_shell': 0,
-       },
-      ],
+       },],
+        'msvs_disabled_warnings': [4800],
     }],
     ['OS=="linux"', {
+      'defines': [
+        'HAVE_UNISTD_H',
+        'HAVE_SYS_MMAN_H',
+      ],
       'include_dirs': [
         '$(builddir)/include',
+        '$(builddir)/include/uc',
+        '$(builddir)/include/i18n',
       ],
       'actions': [
        {

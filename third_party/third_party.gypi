@@ -42,11 +42,6 @@
        },
        {
           'includes': [
-            './fontconfig.gypi'
-          ],
-       },
-       {
-          'includes': [
             './harfbuzz.gypi'
           ],
        },

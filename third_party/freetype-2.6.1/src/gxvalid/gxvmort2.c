@@ -193,7 +193,7 @@
 
         GXV_SET_ERR_IF_PARANOID( FT_INVALID_OFFSET );
       } else if ( offset * 2 >
-                  optdata->ligatureTable + optdata->ligatureTable_length )
+                  (FT_ULong)(optdata->ligatureTable + optdata->ligatureTable_length) )
       {
         GXV_TRACE(( "too long offset 0x%08x:"
                     " 2 x offset > ligatureTable + ligatureTable_length"
