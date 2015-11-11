@@ -85,7 +85,7 @@
 #define HAVE_SYSCONF 1
 
 /* Define to 1 if you have the <sys/mman.h> header file. */
-#define HAVE_SYS_MMAN_H 1
+/* #undef HAVE_SYS_MMAN_H */
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #define HAVE_SYS_STAT_H 1
@@ -100,7 +100,7 @@
 /* #undef HAVE_UNISCRIBE */
 
 /* Define to 1 if you have the <unistd.h> header file. */
-#define HAVE_UNISTD_H 1
+/* #undef HAVE_UNISTD_H */
 
 /* Define to 1 if you have the <usp10.h> header file. */
 /* #undef HAVE_USP10_H */

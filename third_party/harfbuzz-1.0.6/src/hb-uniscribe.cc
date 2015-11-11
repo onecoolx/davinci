@@ -495,7 +495,7 @@ populate_log_font (LOGFONTW  *lf,
 		   unsigned int font_size)
 {
   memset (lf, 0, sizeof (*lf));
-  lf->lfHeight = -font_size;
+  lf->lfHeight = -(int)font_size;
   lf->lfCharSet = DEFAULT_CHARSET;
 
   hb_face_t *face = font->face;
@@ -852,7 +852,7 @@ retry:
   unsigned int glyphs_offset = 0;
   unsigned int glyphs_len;
   bool backward = HB_DIRECTION_IS_BACKWARD (buffer->props.direction);
-  for (unsigned int i = 0; i < item_count; i++)
+  for (unsigned int i = 0; i < (unsigned int)item_count; i++)
   {
     unsigned int chars_offset = items[i].iCharPos;
     unsigned int item_chars_len = items[i + 1].iCharPos - chars_offset;
@@ -1019,9 +1019,9 @@ retry:
     hb_glyph_position_t *pos = &buffer->pos[i];
 
     /* TODO vertical */
-    pos->x_advance = x_mult * info->mask;
-    pos->x_offset = x_mult * (backward ? -info->var1.i32 : info->var1.i32);
-    pos->y_offset = y_mult * info->var2.i32;
+    pos->x_advance = (int)(x_mult * info->mask);
+    pos->x_offset = (int)(x_mult * (backward ? -info->var1.i32 : info->var1.i32));
+    pos->y_offset = (int)(y_mult * info->var2.i32);
   }
 
   if (backward)

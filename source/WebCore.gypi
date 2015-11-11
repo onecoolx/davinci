@@ -159,6 +159,7 @@
         '$(OutDir)/include',
         '$(OutDir)/include/uc',
         '$(OutDir)/include/i18n',
+        '$(OutDir)/include/freetype',
         '$(OutDir)/include/harfbuzz',
         '$(OutDir)/<(lib_name)',
       ],
@@ -166,6 +167,23 @@
       ],
       'sources': [ 
       ],
+      'actions': [
+      {
+       'action_name': 'generated_files',
+       'inputs': [
+         '<(lib_dir)', 
+       ],
+       'outputs': [
+         '$(OutDir)/<(lib_name)', 
+       ],
+       'action': [
+         'python',
+         '<(lib_dir)/generated_files.py',
+         '<(_inputs)',
+         '$(OutDir)/<(lib_name)',
+       ],
+       'msvs_cygwin_shell': 0,
+      }],
 #      'msvs_disabled_warnings': [4251, 4244],
     }],
     ['OS=="linux"', {
@@ -176,6 +194,7 @@
         '$(builddir)/include',
         '$(builddir)/include/uc',
         '$(builddir)/include/i18n',
+        '$(builddir)/include/freetype',
         '$(builddir)/include/harfbuzz',
         '$(builddir)/<(lib_name)',
       ],
