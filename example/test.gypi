@@ -11,6 +11,7 @@
     'dependencies': [
       'WTF',
       'JavaScriptCore',
+      'WebCore',
     ],
     'include_dirs': [
     ],
@@ -30,6 +31,7 @@
         'cflags_cc': [
         ],
         'libraries': [
+          '-lpthread',
         ],
       }],
     ],
