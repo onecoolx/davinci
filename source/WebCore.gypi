@@ -152,6 +152,9 @@
   ],
   'conditions': [
     ['OS=="win"', {
+      'variables': {
+        'lib_output': '$(OutDir)/<(lib_name)',
+      },
       'include_dirs': [
         '$(OutDir)/include',
         '$(OutDir)/include/uc',
@@ -184,6 +187,9 @@
 #      'msvs_disabled_warnings': [4251, 4244],
     }],
     ['OS=="linux"', {
+      'variables': {
+        'lib_output': '$(builddir)/<(lib_name)',
+      },
       'include_dirs': [
         '$(builddir)/include',
         '$(builddir)/include/uc',
