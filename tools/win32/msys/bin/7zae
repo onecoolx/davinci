@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [[ $# == 0 || $# == 1 && $1 == "--help" ]]; then
+   echo "usage: `basename $0` [-r|-l <file name>] <archive name> <file/directory name>"
+   echo "  -r | recirsive"
+   echo "  -l | read list of files from file"
+   exit 0
+elif [[ $# == 2 ]]; then
+   7za a -t7z -mx=9 -mfb=64 -md=64m -ms=on "$1" "$2"
+elif [[ $# == 3 && $1 == "-r" ]]; then
+   7za a -r -t7z -mx=9 -mfb=64 -md=64m -ms=on "$2" "$3"
+fi

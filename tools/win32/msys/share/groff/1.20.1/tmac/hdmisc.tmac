@@ -1,0 +1,367 @@
+.\"	-*-	mode: roff	-*-
+.ig
+
+hdmisc.tmac
+
+This file is part of groff, the GNU roff type-setting system.
+
+Copyright (C) 2005, 2006, 2009 Free Software Foundation, Inc.
+written by Joachim Walsdorff <Joachim.Walsdorff@urz.uni-heidelberg.de>.
+
+groff is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+groff is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+..
+.if d getarg \
+.nx
+.de getarg
+.ds \\$1
+.ds args
+.if (\\n[.$] < 2) \
+.return
+.ds $1 \\$1
+.shift
+.length * \\*[$1]
+.while \\n[.$] \{\
+.ds * "\\$1
+.ds ** "\\$1
+.length ** \\*[**]
+.shift
+.if (\\n[*] > \\n[**]) \{\
+.as args " "\\*[**]"
+.continue
+.\}
+.substring * 0 (\\n[*] - 1)
+.ie !"\?\\*[$1]\?"\?\\*[*]\?" \{\
+.as args " "\\*[**]"
+.continue
+.\}
+.el \{\
+.ie "\?\\*[**]\?"\?\\*[$1]\?" \
+.ds \\*[$1] \\*[$1]
+.el \{\
+.ie "\?\\*[**]\?"\?\\*[$1]=\?" \
+.ds \\*[$1] =
+.el \{\
+.substring ** (\\n[*] + 1) -1
+.ds * \\*[**]
+.substring * 0 0
+.if "\?\\*[*]\?"\?'\?" \{\
+.substring ** 1 -1
+.ds * \\*[**]
+.substring * -1 -1
+.ie "\?\\*[*]\?"\?'\?" \
+.substring ** 0 -2
+.el \{\
+.as \\*[$1] \\*[**] 
+.while 1 \{\
+.ds ** \\$1
+.ds * \\$1
+.shift
+.substring * -1 -1
+.if "\?\\*[*]\?"\?'\?" \{\
+.substring ** 0 -2
+.break
+.\}
+.as \\*[$1] \\*[**] 
+.\}
+.\}\}
+.as \\*[$1] \\*[**]
+.\}
+.as args " \\$@
+.\}\}
+.return
+.\}
+..
+.de index
+.if "\\$2"" \{\
+.nr index -999
+.return
+.\}
+.length ** \\$1
+.length $2 \\$2
+.nr * 0-1 1
+.while (\\n+[*] < \\n[**]) \{\
+.ds * \\$1
+.substring * \\n[*] (\\n[*] + \\n[$2] - 1)
+.if "\?\\*[*]\?"\?\\$2\?" \
+.break
+.\}
+.ie (\\n[*] == \\n[**]) \
+.nr index 0
+.el \
+.nr index (\\n[*] + 1)
+..
+.de SP
+.if (\\n[nl] < 0) \
+.br
+.nr * \\n[.p]
+.ie "\\$1"" \
+.pl +1
+.el \
+.pl +\\$1
+.nr ** (\\n[.p] - \\n[*])
+.pl \\n[*]u
+.if ((\\n[nl] - \\n[tH]) & (\\n[nl] - \\n[<<]) : \\n[.k]) \{\
+.ie ((\\n[.d] - \\n[M#]) : \\n[.k]) \{\
+.sp \\n[**]u
+.nr S# \\n[**]
+.\}
+.el \{\
+.if (\\n[**] - \\n[S#]) \{\
+.sp (\\n[**]u - \\n[S#]u)
+.nr S# \\n[**]
+.\}\}
+.nr M# \\n[.d]
+.\}
+..
+.de P1
+.while \\n[.$] \{\
+.nop \\$1
+.shift
+.\}
+..
+.de pv
+.br
+.if \\n[.$] \
+.ps (\\n[s]u * \\$1z / 1z)
+.ie (\\n[.$] - 1) \
+.vs (\\n[v]u * \\$2p / 1p)
+.el \{\
+.vs (\\n[v]u * \\$1p / 1p)
+.return
+.\}
+.if !""\\$3" \
+.hy \\$3
+.if !""\\$4" \{\
+.nr v \\n[.v]
+.nr s \\n[.ps]
+.nr hy \\n[.hy]
+.\}
+..
+.de *pop
+.ie "\\$1"pops" \
+.ds \\$2 \\$4
+.el \
+.nr \\$2 \\$4
+.ds $3 \\$3
+.shift 4
+.ds \\*[$3] "\\$@
+..
+.de pop
+.*pop \\$0 \\$1 \\$2 \\*[\\$2]
+..
+.als popr pop
+.als pops pop
+.de DI
+.nr * \\n[.u]
+.nf
+.\\$1
+.rm \\$1
+.if \\n[*] \
+.fi
+..
+.de H
+.nr *w* (17 * \w\\$* / 10 + 4n)
+.TBL border=1n \
+       bc=yellow \
+       bgc=red4 \
+       fgc=yellow \
+       csp=0 \
+       fst=TB \
+       "fsz=1.7 1.5" \
+       hal=c \
+       tal=c \
+       "width=(\\n[*w*]+4n)<?\n[.l]"
+.TR .TD
+.P1 \\$*
+.ETB
+.SP
+..
+.de date
+.pso bash -c "echo -n .ds *date\ ;date"
+.tm \\*[*date] ***
+..
+.de time
+.ds * \\$1
+.substring * 0 0
+.ie "\\*[*]"s" \
+.pso bash -c "echo -n .nr *time 0+;date +%s"
+.el \{\
+.pso bash -c "echo -n .nr *time -;date +%s"
+.nr *time 0-\\n[*time]
+.tm elapsed time: \\n[*time] seconds
+.\}
+..
+.de PN
+.nr *pn +1
+.nr PN\\n[*pn] (\\$1 + 1) 1
+.shift
+.while \\n-[PN\\n[*pn]] \
+.P1 \\$@
+.nr *pn -1
+..
+.ds d2x-0 0
+.ds d2x-1 1
+.ds d2x-2 2
+.ds d2x-3 3
+.ds d2x-4 4
+.ds d2x-5 5
+.ds d2x-6 6
+.ds d2x-7 7
+.ds d2x-8 8
+.ds d2x-9 9
+.ds d2x-10 A
+.ds d2x-11 B
+.ds d2x-12 C
+.ds d2x-13 D
+.ds d2x-14 E
+.ds d2x-15 F
+.de d2x
+.if !\B\\$1 \{\
+.tm \\n[.F]:\\n[.c]: invalid or missing first argument
+.tm1 "     usage: `.d2x decimal_number [base [string_name]]'
+.return
+.\}
+.nr i# (-1) 1
+.nr j# 1
+.ds hex#
+.nr dec# (\\$1) 1
+.if !\\$1 \
+.nr dec# (-\\n[dec#])
+.ie !"\\$2"" \{\
+.ie !\B\\$2 \
+.tm \\n[.F]:\\n[.c]: invalid base `\\$2'
+.el \
+.ie ((\\$2 < 1) : (\\$2 > 16)) \
+.tm \\n[.F]:\\n[.c]: invalid base `\\$2'
+.el \
+.nr b# \\$2
+.\}\}
+.el \
+.nr b# 16
+.nr xb# 1
+.ie (\\n[b#] == 1) \{\
+.nr dec# +1
+.while \\n-[dec#] \
+.as hex# |
+.\}
+.el \{\
+.while (\\n[dec#] - \\n[xb#]) \{\
+.nr xb# (\\n[xb#] * \\n[b#])
+.nr j# +1
+.\}
+.while (\\n+[i#] < \\n[j#]) \{\
+.nr ** (\\n[dec#] / \\n[xb#])
+.as hex# \\*[d2x-\\n[**]]
+.nr dec# (\\n[dec#] - (\\n[xb#] * \\n[**]))
+.nr xb# (\\n[xb#] / \\n[b#])
+.\}
+.\}
+.ds * \\*[hex#]
+.substring * 0 0
+.if "\\*[*]"0" \
+.substring hex# 1 -1
+.if (\\$1 < 0) \
+.ds hex# -\\*[hex#]
+.if !"\\$3"" \{\
+.ie !\A\\$3 \
+.tm \\n[.F]:\\n[.c]: invalid string name `\\$3'
+.el \
+.ds \\$3 \\*[hex#]
+.\}
+..
+.af hours 00
+.af minutes 00
+.af seconds 00
+.af year 0000
+.af mo 00
+.af dy 00
+.ds random-s1 \n[minutes]\n[seconds]\n[$$]\n[hours]
+.substring random-s1 0 8
+.nr random-s1 (\*[random-s1] % 2147483562)
+.nr random-s2 \n[dy]\n[year]\n[mo]
+.de random-seed
+.if !(\\n[.$] == 2) \{\
+.tm1 "random-seed: Invalid number of arguments.
+.tm1 "             usage: `.random-seed seed1 seed2'
+.return
+.\}
+.nr random-s1 (\\$1 % 2147483562)
+.nr random-s2 (\\$2 % 2147483398)
+..
+.de random#
+.nr * (\\n[random-s1] / 53668)
+.nr random-s1 (40014 * (\\n[random-s1] - (\\n[*] * 53668)) \
+                - (\\n[*] * 12211))
+.if !\\n[random-s1] \
+.nr random-s1 +2147483563
+.nr * (\\n[random-s2] / 52774)
+.nr random-s2 (40692 * (\\n[random-s2] - (\\n[*] * 52774)) \
+                - (\\n[*] * 3791))
+.if !\\n[random-s2] \
+.nr random-s2 +2147483399
+.nr * (\\n[random-s1] - \\n[random-s2])
+.if (\\n[*] < 1) \
+.nr * +2147483562
+.nr * (\\n[*] / 128)
+.d2x \\n[*]
+.ds hex# 000000\\*[hex#]
+.substring hex# -6
+.ds #random #\\*[hex#]
+..
+.nr s \n[.ps]
+.nr v \n[.v]
+.pv 1.2 1.2 "" X
+.nr l 6.6i
+.ll \n[l]u
+.nr o 2c
+.po \n[o]u
+.nr p 29.7c
+.pl \n[p]u
+.nr tH 1i
+.sp |\n[tH]u
+.ev 99
+.lt \n[l]u
+.ev
+.de HM
+.sp |.5i
+.tl \\*[t*HM]
+.sp |\\n[tH]u
+.ev
+..
+.de BM
+.ev 99
+.sp |(\\n[p]u - .5i)
+.tl \\*[t*BM]
+.bp
+..
+.de EM
+.rm BM
+.if !"\\*[t*kept]"" \{\
+.tm1 "hdtbl: Not all tables have been printed.
+.tm1 "       Add `.bp' at the end of your document.
+.\}
+.if !"\\*[t*held]"" \{\
+.tm1 "hdtbl: There are held tables which haven't been printed.
+.tm1 "       Add `.t*free' at the end of your document.
+.\}
+.if \\n[t*#] \
+.tm hdtbl: Missing `.ETB' macro at end of document.
+..
+.em EM
+.if "\n[.m]"" \
+.gcolor black
+.if "\n[.M]"" \
+.fcolor white
+.mso hdtbl.tmac

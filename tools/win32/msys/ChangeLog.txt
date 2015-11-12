@@ -1,0 +1,31 @@
+20.01.2013, rev9.
+ - msysGit updated to 1.8.0
+ - msys-make-updated to 3.82.90
+
+09.01.2013, rev8.
+ - msysCORE revert to 1.0.17-1
+   bug: http://sourceforge.net/mailarchive/message.php?msg_id=30260311
+
+17.12.2012, rev7.
+ - automake updated to 1.12.6-1
+
+11.12.2012, rev6.
+ - automake updated to 1.12.5-1
+ - msysCORE updated to 1.0.18-2
+
+16.10.2012, rev5.
+ - getopt added
+ - git-flow added
+ 
+25.09.2012, rev4.
+ - added pkg.m4
+ 
+23.09.2012, rev3.
+ - automake updated to 1.12.4-1
+
+25.07.2012, rev2.
+ - autoconf updated to 2.69
+ - automake updated to 1.11.5
+ - libltdl updated to 2.4.2
+ - libtool updated to 2.4.2
+ - m4 updated to 1.4.16
