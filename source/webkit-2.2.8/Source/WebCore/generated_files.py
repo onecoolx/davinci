@@ -99,7 +99,7 @@ def GenerateMacrosHeader(path, out):
   fo.write("#endif /*_DAV_FEATURES_DEFINES_H_*/\n")
   f.close()
   fo.close()
-  
+
 
 # generate files
 def Main(src_dir, dst_dir):
@@ -190,7 +190,7 @@ def Main(src_dir, dst_dir):
   "bindings/scripts/StaticString.pm", "css/WebKitFontFamilyNames.in", "--fonts", "css/WebKitFontFamilyNames.in",\
   "--outputDir", dst_dir])
 
-  # step15, ExceptionCodeDescription.h ExceptionCodeDescription.cpp ExceptionInterfaces.h ExceptionInterfaces.h   
+  # step15, ExceptionCodeDescription.h ExceptionCodeDescription.cpp ExceptionInterfaces.h ExceptionInterfaces.h
   subprocess.call(["perl", "-Ibindings/scripts", "dom/make_dom_exceptions.pl", "dom/DOMExceptions.in",\
   "--input", "dom/DOMExceptions.in", "--outputDir", dst_dir])
 
@@ -198,7 +198,7 @@ def Main(src_dir, dst_dir):
   subprocess.call(["perl", "-Ibindings/scripts", "page/make_settings.pl", "page/Settings.in",\
   "--input", "page/Settings.in", "--outputDir", dst_dir])
 
-  # step17, InspectorProtocolVersion.h 
+  # step17, InspectorProtocolVersion.h
   subprocess.call(["python", "inspector/generate-inspector-protocol-version", "-o", dst_dir+"/InspectorProtocolVersion.h",\
   "inspector/Inspector.json"])
 
