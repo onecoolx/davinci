@@ -86,8 +86,8 @@ public:
     PolygonShape(PassOwnPtr<Vector<FloatPoint> > vertices, WindRule fillRule)
         : Shape()
         , m_polygon(vertices, fillRule)
-        , m_marginBounds(nullptr)
-        , m_paddingBounds(nullptr)
+        , m_marginBounds(NULL)
+        , m_paddingBounds(NULL)
     {
     }
 
