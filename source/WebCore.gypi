@@ -152,9 +152,6 @@
   ],
   'conditions': [
     ['OS=="win"', {
-      'variables': {
-        'lib_output': '$(OutDir)/<(lib_name)',
-      },
       'include_dirs': [
         '$(OutDir)/include',
         '$(OutDir)/include/uc',
@@ -171,25 +168,22 @@
       {
        'action_name': 'generated_files',
        'inputs': [
-         '<(lib_dir)', 
+         '<(lib_dir)',
        ],
        'outputs': [
-         '$(OutDir)/<(lib_name)', 
+         '<(lib_dir)/Generated',
        ],
        'action': [
          'python',
          '<(lib_dir)/generated_files.py',
          '<(_inputs)',
-         '$(OutDir)/<(lib_name)',
+         'Generated',
        ],
        'msvs_cygwin_shell': 0,
       }],
 #      'msvs_disabled_warnings': [4251, 4244],
     }],
     ['OS=="linux"', {
-      'variables': {
-        'lib_output': '$(builddir)/<(lib_name)',
-      },
       'include_dirs': [
         '$(builddir)/include',
         '$(builddir)/include/uc',
@@ -214,16 +208,16 @@
       {
        'action_name': 'generated_files',
        'inputs': [
-         '<(lib_dir)', 
+         '<(lib_dir)',
        ],
        'outputs': [
-         '$(builddir)/<(lib_name)', 
+         '<(lib_dir)/Generated',
        ],
        'action': [
          'python',
          '<(lib_dir)/generated_files.py',
          '<(_inputs)',
-         '$(builddir)/<(lib_name)',
+         'Generated',
        ],
       }],
       'libraries': [

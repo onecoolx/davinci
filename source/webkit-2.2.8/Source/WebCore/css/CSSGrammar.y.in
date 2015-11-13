@@ -380,7 +380,7 @@ webkit_value:
             int oldParsedProperties = parser->m_parsedProperties.size();
             if (!parser->parseValue(parser->m_id, parser->m_important))
                 parser->rollbackLastProperties(parser->m_parsedProperties.size() - oldParsedProperties);
-            parser->m_valueList = nullptr;
+            parser->m_valueList = 0;
         }
     }
 ;
@@ -822,7 +822,7 @@ supports_declaration_condition:
             // We just need to know if the declaration is supported as it is written. Rollback any additions.
             if ($$)
                 p->rollbackLastProperties(p->m_parsedProperties.size() - oldParsedProperties);
-            p->m_valueList = nullptr;
+            p->m_valueList = 0;
         }
         p->markPropertyEnd($7, false);
     }
@@ -1592,7 +1592,7 @@ declaration:
                 parser->rollbackLastProperties(parser->m_parsedProperties.size() - oldParsedProperties);
             else
                 isPropertyParsed = true;
-            parser->m_valueList = nullptr;
+            parser->m_valueList = 0;
         }
         parser->markPropertyEnd($5, isPropertyParsed);
     }
@@ -1774,7 +1774,7 @@ function:
     FUNCTION maybe_space expr_recovery closing_parenthesis {
         CSSParserFunction* f = parser->createFloatingFunction();
         f->name = $1;
-        f->args = nullptr;
+        f->args = 0;
         $$.id = CSSValueInvalid;
         $$.unit = CSSParserValue::Function;
         $$.function = f;
