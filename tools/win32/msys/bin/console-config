@@ -1,0 +1,487 @@
+#!/bin/bash -e
+# console-config - Download, install, and configure Console2 for use
+#                  with MinGW/MSYS
+#
+# Copyright (c) 2010 Charles S. Wilson
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+
+SITE="https://sourceforge.net/projects/console/files/console-devel/2.00/"
+PKGBASE="Console-2.00b148-Beta"
+BITWIDTH_32BIT="_32bit"
+BITWIDTH_64BIT="_64bit"
+MD5SUM_32BIT=5167a73fc962eac4b0ef9f7958e8c847
+MD5SUM_64BIT=563394770319f196177ca088ab37f2ed
+PKGTYPE=".zip"
+WGET=/bin/wget.exe
+UNZIP=/bin/unzip.exe
+MD5SUM=/bin/md5sum.exe
+MKSHRTCT=/bin/mkshortcut.exe
+INST=/usr/lib/Console2
+BS="sed -e s|/|\\\\\\\\|g"
+MSYSD=$(cd / && pwd -W | $BS )
+HOMED=$(cd "${HOME}" && pwd -W | $BS )
+tdir=
+
+#######################################################
+verbose() {
+  echo "${@}"
+  "${@}"
+  return $?
+}
+
+#######################################################
+usage ()
+{
+  printf "console-config [-ahuAD] [-c DIR] [-f FONT] [-P SDIR]\n"
+  printf "  Download, install, and configure Console2 for\n"
+  printf "  use with MinGW/MSYS.\n"
+  printf "\n"
+  printf "Options:\n"
+  printf "  -h       Show this help\n"
+  printf "  -a       Download alternate (64bit) package. By default\n"
+  printf "           the 32bit package is used.\n"
+  printf "  -c DIR   Include cygwin configuration. DIR must\n"
+  printf "           be the msys path to the root of the cygwin\n"
+  printf "           installation. E.g. '/c/cygwin'\n"
+  printf "  -f FONT  Specify the font. Defaults to Lucida Console\n"
+  printf "           but 'Consolas', 'Courier New', or\n"
+  printf "           'DejaVu LGC Sans Mono' are also good choices\n"
+  printf "  -A       Use 'All Users' instead of current user for -D,-P\n"
+  printf "  -D       Create shortcut on the 'Desktop'\n"
+  printf "  -P SDIR  Create shortcut in the specified subdirectory of\n"
+  printf "           the Start Menu 'Programs' directory\n"
+  printf "  -u       Uninstall Console2. This will remove everything\n"
+  printf "           except the configuration files in /usr/lib/Console2\n"
+  printf "           and any shortcuts that may have been created earlier\n"
+  printf "\n"
+  printf "See https://sourceforge.net/projects/console/\n"
+  exit 0;
+}
+
+###################
+## Parse options ##
+###################
+CYGD=
+opt_A=
+opt_D=
+opt_P=
+opt_P_arg=
+opt_u=
+BITWIDTH="${BITWIDTH_32BIT}"
+MD5="${MD5SUM_32BIT}"
+while getopts ":hac:f:ADP:u" opt
+do
+  case "$opt" in
+    h) usage ;;
+    a) BITWIDTH="${BITWIDTH_64BIT}"
+       MD5="${MD5SUM_64BIT}" ;;
+    c) if [ -d "$OPTARG" ]
+       then
+         CYGD=$(cd "$OPTARG" && pwd -W | $BS )
+       else
+         echo "Error: '${OPTARG}' is not a directory" >&2
+       fi
+       ;;
+    f) FONT="${OPTARG}" ;;
+    A) opt_A=-A ;;
+    D) opt_D=-D ;;
+    P) opt_P=-P; opt_P_arg="${OPTARG}" ;;
+    u) opt_u=1 ;;
+    \?) echo "Invalid option: -$OPTARG" >&2
+        exit 2;
+        ;;
+    :) echo "Option requires an argument: -$OPTARG" >&2
+       exit 2;
+       ;;
+  esac
+done
+shift $(($OPTIND - 1))
+
+#######################################################
+console_config_cleanup ()
+{
+  if [ -n "${tdir}" -a -d "${tdir}" ]
+  then
+    rm -rf ${tdir}
+  fi
+}
+
+#######################################################
+check_prog() {
+  local _prog;
+  for _prog
+  do
+    if ! hash ${_prog} &> /dev/null
+    then
+      return 1;
+    fi
+  done
+  return 0;
+}
+
+#######################################################
+check_prog_req ()
+{
+  local prog=${1%%.exe}
+  local pkg=${2:-${prog}};
+  if ! check_prog ${prog}
+  then
+    printf "Error: ${pkg} is required to build this package\n" >&2
+    exit 1
+  fi
+  return 0
+}
+
+#######################################################
+console_config_check_reqs ()
+{
+  check_prog_req wget       'wget-*-msys-*-bin'
+  check_prog_req unzip      'unzip-*-msys-*-bin'
+  check_prog_req mkshortcut 'cygutils-*-msys-*-bin'
+  check_prog_req sed        'sed-*-msys-*-bin'
+  check_prog_req rm         'coreutils-*-msys-*-bin'
+  check_prog_req mv         'coreutils-*-msys-*-bin'
+  check_prog_req mkdir      'coreutils-*-msys-*-bin'
+  check_prog_req rmdir      'coreutils-*-msys-*-bin'
+  check_prog_req cat        'coreutils-*-msys-*-bin'
+  check_prog_req date       'coreutils-*-msys-*-bin'
+  check_prog_req md5sum     'coreutils-*-msys-*-bin'
+  check_prog_req mktemp     'mktemp-*-msys-*-bin'
+}
+
+#######################################################
+console_config_check_md5 ()
+{
+  local FILE="$1"
+  local MD5_VALUE="$2"
+  local -i rval=0
+
+  if [ -f "${FILE}" ]
+  then
+    echo "${MD5_VALUE} *${FILE}" | ${MD5SUM} -c >/dev/null 2>&1 || rval=1
+    if [ 0 -ne $rval ]
+    then
+      printf "Error: bad checksum for ${FILE}\n" >&2
+    fi
+  else
+    printf "Error: could not find ${FILE}\n" >&2
+    rval=1
+  fi
+  return $rval;
+}
+
+#######################################################
+console_config_download ()
+{
+  local URL="${SITE}${PKG}/download"
+  local status=1
+
+  if [ -f "${HOME}/${PKG}" ]
+  then
+    status=0
+    console_config_check_md5 "${HOME}/${PKG}" "${MD5}" || status=$?
+    if [ 0 -ne $status ]
+    then
+      printf "Removing old package, and re-downloading\n" >&2
+      rm -f "${HOME}/${PKG}"
+    fi
+  fi
+
+  # If we are here, then either ${PKG} exists and is valid
+  # (and status=0)  or it does not (and status is 1).
+  # Download if necessary...
+  if [ 0 -eq $status ]
+  then
+    printf "${HOME}/${PKG} already exists and is valid\n"
+  else
+    pushd ${HOME} >/dev/null
+    status=0
+    ${WGET} --no-check-certificate -c "${URL}" || status=$?
+    popd >/dev/null
+
+    if [ 0 -eq $status ]
+    then
+      printf "Downloaded package into '${HOME}'\n"
+      status=0
+      console_config_check_md5 "${HOME}/${PKG}" "${MD5}" || status=$?
+      if [ 0 -ne $status ]
+      then
+        printf "Downloaded ${HOME}/${PKG} but checksum is incorrect\n" >&2
+        exit 1
+      fi
+    else
+      printf "Error: unable to download ${URL}\n" >&2
+      printf "Try manually downloading ${FILE} into\n" >&2
+      printf "${HOME} using your web browser, then run\n" >&2
+      printf "this script again with the same arguments.\n" >&2
+      exit 1
+    fi
+  fi
+}
+
+#######################################################
+console_config_protect ()
+{
+  local DATESTAMP=$(date +%Y%m%d_%H%M%S)
+  if [ -d ${INST} ]
+  then
+    if [ -f ${INST}/console.xml ]
+    then
+      mv ${INST}/console.xml ${INST}/console.xml.${DATESTAMP}
+    fi
+  fi
+}
+
+#######################################################
+console_config_unpack ()
+{
+  # unpack into $INST
+  mkdir -p ${INST}
+  pushd ${INST} >/dev/null
+  ${UNZIP} ${HOME}/${PKG}
+  mv Console2/* .
+  rmdir Console2
+  popd >/dev/null
+}
+
+#######################################################
+console_config_configure ()
+{
+  pushd ${INST} >/dev/null
+  mv console.xml console.xml.orig
+  cat <<-"_EOF" > console.xml.in
+	<?xml version="1.0"?>
+	<settings>
+	  <console change_refresh="10" refresh="50" rows="30" columns="128" buffer_rows="2000" buffer_columns="0" shell="" init_dir="" save_size="0" start_hidden="0">
+	    <colors>
+	      <color id="0" r="255" g="255" b="208"/>
+	      <color id="1" r="0" g="0" b="128"/>
+	      <color id="2" r="0" g="150" b="0"/>
+	      <color id="3" r="0" g="150" b="150"/>
+	      <color id="4" r="170" g="25" b="25"/>
+	      <color id="5" r="128" g="0" b="128"/>
+	      <color id="6" r="128" g="128" b="0"/>
+	      <color id="7" r="0" g="21" b="108"/>
+	      <color id="8" r="128" g="128" b="128"/>
+	      <color id="9" r="0" g="100" b="255"/>
+	      <color id="10" r="0" g="255" b="0"/>
+	      <color id="11" r="0" g="255" b="255"/>
+	      <color id="12" r="255" g="50" b="50"/>
+	      <color id="13" r="255" g="0" b="255"/>
+	      <color id="14" r="255" g="255" b="0"/>
+	      <color id="15" r="51" g="51" b="255"/>
+	    </colors>
+	  </console>
+	  <appearance>
+	    <font name="Lucida Console" size="9" bold="0" italic="0" smoothing="2">
+	      <color use="0" r="0" g="0" b="0"/>
+	    </font>
+	    <window title="Console" icon="" use_tab_icon="1" use_console_title="1" show_cmd="1" show_cmd_tabs="1" use_tab_title="1" trim_tab_titles="20"/>
+	    <controls show_menu="0" show_toolbar="0" show_statusbar="1" show_tabs="1" hide_single_tab="0" show_scrollbars="1"/>
+	    <styles caption="1" resizable="1" taskbar_button="1" border="0" inside_border="2" tray_icon="0">
+	      <selection_color r="252" g="255" b="136"/>
+	    </styles>
+	    <position x="17" y="25" dock="-1" snap="0" z_order="0" save_position="0"/>
+	    <transparency type="0" active_alpha="216" inactive_alpha="255" r="255" g="255" b="208"/>
+	  </appearance>
+	  <behavior>
+	    <copy_paste copy_on_select="1" clear_on_copy="0" no_wrap="1" trim_spaces="1" copy_newline_char="1"/>
+	    <scroll page_scroll_rows="0"/>
+	    <tab_highlight flashes="3" stay_highligted="1"/>
+	  </behavior>
+	  <hotkeys use_scroll_lock="1">
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="83" command="settings"/>
+	    <hotkey ctrl="0" shift="0" alt="0" extended="0" code="112" command="help"/>
+	    <hotkey ctrl="0" shift="0" alt="1" extended="0" code="115" command="exit"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="112" command="newtab1"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="113" command="newtab2"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="114" command="newtab3"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="115" command="newtab4"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="116" command="newtab5"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="117" command="newtab6"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="118" command="newtab7"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="119" command="newtab8"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="120" command="newtab9"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="0" code="121" command="newtab10"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="112" command="switchtab1"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="113" command="switchtab2"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="114" command="switchtab3"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="115" command="switchtab4"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="116" command="switchtab5"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="117" command="switchtab6"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="118" command="switchtab7"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="119" command="switchtab8"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="120" command="switchtab9"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="0" code="121" command="switchtab10"/>
+	    <hotkey ctrl="0" shift="1" alt="0" extended="1" code="39" command="nexttab"/>
+	    <hotkey ctrl="0" shift="1" alt="0" extended="1" code="37" command="prevtab"/>
+	    <hotkey ctrl="1" shift="0" alt="1" extended="0" code="88" command="closetab"/>
+	    <hotkey ctrl="1" shift="0" alt="1" extended="0" code="83" command="renametab"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="1" code="45" command="copy"/>
+	    <hotkey ctrl="1" shift="0" alt="0" extended="1" code="46" command="clear_selection"/>
+	    <hotkey ctrl="0" shift="1" alt="0" extended="1" code="45" command="paste"/>
+	    <hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="stopscroll"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="1" code="38" command="scrollrowup"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="1" code="40" command="scrollrowdown"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="1" code="33" command="scrollpageup"/>
+	    <hotkey ctrl="1" shift="1" alt="0" extended="1" code="34" command="scrollpagedown"/>
+	    <hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="scrollcolleft"/>
+	    <hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="scrollcolright"/>
+	    <hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="scrollpageleft"/>
+	    <hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="scrollpageright"/>
+	    <hotkey ctrl="1" shift="0" alt="1" extended="0" code="68" command="dumpbuffer"/>
+	    <hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="activate"/>
+	  </hotkeys>
+	  <mouse>
+	    <actions>
+	      <action ctrl="0" shift="0" alt="0" button="1" name="copy"/>
+	      <action ctrl="0" shift="0" alt="0" button="1" name="select"/>
+	      <action ctrl="0" shift="0" alt="0" button="3" name="paste"/>
+	      <action ctrl="1" shift="0" alt="0" button="1" name="drag"/>
+	      <action ctrl="0" shift="0" alt="0" button="2" name="menu"/>
+	    </actions>
+	  </mouse>
+	  <tabs>
+	    <tab title="MinGW" icon="@@MSYSD@@\msys.ico">
+	      <console shell="@@MSYSD@@\bin\sh.exe --login -i" init_dir="@@MSYSD@@\bin"/>
+	      <cursor style="8" r="0" g="0" b="160"/>
+	      <background type="0" r="255" g="255" b="206">
+	        <image file="" relative="0" extend="0" position="0">
+	          <tint opacity="0" r="0" g="0" b="0"/>
+	        </image>
+	      </background>
+	    </tab>
+	    <tab title="MSysDvlpr" icon="@@MSYSD@@\m.ico">
+	      <console shell="@@MSYSD@@\bin\sh.exe -c 'MSYSTEM=MSYS exec /bin/sh --login -i'" init_dir="@@MSYSD@@\bin"/>
+	      <cursor style="8" r="255" g="0" b="128"/>
+	      <background type="0" r="255" g="255" b="208">
+	        <image file="" relative="0" extend="0" position="0">
+	          <tint opacity="0" r="0" g="0" b="0"/>
+	        </image>
+	      </background>
+	    </tab>
+	    <tab title="CMD.EXE">
+	      <console shell="" init_dir=""/>
+	      <cursor style="8" r="0" g="64" b="128"/>
+	      <background type="0" r="255" g="255" b="208">
+	        <image file="" relative="0" extend="0" position="0">
+	          <tint opacity="0" r="0" g="0" b="0"/>
+	        </image>
+	      </background>
+	    </tab>
+	@@WITH_CYG@@    <tab title="cygwin" icon="@@CYGD@@\cygwin.ico">
+	@@WITH_CYG@@      <console shell="@@CYGD@@\bin\bash.exe --login -i" init_dir="@@HOMED@@"/>
+	@@WITH_CYG@@      <cursor style="8" r="64" g="0" b="64"/>
+	@@WITH_CYG@@      <background type="0" r="255" g="255" b="206">
+	@@WITH_CYG@@        <image file="" relative="0" extend="0" position="0">
+	@@WITH_CYG@@          <tint opacity="0" r="0" g="0" b="0"/>
+	@@WITH_CYG@@        </image>
+	@@WITH_CYG@@      </background>
+	@@WITH_CYG@@    </tab>
+	  </tabs>
+	</settings>
+_EOF
+  CYG_SED='/@@WITH_CYG@@/d'
+  if [ -n "$CYGD" ]
+  then
+    CYG_SED="/@@WITH_CYG@@/{s|@@WITH_CYG@@||;s|@@CYGD@@|${CYGD}|g}"
+  fi
+  cat console.xml.in | sed -e "$CYG_SED" \
+        -e "s|@@HOMED@@|${HOMED}|g" \
+        -e "s|@@MSYSD@@|${MSYSD}|g" \
+        -e "s|@@FONT@@|${FONT}|g" > console.xml
+  popd >/dev/null
+}
+
+#######################################################
+console_config_shortcuts ()
+{
+  local NAME=MSys
+
+  if [ -f "${MKSHRTCT}" ]
+  then
+    pushd ${tdir} >/dev/null
+    if [ -n "${opt_P}" -a "${opt_P_arg}" != "." ]
+    then
+      NAME="${opt_P_arg}/${NAME}"
+    fi
+    ${MKSHRTCT} --desc "MSys Shell (console2)" \
+      ${opt_P} ${opt_D} ${opt_A} \
+      --icon="/msys.ico" --iconoffset=0 \
+      --name="${NAME}" --workingdir=/bin \
+      --arguments='-t "MinGW"' "${INST}/Console.exe"
+
+    if [ -z "${opt_D}" -a -z "${opt_P}" ]
+    then 
+      printf "Placing shortcut in $HOME\n"
+      mv ${NAME}.lnk ${HOME}/
+    fi
+    popd >/dev/null
+  fi
+}
+
+#######################################################
+console_config_uninstall ()
+{
+  local F
+
+  if [ -d ${INST} ]
+  then
+    find "${INST}" -type f | while read F ; do
+      case "$F" in
+        */console.xml.in   ) verbose rm -f "$F" || /bin/true ;;
+        */console.xml.orig ) verbose rm -f "$F" || /bin/true ;;
+        */console.xml*     ) ;;
+        *                  ) verbose rm -f "$F" || /bin/true ;;
+      esac
+    done
+
+    find "${INST}" -type d | sort -r | while read F ; do
+      verbose rmdir "$F" || /bin/true
+    done
+  fi
+}
+
+###############
+## Main code ##
+###############
+
+PKG=${PKGBASE}${BITWIDTH}${PKGTYPE}
+console_config_check_reqs
+
+if [ -n "${opt_u}" ]
+then
+
+  console_config_uninstall
+
+else
+
+  tdir=$(mktemp -d /tmp/config-console2-XXXXXX)
+  trap console_config_cleanup EXIT
+  console_config_download
+  console_config_protect
+  console_config_unpack
+  console_config_configure
+  console_config_shortcuts
+
+fi
+
+printf "Success!\n"
+

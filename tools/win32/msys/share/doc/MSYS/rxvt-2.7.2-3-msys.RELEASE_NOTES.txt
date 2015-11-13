@@ -1,0 +1,167 @@
+msys rxvt
+========================================================================
+VT102 terminal emulator for both X and Windows. This version has been
+modified and compiled for use in the MSYS environment, and does not
+attempt to use an X display even if available; it always operates in
+"native" Windows mode.  It should be installed into the / == /usr
+directory, which is usually but not always, C:\msys\1.0.
+
+Runtime requirements:
+  msysCORE-1.0.14-1-msys-1.0.14-bin
+
+Build requirements (these, or newer)
+  MSYS toolchain
+    binutils-2.19.51-3-msys-1.0.13-bin
+    gcc-3.4.4-3-msys-1.0.13-bin
+    w32api-3.14-3-msys-1.0.12-dev
+    msysCORE-1.0.14-1-msys-1.0.14-dev
+
+  MSYS Environment
+    coreutils-5.97-3-msys-1.0.13-bin
+    make-3.81-3-msys-1.0.13-bin
+    bash-3.1.17-3-msys-1.0.13-bin
+    tar-1.23-1-msys-1.0.13-bin
+    xz-4.999.9beta_20100401-1-msys-1.0.13-bin
+    liblzma-4.999.9beta_20100401-1-msys-1.0.13-dll-1
+    file-5.04-2-msys-1.0.13-bin
+    grep-2.5.4-2-msys-1.0.13-bin
+    patch-2.6.1-1-msys-1.0.13-bin
+    sed-4.2.1-2-msys-1.0.13-bin
+    gawk-3.1.7-2-msys-1.0.13-bin
+ 
+Canonical homepage:
+  http://sourceforge.net/projects/rxvt/
+
+Canonical download:
+  svn co https://rxvt.svn.sourceforge.net/svnroot/rxvt/tags/rxvt-2-7-2 rxvt-2.7.2
+  find rxvt-2.7.2 -name ".svn" | xargs rm -rf
+  tar cvJf rxvt-2.7.2.tar.xz rxvt-2.7.2
+
+License:
+  GPLv2+
+
+Language:
+  C
+
+========================================================================
+
+Build instructions:
+  unpack rxvt-2.7.2-X-msys-1.0.15-src.tar.lzma
+  ./msys-build-rxvt rxvt-2.7.2.tar.xz
+
+This will create:
+  rxvt-2.7.2-X-msys-1.0.15-src.tar.lzma
+  rxvt-2.7.2-X-msys-1.0.15-bin.tar.lzma
+  rxvt-2.7.2-X-msys-1.0.15-doc.tar.lzma
+  rxvt-2.7.2-X-msys-1.0.15-lic.tar.lzma
+
+========================================================================
+
+Test suite results
+
+This section of this document is updated with each new release.
+No history is maintained here.
+
+No builtin test suite. Brief manual testing OK.
+
+========================================================================
+Port Notes:
+
+Configuration:
+
+  Rxvt version:               2.7.2 : 21 DECEMBER 1999
+  Source code location:       .
+  Install path:               /usr/bin
+  Compiler:                   gcc
+  Compiler flags:             -O3 -fno-unit-at-a-time -s -march=i386 -mtune=i686
+  malloc support:             system default
+  Xpm library:                -L/usr/src/rxvt/_build/W11/lib -lXpm
+
+Adding modules:
+  graphics.o:                 no
+  grkelot.o:                  no
+  logging.o:                  no
+  menubar.o:                  yes
+  strings.o:                  no
+  xpm.o:                      yes
+
+The following are set in config.h
+
+  multichar glyph languages:  no
+  pty/tty type:               BSD
+  utmp support:               disabled
+
+Usage v2.7.2 : (XPM,menubar,.Xdefaults)
+rxvt [-help]
+ [-display string] [-tn string] [-geometry geometry] [-C] [-iconic] [-/+rv]
+ [-/+ls] [-/+sb] [-/+sr] [-/+st] [-/+si] [-/+sk] [-/+ut] [-/+vb] [-bg color]
+ [-fg color] [-pixmap file[;geom]] [-fb fontname] [-fn fontname]
+ [-name string] [-title string] [-n string] [-cr color] [-pr color]
+ [-bd color] [-sl number] [-w number] [-b number] [-mod modifier]
+ [-e command arg ...]
+
+========================================================================
+
+----------  rxvt-2.7.2-3 -- 2010 May 26 -----------
+* Revert to original MSYS release, based on the upstream 2.7.2
+  source code. Reason: could not eliminate flickering black cmd
+  windows when launching native apps from the rxvt console.
+  For more information, see:
+     http://thread.gmane.org/gmane.comp.gnu.mingw.user/32490/focus=32644
+* Although, we retain renaming the W11 DLL as 'msys-W11.dll'
+
+----------  rxvt-2.7.10.20050409-2 -- unreleased -----------
+* Rebuild with latest msys-gcc-3.x compiler, against msys 1.0.13
+* Link against DLL version of libregex
+* Restore "extra" console hiding code (which had been removed in the
+  cygwin version, and in the -1 release). This should eliminate "popup"
+  dos boxes when running gcc, but at the expense of possible hiding
+  "interactive" dos boxes used to launch rxvt sessions.  See
+  http://cygwin.com/ml/cygwin/2006-05/msg00403.html
+
+----------  rxvt-2.7.10.20050409-1 -- 2009 Aug 12 -----------
+* First release of rxvt for msys using new packaging standard.
+* DLL is now named "msys-W11.dll", to avoid conflicts with
+  cygwin rxvt.
+* Incorporates changes from cygwin rxvt-20050409-21, including
+  = Add -uas (--unixAltSpace) option to bypass Win32 handling
+    of Alt-Space key combination, and allow client (e.g.
+    Emacs) to handle it instead.
+  = New command-line parameter "-cd directory" which starts rxvt
+    in the given directory.  This allows you to set up a context
+    menu item for Windows Explorer directly, without requiring
+    chere. The registry entry would be:
+      REGEDIT4
+      [HKEY_CLASSES_ROOT\Folder\shell\Shell...\command]
+      @="c:\\cygwin\\usr\\bin\\rxvt.exe -cd \"%1\""
+    (along with whatever other command line arguments you wish).
+    Submitted by Mark Robinson
+  = New command-line parameter "-swapButtons" or "-bs" (since
+    "sb" is already allocated).  This option swaps the middle and
+    right mouse buttons thus making life a little easier for those
+    folks with 2-button mice, or who don't wish to use the scroll
+    wheel as the third button.  Submitted by Mark Robinson
+  = Fixed bugs in man page
+  = Restore Alt-Space behavior (e.g. pass thru to windows, to
+    allow access to Minimize/Maximze/Restore menu).
+  = Included two small xpm's for use as Rxvt*backgroundPixmap
+    resources; added commented-out example of usage to 
+    app-defaults file.
+  = Fix issue with font size
+  = Add new icon from run.exe
+  = Fix ALT-Fn key
+  = Propagate signals to child process (cmd processor shell) so
+    that Alt-F4 or 'click x buttom' on rxvt window don't leave
+    zombie shells behind.
+  = Removed hide_console code.  As it happens, the W11 wrapper
+    library already had similar -- smarter -- code for hiding 
+    the console.  This pre-existing code did not hide the console
+    rxvt was invoked via a bash-in-cmd.exe shell, whereas the now-removed
+    code did do so.  Thus, invoking 'rxvt' from the command line in such
+    a shell permanently hid the user's existing session.  This was bad.
+    + However, this means we will need a different solution for when we
+      invoke rxvt via a script and WANT the script's console hidden.
+      See http://cygwin.com/ml/cygwin/2006-05/msg00403.html
+  = Turned on support for 24bit visuals (may only have effect when in
+    X mode), as well as selection scrolling.
+
