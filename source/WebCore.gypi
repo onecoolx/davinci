@@ -41,6 +41,7 @@
     '<(lib_dir)/Modules/notifications',
     '<(lib_dir)/Modules/proximity',
     '<(lib_dir)/Modules/quota',
+    '<(lib_dir)/Modules/speech',
     '<(lib_dir)/Modules/webaudio',
     '<(lib_dir)/Modules/webdatabase',
     '<(lib_dir)/Modules/websockets',

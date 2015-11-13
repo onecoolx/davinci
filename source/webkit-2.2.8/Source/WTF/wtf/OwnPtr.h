@@ -47,7 +47,6 @@ namespace WTF {
         typedef ValueType* PtrType;
 
         OwnPtr() : m_ptr(0) { }
-        OwnPtr(std::nullptr_t) : m_ptr(0) { }
 
         // See comment in PassOwnPtr.h for why this takes a const reference.
         template<typename U> OwnPtr(const PassOwnPtr<U>& o);
@@ -78,7 +77,7 @@ namespace WTF {
         operator UnspecifiedBoolType() const { return m_ptr ? &OwnPtr::m_ptr : 0; }
 
         OwnPtr& operator=(const PassOwnPtr<T>&);
-        OwnPtr& operator=(std::nullptr_t) { clear(); return *this; }
+        OwnPtr& operator=(void*) { clear(); return *this; }
         template<typename U> OwnPtr& operator=(const PassOwnPtr<U>&);
 
 #if COMPILER_SUPPORTS(CXX_RVALUE_REFERENCES)
