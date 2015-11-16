@@ -10,6 +10,8 @@ def MakeDirIfNotExists(path):
   is_exit = os.path.exists(path)
   if not is_exit:
     os.makedirs(path)
+    return True
+  return False
 
 # write lines file
 def WriteLinesToFile(contents, path):
@@ -106,7 +108,9 @@ def Main(src_dir, dst_dir):
   curr_dir = os.getcwd()
   # make output dir.
   os.chdir(src_dir)
-  MakeDirIfNotExists(dst_dir)
+  if not MakeDirIfNotExists(dst_dir):
+    print "Generated code is existed!"
+    return 0
 
   feature_list = ReadFromFile("WebKitFeatures.txt")
   GenerateMacrosHeader("WebKitFeatures.txt", dst_dir+"/DavinciFeatureDefines.h")
