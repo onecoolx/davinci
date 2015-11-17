@@ -29,6 +29,7 @@
   ],
   'include_dirs': [
     '<(lib_dir)',
+    '<(lib_dir)/Generated',
     '<(lib_dir)/Modules/battery',
     '<(lib_dir)/Modules/filesystem',
     '<(lib_dir)/Modules/gamepad',
