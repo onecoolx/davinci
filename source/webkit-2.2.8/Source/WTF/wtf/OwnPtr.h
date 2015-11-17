@@ -78,7 +78,7 @@ namespace WTF {
         operator UnspecifiedBoolType() const { return m_ptr ? &OwnPtr::m_ptr : 0; }
 
         OwnPtr& operator=(const PassOwnPtr<T>&);
-        OwnPtr& operator=(void*) { clear(); return *this; }
+        OwnPtr& operator=(std::nullptr_t) { clear(); return *this; }
         template<typename U> OwnPtr& operator=(const PassOwnPtr<U>&);
 
 #if COMPILER_SUPPORTS(CXX_RVALUE_REFERENCES)
