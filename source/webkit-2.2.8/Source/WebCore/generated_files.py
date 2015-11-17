@@ -226,7 +226,13 @@ def Main(src_dir, dst_dir):
   subprocess.call(["flex", "--noline", "--nounistd", "--outfile="+dst_dir+"/glslang.cpp",\
   "../ThirdParty/ANGLE/src/compiler/glslang.l", dst_dir+"/glslang_tab.cpp"])
 
-  # step22, idl files generator
+  # step22, ColorData.cpp
+  os.chdir(dst_dir)
+  subprocess.call(["perl", curr_dir+"/"+src_dir+"/make-hash-tools.pl", ".", curr_dir+"/"+src_dir+"/platform/ColorData.gperf"])
+  os.chdir(curr_dir)
+  os.chdir(src_dir)
+
+  # step23, idl files generator
   idl_files = GetFileListDir(".", ['.idl'], "", True)
   idl_files.insert(0, dst_dir + "/InternalSettingsGenerated.idl")
   idl_files_list = dst_dir+"/idl_files_list"
@@ -237,7 +243,7 @@ def Main(src_dir, dst_dir):
   dst_dir+"/SharedWorkerGlobalScopeConstructors.idl", "--dedicatedWorkerGlobalScopeConstructorsFile", dst_dir+"/DedicatedWorkerGlobalScopeConstructors.idl",\
   "--supplementalDependencyFile", dst_dir+"/idl_supplemental_dependencies"])
 
-  # step23, idl to JS files
+  # step24, idl to JS files
   idl_files.append(dst_dir + "/DOMWindowConstructors.idl")
   idl_files.append(dst_dir + "/WorkerGlobalScopeConstructors.idl")
   idl_files.append(dst_dir + "/SharedWorkerGlobalScopeConstructors.idl")
