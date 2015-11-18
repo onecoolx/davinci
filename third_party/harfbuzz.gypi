@@ -9,9 +9,11 @@
     'lib_name': 'harfbuzz',
   },
   'target_name': '<(lib_name)',
-  'type': 'static_library',
+  'type': 'shared_library',
   'dependencies': [
     'freetype2',
+    'icuuc',
+    'icui18n',
   ],
   'defines': [
     'HAVE_CONFIG_H',
@@ -135,6 +137,11 @@
       'sources': [
         '<(lib_dir)/src/hb-uniscribe.cc',
         '<(lib_dir)/src/hb-uniscribe.h',
+        '<(lib_dir)/libharfbuzz.def',
+      ],
+      'libraries': [
+        '-lusp10',
+        '-lrpcrt4',
       ],
       'include_dirs': [
         '$(OutDir)/include',

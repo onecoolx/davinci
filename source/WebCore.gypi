@@ -198,6 +198,8 @@
       ],
       'defines': [
       ],
+      'sources': [ 
+      ],
       'cflags': [
         '-fstrict-aliasing',
         '-fvisibility=hidden',
@@ -205,8 +207,6 @@
       'cflags_cc': [
         '-fvisibility-inlines-hidden',
         '-fno-rtti',
-      ],
-      'sources': [ 
       ],
       'actions': [
       {
