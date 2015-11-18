@@ -178,10 +178,10 @@
          '<(lib_dir)/Generated',
        ],
        'action': [
-         'python',
-         '<(lib_dir)/generated_files.py',
+         'call',
+         '<(lib_dir)/generated_files.bat',
          '<(_inputs)',
-         'Generated',
+         '<(lib_dir)/Generated',
        ],
        'msvs_cygwin_shell': 0,
       }],

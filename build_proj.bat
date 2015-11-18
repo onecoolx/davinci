@@ -1,2 +1,2 @@
-./tools/gyp/gyp --depth=./ all.gyp --generator-output=vcproj
+tools\gyp\gyp --depth=./ all.gyp --generator-output=vcproj
 
