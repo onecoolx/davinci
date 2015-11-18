@@ -9,7 +9,7 @@
     'lib_name': 'freetype2',
   },
   'target_name': '<(lib_name)',
-  'type': 'static_library',
+  'type': 'shared_library',
   'dependencies': [
     'png',
     'zlib',
@@ -50,6 +50,7 @@
     '<(lib_dir)/src/base/ftbase.c',
     '<(lib_dir)/src/base/ftbitmap.c',
     '<(lib_dir)/src/base/ftglyph.c',
+    '<(lib_dir)/src/base/ftinit.c',
     '<(lib_dir)/src/base/ftsystem.c',
     '<(lib_dir)/src/bdf/bdf.h',
     '<(lib_dir)/src/bdf/bdfdrivr.h',
@@ -209,6 +210,9 @@
   ],
   'conditions': [
     ['OS=="win"', {
+      'defines': [
+        'BUILD_FT2',
+      ],
       'sources': [
         '<(lib_dir)/src/winfonts/winfnt.c',
         '<(lib_dir)/src/winfonts/winfnt.h',
