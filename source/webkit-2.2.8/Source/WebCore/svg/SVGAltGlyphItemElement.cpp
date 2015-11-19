@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2011 Leo Yang <leoyang@webkit.org>
  *
  * This library is free software; you can redistribute it and/or
