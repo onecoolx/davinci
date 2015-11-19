@@ -47,7 +47,7 @@
 #include "npruntime_internal.h"
 #endif
 
-#if OS(WINDOWS) && (PLATFORM(GTK) || PLATFORM(QT))
+#if OS(WINDOWS) && (PLATFORM(GTK) || PLATFORM(QT) || PLATFORM(DAVINCI))
 typedef struct HWND__* HWND;
 typedef HWND PlatformPluginWidget;
 #else
