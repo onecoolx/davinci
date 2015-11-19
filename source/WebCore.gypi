@@ -157,6 +157,7 @@
   'conditions': [
     ['OS=="win"', {
       'include_dirs': [
+        '<(lib_dir)/plugins/win',
         '$(OutDir)/include',
         '$(OutDir)/include/uc',
         '$(OutDir)/include/i18n',
@@ -185,7 +186,7 @@
        ],
        'msvs_cygwin_shell': 0,
       }],
-      'msvs_disabled_warnings': [4800, 4805, 4355, 4396, 4244, 4251, 4344, 4065],
+      'msvs_disabled_warnings': [4800, 4805, 4355, 4396, 4244, 4251, 4344, 4065, 4018],
     }],
     ['OS=="linux"', {
       'include_dirs': [
