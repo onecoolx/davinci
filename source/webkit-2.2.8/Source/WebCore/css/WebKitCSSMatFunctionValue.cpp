@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2013 Adobe Systems Incorporated. All rights reserved.
  * Copyright (C) 2013 Apple Inc. All rights reserved.
  *

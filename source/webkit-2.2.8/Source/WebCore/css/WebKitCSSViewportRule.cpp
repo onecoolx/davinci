@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2012 Intel Corporation. All rights reserved.
  * Copyright (C) 2012 Apple Inc. All rights reserved.
  *
