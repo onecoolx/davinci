@@ -1002,8 +1002,8 @@
          '$(OutDir)/<(lib_name)',
        ],
        'action': [
-         'python',
-         '<(lib_dir)/generated_files.py',
+         'call',
+         '<(lib_dir)/generated_files.bat',
          '<(_inputs)',
          '$(OutDir)/<(lib_name)',
        ],
