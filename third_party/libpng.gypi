@@ -86,6 +86,22 @@
         ],
         'msvs_cygwin_shell': 0,
        },
+       {
+        'action_name': 'install_header1',
+        'inputs': [
+          '<(lib_dir)/pngconf.h',
+         ],
+        'outputs': [
+          '$(OutDir)/include/pngconf.h',
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/include/pngconf.h',
+        ],
+        'msvs_cygwin_shell': 0,
+       },
       ],
     }],
     ['OS=="linux"', {
@@ -121,6 +137,21 @@
         'tools/cp.py',
         '<(_inputs)',
         '$(builddir)/include/png.h',
+        ],
+       },
+       {
+        'action_name': 'install_header1',
+        'inputs': [
+          '<(lib_dir)/pngconf.h',
+        ],
+        'outputs': [
+          '$(builddir)/include/pngconf.h',
+        ],
+        'action': [
+        'python',
+        'tools/cp.py',
+        '<(_inputs)',
+        '$(builddir)/include/pngconf.h',
         ],
        },
       ],

@@ -165,8 +165,11 @@
         '$(OutDir)/include/freetype',
         '$(OutDir)/include/harfbuzz',
         '$(OutDir)/<(lib_name)',
+        '$(OutDir)/../../build',
       ],
       'defines': [
+        'HAVE_BOOLEAN',
+        'XMD_H',
       ],
       'sources': [ 
       ],
@@ -187,7 +190,7 @@
        ],
        'msvs_cygwin_shell': 0,
       }],
-      'msvs_disabled_warnings': [4800, 4805, 4355, 4396, 4244, 4251, 4344, 4065, 4018, 4503],
+      'msvs_disabled_warnings': [4800, 4805, 4355, 4396, 4244, 4251, 4344, 4065, 4018, 4503, 4996],
     }],
     ['OS=="linux"', {
       'include_dirs': [
