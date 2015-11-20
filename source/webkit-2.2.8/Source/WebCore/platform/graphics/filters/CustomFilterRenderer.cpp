@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2012 Adobe Systems Incorporated. All rights reserved.
  * Copyright (C) 2011 Adobe Systems Incorporated. All rights reserved.
  * Copyright (C) 2012 Company 100, Inc. All rights reserved.
