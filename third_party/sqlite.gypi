@@ -9,7 +9,7 @@
     'lib_name': 'sqlite',
   },
   'target_name': '<(lib_name)',
-  'type': 'shared_library',
+  'type': 'static_library',
   'dependencies': [
   ],
   'defines': [
