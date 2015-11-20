@@ -151,7 +151,7 @@
        {
         'action_name': 'install_header2',
         'inputs': [
-          '<(lib_dir)/jconfig.h',
+          '<(lib_dir)/build/jconfig.h',
         ],
         'outputs': [
           '$(builddir)/include/jconfig.h',
