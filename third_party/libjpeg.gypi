@@ -77,8 +77,107 @@
   ],
   'conditions': [
     ['OS=="win"', {
+      'actions': [
+       {
+        'action_name': 'install_header1',
+        'inputs': [
+          '<(lib_dir)/jpeglib.h',
+         ],
+        'outputs': [
+          '$(OutDir)/include/jpeglib.h',
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/include/jpeglib.h',
+        ],
+        'msvs_cygwin_shell': 0,
+       },
+       {
+        'action_name': 'install_header2',
+        'inputs': [
+          '<(lib_dir)/build/jconfig.h',
+         ],
+        'outputs': [
+          '$(OutDir)/include/jconfig.h',
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/include/jconfig.h',
+        ],
+        'msvs_cygwin_shell': 0,
+       },
+       {
+        'action_name': 'install_header3',
+        'inputs': [
+          '<(lib_dir)/jmorecfg.h',
+         ],
+        'outputs': [
+          '$(OutDir)/include/jmorecfg.h',
+         ],
+        'action': [
+          'python',
+          'tools/cp.py',
+          '<(_inputs)',
+          '$(OutDir)/include/jmorecfg.h',
+        ],
+        'msvs_cygwin_shell': 0,
+       },
+      ],
       'sources': [
         '<(lib_dir)/win/jpeg8.def',
+      ],
+    }],
+    ['OS=="linux"', {
+      'actions': [
+       {
+        'action_name': 'install_header1',
+        'inputs': [
+          '<(lib_dir)/jpeglib.h',
+        ],
+        'outputs': [
+          '$(builddir)/include/jpeglib.h',
+        ],
+        'action': [
+        'python',
+        'tools/cp.py',
+        '<(_inputs)',
+        '$(builddir)/include/jpeglib.h',
+        ],
+       },
+       {
+        'action_name': 'install_header2',
+        'inputs': [
+          '<(lib_dir)/jconfig.h',
+        ],
+        'outputs': [
+          '$(builddir)/include/jconfig.h',
+        ],
+        'action': [
+        'python',
+        'tools/cp.py',
+        '<(_inputs)',
+        '$(builddir)/include/jconfig.h',
+        ],
+       },
+       {
+        'action_name': 'install_header3',
+        'inputs': [
+          '<(lib_dir)/jmorecfg.h',
+        ],
+        'outputs': [
+          '$(builddir)/include/jmorecfg.h',
+        ],
+        'action': [
+        'python',
+        'tools/cp.py',
+        '<(_inputs)',
+        '$(builddir)/include/jmorecfg.h',
+        ],
+       },
       ],
     }],
   ],
