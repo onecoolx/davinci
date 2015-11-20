@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2011 Google Inc.  All rights reserved.
  * Copyright (C) 2011, 2012, 2013 Apple Inc. All rights reserved.
  *

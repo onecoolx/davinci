@@ -151,6 +151,7 @@
 	'<(lib_root_dir)/JavaScriptCore/tools',
 	'<(lib_root_dir)/JavaScriptCore/yarr',
     '<(lib_root_dir)/WTF',
+    '<(lib_root_dir)/ThirdParty/ANGLE/include',
     '<(lib_root_dir)/ThirdParty/ANGLE/include/GLSLANG',
     '<(lib_root_dir)/ThirdParty/ANGLE/include/KHR',
   ],
