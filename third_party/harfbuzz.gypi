@@ -165,7 +165,7 @@
         ],
         'msvs_cygwin_shell': 0,
        },],
-        'msvs_disabled_warnings': [4800],
+       'msvs_disabled_warnings': [4800],
     }],
     ['OS=="linux"', {
       'defines': [

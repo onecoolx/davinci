@@ -226,7 +226,7 @@ ID3D11RasterizerState *RenderStateCache::getRasterizerState(const gl::Rasterizer
         rasterDesc.FillMode = D3D11_FILL_SOLID;
         rasterDesc.CullMode = cullMode;
         rasterDesc.FrontCounterClockwise = (rasterState.frontFace == GL_CCW) ? FALSE: TRUE;
-        rasterDesc.DepthBias = ldexp(rasterState.polygonOffsetUnits, -static_cast<int>(depthSize));
+        rasterDesc.DepthBias = (INT)ldexp(rasterState.polygonOffsetUnits, -static_cast<int>(depthSize));
         rasterDesc.DepthBiasClamp = 0.0f; // MSDN documentation of DepthBiasClamp implies a value of zero will preform no clamping, must be tested though.
         rasterDesc.SlopeScaledDepthBias = rasterState.polygonOffsetFactor;
         rasterDesc.DepthClipEnable = TRUE;
@@ -380,7 +380,7 @@ ID3D11SamplerState *RenderStateCache::getSamplerState(const gl::SamplerState &sa
         samplerDesc.AddressV = gl_d3d11::ConvertTextureWrap(samplerState.wrapT);
         samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
         samplerDesc.MipLODBias = static_cast<float>(samplerState.lodOffset);
-        samplerDesc.MaxAnisotropy = samplerState.maxAnisotropy;
+        samplerDesc.MaxAnisotropy = (UINT)samplerState.maxAnisotropy;
         samplerDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
         samplerDesc.BorderColor[0] = 0.0f;
         samplerDesc.BorderColor[1] = 0.0f;

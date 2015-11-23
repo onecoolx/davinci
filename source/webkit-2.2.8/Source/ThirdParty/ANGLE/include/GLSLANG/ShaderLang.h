@@ -23,7 +23,7 @@
 #define COMPILER_EXPORT
 #endif
 
-#include "khrplatform.h"
+#include "KHR/khrplatform.h"
 #include <stddef.h>
 
 //

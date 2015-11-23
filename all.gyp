@@ -4,8 +4,6 @@
 # Contact: onecoolx@gmail.com
 
 {
-  'variables': {
-  },
   'includes': [
     './third_party/third_party.gypi',
     './source/WebKit.gypi',

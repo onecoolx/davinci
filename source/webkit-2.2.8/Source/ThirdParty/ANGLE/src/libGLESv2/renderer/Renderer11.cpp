@@ -782,12 +782,12 @@ bool Renderer11::setViewport(const gl::Rectangle &viewport, float zNear, float z
 
     // Clamp width and height first to the gl maximum, then clamp further if we extend past the D3D maximum bounds
     D3D11_VIEWPORT dxViewport;
-    dxViewport.TopLeftX = gl::clamp(actualViewport.x, viewportBounds.start, viewportBounds.end);
-    dxViewport.TopLeftY = gl::clamp(actualViewport.y, viewportBounds.start, viewportBounds.end);
-    dxViewport.Width = gl::clamp(actualViewport.width, 0, getMaxViewportDimension());
-    dxViewport.Height = gl::clamp(actualViewport.height, 0, getMaxViewportDimension());
-    dxViewport.Width = std::min((int)dxViewport.Width, viewportBounds.end - static_cast<int>(dxViewport.TopLeftX));
-    dxViewport.Height = std::min((int)dxViewport.Height, viewportBounds.end - static_cast<int>(dxViewport.TopLeftY));
+    dxViewport.TopLeftX = (FLOAT)gl::clamp(actualViewport.x, viewportBounds.start, viewportBounds.end);
+    dxViewport.TopLeftY = (FLOAT)gl::clamp(actualViewport.y, viewportBounds.start, viewportBounds.end);
+    dxViewport.Width = (FLOAT)gl::clamp(actualViewport.width, 0, getMaxViewportDimension());
+    dxViewport.Height = (FLOAT)gl::clamp(actualViewport.height, 0, getMaxViewportDimension());
+    dxViewport.Width = (FLOAT)std::min((int)dxViewport.Width, viewportBounds.end - static_cast<int>(dxViewport.TopLeftX));
+    dxViewport.Height = (FLOAT)std::min((int)dxViewport.Height, viewportBounds.end - static_cast<int>(dxViewport.TopLeftY));
     dxViewport.MinDepth = actualZNear;
     dxViewport.MaxDepth = actualZFar;
 
@@ -2704,8 +2704,8 @@ bool Renderer11::copyTexture(ID3D11ShaderResourceView *source, const gl::Rectang
     D3D11_VIEWPORT viewport;
     viewport.TopLeftX = 0;
     viewport.TopLeftY = 0;
-    viewport.Width = destWidth;
-    viewport.Height = destHeight;
+    viewport.Width = (FLOAT)destWidth;
+    viewport.Height = (FLOAT)destHeight;
     viewport.MinDepth = 0.0f;
     viewport.MaxDepth = 1.0f;
     mDeviceContext->RSSetViewports(1, &viewport);

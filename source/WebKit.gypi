@@ -7,6 +7,16 @@
   'targets': [
        {
           'includes': [
+           './ANGLE.gypi'
+           ],
+       },
+       {
+          'includes': [
+           './GLESv2.gypi'
+           ],
+       },
+       {
+          'includes': [
            './WTF.gypi'
            ],
        },

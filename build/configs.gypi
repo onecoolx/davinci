@@ -20,7 +20,7 @@
             'VCCLCompilerTool': {
 			  'Optimization': '0',
 			  'MinimalRebuild': 'true',
-			  'ExceptionHandling': '0',
+			  'ExceptionHandling': '1',
 			  'BasicRuntimeChecks': '3',
 			  'RuntimeLibrary': '1',
 			  'TreatWChar_tAsBuiltInType': 'false',
@@ -76,7 +76,7 @@
 			  'FavorSizeOrSpeed': '1',
 			  'WholeProgramOptimization': 'true',
 			  'StringPooling': 'true',
-			  'ExceptionHandling': '0',
+			  'ExceptionHandling': '1',
 			  'RuntimeLibrary': '0',
 			  'EnableFunctionLevelLinking': 'true',
 			  'EnableEnhancedInstructionSet': '2',
