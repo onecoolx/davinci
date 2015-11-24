@@ -12,16 +12,6 @@
        },
        {
           'includes': [
-           './GLESv2.gypi'
-           ],
-       },
-       {
-          'includes': [
-           './EGL.gypi'
-           ],
-       },
-       {
-          'includes': [
            './WTF.gypi'
            ],
        },
@@ -35,6 +25,21 @@
             './WebCore.gypi'
           ],
        },
+   ],
+   'conditions': [
+     ['OS=="win"', {
+       'targets': [
+       {
+          'includes': [
+            './GLESv2.gypi'
+          ],
+       },
+       {
+          'includes': [
+            './EGL.gypi'
+          ],
+       }],
+     }],
    ],
 }
 

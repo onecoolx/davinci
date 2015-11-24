@@ -15,8 +15,6 @@
     'WTF',
     'JavaScriptCore',
     'translator',
-    'EGL',
-    'GLESv2',
     'sqlite',
     'curl',
     'icuuc',
@@ -173,6 +171,10 @@
       'defines': [
         'HAVE_BOOLEAN',
         'XMD_H',
+      ],
+      'dependencies': [
+        'EGL',
+        'GLESv2',
       ],
       'sources': [ 
       ],
