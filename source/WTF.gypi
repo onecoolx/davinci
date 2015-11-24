@@ -274,7 +274,7 @@
       'libraries': [
         '-lwinmm',
       ],
-      'msvs_disabled_warnings': [4800, 4355, 4396, 4244],
+      'msvs_disabled_warnings': [4800, 4355, 4396, 4244, 4291],
     }],
     ['OS=="linux"', {
       'include_dirs': [
