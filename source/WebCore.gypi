@@ -14,6 +14,7 @@
   'dependencies': [
     'WTF',
     'JavaScriptCore',
+    'translator',
     'EGL',
     'GLESv2',
     'sqlite',
