@@ -17,6 +17,11 @@
        },
        {
           'includes': [
+           './EGL.gypi'
+           ],
+       },
+       {
+          'includes': [
            './WTF.gypi'
            ],
        },

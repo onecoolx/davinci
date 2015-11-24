@@ -14,6 +14,8 @@
   'dependencies': [
     'WTF',
     'JavaScriptCore',
+    'EGL',
+    'GLESv2',
     'sqlite',
     'curl',
     'icuuc',
@@ -190,7 +192,7 @@
        ],
        'msvs_cygwin_shell': 0,
       }],
-      'msvs_disabled_warnings': [4800, 4805, 4355, 4396, 4244, 4251, 4344, 4065, 4018, 4503, 4996, 4005],
+      'msvs_disabled_warnings': [4800, 4805, 4355, 4396, 4244, 4251, 4291, 4344, 4065, 4018, 4503, 4996, 4005],
     }],
     ['OS=="linux"', {
       'include_dirs': [
