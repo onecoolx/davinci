@@ -7,6 +7,7 @@
   'variables': {
     'lib_root_dir': 'webkit-2.2.8/Source',
     'lib_dir': 'webkit-2.2.8/Source/WebCore',
+    'lib_src': 'WebKit',
     'lib_name': 'WebCore',
   },
   'target_name': '<(lib_name)',
@@ -129,8 +130,8 @@
     '<(lib_dir)/workers',
     '<(lib_dir)/xml',
     '<(lib_dir)/xml/parser',
-    '<(lib_dir)/platform/network/davinci',
-    '<(lib_dir)/platform/graphics/davinci',
+    '<(lib_src)/platform/network/davinci',
+    '<(lib_src)/platform/graphics/davinci',
     '<(lib_root_dir)',
     '<(lib_root_dir)/JavaScriptCore',
     '<(lib_root_dir)/JavaScriptCore/API',

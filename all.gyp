@@ -6,7 +6,7 @@
 {
   'includes': [
     './third_party/third_party.gypi',
-    './source/WebKit.gypi',
+    './source/Davinci.gypi',
     './example/test.gypi',
   ]
 }
