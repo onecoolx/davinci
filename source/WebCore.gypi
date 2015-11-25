@@ -16,6 +16,7 @@
     'WTF',
     'JavaScriptCore',
     'translator',
+    'picasso2_sw',
     'sqlite',
     'curl',
     'icuuc',

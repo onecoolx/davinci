@@ -65,6 +65,11 @@
             './libxslt.gypi'
           ],
        },
+       {
+          'includes': [
+            './picasso.gypi'
+          ],
+       },
    ],
 }
 
