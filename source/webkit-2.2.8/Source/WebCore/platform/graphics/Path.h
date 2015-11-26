@@ -52,6 +52,9 @@ namespace BlackBerry { namespace Platform { namespace Graphics {
     class Path;
 } } }
 typedef BlackBerry::Platform::Graphics::Path PlatformPath;
+#elif PLATFORM(DAVINCI)
+#include <picasso.h>
+typedef ps_path PlatformPath;
 #else
 typedef void PlatformPath;
 #endif
