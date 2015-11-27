@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2005, 2006 Apple Computer, Inc.  All rights reserved.
  *               2010 Dirk Schulze <krit@webkit.org>
+ *               2015 Zhang Ji Peng <onecoolx@gmail.com>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -37,6 +38,7 @@
 
 namespace WebCore {
 
+#if !PLATFORM(DAVINCI)
 AffineTransform::AffineTransform()
 {
     setMatrix(1, 0, 0, 1, 0, 0);
@@ -46,6 +48,7 @@ AffineTransform::AffineTransform(double a, double b, double c, double d, double 
 {
     setMatrix(a, b, c, d, e, f);
 }
+#endif
 
 void AffineTransform::makeIdentity()
 {

@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2005, 2006 Apple Computer, Inc.  All rights reserved.
  *               2010 Dirk Schulze <krit@webkit.org>
+ *               2015 Zhang Ji Peng <onecoolx@gmail.com>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -36,6 +37,9 @@ typedef struct CGAffineTransform CGAffineTransform;
 #include <cairo.h>
 #elif PLATFORM(QT)
 #include <QTransform>
+#elif PLATFORM(DAVINCI)
+#include <picasso.h>
+typedef ps_matrix* PlatformMatrix;
 #endif
 
 namespace WebCore {
@@ -56,6 +60,12 @@ public:
 
     AffineTransform();
     AffineTransform(double a, double b, double c, double d, double e, double f);
+#if PLATFORM(DAVINCI)
+    PlatformMatrix platformTransform(void) const;
+    AffineTransform(const AffineTransform& other);
+    AffineTransform& operator=(const AffineTransform& other);
+    ~AffineTransform();
+#endif
 
 #if USE(CG)
     AffineTransform(const CGAffineTransform&);
@@ -170,6 +180,8 @@ public:
     operator cairo_matrix_t() const;
 #elif PLATFORM(QT)
     operator QTransform() const;
+#elif PLATFORM(DAVINCI)
+    operator PlatformMatrix() const;
 #endif
 
     static AffineTransform translation(double x, double y)
@@ -196,6 +208,9 @@ private:
     }
 
     Transform m_transform;
+#if PLATFORM(DAVINCI)
+    PlatformMatrix m_matrix;
+#endif
 };
 
 AffineTransform makeMapBetweenRects(const FloatRect& source, const FloatRect& dest);

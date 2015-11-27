@@ -5450,6 +5450,7 @@
 	'<(lib_dir)/Generated/JSSVGZoomEvent.h',
     # devinci
     '<(lib_src)/platform/graphics/PathDavinci.cpp',
+    '<(lib_src)/platform/graphics/AffineTransformDavinci.cpp',
   ],
 }
 
