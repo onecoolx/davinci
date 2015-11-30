@@ -10,6 +10,7 @@
 
 #include "AffineTransform.h"
 #include "FloatRect.h"
+#include "GraphicsContext.h"
 #include "StrokeStyleApplier.h"
 #include <math.h>
 #include <wtf/MathExtras.h>

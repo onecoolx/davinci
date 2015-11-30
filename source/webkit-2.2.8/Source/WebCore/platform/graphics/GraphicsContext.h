@@ -60,6 +60,9 @@ class PlatformGraphicsContext;
 }
 }
 using BlackBerry::Platform::Graphics::PlatformGraphicsContext;
+#elif PLATFORM(DAVINCI)
+#include <picasso.h>
+typedef ps_context PlatformGraphicsContext;
 #else
 typedef void PlatformGraphicsContext;
 #endif
