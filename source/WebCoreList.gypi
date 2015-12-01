@@ -5448,7 +5448,8 @@
 	'<(lib_dir)/Generated/JSSVGZoomAndPan.h',
 	'<(lib_dir)/Generated/JSSVGZoomEvent.cpp',
 	'<(lib_dir)/Generated/JSSVGZoomEvent.h',
-    # devinci
+    # davinci
+    '<(lib_src)/platform/CursorDavinci.cpp',
     '<(lib_src)/platform/graphics/PathDavinci.cpp',
     '<(lib_src)/platform/graphics/AffineTransformDavinci.cpp',
   ],

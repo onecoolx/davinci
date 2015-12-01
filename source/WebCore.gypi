@@ -134,6 +134,7 @@
     '<(lib_src)/platform/network',
     '<(lib_src)/platform/graphics',
     '<(lib_root_dir)',
+    '<(lib_root_dir)/../../../include',
     '<(lib_root_dir)/JavaScriptCore',
     '<(lib_root_dir)/JavaScriptCore/API',
 	'<(lib_root_dir)/JavaScriptCore/ForwardingHeaders',
