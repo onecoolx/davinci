@@ -40,4 +40,9 @@ Cursor& Cursor::operator=(const Cursor& other)
     return *this;
 }
 
+void Cursor::ensurePlatformCursor() const
+{
+    m_platformCursor = (DS_CURSOR)m_type;
+}
+
 }
