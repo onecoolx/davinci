@@ -8,8 +8,11 @@
 #ifndef _DAVINCI_GLOBAL_H_
 #define _DAVINCI_GLOBAL_H_
 
+namespace WebCore {
+
 int bytesPerPixel(void);
 int screenWidth(void);
 int screenHeight(void);
 
+}
 #endif /*_DAVINCI_GLOBAL_H_*/
