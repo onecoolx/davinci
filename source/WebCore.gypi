@@ -91,6 +91,7 @@
     '<(lib_dir)/platform/graphics/filters/texmap',
     '<(lib_dir)/platform/graphics/freetype',
     '<(lib_dir)/platform/graphics/gpu',
+    '<(lib_dir)/platform/graphics/opengl',
     '<(lib_dir)/platform/graphics/harfbuzz',
     '<(lib_dir)/platform/graphics/harfbuzz/ng',
     '<(lib_dir)/platform/graphics/opengl',
