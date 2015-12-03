@@ -5467,6 +5467,7 @@
     '<(lib_src)/platform/SoundDavinci.cpp',
     '<(lib_src)/platform/WidgetDavinci.cpp',
     '<(lib_src)/platform/DavinciGlobal.cpp',
+    '<(lib_src)/platform/graphics/GradientDavinci.cpp',
     '<(lib_src)/platform/graphics/PathDavinci.cpp',
     '<(lib_src)/platform/graphics/AffineTransformDavinci.cpp',
     '<(lib_src)/platform/graphics/GraphicsContextDavinci.cpp',
