@@ -39,7 +39,7 @@
 
 namespace WebCore {
 
-#if PLATFORM(WIN) || PLATFORM(QT) || USE(CAIRO)
+#if PLATFORM(WIN) || PLATFORM(QT) || USE(CAIRO) || PLATFORM(DAVINCI)
 DrawingBuffer::DrawingBuffer(GraphicsContext3D* context, const IntSize& size, bool multisampleExtensionSupported, bool packedDepthStencilExtensionSupported, PreserveDrawingBuffer preserveDrawingBuffer, AlphaRequirement alpha)
     : m_preserveDrawingBuffer(preserveDrawingBuffer)
     , m_alpha(alpha)

@@ -5456,6 +5456,7 @@
     '<(lib_src)/platform/graphics/PathDavinci.cpp',
     '<(lib_src)/platform/graphics/AffineTransformDavinci.cpp',
     '<(lib_src)/platform/graphics/GraphicsContextDavinci.cpp',
+    '<(lib_src)/platform/graphics/GraphicsContext3DDavinci.cpp',
   ],
 }
 
