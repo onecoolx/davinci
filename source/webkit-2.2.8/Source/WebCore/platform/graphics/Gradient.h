@@ -59,6 +59,9 @@ class Gradient;
 }
 }
 typedef BlackBerry::Platform::Graphics::Gradient* PlatformGradient;
+#elif PLATFORM(DAVINCI)
+#include <picasso.h>
+typedef ps_gradient* PlatformGradient;
 #else
 typedef void* PlatformGradient;
 #endif
