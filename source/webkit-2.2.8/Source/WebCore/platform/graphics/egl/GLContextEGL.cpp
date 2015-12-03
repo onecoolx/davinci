@@ -35,7 +35,7 @@
 #include "OpenGLShims.h"
 #endif
 
-#if ENABLE(ACCELERATED_2D_CANVAS)
+#if ENABLE(ACCELERATED_2D_CANVAS) && !PLATFORM(DAVINCI)
 #include <cairo-gl.h>
 #endif
 

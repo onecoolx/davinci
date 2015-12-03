@@ -25,8 +25,11 @@
 #include <wtf/Noncopyable.h>
 #include <wtf/PassOwnPtr.h>
 
-#if USE(EGL) && !PLATFORM(GTK)
+#if USE(EGL) && !PLATFORM(GTK) && !PLATFORM(DAVINCI)
 #include "eglplatform.h"
+typedef EGLNativeWindowType GLNativeWindowType;
+#elif USE(EGL) && PLATFORM(DAVINCI)
+#include "EGL/eglplatform.h"
 typedef EGLNativeWindowType GLNativeWindowType;
 #else
 typedef uint64_t GLNativeWindowType;
