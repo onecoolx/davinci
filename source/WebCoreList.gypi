@@ -3937,6 +3937,7 @@
     '<(lib_dir)/platform/graphics/Font.h',
     '<(lib_dir)/platform/graphics/FontMetrics.h',
     '<(lib_dir)/platform/graphics/FontOrientation.h',
+    '<(lib_dir)/platform/graphics/FontPlatformData.cpp',
     '<(lib_dir)/platform/graphics/FontPlatformData.h',
     '<(lib_dir)/platform/graphics/FontRenderingMode.h',
     '<(lib_dir)/platform/graphics/FontSelector.h',
