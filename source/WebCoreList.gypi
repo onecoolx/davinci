@@ -5463,6 +5463,7 @@
     '<(lib_dir)/Generated/JSSVGZoomEvent.h',
     # davinci
     '<(lib_src)/platform/CursorDavinci.cpp',
+    '<(lib_src)/platform/LocalizedStringsDavinci.cpp',
     '<(lib_src)/platform/PlatformScreenDavinci.cpp',
     '<(lib_src)/platform/SoundDavinci.cpp',
     '<(lib_src)/platform/WidgetDavinci.cpp',
