@@ -183,6 +183,9 @@
       ],
       'sources': [ 
       ],
+      'libraries': [
+        '-lShlwapi',
+      ],
       'actions': [
       {
        'action_name': 'generated_files',

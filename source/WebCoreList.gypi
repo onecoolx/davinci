@@ -5479,6 +5479,8 @@
       'sources': [ 
         '<(lib_dir)/platform/win/FileSystemWin.cpp',
         '<(lib_dir)/platform/win/SharedBufferWin.cpp',
+        '<(lib_dir)/platform/win/PathWalker.cpp',
+        '<(lib_dir)/platform/win/PathWalker.h',
       ]
     }],
     ['OS=="linux"', {
