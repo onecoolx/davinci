@@ -87,6 +87,7 @@
     '<(lib_dir)/platform/graphics',
     '<(lib_dir)/platform/graphics/cpu/arm',
     '<(lib_dir)/platform/graphics/cpu/arm/filters/',
+    '<(lib_dir)/platform/graphics/egl',
     '<(lib_dir)/platform/graphics/filters',
     '<(lib_dir)/platform/graphics/filters/texmap',
     '<(lib_dir)/platform/graphics/freetype',
