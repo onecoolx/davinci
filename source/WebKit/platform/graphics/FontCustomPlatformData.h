@@ -1,5 +1,9 @@
-#ifndef FontCustomPlatformDataDavinci_h
-#define FontCustomPlatformDataDavinci_h
+/*
+ * Copyright (C) 2015 Zhang Ji Peng <onecoolx@gmail.com>. All rights reserved.
+ */
+
+#ifndef FontCustomPlatformData_h
+#define FontCustomPlatformData_h
 
 #include "FontOrientation.h"
 #include "FontRenderingMode.h"
@@ -10,6 +14,7 @@
 namespace WebCore {
 
 class FontPlatformData;
+class MonotypeFont;
 class SharedBuffer;
 
 struct FontCustomPlatformData {
@@ -30,4 +35,4 @@ FontCustomPlatformData* createFontCustomPlatformData(SharedBuffer*);
 
 } // namespace WebCore
 
-#endif // FontCustomPlatformDataDavinci_h
+#endif // FontCustomPlatformData_h
