@@ -5474,5 +5474,19 @@
     '<(lib_src)/platform/graphics/GraphicsContextDavinci.cpp',
     '<(lib_src)/platform/graphics/GraphicsContext3DDavinci.cpp',
   ],
+  'conditions': [
+    ['OS=="win"', {
+      'sources': [ 
+        '<(lib_dir)/platform/win/FileSystemWin.cpp',
+        '<(lib_dir)/platform/win/SharedBufferWin.cpp',
+      ]
+    }],
+    ['OS=="linux"', {
+      'sources': [ 
+        '<(lib_dir)/platform/posix/FileSystemPOSIX.cpp',
+        '<(lib_dir)/platform/posix/SharedBufferPOSIX.cpp',
+      ]
+    }],
+  ],
 }
 
