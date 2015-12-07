@@ -208,8 +208,6 @@ bool PluginView::platformGetValue(NPNVariable variable, void* value, NPError* re
 
     switch (variable) {
     case NPNVxDisplay:
-        *static_cast<void**>(value) = static_cast<Display*>(ecore_x_display_get());
-        *result = NPERR_NO_ERROR;
         return true;
 
     case NPNVxtAppContext:
@@ -256,8 +254,7 @@ bool PluginView::platformGetValue(NPNVariable variable, void* value, NPError* re
     }
 
     case NPNVnetscapeWindow: {
-        if (!evas)
-            return false;
+        return false;
     }
 
     case NPNVToolkit:
