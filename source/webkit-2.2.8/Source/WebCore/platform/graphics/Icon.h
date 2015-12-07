@@ -70,6 +70,8 @@ private:
 #elif PLATFORM(EFL)
     Icon();
     Evas_Object* m_icon;
+#elif PLATFORM(DAVINCI)
+	Icon();
 #endif
 };
 
