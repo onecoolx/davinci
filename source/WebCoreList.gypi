@@ -5469,6 +5469,7 @@
     '<(lib_src)/platform/EventHandlerDavinci.cpp',
     '<(lib_src)/platform/LocalizedStringsDavinci.cpp',
     '<(lib_src)/platform/PlatformScreenDavinci.cpp',
+    '<(lib_src)/platform/PasteboardDavinci.cpp',
     '<(lib_src)/platform/RunLoopDavinci.cpp',
     '<(lib_src)/platform/SharedTimerDavinci.cpp',
     '<(lib_src)/platform/SoundDavinci.cpp',
