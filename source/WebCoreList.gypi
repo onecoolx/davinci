@@ -5474,6 +5474,7 @@
     '<(lib_src)/platform/WidgetDavinci.cpp',
     '<(lib_src)/platform/DavinciGlobal.cpp',
     '<(lib_src)/platform/graphics/AffineTransformDavinci.cpp',
+    '<(lib_src)/platform/graphics/FontPlatformDataDavinci.cpp',
     '<(lib_src)/platform/graphics/FontCustomPlatformDataDavinci.cpp',
     '<(lib_src)/platform/graphics/FontCustomPlatformData.h',
     '<(lib_src)/platform/graphics/FontDavinci.cpp',
