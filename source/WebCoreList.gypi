@@ -5467,6 +5467,7 @@
     '<(lib_src)/platform/ContextMenuDavinci.cpp',
     '<(lib_src)/platform/ContextMenuItemDavinci.cpp',
     '<(lib_src)/platform/CursorDavinci.cpp',
+    '<(lib_src)/platform/DragControllerDavinci.cpp',
     '<(lib_src)/platform/DragDataDavinci.cpp',
     '<(lib_src)/platform/EventHandlerDavinci.cpp',
     '<(lib_src)/platform/LocalizedStringsDavinci.cpp',
