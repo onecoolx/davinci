@@ -5473,6 +5473,7 @@
     '<(lib_src)/platform/DragDataDavinci.cpp',
     '<(lib_src)/platform/DragImageDavinci.cpp',
     '<(lib_src)/platform/EventHandlerDavinci.cpp',
+    '<(lib_src)/platform/EventLoopDavinci.cpp',
     '<(lib_src)/platform/LocalizedStringsDavinci.cpp',
     '<(lib_src)/platform/PlatformScreenDavinci.cpp',
     '<(lib_src)/platform/PluginViewDavinci.cpp',

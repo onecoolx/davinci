@@ -10,6 +10,11 @@
 
 namespace WebCore {
 
+void Image::drawPattern(GraphicsContext*, const FloatRect& srcRect, const AffineTransform& patternTransform,
+        const FloatPoint& phase, ColorSpace styleColorSpace, CompositeOperator, const FloatRect& destRect, BlendMode)
+{
+}
+
 PassRefPtr<Image> Image::loadPlatformResource(const char* name)
 {
 }
