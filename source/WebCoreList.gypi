@@ -5493,6 +5493,7 @@
     '<(lib_src)/platform/graphics/FontCustomPlatformData.h',
     '<(lib_src)/platform/graphics/FontDavinci.cpp',
     '<(lib_src)/platform/graphics/FontCacheDavinci.cpp',
+    '<(lib_src)/platform/graphics/GlyphPageTreeNodeDavinci.cpp',
     '<(lib_src)/platform/graphics/GradientDavinci.cpp',
     '<(lib_src)/platform/graphics/GraphicsContextDavinci.cpp',
     '<(lib_src)/platform/graphics/GraphicsContext3DDavinci.cpp',
