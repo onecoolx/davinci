@@ -74,6 +74,12 @@ typedef struct OpaqueCFHTTPCookieStorage* CFHTTPCookieStorageRef;
 typedef const struct __CFURLStorageSession* CFURLStorageSessionRef;
 #endif
 
+#if PLATFORM(DAVINCI) && OS(WINDOWS)
+#include <windows.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#endif
+
 namespace WTF {
 class SchedulePair;
 }
@@ -95,7 +101,7 @@ class SharedBuffer;
 template <typename T> class Timer;
 
 class ResourceHandle : public RefCounted<ResourceHandle>
-#if PLATFORM(MAC) || USE(CFNETWORK) || USE(CURL) || USE(SOUP)
+#if PLATFORM(MAC) || USE(CFNETWORK) || USE(CURL) || USE(SOUP) || PLATFORM(DAVINCI)
     , public AuthenticationClient
 #endif
     {
@@ -108,7 +114,7 @@ public:
 #if PLATFORM(MAC) || USE(CFNETWORK)
     void willSendRequest(ResourceRequest&, const ResourceResponse& redirectResponse);
 #endif
-#if PLATFORM(MAC) || USE(CFNETWORK) || USE(CURL) || USE(SOUP)
+#if PLATFORM(MAC) || USE(CFNETWORK) || USE(CURL) || USE(SOUP) || PLATFORM(DAVINCI)
     bool shouldUseCredentialStorage();
     void didReceiveAuthenticationChallenge(const AuthenticationChallenge&);
     virtual void receivedCredential(const AuthenticationChallenge&, const Credential&);
@@ -158,7 +164,7 @@ public:
     static void CALLBACK internetStatusCallback(HINTERNET, DWORD_PTR, DWORD, LPVOID, DWORD);
 #endif
 
-#if PLATFORM(QT) || USE(CURL) || USE(SOUP) || PLATFORM(BLACKBERRY)
+#if PLATFORM(QT) || USE(CURL) || USE(SOUP) || PLATFORM(BLACKBERRY) || PLATFORM(DAVINCI)
     ResourceHandleInternal* getInternal() { return d.get(); }
 #endif
 

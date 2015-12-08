@@ -26,6 +26,7 @@
 #include "config.h"
 #include "CurlDownload.h"
 
+#include <errno.h>
 #include "HTTPParsers.h"
 #include "MainThreadTask.h"
 #include "ResourceRequest.h"

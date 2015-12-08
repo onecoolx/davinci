@@ -37,6 +37,12 @@
 #include <windows.h>
 #endif
 
+#if PLATFORM(DAVINCI) && OS(WINDOWS)
+#include <windows.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#endif
+
 #include <curl/curl.h>
 #include <wtf/Vector.h>
 #include <wtf/text/CString.h>

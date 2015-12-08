@@ -43,7 +43,7 @@
 #include "ResourceError.h"
 #include "ResourceHandle.h"
 #include "ResourceHandleInternal.h"
-#if OS(WINDOWS)
+#if OS(WINDOWS) && !PLATFORM(DAVINCI)
 #include "WebCoreBundleWin.h"
 #endif
 

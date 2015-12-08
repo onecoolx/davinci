@@ -53,6 +53,11 @@
 class Frame;
 #endif
 
+#if PLATFORM(DAVINCI)
+#include <curl/curl.h>
+#include "FormDataStreamCurl.h"
+#endif
+
 #if PLATFORM(QT)
 QT_BEGIN_NAMESPACE
 class QWebNetworkJob;
@@ -125,6 +130,14 @@ namespace WebCore {
             , m_startWhenScheduled(false)
             , m_needsSiteSpecificQuirks(false)
             , m_currentMacChallenge(nil)
+#endif
+#if PLATFORM(DAVINCI)
+            , m_handle(0)
+            , m_url(0)
+            , m_customHeaders(0)
+            , m_cancelled(false)
+            , m_authFailureCount(0)
+            , m_formDataStream(loader)
 #endif
             , m_scheduledFailureType(ResourceHandle::NoFailure)
             , m_failureTimer(loader, &ResourceHandle::fireFailure)
@@ -231,7 +244,17 @@ namespace WebCore {
         AuthenticationChallenge m_hostWebChallenge;
         AuthenticationChallenge m_proxyWebChallenge;
 #endif
+#if PLATFORM(DAVINCI)
+        CURL* m_handle;
+        char* m_url;
+        struct curl_slist* m_customHeaders;
+        ResourceResponse m_response;
+        bool m_cancelled;
+        unsigned short m_authFailureCount;
 
+        FormDataStream m_formDataStream;
+        Vector<char> m_postBytes;
+#endif
         ResourceHandle::FailureType m_scheduledFailureType;
         Timer<ResourceHandle> m_failureTimer;
     };

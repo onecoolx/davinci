@@ -35,6 +35,12 @@
 #include <winsock2.h>
 #endif
 
+#if PLATFORM(DAVINCI) && OS(WINDOWS)
+#include <windows.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#endif
+
 #include <curl/curl.h>
 
 namespace WebCore {
