@@ -49,6 +49,11 @@ GraphicsContext* ImageBuffer::context() const
 {
 }
 
+BackingStoreCopy ImageBuffer::fastCopyImageMode()
+{
+    return DontCopyBackingStore;
+}
+
 PlatformLayer* ImageBuffer::platformLayer() const
 {
 	return 0;
