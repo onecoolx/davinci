@@ -8,10 +8,16 @@
 #include "config.h"
 #include "Image.h"
 
+#include "ImageDecoder.h"
+
 namespace WebCore {
 
 void Image::drawPattern(GraphicsContext*, const FloatRect& srcRect, const AffineTransform& patternTransform,
         const FloatPoint& phase, ColorSpace styleColorSpace, CompositeOperator, const FloatRect& destRect, BlendMode)
+{
+}
+
+PassNativeImagePtr ImageFrame::asNewNativeImage() const
 {
 }
 
