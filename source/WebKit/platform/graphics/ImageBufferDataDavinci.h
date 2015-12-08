@@ -1,3 +1,9 @@
+/*
+ * ImageBufferDavinci.h: ImageBuffer implements by davinci.
+ *
+ * Copyright(C) 2015 Zhang Ji Peng (onecoolx@gmail.com)
+ *
+ */
 
 #ifndef ImageBufferDataDavinci_h
 #define ImageBufferDataDavinci_h
