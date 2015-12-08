@@ -186,6 +186,7 @@
       ],
       'libraries': [
         '-lShlwapi',
+        '-lWs2_32',
       ],
       'actions': [
       {
