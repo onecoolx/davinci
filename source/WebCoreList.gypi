@@ -5471,6 +5471,7 @@
     '<(lib_src)/platform/CursorDavinci.cpp',
     '<(lib_src)/platform/DragControllerDavinci.cpp',
     '<(lib_src)/platform/DragDataDavinci.cpp',
+    '<(lib_src)/platform/DragImageDavinci.cpp',
     '<(lib_src)/platform/EventHandlerDavinci.cpp',
     '<(lib_src)/platform/LocalizedStringsDavinci.cpp',
     '<(lib_src)/platform/PlatformScreenDavinci.cpp',
