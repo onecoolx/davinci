@@ -5517,7 +5517,7 @@
     '<(lib_src)/platform/network/CookieJarCurl.cpp',
     '<(lib_src)/platform/network/CredentialStorageCurl.cpp',
     '<(lib_src)/platform/network/CurlDownload.cpp',
-    '<(lib_src)/platform/network/DNSCurl.cpp',
+    '<(lib_src)/platform/network/DNSDavinci.cpp',
     '<(lib_src)/platform/network/FormDataStreamCurl.cpp',
     '<(lib_src)/platform/network/ProxyServerCurl.cpp',
     '<(lib_src)/platform/network/ResourceHandleCurl.cpp',
