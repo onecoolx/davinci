@@ -219,6 +219,7 @@
         '$(builddir)/<(lib_name)',
       ],
       'defines': [
+        'CURL_PULL_SYS_SOCKET_H',
       ],
       'sources': [ 
       ],
