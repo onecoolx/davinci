@@ -5483,6 +5483,7 @@
     '<(lib_src)/platform/PlatformScreenDavinci.cpp',
     '<(lib_src)/platform/PluginViewDavinci.cpp',
     '<(lib_src)/platform/PluginPackageDavinci.cpp',
+    '<(lib_src)/platform/PluginDatabaseDavinci.cpp',
     '<(lib_src)/platform/PasteboardDavinci.cpp',
     '<(lib_src)/platform/RenderThemeDavinci.cpp',
     '<(lib_src)/platform/RenderThemeDavinci.h',

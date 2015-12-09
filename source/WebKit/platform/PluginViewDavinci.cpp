@@ -8,6 +8,7 @@
 #include "config.h"
 #include "PluginView.h"
 
+#include "BridgeJSC.h"
 #include "Frame.h"
 #include "FrameView.h"
 #include "GraphicsContext.h"
@@ -21,7 +22,9 @@
 #include "ScriptController.h"
 #include "npruntime_impl.h"
 #include "runtime/JSLock.h"
+#include "runtime/JSObject.h"
 #include "runtime/Operations.h"
+#include <wtf/text/CString.h>
 
 namespace WebCore {
 
@@ -307,4 +310,12 @@ void PluginView::platformDestroy()
 {
 }
 
+PassRefPtr<JSC::Bindings::Instance> PluginView::bindingInstance()
+{
+    return 0;
+}
+
+void PluginView::setJavaScriptPaused(bool)
+{
+}
 } // namespace WebCore
