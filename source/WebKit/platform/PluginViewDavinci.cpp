@@ -310,12 +310,4 @@ void PluginView::platformDestroy()
 {
 }
 
-PassRefPtr<JSC::Bindings::Instance> PluginView::bindingInstance()
-{
-    return 0;
-}
-
-void PluginView::setJavaScriptPaused(bool)
-{
-}
 } // namespace WebCore
