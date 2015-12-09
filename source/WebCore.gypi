@@ -165,7 +165,7 @@
   'conditions': [
     ['OS=="win"', {
       'include_dirs': [
-        '<(lib_dir)/plugins/win',
+        '<(lib_dir)/platform/win',
         '$(OutDir)/include',
         '$(OutDir)/include/uc',
         '$(OutDir)/include/i18n',

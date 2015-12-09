@@ -5473,6 +5473,8 @@
     '<(lib_src)/platform/DragControllerDavinci.cpp',
     '<(lib_src)/platform/DragDataDavinci.cpp',
     '<(lib_src)/platform/DragImageDavinci.cpp',
+    '<(lib_src)/platform/MediaControlsDavinci.cpp',
+    '<(lib_src)/platform/MediaControlsDavinci.h',
     '<(lib_src)/platform/EventHandlerDavinci.cpp',
     '<(lib_src)/platform/EventLoopDavinci.cpp',
     '<(lib_src)/platform/KeyGenDavinci.cpp',

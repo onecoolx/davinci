@@ -109,7 +109,9 @@ static inline HWND windowHandleForPageClient(PlatformPageClient client)
         return reinterpret_cast<HWND>(window->winId());
     return 0;
 #else
+#if 0
     return client;
+#endif
 #endif
 }
 
@@ -608,6 +610,7 @@ void PluginView::paintWindowedPluginIntoContext(GraphicsContext* context, const 
     cairo_show_page(context->platformContext()->cr());
 #endif
 
+#if 0
     HDC hdc = windowsContext.hdc();
     XFORM originalTransform;
     GetWorldTransform(hdc, &originalTransform);
@@ -623,6 +626,7 @@ void PluginView::paintWindowedPluginIntoContext(GraphicsContext* context, const 
     paintIntoTransformedContext(hdc);
 
     SetWorldTransform(hdc, &originalTransform);
+#endif
 #endif
 }
 
@@ -773,7 +777,7 @@ void PluginView::handleMouseEvent(MouseEvent* event)
     if (dispatchNPEvent(npEvent))
         event->setDefaultHandled();
 
-#if !PLATFORM(GTK) && !PLATFORM(QT) && !OS(WINCE)
+#if !PLATFORM(GTK) && !PLATFORM(QT) && !OS(WINCE) && !PLATFORM(DAVINCI)
     // Currently, Widget::setCursor is always called after this function in EventHandler.cpp
     // and since we don't want that we set ignoreNextSetCursor to true here to prevent that.
     ignoreNextSetCursor = true;
