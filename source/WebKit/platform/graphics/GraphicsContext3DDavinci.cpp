@@ -171,7 +171,11 @@ Platform3DObject GraphicsContext3D::platformTexture() const
 PlatformLayer* GraphicsContext3D::platformLayer() const
 {
 #if USE(TEXTURE_MAPPER_GL)
+#if 0
     return m_private.get();
+#endif
+	notImplemented();
+    return 0;
 #else
     notImplemented();
     return 0;
@@ -234,7 +238,9 @@ void GraphicsContext3D::paintToCanvas(const unsigned char* imagePixels, int imag
 #if USE(GRAPHICS_SURFACE)
 void GraphicsContext3D::createGraphicsSurfaces(const IntSize& size)
 {
+#if 0
     m_private->didResizeCanvas(size);
+#endif
 }
 #endif
 
