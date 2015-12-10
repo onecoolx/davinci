@@ -49,6 +49,7 @@
             '-O0',
             '-Wall',
             '-g',
+            '-pipe',
             '-fPIC',
           ],
           'cflags_cc': [
@@ -108,6 +109,7 @@
           'cflags': [
             '-O2',
             '-Wall',
+            '-pipe',
             '-fPIC',
           ],
           'cflags_cc': [
