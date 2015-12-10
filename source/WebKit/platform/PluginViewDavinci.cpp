@@ -128,16 +128,19 @@ void PluginView::hide()
 
 void PluginView::paint(GraphicsContext* context, const IntRect& rect)
 {
+#if ENABLE(NETSCAPE_PLUGIN_API)
     if (!m_isStarted)
         paintMissingPluginIcon(context, rect);
+#endif
 }
 
 void PluginView::setParent(ScrollView* parent)
 {
     Widget::setParent(parent);
-
+#if ENABLE(NETSCAPE_PLUGIN_API)
     if (parent)
         init();
+#endif
 }
 
 void PluginView::setNPWindowRect(const IntRect&)
@@ -282,7 +285,9 @@ bool PluginView::platformGetValue(NPNVariable variable, void* value, NPError* re
 
 void PluginView::invalidateRect(const IntRect& rect)
 {
+#if ENABLE(NETSCAPE_PLUGIN_API)
     invalidateWindowlessPluginRect(rect);
+#endif
 }
 
 #if ENABLE(NETSCAPE_PLUGIN_API)
