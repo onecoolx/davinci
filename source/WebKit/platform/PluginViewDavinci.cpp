@@ -30,6 +30,7 @@ namespace WebCore {
 
 using namespace HTMLNames;
 
+#if ENABLE(NETSCAPE_PLUGIN_API)
 bool PluginView::dispatchNPEvent(NPEvent& event)
 {
     if (!m_plugin->pluginFuncs()->event)
@@ -45,6 +46,7 @@ bool PluginView::dispatchNPEvent(NPEvent& event)
     PluginView::setCurrentPluginView(0);
     return accepted;
 }
+#endif
 
 #if defined(XP_UNIX)
 void PluginView::handleFocusInEvent()
@@ -91,8 +93,10 @@ void PluginView::handleMouseEvent(MouseEvent* event)
         return;
 #endif
 
+#if ENABLE(NETSCAPE_PLUGIN_API)
     if (dispatchNPEvent(xEvent))
         event->setDefaultHandled();
+#endif
 }
 
 void PluginView::updatePluginWidget()
@@ -146,6 +150,7 @@ void PluginView::setParentVisible(bool visible)
     Widget::setParentVisible(visible);
 }
 
+#if ENABLE(NETSCAPE_PLUGIN_API)
 NPError PluginView::handlePostReadFile(Vector<char>& buffer, uint32_t len, const char* buf)
 {
     String filename(buf, len);
@@ -175,7 +180,9 @@ NPError PluginView::handlePostReadFile(Vector<char>& buffer, uint32_t len, const
 
     return NPERR_NO_ERROR;
 }
+#endif
 
+#if ENABLE(NETSCAPE_PLUGIN_API)
 bool PluginView::platformGetValueStatic(NPNVariable variable, void* value, NPError* result)
 {
     switch (variable) {
@@ -271,12 +278,14 @@ bool PluginView::platformGetValue(NPNVariable variable, void* value, NPError* re
         return false;
     }
 }
+#endif
 
 void PluginView::invalidateRect(const IntRect& rect)
 {
     invalidateWindowlessPluginRect(rect);
 }
 
+#if ENABLE(NETSCAPE_PLUGIN_API)
 void PluginView::invalidateRect(NPRect* rect)
 {
     if (!rect) {
@@ -291,6 +300,7 @@ void PluginView::invalidateRegion(NPRegion)
 {
     notImplemented();
 }
+#endif
 
 void PluginView::forceRedraw()
 {
