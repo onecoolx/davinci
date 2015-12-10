@@ -8,6 +8,7 @@
 #include "config.h"
 #include "PluginDatabase.h"
 
+#if ENABLE(NETSCAPE_PLUGIN_API)
 #include "NotImplemented.h"
 
 namespace WebCore {
@@ -30,3 +31,4 @@ bool PluginDatabase::isPreferredPluginDirectory(const String& directory)
 }
 
 } // namespace WebCore
+#endif

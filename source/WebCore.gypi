@@ -98,6 +98,7 @@
     '<(lib_dir)/platform/graphics/harfbuzz',
     '<(lib_dir)/platform/graphics/harfbuzz/ng',
     '<(lib_dir)/platform/graphics/opengl',
+    '<(lib_dir)/platform/graphics/texmap',
     '<(lib_dir)/platform/graphics/opentype',
     '<(lib_dir)/platform/graphics/transforms',
     '<(lib_dir)/platform/image-decoders',
