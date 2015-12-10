@@ -920,7 +920,7 @@
 #endif
 
 /* Qt always uses Texture Mapper */
-#if PLATFORM(QT)
+#if PLATFORM(QT) || PLATFORM(DAVINCI)
 #define WTF_USE_TEXTURE_MAPPER 1
 #endif
 
