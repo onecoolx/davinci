@@ -80,7 +80,7 @@ PlatformGraphicsContext3D GraphicsContext3DPrivate::platformContext()
     return m_glContext ? m_glContext->platformContext() : GLContext::getCurrent()->platformContext();
 }
 
-#if USE(ACCELERATED_COMPOSITING) && USE(TEXTURE_MAPPER)
+#if USE(ACCELERATED_COMPOSITING) && USE(TEXTURE_MAPPER) && USE(CAIRO)
 void GraphicsContext3DPrivate::paintToTextureMapper(TextureMapper* textureMapper, const FloatRect& targetRect, const TransformationMatrix& matrix, float opacity)
 {
     if (!m_glContext)
