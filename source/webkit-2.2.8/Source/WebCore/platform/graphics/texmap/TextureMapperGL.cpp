@@ -68,7 +68,7 @@
 #if USE(ACCELERATED_COMPOSITING) && USE(TEXTURE_MAPPER)
 
 namespace WebCore {
-struct TextureMapperGLData {
+class TextureMapperGLData {
     WTF_MAKE_FAST_ALLOCATED;
 public:
     struct SharedGLData : public RefCounted<SharedGLData> {
