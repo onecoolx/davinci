@@ -52,6 +52,15 @@ class TextureMapperPlatformLayer;
 typedef TextureMapperPlatformLayer PlatformLayer;
 };
 #endif
+#elif PLATFORM(DAVINCI)
+#if USE(TEXTURE_MAPPER)
+namespace WebCore {
+class TextureMapperPlatformLayer;
+typedef TextureMapperPlatformLayer PlatformLayer;
+};
+#else
+typedef void* PlatformLayer;
+#endif
 #elif PLATFORM(BLACKBERRY)
 namespace WebCore {
 class LayerWebKitThread;
