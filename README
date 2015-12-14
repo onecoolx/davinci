@@ -8,6 +8,9 @@ make
 
 ------------------------------------
 windows:
+1. Install Active Python 2.7 on your windows system and register path environment variables.
+
+2. Build project
 ./build_proj.bat
 cd vcproj
 <open "all.sln" with visual studio>
