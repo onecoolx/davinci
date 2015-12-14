@@ -316,6 +316,12 @@ bool GraphicsContext3D::ImageExtractor::extractImage(bool premultiplyAlpha, bool
     return true;
 }
 
+#if USE(ACCELERATED_COMPOSITING) && USE(TEXTURE_MAPPER)
+void GraphicsContext3DPrivate::paintToTextureMapper(TextureMapper* textureMapper, const FloatRect& targetRect, const TransformationMatrix& matrix, float opacity)
+{
+}
+#endif // USE(ACCELERATED_COMPOSITING)
+
 } // namespace WebCore
 
 #endif // USE(3D_GRAPHICS)

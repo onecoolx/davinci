@@ -3625,6 +3625,8 @@
     '<(lib_dir)/platform/graphics/opengl/GLPlatformSurface.h',
     '<(lib_dir)/platform/graphics/surfaces/egl/EGLContext.cpp',
     '<(lib_dir)/platform/graphics/surfaces/egl/EGLContext.h',
+    '<(lib_dir)/platform/graphics/surfaces/GraphicsSurface.cpp',
+    '<(lib_dir)/platform/graphics/surfaces/GraphicsSurface.h',
     '<(lib_dir)/platform/graphics/GLContext.cpp',
     '<(lib_dir)/platform/graphics/GLContext.h',
     '<(lib_dir)/platform/graphics/GraphicsContext3D.cpp',
