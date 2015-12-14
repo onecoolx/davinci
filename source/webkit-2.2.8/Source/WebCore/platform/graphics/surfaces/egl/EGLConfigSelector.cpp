@@ -96,10 +96,11 @@ EGLConfig EGLConfigSelector::createConfig(EGLint expectedSurfaceType)
         return 0;
     }
 
-    EGLConfig configs[numConfigs];
+    EGLConfig* configs = (EGLConfig*)calloc(numConfigs, sizeof(EGLConfig));
     eglGetConfigs(m_sharedDisplay, configs, numConfigs, &numConfigs);
 
     if (!numConfigs) {
+		free(configs);
         LOG_ERROR("Failed to retrieve any EGL configs.");
         return 0;
     }
@@ -160,6 +161,7 @@ EGLConfig EGLConfigSelector::createConfig(EGLint expectedSurfaceType)
     if (!config)
         LOG_ERROR("Failed to find a valid EGL Configuration.");
 
+	free(configs);
     return config;
 }
 

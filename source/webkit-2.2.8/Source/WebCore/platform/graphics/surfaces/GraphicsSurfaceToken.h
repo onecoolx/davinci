@@ -37,6 +37,8 @@ struct GraphicsSurfaceToken {
     typedef mach_port_t BufferHandle;
 #elif OS(LINUX)
     typedef uint32_t BufferHandle;
+#elif PLATFORM(DAVINCI)
+    typedef uint32_t BufferHandle;
 #elif OS(WINDOWS)
     typedef HANDLE BufferHandle;
 #endif
