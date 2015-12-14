@@ -144,6 +144,8 @@ String ImageBuffer::toDataURL(const String& mimeType, const double* quality, Coo
     url.append(base64);
 
     return String(url.data(), url.size());
+#else
+	return "data:,";
 #endif
 }
 
