@@ -11,6 +11,7 @@
 #include "AffineTransform.h"
 #include "NotImplemented.h"
 #include "Path.h"
+#include "TransformationMatrix.h"
 #include <wtf/MathExtras.h>
 
 namespace WebCore {
@@ -230,4 +231,20 @@ void GraphicsContext::drawLineForDocumentMarker(const FloatPoint& origin, float 
 {
 }
 
+#if ENABLE(3D_RENDERING) && USE(TEXTURE_MAPPER)
+TransformationMatrix GraphicsContext::get3DTransform() const
+{
+    return getCTM().toTransformationMatrix();
+}
+
+void GraphicsContext::concat3DTransform(const TransformationMatrix& transform)
+{
+    concatCTM(transform.toAffineTransform());
+}
+
+void GraphicsContext::set3DTransform(const TransformationMatrix& transform)
+{
+    setCTM(transform.toAffineTransform());
+}
+#endif
 }
