@@ -44,6 +44,8 @@ String RenderThemeDavinci::extraDefaultStyleSheet()
 {
 #if 0
     return themeEngine()->extraDefaultStyleSheet();
+#else
+	return String();
 #endif
 }
 
@@ -51,6 +53,8 @@ String RenderThemeDavinci::extraQuirksStyleSheet()
 {
 #if 0
     return themeEngine()->extraQuirksStyleSheet();
+#else
+	return String();
 #endif
 }
 
@@ -58,6 +62,8 @@ String RenderThemeDavinci::extraPlugInsStyleSheet()
 {
 #if 0
     return themeEngine()->extraPlugInsStyleSheet();
+#else
+	return String();
 #endif
 }
 
@@ -65,6 +71,8 @@ Color RenderThemeDavinci::platformActiveSelectionBackgroundColor() const
 {
 #if 0
     return toColor(themeEngine()->activeSelectionBackgroundColor());
+#else
+	return Color();
 #endif
 }
 
@@ -72,6 +80,8 @@ Color RenderThemeDavinci::platformInactiveSelectionBackgroundColor() const
 {
 #if 0
     return toColor(themeEngine()->inactiveSelectionBackgroundColor());
+#else
+	return Color();
 #endif
 }
 
@@ -79,6 +89,8 @@ Color RenderThemeDavinci::platformActiveSelectionForegroundColor() const
 {
 #if 0
     return toColor(themeEngine()->activeSelectionForegroundColor());
+#else
+	return Color();
 #endif
 }
 
@@ -86,6 +98,8 @@ Color RenderThemeDavinci::platformInactiveSelectionForegroundColor() const
 {
 #if 0
     return toColor(themeEngine()->inactiveSelectionForegroundColor());
+#else
+	return Color();
 #endif
 }
 
@@ -93,6 +107,8 @@ Color RenderThemeDavinci::platformActiveListBoxSelectionBackgroundColor() const
 {
 #if 0
     return toColor(themeEngine()->activeListBoxSelectionBackgroundColor());
+#else
+	return Color();
 #endif
 }
 
@@ -100,6 +116,8 @@ Color RenderThemeDavinci::platformInactiveListBoxSelectionBackgroundColor() cons
 {
 #if 0
     return toColor(themeEngine()->inactiveListBoxSelectionBackgroundColor());
+#else
+	return Color();
 #endif
 }
 
@@ -107,6 +125,8 @@ Color RenderThemeDavinci::platformActiveListBoxSelectionForegroundColor() const
 {
 #if 0
     return toColor(themeEngine()->activeListBoxSelectionForegroundColor());
+#else
+	return Color();
 #endif
 }
 
@@ -114,6 +134,8 @@ Color RenderThemeDavinci::platformInactiveListBoxSelectionForegroundColor() cons
 {
 #if 0
     return toColor(themeEngine()->inactiveListBoxSelectionForegroundColor());
+#else
+	return Color();
 #endif
 }
 
@@ -121,6 +143,8 @@ Color RenderThemeDavinci::platformActiveTextSearchHighlightColor() const
 {
 #if 0
     return toColor(themeEngine()->activeTextSearchHighlightColor());
+#else
+	return Color();
 #endif
 }
 
@@ -128,6 +152,8 @@ Color RenderThemeDavinci::platformInactiveTextSearchHighlightColor() const
 {
 #if 0
     return toColor(themeEngine()->inactiveTextSearchHighlightColor());
+#else
+	return Color();
 #endif
 }
 
@@ -135,6 +161,8 @@ Color RenderThemeDavinci::platformFocusRingColor() const
 {
 #if 0
     return toColor(themeEngine()->focusRingColor());
+#else
+	return Color();
 #endif
 }
 
@@ -281,6 +309,8 @@ double RenderThemeDavinci::animationRepeatIntervalForProgressBar(RenderProgress*
 {
 #if 0
     return themeEngine()->getAnimationRepeatIntervalForProgressBar();
+#else
+	return 0;
 #endif
 }
 
@@ -288,6 +318,8 @@ double RenderThemeDavinci::animationDurationForProgressBar(RenderProgress*) cons
 {
 #if 0
     return themeEngine()->getAnimationDurationForProgressBar();
+#else
+	return 0;
 #endif
 }
 #endif

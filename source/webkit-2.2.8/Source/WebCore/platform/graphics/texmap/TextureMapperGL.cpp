@@ -917,7 +917,9 @@ void BitmapTextureGL::updateContents(Image* image, const IntRect& targetRect, co
     bytesPerLine = cairo_image_surface_get_stride(surface);
 #endif
 
+#if 0
     updateContents(imageData, targetRect, offset, bytesPerLine, updateContentsFlag);
+#endif
 }
 
 #if ENABLE(CSS_SHADERS)

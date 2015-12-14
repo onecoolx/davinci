@@ -49,10 +49,12 @@ PlatformMenuDescription ContextMenu::releasePlatformDescription()
 
 unsigned ContextMenu::itemCount() const
 {
+	return 0;
 }
 
 Vector<ContextMenuItem> contextMenuItemVector(const PlatformMenuDescription menu)
 {
+	return Vector<ContextMenuItem>();
 }
 
 PlatformMenuDescription platformMenuDescription(Vector<ContextMenuItem>& subMenuItems)

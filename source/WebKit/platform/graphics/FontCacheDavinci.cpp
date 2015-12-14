@@ -27,10 +27,12 @@ void FontCache::platformInit()
 PassRefPtr<SimpleFontData> FontCache::systemFallbackForCharacters(const FontDescription&, const SimpleFontData* originalFontData,
                                                                   bool, const UChar* characters, int length)
 {
+	return 0;
 }
 
 PassRefPtr<SimpleFontData> FontCache::getLastResortFallbackFont(const FontDescription& fontDescription, ShouldRetain shouldRetain)
 {
+	return 0;
 }
 
 void FontCache::getTraitsInFamily(const AtomicString&, Vector<unsigned>&)
@@ -39,6 +41,7 @@ void FontCache::getTraitsInFamily(const AtomicString&, Vector<unsigned>&)
 
 PassOwnPtr<FontPlatformData> FontCache::createFontPlatformData(const FontDescription& fontDescription, const AtomicString& familyName)
 {
+	return 0;
 }
 
 } // namespace WebCore

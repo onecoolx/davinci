@@ -96,6 +96,7 @@ void GraphicsContext::concatCTM(const AffineTransform& transform)
 
 AffineTransform GraphicsContext::getCTM(IncludeDeviceScale) const
 {
+	return AffineTransform();
 }
 
 void GraphicsContext::canvasClip(const Path&, WindRule)
@@ -113,6 +114,7 @@ void GraphicsContext::setImageInterpolationQuality(InterpolationQuality)
 
 InterpolationQuality GraphicsContext::imageInterpolationQuality() const
 {
+	return InterpolationDefault;
 }
 
 void GraphicsContext::setAlpha(float alpha)

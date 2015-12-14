@@ -62,6 +62,7 @@ void ContextMenuItem::setType(ContextMenuItemType type)
 
 ContextMenuAction ContextMenuItem::action() const
 {
+	return ContextMenuItemTagNoAction;
 }
 
 void ContextMenuItem::setAction(ContextMenuAction action)

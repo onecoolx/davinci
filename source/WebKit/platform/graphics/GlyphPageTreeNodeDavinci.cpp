@@ -14,6 +14,7 @@ namespace WebCore {
 
 bool GlyphPage::fill(unsigned offset, unsigned length, UChar* buffer, unsigned bufferLength, const SimpleFontData* fontData)
 {
+	return false;
 }
 
 }

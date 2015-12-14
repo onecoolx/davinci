@@ -28,14 +28,17 @@ void Font::drawComplexText(GraphicsContext* ctx, const TextRun& run, const Float
 
 float Font::floatWidthForComplexText(const TextRun& run, HashSet<const SimpleFontData*>*, GlyphOverflow*) const
 {
+	return 0;
 }
 
 int Font::offsetForPositionForComplexText(const TextRun& run, float position, bool) const
 {
+	return 0;
 }
 
 FloatRect Font::selectionRectForComplexText(const TextRun& run, const FloatPoint& pt, int h, int from, int to) const
 {
+	return FloatRect();
 }
 
 bool Font::canReturnFallbackFontsForComplexText()

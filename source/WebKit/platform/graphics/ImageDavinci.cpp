@@ -19,10 +19,12 @@ void Image::drawPattern(GraphicsContext*, const FloatRect& srcRect, const Affine
 
 PassNativeImagePtr ImageFrame::asNewNativeImage() const
 {
+	return 0;
 }
 
 PassRefPtr<Image> Image::loadPlatformResource(const char* name)
 {
+	return 0;
 }
 
 }

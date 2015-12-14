@@ -20,10 +20,12 @@ void FontPlatformData::platformDataInit(const FontPlatformData& source)
 
 const FontPlatformData& FontPlatformData::platformDataAssign(const FontPlatformData& other)
 {
+	return other;
 }
 
 bool FontPlatformData::platformIsEqual(const FontPlatformData& other) const
 {
+	return false;
 }
 
 }

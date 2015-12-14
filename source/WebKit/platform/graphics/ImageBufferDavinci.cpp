@@ -47,6 +47,7 @@ ImageBuffer::~ImageBuffer()
 
 GraphicsContext* ImageBuffer::context() const
 {
+	return 0;
 }
 
 BackingStoreCopy ImageBuffer::fastCopyImageMode()
@@ -61,6 +62,7 @@ PlatformLayer* ImageBuffer::platformLayer() const
 
 PassRefPtr<Image> ImageBuffer::copyImage(BackingStoreCopy, ScaleBehavior) const
 {
+	return 0;
 }
 
 void ImageBuffer::clip(GraphicsContext* context, const FloatRect& rect) const

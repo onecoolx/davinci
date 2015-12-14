@@ -12,14 +12,17 @@ namespace WebCore {
 
 int bytesPerPixel(void)
 {
+	return 0;
 }
 
 int screenWidth(void)
 {
+	return 0;
 }
 
 int screenHeight(void)
 {
+	return 0;
 }
 
 }

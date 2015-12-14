@@ -31,6 +31,7 @@ void SimpleFontData::platformDestroy()
 
 PassRefPtr<SimpleFontData> SimpleFontData::platformCreateScaledFontData(const FontDescription& fontDescription, float scaleFactor) const
 {
+	return 0;
 }
 
 bool SimpleFontData::containsCharacters(const UChar* characters, int length) const
@@ -45,10 +46,12 @@ void SimpleFontData::determinePitch()
 
 FloatRect SimpleFontData::platformBoundsForGlyph(Glyph glyph) const
 {
+	return FloatRect();
 }
 
 float SimpleFontData::platformWidthForGlyph(Glyph glyph) const
 {
+	return 0;
 }
 
 } // namespace WebCore

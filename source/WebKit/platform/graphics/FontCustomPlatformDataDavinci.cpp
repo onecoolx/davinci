@@ -25,6 +25,7 @@ FontCustomPlatformData::~FontCustomPlatformData()
 FontPlatformData FontCustomPlatformData::fontPlatformData(int size, bool syntheticBold, bool syntheticItalic, FontOrientation orientation, FontWidthVariant widthVariant, FontRenderingMode)
 {
     //return FontPlatformData(m_fontName, size, syntheticBold, syntheticItalic, orientation, widthVariant);
+	return FontPlatformData();
 }
 
 bool FontCustomPlatformData::supportsFormat(const String& format)
@@ -51,6 +52,8 @@ FontCustomPlatformData* createFontCustomPlatformData(SharedBuffer* buffer)
         return 0;
 
     return new FontCustomPlatformData(name, buffer);
+#else
+	return 0;
 #endif
 }
 
