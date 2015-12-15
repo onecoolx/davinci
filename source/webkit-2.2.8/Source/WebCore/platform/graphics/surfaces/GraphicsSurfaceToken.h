@@ -60,7 +60,7 @@ struct GraphicsSurfaceToken {
 
 #endif
 
-#if OS(DARWIN) || OS(WINDOWS)
+#if OS(DARWIN) || (OS(WINDOWS) && !PLATFORM(DAVINCI))
     GraphicsSurfaceToken(BufferHandle frontBuffer = 0, BufferHandle backBuffer = 0)
         : frontBufferHandle(frontBuffer)
         , backBufferHandle(backBuffer)
