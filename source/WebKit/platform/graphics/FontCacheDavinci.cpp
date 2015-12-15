@@ -41,7 +41,7 @@ void FontCache::getTraitsInFamily(const AtomicString&, Vector<unsigned>&)
 
 PassOwnPtr<FontPlatformData> FontCache::createFontPlatformData(const FontDescription& fontDescription, const AtomicString& familyName)
 {
-	return 0;
+	return nullptr;
 }
 
 } // namespace WebCore

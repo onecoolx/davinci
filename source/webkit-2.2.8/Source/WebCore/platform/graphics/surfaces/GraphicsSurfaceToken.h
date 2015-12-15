@@ -79,6 +79,23 @@ struct GraphicsSurfaceToken {
     BufferHandle backBufferHandle;
 #endif
 
+#if PLATFORM(DAVINCI)
+    GraphicsSurfaceToken(uint32_t bufferId = 0)
+        : frontBufferHandle(bufferId)
+    { }
+
+    bool operator!=(const GraphicsSurfaceToken &rhs) const
+    {
+        return frontBufferHandle != rhs.frontBufferHandle;
+    }
+
+    bool isValid() const
+    {
+        return frontBufferHandle;
+    }
+
+#endif
+
     BufferHandle frontBufferHandle;
 };
 
