@@ -71,6 +71,7 @@ void ContextMenuItem::setAction(ContextMenuAction action)
 
 String ContextMenuItem::title() const
 {
+	return String();
 }
 
 void ContextMenuItem::setTitle(const String& title)
@@ -79,6 +80,7 @@ void ContextMenuItem::setTitle(const String& title)
 
 PlatformMenuDescription ContextMenuItem::platformSubMenu() const
 {
+	return 0;
 }
 
 void ContextMenuItem::setSubMenu(ContextMenu* menu)
@@ -102,6 +104,7 @@ bool ContextMenuItem::checked() const
 
 bool ContextMenuItem::enabled() const
 {
+	return false;
 }
 
 void ContextMenuItem::setEnabled(bool shouldEnable)

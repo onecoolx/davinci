@@ -59,6 +59,7 @@ Vector<ContextMenuItem> contextMenuItemVector(const PlatformMenuDescription menu
 
 PlatformMenuDescription platformMenuDescription(Vector<ContextMenuItem>& subMenuItems)
 {
+	return 0;
 }
 
 }

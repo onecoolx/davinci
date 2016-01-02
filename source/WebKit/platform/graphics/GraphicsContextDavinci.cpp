@@ -26,6 +26,7 @@ void GraphicsContext::platformDestroy()
 
 PlatformGraphicsContext* GraphicsContext::platformContext() const
 {
+	return 0;
 }
 
 void GraphicsContext::savePlatformState()
@@ -183,6 +184,7 @@ void GraphicsContext::rotate(float radians)
 
 FloatRect GraphicsContext::roundToDevicePixels(const FloatRect& frect, RoundingMode)
 {
+	return FloatRect();
 }
 
 void GraphicsContext::setMiterLimit(float miter)
