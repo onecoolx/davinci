@@ -658,7 +658,7 @@ void GraphicsContext::drawLine(const IntPoint& point1, const IntPoint& point2)
             }
         }
 
-        double pattern[2] = {patWidth, patWidth};
+        float pattern[2] = { patWidth, patWidth };
         ps_set_line_dash(m_data->context, patternOffset, pattern, 2);
     }
 
@@ -732,8 +732,9 @@ void GraphicsContext::drawLineForText(const FloatPoint& point, float width, bool
     StrokeStyle savedStrokeStyle = strokeStyle();
     setStrokeStyle(SolidStroke);
 
-    IntPoint endPoint = point + IntSize(width, 0);
-    drawLine(point, endPoint);
+	IntPoint startPoint = roundedIntPoint(point);
+    IntPoint endPoint = startPoint + IntSize(width, 0);
+    drawLine(startPoint, endPoint);
 
     setStrokeStyle(savedStrokeStyle);
 }
