@@ -62,6 +62,7 @@ public:
     AffineTransform(double a, double b, double c, double d, double e, double f);
 #if PLATFORM(DAVINCI)
     PlatformMatrix platformTransform(void) const;
+    AffineTransform(PlatformMatrix mtx);
     AffineTransform(const AffineTransform& other);
     AffineTransform& operator=(const AffineTransform& other);
     ~AffineTransform();

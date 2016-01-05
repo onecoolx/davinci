@@ -97,9 +97,6 @@ void Path::addRect(const FloatRect& r)
     ps_path_add_rect(m_path, &rc);
 }
 
-/*
- * inspired by libsvg-cairo
- */
 void Path::addQuadCurveTo(const FloatPoint& c, const FloatPoint& e) 
 {
     ps_point pc = {c.x(), c.y()};
@@ -158,6 +155,7 @@ FloatRect Path::boundingRect() const
 
 FloatRect Path::strokeBoundingRect(StrokeStyleApplier* applier) const
 {
+    //FIXME: use applier's attributes.
     return boundingRect();
 }
 

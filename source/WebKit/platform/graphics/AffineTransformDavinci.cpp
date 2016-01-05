@@ -25,6 +25,17 @@ AffineTransform::AffineTransform(double a, double b, double c, double d, double 
     setMatrix(a, b, c, d, e, f);
 }
 
+AffineTransform::AffineTransform(ps_matrix* mtx)
+    : m_matrix(ps_matrix_create_copy(mtx))
+{
+    float sx, sy, shx, shy, tx, ty;
+    ps_matrix_get_scale_factor(m_matrix, &sx, &sy);
+    ps_matrix_get_shear_factor(m_matrix, &shx, &shy);
+    ps_matrix_get_translate_factor(m_matrix, &tx, &ty);
+
+    setMatrix(sx, shy, shx, sy, tx, ty);
+}
+
 AffineTransform::~AffineTransform()
 {
     ps_matrix_unref(m_matrix);
