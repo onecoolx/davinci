@@ -20,54 +20,54 @@ namespace WebCore {
 
 class GraphicsContextPlatformPrivate
 {
-public:
-    GraphicsContextPlatformPrivate() : context(0) { }
-    ~GraphicsContextPlatformPrivate() { }
+    public:
+        GraphicsContextPlatformPrivate() : context(0) { }
+        ~GraphicsContextPlatformPrivate() { }
 
-    ps_context* context;
+        ps_context* context;
 };
 
 static inline ps_color make_color(const Color& c)
 {
-	ps_color color;
-	color.r = (float)c.red()/255.0f;
-	color.g = (float)c.green()/255.0f;
-	color.b = (float)c.blue()/255.0f;
-	color.a = (float)c.alpha()/255.0f;
-	return color;
+    ps_color color;
+    color.r = (float)c.red()/255.0f;
+    color.g = (float)c.green()/255.0f;
+    color.b = (float)c.blue()/255.0f;
+    color.a = (float)c.alpha()/255.0f;
+    return color;
 }
 
 static void draw_graphic(ps_context* gc, bool fill, bool stroke)
 {
-	if (fill && stroke)
-		ps_paint(gc);
-	else if (fill && !stroke)
-		ps_fill(gc);
-	else if (!fill && stroke)
-		ps_stroke(gc);
+    if (fill && stroke)
+        ps_paint(gc);
+    else if (fill && !stroke)
+        ps_fill(gc);
+    else if (!fill && stroke)
+        ps_stroke(gc);
 }
 
 static inline void setPenColor(ps_context* gc, const Color& col)
 {
-	ps_color sc = make_color(col);
-	ps_set_stroke_color(gc, &sc);
+    ps_color sc = make_color(col);
+    ps_set_stroke_color(gc, &sc);
 }
 
 static inline void setBrushColor(ps_context* gc, const Color& col)
 {
-	ps_color fc = make_color(col);
-	ps_set_source_color(gc, &fc);
+    ps_color fc = make_color(col);
+    ps_set_source_color(gc, &fc);
 }
 
 // A fillRect helper
 static inline void fillRectSourceOver(ps_context* gc, const FloatRect& rect, const Color& col)
 {
     setBrushColor(gc, col);
-	ps_rect r = {rect.x(), rect.y(), rect.width(), rect.height()};
-	ps_composite op = ps_set_composite_operator(gc, COMPOSITE_SRC_OVER);
+    ps_rect r = {rect.x(), rect.y(), rect.width(), rect.height()};
+    ps_composite op = ps_set_composite_operator(gc, COMPOSITE_SRC_OVER);
     ps_rectangle(gc, &r);
-	ps_fill(gc);
-	ps_set_composite_operator(gc, op);
+    ps_fill(gc);
+    ps_set_composite_operator(gc, op);
 }
 
 void GraphicsContext::platformInit(PlatformGraphicsContext* ctx)
@@ -159,7 +159,7 @@ void GraphicsContext::setPlatformCompositeOperation(CompositeOperator op, BlendM
     if (paintingDisabled())
         return;
 
-	ps_context* gc = m_data->context;
+    ps_context* gc = m_data->context;
 
     if (blendOp == BlendModeNormal) {
         // composite
@@ -299,7 +299,7 @@ AffineTransform GraphicsContext::getCTM(IncludeDeviceScale) const
 
     ps_matrix* m = ps_matrix_create();
     ps_get_matrix(m_data->context, m);
-	AffineTransform mtx(m);
+    AffineTransform mtx(m);
     ps_matrix_unref(m);
     return mtx;
 }
@@ -310,16 +310,16 @@ void GraphicsContext::canvasClip(const Path& path, WindRule windRule)
 }
 
 void GraphicsContext::fillRoundedRect(const IntRect& rc, const IntSize& topLeft, const IntSize& topRight,
-                                      const IntSize& bottomLeft, const IntSize& bottomRight, const Color& color, ColorSpace)
+        const IntSize& bottomLeft, const IntSize& bottomRight, const Color& color, ColorSpace)
 {
     if (paintingDisabled())
-        return;	
+        return;    
 
     if (color.alpha()) {
         setBrushColor(m_data->context, color);
         ps_rect r = {rc.x(), rc.y(), rc.width(), rc.height()};
         ps_rounded_rect(m_data->context, &r, topLeft.width(), topLeft.height(), topRight.width(),
-                        topRight.height(), bottomLeft.width(), bottomLeft.height(), bottomRight.width(), bottomRight.height());
+                topRight.height(), bottomLeft.width(), bottomLeft.height(), bottomRight.width(), bottomRight.height());
         ps_fill(m_data->context);
     }
 }
@@ -332,7 +332,7 @@ void GraphicsContext::setImageInterpolationQuality(InterpolationQuality)
 InterpolationQuality GraphicsContext::imageInterpolationQuality() const
 {
     //FIXME: need be implements.
-	return InterpolationDefault;
+    return InterpolationDefault;
 }
 
 void GraphicsContext::setAlpha(float alpha)
@@ -350,7 +350,7 @@ void GraphicsContext::fillRect(const FloatRect& rect)
 void GraphicsContext::fillRect(const FloatRect& rect, const Color& color, ColorSpace)
 {
     if (paintingDisabled())
-        return;	
+        return;    
 
     if (color.alpha()) {
         fillRectSourceOver(m_data->context, rect, color);
@@ -362,12 +362,12 @@ void GraphicsContext::strokeRect(const FloatRect& rect, float width)
     if (paintingDisabled())
         return;
 
-	ps_context* gc = m_data->context;
-	float oldwidth = ps_set_line_width(gc, width);
+    ps_context* gc = m_data->context;
+    float oldwidth = ps_set_line_width(gc, width);
     ps_rect r = { rect.x(), rect.y(), rect.width(), rect.height() };
-	ps_rectangle(gc, &r);
-	ps_stroke(gc);
-	ps_set_line_width(gc, oldwidth);
+    ps_rectangle(gc, &r);
+    ps_stroke(gc);
+    ps_set_line_width(gc, oldwidth);
 }
 
 void GraphicsContext::clipOut(const Path& path)
@@ -383,7 +383,7 @@ void GraphicsContext::clipOut(const IntRect& r)
 void GraphicsContext::clip(const FloatRect& rect)
 {
     if (paintingDisabled())
-        return;	
+        return;    
 
     ps_rect rt = { rect.x(), rect.y(), rect.width(), rect.height() };
     ps_clip_device_rect(m_data->context, &rt);
@@ -392,14 +392,14 @@ void GraphicsContext::clip(const FloatRect& rect)
 void GraphicsContext::clip(const Path& path, WindRule windRule)
 {
     if (paintingDisabled())
-        return;	
+        return;    
     //FIXME: need implements add a new path to context interface!
 }
 
 void GraphicsContext::clipPath(const Path& path, WindRule clipRule)
 {
     if (paintingDisabled())
-        return;	
+        return;    
     ps_clip_path(m_data->context, path.platformPath(), (ps_fill_rule)clipRule);
 }
 
@@ -414,13 +414,13 @@ void GraphicsContext::clipConvexPolygon(size_t numPoints, const FloatPoint* poin
 
     ps_context* gc = m_data->context;
     ps_new_path(gc);
-	ps_point p = { points[0].x(), points[0].y() };
-	ps_move_to(gc, &p);
+    ps_point p = { points[0].x(), points[0].y() };
+    ps_move_to(gc, &p);
     for (size_t i = 1; i < numPoints; i++) {
-		p.x = points[i].x(); p.y = points[i].y();
-		ps_line_to(gc, &p);
+        p.x = points[i].x(); p.y = points[i].y();
+        ps_line_to(gc, &p);
     }
-	ps_close_path(gc);	
+    ps_close_path(gc);    
 
     ps_fill_rule oldRule = ps_set_fill_rule(gc, FILL_RULE_WINDING);
     ps_clip(gc);
@@ -430,15 +430,15 @@ void GraphicsContext::clipConvexPolygon(size_t numPoints, const FloatPoint* poin
 void GraphicsContext::clearRect(const FloatRect& rect)
 {
     if (paintingDisabled())
-        return;	
+        return;    
 
-	ps_save(m_data->context);
-	ps_color c = { 0, 0, 0, 0 };
-	ps_rect r = { rect.x(), rect.y(), rect.width(), rect.height() };
-	ps_clip_device_rect(m_data->context, &r);
-	ps_set_source_color(m_data->context, &c);
-	ps_clear(m_data->context);
-	ps_restore(m_data->context);
+    ps_save(m_data->context);
+    ps_color c = { 0, 0, 0, 0 };
+    ps_rect r = { rect.x(), rect.y(), rect.width(), rect.height() };
+    ps_clip_device_rect(m_data->context, &r);
+    ps_set_source_color(m_data->context, &c);
+    ps_clear(m_data->context);
+    ps_restore(m_data->context);
 }
 
 void GraphicsContext::fillPath(const Path& path)
@@ -480,7 +480,7 @@ void GraphicsContext::rotate(float radians)
 
 FloatRect GraphicsContext::roundToDevicePixels(const FloatRect& frect, RoundingMode)
 {
-	return frect;
+    return frect;
 }
 
 void GraphicsContext::setMiterLimit(float miter)
@@ -519,7 +519,7 @@ void GraphicsContext::setLineCap(LineCap cap)
 void GraphicsContext::setLineJoin(LineJoin join)
 {
     if (paintingDisabled())
-        return;	
+        return;    
 
     ps_context* gc = m_data->context;
     switch (join) {
@@ -554,36 +554,36 @@ void GraphicsContext::drawConvexPolygon(size_t numPoints, const FloatPoint* poin
     if (numPoints <= 1)
         return;
 
-	ps_context* gc = m_data->context;
+    ps_context* gc = m_data->context;
 
-	ps_point p = { points[0].x(), points[0].y() };
-	ps_move_to(gc, &p);
+    ps_point p = { points[0].x(), points[0].y() };
+    ps_move_to(gc, &p);
     for (size_t i = 1; i < numPoints; i++) {
-		p.x = points[i].x(); p.y = points[i].y();
-		ps_line_to(gc, &p);
+        p.x = points[i].x(); p.y = points[i].y();
+        ps_line_to(gc, &p);
     }
-	ps_close_path(gc);	
+    ps_close_path(gc);    
 
-	bool f = false, s = false;
+    bool f = false, s = false;
     if (fillColor().alpha()) {
         setBrushColor(gc, fillColor());
-		ps_set_fill_rule(gc, FILL_RULE_EVEN_ODD);
-		f = true;
+        ps_set_fill_rule(gc, FILL_RULE_EVEN_ODD);
+        f = true;
     }
 
     if (strokeStyle() != NoStroke) {
         setPenColor(gc, strokeColor());
         ps_set_line_width(gc, strokeThickness());
-		s = true;
+        s = true;
     }
 
-	draw_graphic(gc, f, s);
+    draw_graphic(gc, f, s);
 }
 
 void GraphicsContext::drawLine(const IntPoint& point1, const IntPoint& point2)
 {
     if (paintingDisabled())
-        return;	
+        return;    
 
     StrokeStyle penStyle = strokeStyle();
     if (penStyle == NoStroke)
@@ -675,32 +675,32 @@ void GraphicsContext::drawLine(const IntPoint& point1, const IntPoint& point2)
 
 void GraphicsContext::drawRect(const IntRect& r)
 {
-	if (paintingDisabled())
-		return;	
+    if (paintingDisabled())
+        return;    
 
-	bool f = false;
-	bool s = false;
-	ps_rect rect = { r.x(), r.y(), r.width(), r.height() };
+    bool f = false;
+    bool s = false;
+    ps_rect rect = { r.x(), r.y(), r.width(), r.height() };
 
-	ps_rectangle(m_data->context, &rect);
+    ps_rectangle(m_data->context, &rect);
 
     if (fillColor().alpha()) {
-		f = true;
-		setBrushColor(m_data->context, fillColor());
-	}
+        f = true;
+        setBrushColor(m_data->context, fillColor());
+    }
 
     if (strokeStyle() != NoStroke) {
-		s = true;
+        s = true;
         setPenColor(m_data->context, strokeColor());
         ps_set_line_width(m_data->context, 1.0f);
     }
-	draw_graphic(m_data->context, f, s);
+    draw_graphic(m_data->context, f, s);
 }
 
 void GraphicsContext::drawEllipse(const IntRect& r)
 {
     if (paintingDisabled())
-        return;	
+        return;    
 
     bool f = false;
     bool s = false;
@@ -732,7 +732,7 @@ void GraphicsContext::drawLineForText(const FloatPoint& point, float width, bool
     StrokeStyle savedStrokeStyle = strokeStyle();
     setStrokeStyle(SolidStroke);
 
-	IntPoint startPoint = roundedIntPoint(point);
+    IntPoint startPoint = roundedIntPoint(point);
     IntPoint endPoint = startPoint + IntSize(width, 0);
     drawLine(startPoint, endPoint);
 
