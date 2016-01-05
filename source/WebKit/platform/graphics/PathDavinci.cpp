@@ -62,7 +62,7 @@ bool Path::hasCurrentPoint() const
     return !isEmpty();
 }
 
-FloatPoint Path::currentPoint() const 
+FloatPoint Path::currentPoint() const
 {
     if (!hasCurrentPoint())
         return FloatPoint();
@@ -72,39 +72,39 @@ FloatPoint Path::currentPoint() const
     return FloatPoint(p.x, p.y);
 }
 
-void Path::translate(const FloatSize& size) 
+void Path::translate(const FloatSize& size)
 {
     AffineTransform matrix;
     matrix.translate (size.width(), size.height());
     transform (matrix);
 }
 
-void Path::moveTo(const FloatPoint& p) 
+void Path::moveTo(const FloatPoint& p)
 {
     ps_point pt = {p.x(), p.y()};
     ps_path_move_to(m_path, &pt);
 }
 
-void Path::addLineTo(const FloatPoint& p) 
+void Path::addLineTo(const FloatPoint& p)
 {
     ps_point pt = {p.x(), p.y()};
     ps_path_line_to(m_path, &pt);
 }
 
-void Path::addRect(const FloatRect& r) 
+void Path::addRect(const FloatRect& r)
 {
     ps_rect rc = {r.x(), r.y(), r.width(), r.height()};
     ps_path_add_rect(m_path, &rc);
 }
 
-void Path::addQuadCurveTo(const FloatPoint& c, const FloatPoint& e) 
+void Path::addQuadCurveTo(const FloatPoint& c, const FloatPoint& e)
 {
     ps_point pc = {c.x(), c.y()};
     ps_point pe = {e.x(), e.y()};
     ps_path_quad_to(m_path, &pc, &pe);
 }
 
-void Path::addBezierCurveTo(const FloatPoint& c1, const FloatPoint& c2, const FloatPoint& et) 
+void Path::addBezierCurveTo(const FloatPoint& c1, const FloatPoint& c2, const FloatPoint& et)
 {
     ps_point pc1 = {c1.x(), c1.y()};
     ps_point pc2 = {c2.x(), c2.y()};
@@ -118,14 +118,14 @@ void Path::addArc(const FloatPoint& p, float r, float sar, float ear, bool antic
     ps_path_add_arc(m_path, &pt, r, sar, ear, (anticlockwise ? True : False));
 }
 
-void Path::addArcTo(const FloatPoint& p1, const FloatPoint& p2, float radius) 
+void Path::addArcTo(const FloatPoint& p1, const FloatPoint& p2, float radius)
 {
     ps_point pp1 = {p1.x(), p1.y()};
     ps_point pp2 = {p2.x(), p2.y()};
     ps_path_tangent_arc_to(m_path, radius, &pp1, &pp2);
 }
 
-void Path::addEllipse(const FloatRect& r) 
+void Path::addEllipse(const FloatRect& r)
 {
     if (r.isEmpty())
         return;
@@ -134,7 +134,7 @@ void Path::addEllipse(const FloatRect& r)
     ps_path_add_ellipse(m_path, &rc);
 }
 
-void Path::closeSubpath() 
+void Path::closeSubpath()
 {
     if (ps_path_is_empty(m_path))
         return;
@@ -142,8 +142,8 @@ void Path::closeSubpath()
     ps_path_sub_close(m_path);
 }
 
-FloatRect Path::boundingRect() const 
-{ 
+FloatRect Path::boundingRect() const
+{
     if (ps_path_is_empty(m_path))
         return FloatRect();
 
@@ -159,7 +159,7 @@ FloatRect Path::strokeBoundingRect(StrokeStyleApplier* applier) const
     return boundingRect();
 }
 
-bool Path::contains(const FloatPoint& pt, WindRule rule) const 
+bool Path::contains(const FloatPoint& pt, WindRule rule) const
 {
     if (ps_path_is_empty(m_path))
         return false;
@@ -246,7 +246,7 @@ void Path::apply(void* info, PathApplierFunction function) const
     }
 }
 
-void Path::transform(const AffineTransform& matrix) 
+void Path::transform(const AffineTransform& matrix)
 {
     ps_matrix_transform_path(matrix.platformTransform(), m_path);
 }

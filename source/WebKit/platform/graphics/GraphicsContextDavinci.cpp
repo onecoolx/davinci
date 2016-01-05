@@ -20,11 +20,11 @@ namespace WebCore {
 
 class GraphicsContextPlatformPrivate
 {
-    public:
-        GraphicsContextPlatformPrivate() : context(0) { }
-        ~GraphicsContextPlatformPrivate() { }
+public:
+    GraphicsContextPlatformPrivate() : context(0) { }
+    ~GraphicsContextPlatformPrivate() { }
 
-        ps_context* context;
+    ps_context* context;
 };
 
 static inline ps_color make_color(const Color& c)
@@ -313,7 +313,7 @@ void GraphicsContext::fillRoundedRect(const IntRect& rc, const IntSize& topLeft,
         const IntSize& bottomLeft, const IntSize& bottomRight, const Color& color, ColorSpace)
 {
     if (paintingDisabled())
-        return;    
+        return;
 
     if (color.alpha()) {
         setBrushColor(m_data->context, color);
@@ -350,7 +350,7 @@ void GraphicsContext::fillRect(const FloatRect& rect)
 void GraphicsContext::fillRect(const FloatRect& rect, const Color& color, ColorSpace)
 {
     if (paintingDisabled())
-        return;    
+        return;
 
     if (color.alpha()) {
         fillRectSourceOver(m_data->context, rect, color);
@@ -383,7 +383,7 @@ void GraphicsContext::clipOut(const IntRect& r)
 void GraphicsContext::clip(const FloatRect& rect)
 {
     if (paintingDisabled())
-        return;    
+        return;
 
     ps_rect rt = { rect.x(), rect.y(), rect.width(), rect.height() };
     ps_clip_device_rect(m_data->context, &rt);
@@ -392,14 +392,14 @@ void GraphicsContext::clip(const FloatRect& rect)
 void GraphicsContext::clip(const Path& path, WindRule windRule)
 {
     if (paintingDisabled())
-        return;    
+        return;
     //FIXME: need implements add a new path to context interface!
 }
 
 void GraphicsContext::clipPath(const Path& path, WindRule clipRule)
 {
     if (paintingDisabled())
-        return;    
+        return;
     ps_clip_path(m_data->context, path.platformPath(), (ps_fill_rule)clipRule);
 }
 
@@ -420,7 +420,7 @@ void GraphicsContext::clipConvexPolygon(size_t numPoints, const FloatPoint* poin
         p.x = points[i].x(); p.y = points[i].y();
         ps_line_to(gc, &p);
     }
-    ps_close_path(gc);    
+    ps_close_path(gc);
 
     ps_fill_rule oldRule = ps_set_fill_rule(gc, FILL_RULE_WINDING);
     ps_clip(gc);
@@ -430,7 +430,7 @@ void GraphicsContext::clipConvexPolygon(size_t numPoints, const FloatPoint* poin
 void GraphicsContext::clearRect(const FloatRect& rect)
 {
     if (paintingDisabled())
-        return;    
+        return;
 
     ps_save(m_data->context);
     ps_color c = { 0, 0, 0, 0 };
@@ -519,7 +519,7 @@ void GraphicsContext::setLineCap(LineCap cap)
 void GraphicsContext::setLineJoin(LineJoin join)
 {
     if (paintingDisabled())
-        return;    
+        return;
 
     ps_context* gc = m_data->context;
     switch (join) {
@@ -562,7 +562,7 @@ void GraphicsContext::drawConvexPolygon(size_t numPoints, const FloatPoint* poin
         p.x = points[i].x(); p.y = points[i].y();
         ps_line_to(gc, &p);
     }
-    ps_close_path(gc);    
+    ps_close_path(gc);
 
     bool f = false, s = false;
     if (fillColor().alpha()) {
@@ -583,7 +583,7 @@ void GraphicsContext::drawConvexPolygon(size_t numPoints, const FloatPoint* poin
 void GraphicsContext::drawLine(const IntPoint& point1, const IntPoint& point2)
 {
     if (paintingDisabled())
-        return;    
+        return;
 
     StrokeStyle penStyle = strokeStyle();
     if (penStyle == NoStroke)
@@ -619,9 +619,9 @@ void GraphicsContext::drawLine(const IntPoint& point1, const IntPoint& point2)
         // Do a rect fill of our endpoints.  This ensures we always have the
         // appearance of being a border.  We then draw the actual dotted/dashed line.
         if (isVerticalLine) {
-            fillRectSourceOver(m_data->context, 
+            fillRectSourceOver(m_data->context,
                     FloatRect(p1.x()-width/2, p1.y()-width, width, width), strokeColor());
-            fillRectSourceOver(m_data->context, 
+            fillRectSourceOver(m_data->context,
                     FloatRect(p2.x()-width/2, p2.y(), width, width), strokeColor());
         } else {
             fillRectSourceOver(m_data->context,
@@ -676,7 +676,7 @@ void GraphicsContext::drawLine(const IntPoint& point1, const IntPoint& point2)
 void GraphicsContext::drawRect(const IntRect& r)
 {
     if (paintingDisabled())
-        return;    
+        return;
 
     bool f = false;
     bool s = false;
@@ -700,7 +700,7 @@ void GraphicsContext::drawRect(const IntRect& r)
 void GraphicsContext::drawEllipse(const IntRect& r)
 {
     if (paintingDisabled())
-        return;    
+        return;
 
     bool f = false;
     bool s = false;
