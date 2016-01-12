@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2009 Dirk Schulze <krit@webkit.org>
  * Copyright (C) Research In Motion Limited 2011. All rights reserved.
+ * Copyright (C) 2015 Zhang Ji Peng <onecoolx@gmail.com>. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions

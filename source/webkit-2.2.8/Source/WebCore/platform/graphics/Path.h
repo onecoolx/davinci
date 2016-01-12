@@ -2,7 +2,7 @@
  * Copyright (C) 2003, 2006, 2009 Apple Inc. All rights reserved.
  *               2006 Rob Buis <buis@kde.org>
  * Copyright (C) 2007-2008 Torch Mobile, Inc.
- *               2015 Zhang Ji Peng <onecoolx@gmail.com>
+ * Copyright (C) 2015 Zhang Ji Peng <onecoolx@gmail.com>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
