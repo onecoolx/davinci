@@ -111,9 +111,31 @@ void GraphicsContext::setPlatformStrokeColor(const Color& color, ColorSpace)
     setPenColor(m_data->context, color);
 }
 
-void GraphicsContext::setPlatformStrokeStyle(StrokeStyle)
+void GraphicsContext::setPlatformStrokeStyle(StrokeStyle strokeStyle)
 {
-    //FIXME: is it need?
+    static float dashPattern[] = {5.0, 5.0};
+    static float dotPattern[] = {1.0, 1.0};
+
+    if (paintingDisabled())
+        return;
+
+    switch (strokeStyle) {
+        case NoStroke:
+            break;
+        case SolidStroke:
+#if ENABLE(CSS3_TEXT)
+        case DoubleStroke:
+        case WavyStroke:
+#endif // CSS3_TEXT
+            ps_reset_line_dash(platformContext()->context());
+            break;
+        case DottedStroke:
+            ps_set_line_dash(platformContext()->context(), 0, dotPattern, 2);
+            break;
+        case DashedStroke:
+            ps_set_line_dash(platformContext()->context(), 0, dashPattern, 2);
+            break;
+    }
 }
 
 void GraphicsContext::setPlatformStrokeThickness(float width)
@@ -741,7 +763,7 @@ void GraphicsContext::drawLineForText(const FloatPoint& point, float width, bool
 
 void GraphicsContext::drawLineForDocumentMarker(const FloatPoint& origin, float width, DocumentMarkerLineStyle style)
 {
-    //FIXME: need implements.
+    notImplemented();
 }
 
 #if ENABLE(3D_RENDERING) && USE(TEXTURE_MAPPER)
