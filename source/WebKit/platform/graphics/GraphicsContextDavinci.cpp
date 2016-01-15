@@ -127,13 +127,13 @@ void GraphicsContext::setPlatformStrokeStyle(StrokeStyle strokeStyle)
         case DoubleStroke:
         case WavyStroke:
 #endif // CSS3_TEXT
-            ps_reset_line_dash(platformContext()->context());
+            ps_reset_line_dash(m_data->context);
             break;
         case DottedStroke:
-            ps_set_line_dash(platformContext()->context(), 0, dotPattern, 2);
+            ps_set_line_dash(m_data->context, 0, dotPattern, 2);
             break;
         case DashedStroke:
-            ps_set_line_dash(platformContext()->context(), 0, dashPattern, 2);
+            ps_set_line_dash(m_data->context, 0, dashPattern, 2);
             break;
     }
 }
