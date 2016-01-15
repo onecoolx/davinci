@@ -426,11 +426,17 @@ void GraphicsContext::strokeRect(const FloatRect& rect, float width)
 
 void GraphicsContext::clipOut(const Path& path)
 {
+    if (paintingDisabled())
+        return;
+
     //FIXME: need be implements.
 }
 
 void GraphicsContext::clipOut(const IntRect& r)
 {
+    if (paintingDisabled())
+        return;
+
     //FIXME: need be implements.
 }
 
