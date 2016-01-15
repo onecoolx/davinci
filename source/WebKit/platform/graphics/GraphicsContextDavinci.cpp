@@ -357,17 +357,36 @@ void GraphicsContext::setImageInterpolationQuality(InterpolationQuality quality)
             ps_set_filter(m_data->context, FILTER_NEAREST);
             break;
         case InterpolationMedium:
-        case InterpolationHigh:
         case InterpolationDefault:
             ps_set_filter(m_data->context, FILTER_BILINEAR);
+            break;
+        case InterpolationHigh:
+            ps_set_filter(m_data->context, FILTER_GAUSSIAN);
             break;
     }
 }
 
 InterpolationQuality GraphicsContext::imageInterpolationQuality() const
 {
-    //FIXME: need be implements.
-    return InterpolationDefault;
+    if (paintingDisabled())
+        return InterpolationDefault;
+
+    InterpolationQuality quality;  
+    ps_filter f = ps_set_filter(m_data->context, FILTER_BILINEAR);
+
+    switch (f) {
+        case FILTER_BILINEAR:
+            quality = InterpolationDefault;
+            break;
+        case FILTER_NEAREST:
+            quality = InterpolationLow;
+            break;
+        case FILTER_GAUSSIAN:
+            quality = InterpolationHigh;
+            break;
+    }
+    ps_set_filter(m_data->context, f);
+    return quality;
 }
 
 void GraphicsContext::setAlpha(float alpha)
