@@ -346,9 +346,22 @@ void GraphicsContext::fillRoundedRect(const IntRect& rc, const IntSize& topLeft,
     }
 }
 
-void GraphicsContext::setImageInterpolationQuality(InterpolationQuality)
+void GraphicsContext::setImageInterpolationQuality(InterpolationQuality quality)
 {
-    //FIXME: need be implements.
+    if (paintingDisabled())
+        return;
+
+    switch (quality) {
+        case InterpolationNone:
+        case InterpolationLow:
+            ps_set_filter(m_data->context, FILTER_NEAREST);
+            break;
+        case InterpolationMedium:
+        case InterpolationHigh:
+        case InterpolationDefault:
+            ps_set_filter(m_data->context, FILTER_BILINEAR);
+            break;
+    }
 }
 
 InterpolationQuality GraphicsContext::imageInterpolationQuality() const
