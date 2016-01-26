@@ -77,6 +77,10 @@
   ],
   'conditions': [
     ['OS=="win"', {
+      'defines': [
+        'HAVE_BOOLEAN',
+        'XMD_H',
+      ],
       'actions': [
        {
         'action_name': 'install_header1',
