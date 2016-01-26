@@ -111,9 +111,31 @@ void GraphicsContext::setPlatformStrokeColor(const Color& color, ColorSpace)
     setPenColor(m_data->context, color);
 }
 
-void GraphicsContext::setPlatformStrokeStyle(StrokeStyle)
+void GraphicsContext::setPlatformStrokeStyle(StrokeStyle strokeStyle)
 {
-    //FIXME: is it need?
+    static float dashPattern[] = {5.0, 5.0};
+    static float dotPattern[] = {1.0, 1.0};
+
+    if (paintingDisabled())
+        return;
+
+    switch (strokeStyle) {
+        case NoStroke:
+            break;
+        case SolidStroke:
+#if ENABLE(CSS3_TEXT)
+        case DoubleStroke:
+        case WavyStroke:
+#endif // CSS3_TEXT
+            ps_reset_line_dash(m_data->context);
+            break;
+        case DottedStroke:
+            ps_set_line_dash(m_data->context, 0, dotPattern, 2);
+            break;
+        case DashedStroke:
+            ps_set_line_dash(m_data->context, 0, dashPattern, 2);
+            break;
+    }
 }
 
 void GraphicsContext::setPlatformStrokeThickness(float width)
@@ -324,15 +346,47 @@ void GraphicsContext::fillRoundedRect(const IntRect& rc, const IntSize& topLeft,
     }
 }
 
-void GraphicsContext::setImageInterpolationQuality(InterpolationQuality)
+void GraphicsContext::setImageInterpolationQuality(InterpolationQuality quality)
 {
-    //FIXME: need be implements.
+    if (paintingDisabled())
+        return;
+
+    switch (quality) {
+        case InterpolationNone:
+        case InterpolationLow:
+            ps_set_filter(m_data->context, FILTER_NEAREST);
+            break;
+        case InterpolationMedium:
+        case InterpolationDefault:
+            ps_set_filter(m_data->context, FILTER_BILINEAR);
+            break;
+        case InterpolationHigh:
+            ps_set_filter(m_data->context, FILTER_GAUSSIAN);
+            break;
+    }
 }
 
 InterpolationQuality GraphicsContext::imageInterpolationQuality() const
 {
-    //FIXME: need be implements.
-    return InterpolationDefault;
+    if (paintingDisabled())
+        return InterpolationDefault;
+
+    InterpolationQuality quality;  
+    ps_filter f = ps_set_filter(m_data->context, FILTER_BILINEAR);
+
+    switch (f) {
+        case FILTER_BILINEAR:
+            quality = InterpolationDefault;
+            break;
+        case FILTER_NEAREST:
+            quality = InterpolationLow;
+            break;
+        case FILTER_GAUSSIAN:
+            quality = InterpolationHigh;
+            break;
+    }
+    ps_set_filter(m_data->context, f);
+    return quality;
 }
 
 void GraphicsContext::setAlpha(float alpha)
@@ -372,11 +426,17 @@ void GraphicsContext::strokeRect(const FloatRect& rect, float width)
 
 void GraphicsContext::clipOut(const Path& path)
 {
+    if (paintingDisabled())
+        return;
+
     //FIXME: need be implements.
 }
 
 void GraphicsContext::clipOut(const IntRect& r)
 {
+    if (paintingDisabled())
+        return;
+
     //FIXME: need be implements.
 }
 
@@ -741,7 +801,7 @@ void GraphicsContext::drawLineForText(const FloatPoint& point, float width, bool
 
 void GraphicsContext::drawLineForDocumentMarker(const FloatPoint& origin, float width, DocumentMarkerLineStyle style)
 {
-    //FIXME: need implements.
+    notImplemented();
 }
 
 #if ENABLE(3D_RENDERING) && USE(TEXTURE_MAPPER)

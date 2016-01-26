@@ -4,6 +4,7 @@
  * Copyright (C) 2007 Holger Hans Peter Freyther
  * Copyright (C) 2007 Pioneer Research Center USA, Inc.
  * Copyright (C) 2010, 2011 Brent Fulgham <bfulgham@webkit.org>
+ * Copyright (C) 2015 Zhang Ji Peng <onecoolx@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
