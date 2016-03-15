@@ -269,10 +269,17 @@ void GraphicsContext::setPlatformCompositeOperation(CompositeOperator op, BlendM
                 ps_set_composite_operator(gc, COMPOSITE_EXCLUSION);
                 break;
             case BlendModeHue:
+                ps_set_composite_operator(gc, COMPOSITE_HUE);
+                break;
             case BlendModeSaturation:
+                ps_set_composite_operator(gc, COMPOSITE_SATURATION);
+                break;
             case BlendModeColor:
+                ps_set_composite_operator(gc, COMPOSITE_COLOR);
+                break;
             case BlendModeLuminosity:
-                //FIXME: not support!
+                ps_set_composite_operator(gc, COMPOSITE_LUMINOSITY);
+                break;
             default:
                 ps_set_composite_operator(gc, COMPOSITE_SRC_OVER);
                 break;
@@ -398,7 +405,18 @@ void GraphicsContext::setAlpha(float alpha)
 
 void GraphicsContext::fillRect(const FloatRect& rect)
 {
-    //FIXME: need be implements.
+    if (paintingDisabled())
+        return;
+
+    if (m_state.fillGradient) {
+        m_state.fillGradient->fill(m_data->context, rect);
+    } else if (m_state.fillPattern) {
+        m_state.fillPattern->fill(m_data->context, rect);
+    } else {
+        ps_rect r = { rect.x(), rect.y(), rect.width(), rect.height() };
+        ps_rectangle(gc, &r);
+        ps_fill(m_data->context);
+    }
 }
 
 void GraphicsContext::fillRect(const FloatRect& rect, const Color& color, ColorSpace)
@@ -416,6 +434,7 @@ void GraphicsContext::strokeRect(const FloatRect& rect, float width)
     if (paintingDisabled())
         return;
 
+    //FIXME: stroke gradient or pattern.
     ps_context* gc = m_data->context;
     float oldwidth = ps_set_line_width(gc, width);
     ps_rect r = { rect.x(), rect.y(), rect.width(), rect.height() };
@@ -429,7 +448,18 @@ void GraphicsContext::clipOut(const Path& path)
     if (paintingDisabled())
         return;
 
-    //FIXME: need be implements.
+    ps_size size = { 0, 0 };
+    ps_canvas* pc = ps_context_get_canvas(m_data->context);
+    if (!ps_canvas_get_size(pc, &size))
+        return;
+
+    ps_rect rc = { 0, 0, size.w, size.h };
+    ps_rect rt = { r.x(), r.y(), r.width(), r.height() };
+    ps_rectangle(m_data->context, &rc);
+    ps_add_sub_path(m_data->context, path.platformPath());
+    ps_fill_rule old_rule = ps_set_fill_rule(m_data->context, FILL_RULE_EVEN_ODD);
+    ps_clip(m_data->context);
+    ps_set_fill_rule(m_data->context, old_rule);
 }
 
 void GraphicsContext::clipOut(const IntRect& r)
@@ -437,7 +467,18 @@ void GraphicsContext::clipOut(const IntRect& r)
     if (paintingDisabled())
         return;
 
-    //FIXME: need be implements.
+    ps_size size = { 0, 0 };
+    ps_canvas* pc = ps_context_get_canvas(m_data->context);
+    if (!ps_canvas_get_size(pc, &size))
+        return;
+
+    ps_rect rc = { 0, 0, size.w, size.h };
+    ps_rect rt = { r.x(), r.y(), r.width(), r.height() };
+    ps_rectangle(m_data->context, &rc);
+    ps_rectangle(m_data->context, &rt);
+    ps_fill_rule old_rule = ps_set_fill_rule(m_data->context, FILL_RULE_EVEN_ODD);
+    ps_clip(m_data->context);
+    ps_set_fill_rule(m_data->context, old_rule);
 }
 
 void GraphicsContext::clip(const FloatRect& rect)
@@ -453,19 +494,22 @@ void GraphicsContext::clip(const Path& path, WindRule windRule)
 {
     if (paintingDisabled())
         return;
-    //FIXME: need implements add a new path to context interface!
+
+    ps_add_sub_path(m_data->context, path.platformPath());
+    ps_fill_rule old_rule = ps_set_fill_rule(m_data->context, windRule == RULE_EVENODD ? FILL_RULE_EVEN_ODD : FILL_RULE_WINDING);
+    ps_clip(m_data->context);
+    ps_set_fill_rule(m_data->context, old_rule);
 }
 
 void GraphicsContext::clipPath(const Path& path, WindRule clipRule)
 {
     if (paintingDisabled())
         return;
-    ps_clip_path(m_data->context, path.platformPath(), (ps_fill_rule)clipRule);
+    ps_clip_path(m_data->context, path.platformPath(), clipRule == RULE_EVENODD ? FILL_RULE_EVEN_ODD : FILL_RULE_WINDING);
 }
 
 void GraphicsContext::clipConvexPolygon(size_t numPoints, const FloatPoint* points, bool antialiased)
 {
-    // FIXME: not use antialiased.
     if (paintingDisabled())
         return;
 
@@ -597,17 +641,66 @@ void GraphicsContext::setLineJoin(LineJoin join)
 
 void GraphicsContext::drawFocusRing(const Vector<IntRect>& rects, int width, int offset, const Color& color)
 {
-    //FIXME: need be implements
+    if (paintingDisabled())
+        return;
+
+    ps_context* gc = m_data->context;
+    int radius = (width - 1) / 2;
+    unsigned rectCount = rects.size();
+    IntRect finalFocusRect;
+    for (unsigned i = 0; i < rectCount; i++) {
+        IntRect focusRect = rects[i];
+        focusRect.inflate(offset);
+        finalFocusRect.unite(focusRect);
+    }
+
+    ps_rect rc = { finalFocusRect.x() - 1, finalFocusRect.y() - 1,
+				   finalFocusRect.width() + 1, finalFocusRect.height() + 1 };
+	ps_save(gc);
+#if FOCUSRING_DRAWING
+    const Color col(0x14, 0x72, 0xFF);
+    ps_set_line_width(gc, 2);
+    setPenColor(gc, col);
+	ps_path* p = ps_path_create();
+	ps_path_add_rounded_rect(p, &rc, 2, 2, 2, 2, 2, 2, 2, 2);
+	ps_set_path(gc, p);
+	ps_stroke(gc);
+	ps_path_unref(p);
+#else
+    setPenColor(gc, color);
+	double d[] = {1, 2};
+	ps_set_line_dash(gc, 0, d, 2);
+    ps_rectangle(gc, &rc);
+	ps_stroke(gc);
+#endif
+	ps_restore(gc);
 }
 
 void GraphicsContext::drawFocusRing(const Path& path, int width, int offset, const Color& color)
 {
-    //FIXME: need be implements
+    if (paintingDisabled())
+        return;
+
+    ps_context* gc = m_data->context;
+	ps_save(gc);
+#if FOCUSRING_DRAWING
+    const Color col(0x14, 0x72, 0xFF);
+    ps_set_line_width(gc, 2);
+    setPenColor(gc, col);
+	ps_set_path(gc, path.platformPath());
+	ps_stroke(gc);
+#else
+    setPenColor(gc, color);
+	double d[] = {1, 2};
+	ps_set_line_dash(gc, 0, d, 2);
+	ps_set_path(gc, path.platformPath());
+	ps_stroke(gc);
+#endif
+	ps_restore(gc);
 }
 
 void GraphicsContext::drawConvexPolygon(size_t numPoints, const FloatPoint* points, bool shouldAntialias)
 {
-    //FIXME: no use shouldAntialias.
     if (paintingDisabled())
         return;
 
@@ -636,6 +729,8 @@ void GraphicsContext::drawConvexPolygon(size_t numPoints, const FloatPoint* poin
         ps_set_line_width(gc, strokeThickness());
         s = true;
     }
+
+    ps_set_antialias(gc, shouldAntialias ? True : False);
 
     draw_graphic(gc, f, s);
 }

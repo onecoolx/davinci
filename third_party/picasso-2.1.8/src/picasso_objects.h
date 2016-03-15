@@ -117,7 +117,7 @@ struct graphic_pen
         }
     }
 
-    void set_dash(float start, float* da, unsigned int ndash)
+    void set_dash(float start, const float* da, unsigned int ndash)
     {
         style = pen_style_dash;
         dstart = FLT_TO_SCALAR(start);
