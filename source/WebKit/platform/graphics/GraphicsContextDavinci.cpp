@@ -409,12 +409,12 @@ void GraphicsContext::fillRect(const FloatRect& rect)
         return;
 
     if (m_state.fillGradient) {
-        m_state.fillGradient->fill(m_data->context, rect);
+        m_state.fillGradient->fill(this, rect);
     } else if (m_state.fillPattern) {
-        m_state.fillPattern->fill(m_data->context, rect);
+        m_state.fillPattern->fill(this, rect);
     } else {
         ps_rect r = { rect.x(), rect.y(), rect.width(), rect.height() };
-        ps_rectangle(gc, &r);
+        ps_rectangle(m_data->context, &r);
         ps_fill(m_data->context);
     }
 }
@@ -454,7 +454,6 @@ void GraphicsContext::clipOut(const Path& path)
         return;
 
     ps_rect rc = { 0, 0, size.w, size.h };
-    ps_rect rt = { r.x(), r.y(), r.width(), r.height() };
     ps_rectangle(m_data->context, &rc);
     ps_add_sub_path(m_data->context, path.platformPath());
     ps_fill_rule old_rule = ps_set_fill_rule(m_data->context, FILL_RULE_EVEN_ODD);
@@ -668,7 +667,7 @@ void GraphicsContext::drawFocusRing(const Vector<IntRect>& rects, int width, int
 	ps_path_unref(p);
 #else
     setPenColor(gc, color);
-	double d[] = {1, 2};
+	float d[] = {1, 2};
 	ps_set_line_dash(gc, 0, d, 2);
     ps_rectangle(gc, &rc);
 	ps_stroke(gc);
@@ -691,7 +690,7 @@ void GraphicsContext::drawFocusRing(const Path& path, int width, int offset, con
 	ps_stroke(gc);
 #else
     setPenColor(gc, color);
-	double d[] = {1, 2};
+	float d[] = {1, 2};
 	ps_set_line_dash(gc, 0, d, 2);
 	ps_set_path(gc, path.platformPath());
 	ps_stroke(gc);
