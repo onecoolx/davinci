@@ -54,7 +54,9 @@ typedef void* PlatformPatternPtr;
 namespace WebCore {
 
 class AffineTransform;
+class GraphicsContext;
 class Image;
+
 
 class Pattern : public RefCounted<Pattern> {
 public:

@@ -5526,6 +5526,7 @@
     '<(lib_src)/platform/graphics/ImageDavinci.cpp',
     '<(lib_src)/platform/graphics/ImageBufferDavinci.cpp',
     '<(lib_src)/platform/graphics/PathDavinci.cpp',
+    '<(lib_src)/platform/graphics/PatternDavinci.cpp',
     '<(lib_src)/platform/graphics/SimpleFontDataDavinci.cpp',
     '<(lib_src)/platform/network/AuthenticationChallenge.h',
     '<(lib_src)/platform/network/CurlDownload.h',
