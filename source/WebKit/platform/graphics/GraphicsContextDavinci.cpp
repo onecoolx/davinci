@@ -18,6 +18,17 @@
 
 namespace WebCore {
 
+struct TransparentLayer {
+    TransparentLayer(ps_canvas* p, float o)
+        : canvas(p)
+        , opacity(o)
+    {
+    }
+
+    ps_canvas* canvas;
+    float opacity;
+};
+
 class GraphicsContextPlatformPrivate
 {
 public:
@@ -25,6 +36,7 @@ public:
     ~GraphicsContextPlatformPrivate() { }
 
     ps_context* context;
+    Vector<TransparentLayer> layers;
 };
 
 static inline ps_color make_color(const Color& c)
@@ -289,12 +301,38 @@ void GraphicsContext::setPlatformCompositeOperation(CompositeOperator op, BlendM
 
 void GraphicsContext::beginPlatformTransparencyLayer(float opacity)
 {
-    //FIXME: need implements!
+    if (paintingDisabled())
+        return;
+
+    ps_canvas* pc = ps_context_get_canvas(m_data->context);
+    ps_canvas* layer = ps_canvas_create_compatible(pc, -1, -1);
+    pc = ps_context_set_canvas(m_data->context, layer);
+    m_data->layers.append(TransparentLayer(pc, opacity));
 }
 
 void GraphicsContext::endPlatformTransparencyLayer()
 {
-    //FIXME: need implements!
+    if (paintingDisabled())
+        return;
+
+    TransparentLayer tlayer = m_data->layers.last();
+    float opacity = tlayer.opacity;
+    ps_canvas* pc = tlayer.canvas;
+    m_data->layers.removeLast();
+
+    ps_size size = { 0, 0 };
+    ps_canvas* layer = ps_context_set_canvas(m_data->context, pc);
+    ps_canvas_get_size(layer, &size);
+
+    ps_save(m_data->context);
+    ps_set_source_canvas(m_data->context, layer);
+    ps_set_alpha(m_data->context, opacity);
+    ps_rect rc = { 0, 0, size.w, size.h };
+    ps_rectangle(m_data->context, &rc);
+    ps_fill(m_data->context);
+    ps_restore(m_data->context);
+
+    ps_canvas_unref(layer);
 }
 
 bool GraphicsContext::supportsTransparencyLayers()
