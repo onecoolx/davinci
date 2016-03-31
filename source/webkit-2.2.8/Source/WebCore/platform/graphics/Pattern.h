@@ -69,6 +69,7 @@ public:
 
 #if PLATFORM(DAVINCI)
     void fill(GraphicsContext*, const FloatRect&);
+    void stroke(GraphicsContext*, const FloatRect&);
 #endif
     // Pattern space is an abstract space that maps to the default user space by the transformation 'userSpaceTransformation' 
 #if PLATFORM(QT)

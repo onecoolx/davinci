@@ -16,4 +16,8 @@ void Pattern::fill(GraphicsContext* context, const FloatRect& rect)
 {
 }
 
+void Pattern::stroke(GraphicsContext* context, const FloatRect& rect)
+{
+}
+
 }

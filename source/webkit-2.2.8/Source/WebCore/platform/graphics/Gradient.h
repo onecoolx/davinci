@@ -168,6 +168,7 @@ namespace WebCore {
         AffineTransform gradientSpaceTransform() { return m_gradientSpaceTransformation; }
 
         void fill(GraphicsContext*, const FloatRect&);
+        void stroke(GraphicsContext*, const FloatRect&);
         void adjustParametersForTiledDrawing(IntSize&, FloatRect&);
 
         void setPlatformGradientSpaceTransform(const AffineTransform& gradientSpaceTransformation);

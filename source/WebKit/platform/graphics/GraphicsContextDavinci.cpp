@@ -472,12 +472,18 @@ void GraphicsContext::strokeRect(const FloatRect& rect, float width)
     if (paintingDisabled())
         return;
 
-    //FIXME: stroke gradient or pattern.
     ps_context* gc = m_data->context;
     float oldwidth = ps_set_line_width(gc, width);
-    ps_rect r = { rect.x(), rect.y(), rect.width(), rect.height() };
-    ps_rectangle(gc, &r);
-    ps_stroke(gc);
+
+    if (m_state.strokeGradient) {
+        m_state.strokeGradient->stroke(this, rect);
+    } else if (m_state.strokePattern) {
+        m_state.strokePattern->stroke(this, rect);
+    } else {
+        ps_rect r = { rect.x(), rect.y(), rect.width(), rect.height() };
+        ps_rectangle(gc, &r);
+        ps_stroke(gc);
+    }
     ps_set_line_width(gc, oldwidth);
 }
 

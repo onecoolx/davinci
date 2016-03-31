@@ -35,4 +35,8 @@ void Gradient::fill(GraphicsContext* context, const FloatRect& rect)
 {
 }
 
+void Gradient::stroke(GraphicsContext* context, const FloatRect& rect)
+{
+}
+
 }
