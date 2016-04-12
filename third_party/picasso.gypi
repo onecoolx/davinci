@@ -5,7 +5,7 @@
 
 {
   'variables': {
-    'lib_dir': 'picasso-2.1.8',
+    'lib_dir': 'picasso-2.2.0',
     'lib_name': 'picasso2_sw',
   },
   'target_name': '<(lib_name)',
@@ -147,6 +147,9 @@
        }],
     }],
     ['OS=="linux"', {
+      'defines': [
+        'ENABLE_FREE_TYPE2',
+      ],
       'include_dirs': [
         '$(builddir)/include',
       ],

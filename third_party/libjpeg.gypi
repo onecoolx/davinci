@@ -78,8 +78,6 @@
   'conditions': [
     ['OS=="win"', {
       'defines': [
-#        'HAVE_BOOLEAN',
-#        'XMD_H',
       ],
       'actions': [
        {
