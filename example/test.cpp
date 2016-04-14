@@ -7,6 +7,7 @@
 #include "Frame.h"
 #include "FrameView.h"
 #include "InitializeThreading.h"
+#include "PlatformStrategiesDavinci.h"
 
 using namespace WebCore;
 
@@ -14,7 +15,7 @@ int main(int, char*[])
 {
     JSC::initializeThreading();
     WTF::initializeMainThread();
-    //PlatformStrategiesWinCE::initialize();
+    PlatformStrategiesDavinci::initialize();
 
 
 

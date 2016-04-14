@@ -128,6 +128,7 @@
       '<(webview_dir)/platform',
       '<(webview_dir)/platform/network',
       '<(webview_dir)/platform/graphics',
+      '<(webview_dir)/WebCoreSupport',
       '<(webkit_dir)',
       '<(webkit_dir)/../../../include',
       '<(webkit_dir)/JavaScriptCore',

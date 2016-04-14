@@ -5547,6 +5547,9 @@
     '<(lib_src)/platform/network/ResourceHandleCurl.cpp',
     '<(lib_src)/platform/network/ResourceHandleManager.cpp',
     '<(lib_src)/platform/network/SocketStreamHandleCurl.cpp',
+    # webview
+    '<(lib_src)/WebCoreSupport/PlatformStrategiesDavinci.h',
+    '<(lib_src)/WebCoreSupport/PlatformStrategiesDavinci.cpp',
   ],
   'conditions': [
     ['OS=="win"', {

@@ -139,6 +139,7 @@
     '<(lib_src)/platform',
     '<(lib_src)/platform/network',
     '<(lib_src)/platform/graphics',
+    '<(lib_src)/WebCoreSupport',
     '<(lib_root_dir)',
     '<(lib_root_dir)/../../../include',
     '<(lib_root_dir)/JavaScriptCore',
