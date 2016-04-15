@@ -5547,9 +5547,25 @@
     '<(lib_src)/platform/network/ResourceHandleCurl.cpp',
     '<(lib_src)/platform/network/ResourceHandleManager.cpp',
     '<(lib_src)/platform/network/SocketStreamHandleCurl.cpp',
-    # webview
+    # WebCoreSupport
+    '<(lib_src)/WebCoreSupport/FrameLoaderClientDavinci.h',
+    '<(lib_src)/WebCoreSupport/FrameLoaderClientDavinci.cpp',
+    '<(lib_src)/WebCoreSupport/FrameNetworkingContextDavinci.h',
+    '<(lib_src)/WebCoreSupport/FrameNetworkingContextDavinci.cpp',
+    '<(lib_src)/WebCoreSupport/ChromeClientDavinci.h',
+    '<(lib_src)/WebCoreSupport/ChromeClientDavinci.cpp',
+    '<(lib_src)/WebCoreSupport/ContextMenuClientDavinci.h',
+    '<(lib_src)/WebCoreSupport/ContextMenuClientDavinci.cpp',
+    '<(lib_src)/WebCoreSupport/DragClientDavinci.h',
+    '<(lib_src)/WebCoreSupport/DragClientDavinci.cpp',
+    '<(lib_src)/WebCoreSupport/EditorClientDavinci.h',
+    '<(lib_src)/WebCoreSupport/EditorClientDavinci.cpp',
+    '<(lib_src)/WebCoreSupport/InspectorClientDavinci.h',
+    '<(lib_src)/WebCoreSupport/InspectorClientDavinci.cpp',
     '<(lib_src)/WebCoreSupport/PlatformStrategiesDavinci.h',
     '<(lib_src)/WebCoreSupport/PlatformStrategiesDavinci.cpp',
+    # webview
+    '<(lib_src)/include/WebView.h',
   ],
   'conditions': [
     ['OS=="win"', {

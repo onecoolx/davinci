@@ -136,6 +136,8 @@
     '<(lib_dir)/workers',
     '<(lib_dir)/xml',
     '<(lib_dir)/xml/parser',
+    '<(lib_src)/',
+    '<(lib_src)/include',
     '<(lib_src)/platform',
     '<(lib_src)/platform/network',
     '<(lib_src)/platform/graphics',

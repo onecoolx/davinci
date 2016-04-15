@@ -125,6 +125,7 @@
       '<(webcore_dir)/workers',
       '<(webcore_dir)/xml',
       '<(webcore_dir)/xml/parser',
+      '<(webview_dir)/',
       '<(webview_dir)/platform',
       '<(webview_dir)/platform/network',
       '<(webview_dir)/platform/graphics',
