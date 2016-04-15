@@ -13,8 +13,10 @@
 #include "Icon.h"
 #include "NotImplemented.h"
 #include "NavigationAction.h"
+#if 0
 #include "PopupMenuWin.h"
 #include "SearchPopupMenuWin.h"
+#endif
 #include "WebView.h"
 #include <wtf/text/CString.h>
 
@@ -41,6 +43,8 @@ FloatRect ChromeClientDavinci::windowRect()
 #if 0
     m_webView->frameRect(&rect);
     return rect;
+#else
+	return FloatRect();
 #endif
 }
 
@@ -184,6 +188,8 @@ bool ChromeClientDavinci::runJavaScriptConfirm(Frame*, const String& message)
 {
 #if 0
     return m_webView->runJavaScriptConfirm(message);
+#else
+	return false;
 #endif
 }
 
@@ -191,6 +197,8 @@ bool ChromeClientDavinci::runJavaScriptPrompt(Frame*, const String& message, con
 {
 #if 0
     return m_webView->runJavaScriptPrompt(message, defaultValue, result);
+#else
+	return false;
 #endif
 }
 
@@ -389,12 +397,20 @@ bool ChromeClientDavinci::hasOpenedPopup() const
 
 PassRefPtr<PopupMenu> ChromeClientDavinci::createPopupMenu(PopupMenuClient* client) const
 {
+#if 0
     return adoptRef(new PopupMenuWin(client));
+#else
+	return 0;
+#endif
 }
 
 PassRefPtr<SearchPopupMenu> ChromeClientDavinci::createSearchPopupMenu(PopupMenuClient* client) const
 {
+#if 0
     return adoptRef(new SearchPopupMenuWin(client));
+#else
+	return 0;
+#endif
 }
 
 } // namespace WebKit

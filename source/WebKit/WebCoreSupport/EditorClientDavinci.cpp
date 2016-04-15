@@ -202,6 +202,8 @@ bool EditorClientDavinci::smartInsertDeleteEnabled()
     if (!page)
         return false;
     return page->settings().smartInsertDeleteEnabled();
+#else
+	return false;
 #endif
 }
 
@@ -212,6 +214,8 @@ bool EditorClientDavinci::isSelectTrailingWhitespaceEnabled()
     if (!page)
         return false;
     return page->settings().selectTrailingWhitespaceEnabled();
+#else
+	return false;
 #endif
 }
 

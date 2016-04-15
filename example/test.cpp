@@ -15,7 +15,7 @@ int main(int, char*[])
 {
     JSC::initializeThreading();
     WTF::initializeMainThread();
-    PlatformStrategiesDavinci::initialize();
+    //PlatformStrategiesDavinci::initialize();
 
 
 

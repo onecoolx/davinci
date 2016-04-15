@@ -5574,6 +5574,8 @@
         '<(lib_dir)/platform/win/SharedBufferWin.cpp',
         '<(lib_dir)/platform/win/PathWalker.cpp',
         '<(lib_dir)/platform/win/PathWalker.h',
+        '<(lib_dir)/platform/win/SystemInfo.h',
+        '<(lib_dir)/platform/win/SystemInfo.cpp',
       ]
     }],
     ['OS=="linux"', {

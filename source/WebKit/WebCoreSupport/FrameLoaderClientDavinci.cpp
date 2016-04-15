@@ -154,6 +154,8 @@ PassRefPtr<Frame> FrameLoaderClientDavinci::createFrame(const KURL& url, const S
 {
 #if 0
     return m_webView->createFrame(url, name, ownerElement, referrer, allowsScrolling, marginWidth, marginHeight);
+#else
+	return 0;
 #endif
 }
 
