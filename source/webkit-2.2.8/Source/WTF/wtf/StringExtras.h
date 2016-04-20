@@ -34,7 +34,8 @@
 #include <strings.h> 
 #endif 
 
-#if COMPILER(MSVC)
+#if COMPILER(MSVC) 
+#if _MSC_VER <= 1600
 // FIXME: why a COMPILER check instead of OS? also, these should be HAVE checks
 
 inline int snprintf(char* buffer, size_t count, const char* format, ...) 
@@ -52,6 +53,7 @@ inline int snprintf(char* buffer, size_t count, const char* format, ...)
 
     return result;
 }
+#endif
 
 inline double wtf_vsnprintf(char* buffer, size_t count, const char* format, va_list args)
 {

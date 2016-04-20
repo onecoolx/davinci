@@ -185,7 +185,7 @@ struct Uint8ClampedAdaptor {
     
     static Type toNativeFromUint32(uint32_t value)
     {
-        return std::min(static_cast<uint32_t>(255), value);
+        return static_cast<Type>(std::min(static_cast<uint32_t>(255), value));
     }
     
     static Type toNativeFromDouble(double value)

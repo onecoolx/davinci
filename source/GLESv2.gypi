@@ -162,7 +162,7 @@
     '-ld3d9',
     '-ldxguid',
   ],
-  'msvs_disabled_warnings': [ 4267 ],
+  'msvs_disabled_warnings': [ 4267, 4996 ],
   'includes': [
     '../build/configs.gypi',
     '../build/defines.gypi',

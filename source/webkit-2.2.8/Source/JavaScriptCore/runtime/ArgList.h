@@ -135,7 +135,9 @@ private:
     void operator delete[](void*);
 
     void* operator new(size_t, void*);
+#if COMPILER(MSVC) && (_MSC_VER <= 1600)
     void operator delete(void*, size_t);
+#endif
 };
 
 class ArgList {

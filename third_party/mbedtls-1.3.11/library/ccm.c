@@ -140,7 +140,7 @@ static int ccm_auth_crypt( ccm_context *ctx, int mode, size_t length,
 {
     int ret;
     unsigned char i;
-    unsigned char q = 16 - 1 - iv_len;
+    unsigned char q = (unsigned char)(16 - 1 - iv_len);
     size_t len_left, olen;
     unsigned char b[16];
     unsigned char y[16];
@@ -254,7 +254,7 @@ static int ccm_auth_crypt( ccm_context *ctx, int mode, size_t length,
 
     while( len_left > 0 )
     {
-        unsigned char use_len = len_left > 16 ? 16 : len_left;
+        unsigned char use_len = (unsigned char)(len_left > 16 ? 16 : len_left);
 
         if( mode == CCM_ENCRYPT )
         {

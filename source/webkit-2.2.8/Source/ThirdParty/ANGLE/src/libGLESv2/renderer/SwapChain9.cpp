@@ -312,7 +312,7 @@ EGLint SwapChain9::swapRect(EGLint x, EGLint y, EGLint width, EGLint height)
     device->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
     device->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
 
-    D3DVIEWPORT9 viewport = {0, 0, mWidth, mHeight, 0.0f, 1.0f};
+    D3DVIEWPORT9 viewport = {0, 0, (DWORD)mWidth, (DWORD)mHeight, 0.0f, 1.0f};
     device->SetViewport(&viewport);
 
     float x1 = x - 0.5f;
