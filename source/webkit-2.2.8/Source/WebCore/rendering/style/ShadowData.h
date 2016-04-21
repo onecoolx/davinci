@@ -75,7 +75,7 @@ public:
         // Blurring uses a Gaussian function whose std. deviation is m_radius/2, and which in theory
         // extends to infinity. In 8-bit contexts, however, rounding causes the effect to become
         // undetectable at around 1.4x the radius.
-        const float radiusExtentMultiplier = 1.4;
+        const float radiusExtentMultiplier = 1.4f;
         return ceilf(m_radius * radiusExtentMultiplier);
     }
     int spread() const { return m_spread; }

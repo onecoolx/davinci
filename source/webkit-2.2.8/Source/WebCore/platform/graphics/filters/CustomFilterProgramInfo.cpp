@@ -87,7 +87,7 @@ unsigned CustomFilterProgramInfo::hash() const
         blendsElementTexture,
         static_cast<uintptr_t>(blendsElementTexture ? m_mixSettings.blendMode : 0),
         static_cast<uintptr_t>(blendsElementTexture ? m_mixSettings.compositeOperator : 0),
-        m_meshType
+		static_cast<uintptr_t>(m_meshType)
     };
     return StringHasher::hashMemory<sizeof(hashCodes)>(&hashCodes);
 }

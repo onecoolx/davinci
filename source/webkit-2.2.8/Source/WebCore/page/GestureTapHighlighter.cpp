@@ -128,7 +128,7 @@ inline void addHighlightRect(Path& path, const LayoutRect& rect, const LayoutRec
     copy.inflateX(rounding);
     copy.inflateY(rounding / 2);
 
-    FloatSize rounded(rounding * 1.8, rounding * 1.8);
+    FloatSize rounded(rounding * 1.8f, rounding * 1.8f);
     FloatSize squared(0, 0);
 
     path.addBeziersForRoundedRect(copy,

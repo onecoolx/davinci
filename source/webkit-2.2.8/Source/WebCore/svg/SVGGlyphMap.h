@@ -100,7 +100,7 @@ public:
         ASSERT(tableEntry < std::numeric_limits<unsigned short>::max());
 
         // The first table entry starts with 1. 0 denotes an unknown glyph.
-        glyph.tableEntry = tableEntry + 1;
+        glyph.tableEntry = static_cast<Glyph>(tableEntry + 1);
         m_glyphTable.append(glyph);
     }
 

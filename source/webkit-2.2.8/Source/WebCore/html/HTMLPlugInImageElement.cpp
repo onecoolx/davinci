@@ -61,8 +61,8 @@ typedef Vector<RefPtr<HTMLPlugInImageElement> > HTMLPlugInImageElementList;
 typedef HashMap<String, String> MimeTypeToLocalizedStringMap;
 
 static const int sizingTinyDimensionThreshold = 40;
-static const float sizingFullPageAreaRatioThreshold = 0.96;
-static const float autostartSoonAfterUserGestureThreshold = 5.0;
+static const float sizingFullPageAreaRatioThreshold = 0.96f;
+static const float autostartSoonAfterUserGestureThreshold = 5.0f;
 
 // This delay should not exceed the snapshot delay in PluginView.cpp
 static const double simulatedMouseClickTimerDelay = .75;
