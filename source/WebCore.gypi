@@ -190,6 +190,7 @@
         'GLESv2',
       ],
       'sources': [ 
+        '<(lib_root_dir)/WebKit/WebKit.vcxproj/WebKit/resource.h',
       ],
       'libraries': [
         '-lShlwapi',
