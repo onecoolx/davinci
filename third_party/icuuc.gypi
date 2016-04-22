@@ -279,6 +279,10 @@
       'cflags_cc': [
         '-fvisibility-inlines-hidden',
       ],
+      'libraries': [
+        '-lpthread',
+        '-ldl',
+      ],
       'actions': [
       {
        'action_name': 'install_headers',

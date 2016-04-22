@@ -19,7 +19,9 @@
 #include "PluginDatabase.h"
 #include "PolicyChecker.h"
 #include "RenderPart.h"
+#if 0
 #include "SystemInfo.h"
+#endif
 #include "WebKitVersion.h"
 #include "WebView.h"
 #include <wtf/text/StringConcatenate.h>
@@ -43,10 +45,12 @@ String FrameLoaderClientDavinci::userAgent(const KURL&)
 {
     DEFINE_STATIC_LOCAL(String, userAgentString, ());
 
+#if 0
     if (userAgentString.isNull()) {
         String webKitVersion = String::format("%d.%d", WEBKIT_MAJOR_VERSION, WEBKIT_MINOR_VERSION);
         userAgentString = makeString("Mozilla/5.0 (", windowsVersionForUAString(), ") AppleWebKit/", webKitVersion, " (KHTML, like Gecko) Mobile Safari/", webKitVersion);
     }
+#endif
 
     return userAgentString;
 }
