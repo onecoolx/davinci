@@ -191,7 +191,7 @@ namespace std {
 inline bool isinf(double num) { return !_finite(num) && !_isnan(num); }
 inline bool isnan(double num) { return !!_isnan(num); }
 inline bool isfinite(double x) { return _finite(x); }
-#if !COMPILER(MSVC10_OR_HIGHER)
+#if defined(_MSC_VER) && (_MSC_VER <= 1600)
 inline bool signbit(double num) { return _copysign(1.0, num) < 0; }
 #endif
 
