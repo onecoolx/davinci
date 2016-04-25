@@ -245,6 +245,7 @@ struct KeyPressEntry {
     const char* name;
 };
 
+#if 0
 static const KeyDownEntry keyDownEntries[] = {
     { VK_LEFT,   0,                  "MoveLeft"                                    },
     { VK_LEFT,   ShiftKey,           "MoveLeftAndModifySelection"                  },
@@ -310,6 +311,7 @@ static const KeyPressEntry keyPressEntries[] = {
     { '\r',   AltKey,             "InsertNewline"                               },
     { '\r',   AltKey | ShiftKey,  "InsertNewline"                               }
 };
+#endif
 
 const char* EditorClientDavinci::interpretKeyEvent(const KeyboardEvent* event)
 {
@@ -322,11 +324,13 @@ const char* EditorClientDavinci::interpretKeyEvent(const KeyboardEvent* event)
         keyDownCommandsMap = new HashMap<int, const char*>;
         keyPressCommandsMap = new HashMap<int, const char*>;
 
+#if 0
         for (size_t i = 0; i < WTF_ARRAY_LENGTH(keyDownEntries); ++i)
             keyDownCommandsMap->set(keyDownEntries[i].modifiers << 16 | keyDownEntries[i].virtualKey, keyDownEntries[i].name);
 
         for (size_t i = 0; i < WTF_ARRAY_LENGTH(keyPressEntries); ++i)
             keyPressCommandsMap->set(keyPressEntries[i].modifiers << 16 | keyPressEntries[i].charCode, keyPressEntries[i].name);
+#endif
     }
 
     unsigned modifiers = 0;
@@ -358,6 +362,7 @@ bool EditorClientDavinci::handleEditingKeyboardEvent(KeyboardEvent* event)
         return false;
 
     bool caretBrowsing = frame->settings().caretBrowsingEnabled();
+#if 0
     if (caretBrowsing) {
         switch (keyEvent->windowsVirtualKeyCode()) {
         case VK_LEFT:
@@ -386,6 +391,7 @@ bool EditorClientDavinci::handleEditingKeyboardEvent(KeyboardEvent* event)
             return true;
         }
     }
+#endif
 
     Editor::Command command = frame->editor().command(interpretKeyEvent(event));
 

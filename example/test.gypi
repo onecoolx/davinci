@@ -183,6 +183,7 @@
         ],
         'libraries': [
           '-lpthread',
+          '-ldl',
         ],
       }],
     ],

@@ -255,6 +255,7 @@
       }],
       'libraries': [
         '-lpthread',
+        '-ldl',
       ],
     }],
   ],
