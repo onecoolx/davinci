@@ -12,7 +12,7 @@ class WebView
 {
 };
 
-
+#if 0
 /**
  * \fn MC_STATUS macross_mouse_event(MaCrossView* view, const MC_MOUSE_EVENT *event) 
  * \brief Process a mouse event for web view.
@@ -56,3 +56,4 @@ MACROSS_API MC_STATUS macross_keyboard_event(MaCrossView* view, const MC_KEY_EVE
  */
 MACROSS_API MC_STATUS macross_context_menu_event(MaCrossView* view, const MC_CONTEXT_EVENT *event);
 #endif /*_DAVINCI_WEBVIEW_H_*/
+#endif
