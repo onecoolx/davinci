@@ -182,6 +182,7 @@
         '$(OutDir)/../../build',
       ],
       'defines': [
+        'EXPORT',
         'HAVE_BOOLEAN',
         'XMD_H',
       ],
