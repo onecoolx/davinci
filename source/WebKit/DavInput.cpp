@@ -1,4 +1,5 @@
 
+#if 0
 /**
  * \brief Mouse event structure.
  * \sa MC_KEY_EVENT, MC_CONTEXT_EVENT
@@ -56,4 +57,5 @@ typedef struct _mc_context_evt {
 	 */
 	unsigned int    modifier;
 }MC_CONTEXT_EVENT;
+#endif
 
