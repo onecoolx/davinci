@@ -87,6 +87,9 @@
               'WarnAsError': 'true',
               'SuppressStartupBanner': 'true',
               'DebugInformationFormat': '3',
+              'AdditionalOptions': [
+                '/MP', # compile across multiple CPUs
+              ],
             },
             'VCLinkerTool': {
               'LinkIncremental': '1',

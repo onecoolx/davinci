@@ -32,6 +32,11 @@
        },
        {
           'includes': [
+            './libuv.gypi'
+          ],
+       },
+       {
+          'includes': [
             './curl.gypi'
           ],
        },

@@ -24,6 +24,7 @@
     'icui18n',
     'jpeg',
     'png',
+    'uv',
     'xml2',
     'xslt',
     'zlib',
@@ -174,6 +175,7 @@
       'include_dirs': [
         '<(lib_dir)/platform/win',
         '$(OutDir)/include',
+        '$(OutDir)/include/uv',
         '$(OutDir)/include/uc',
         '$(OutDir)/include/i18n',
         '$(OutDir)/include/freetype',
@@ -219,6 +221,7 @@
     ['OS=="linux"', {
       'include_dirs': [
         '$(builddir)/include',
+        '$(builddir)/include/uv',
         '$(builddir)/include/uc',
         '$(builddir)/include/i18n',
         '$(builddir)/include/freetype',
