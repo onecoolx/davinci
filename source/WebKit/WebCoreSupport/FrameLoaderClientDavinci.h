@@ -12,17 +12,17 @@
 #include "PluginView.h"
 #include "ResourceResponse.h"
 
-class WebView;
+class WebViewCore;
 
 namespace WebKit {
 
 class FrameLoaderClientDavinci : public WebCore::FrameLoaderClient {
 public:
-    FrameLoaderClientDavinci(WebView*);
+    FrameLoaderClientDavinci(WebViewCore*);
     virtual ~FrameLoaderClientDavinci();
     virtual void frameLoaderDestroyed();
 
-    WebView* webView() const { return m_webView; }
+    WebViewCore* webView() const { return m_core; }
 
     virtual bool hasWebView() const;
 
@@ -168,7 +168,7 @@ public:
     WebCore::Frame *frame() { return m_frame; }
 
 private:
-    WebView* m_webView;
+    WebViewCore* m_core;
     WebCore::Frame* m_frame;
     WebCore::ResourceResponse m_response;
 

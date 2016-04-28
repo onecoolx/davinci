@@ -8,7 +8,14 @@
 #ifndef _DAVINCI_WEBVIEW_H_
 #define _DAVINCI_WEBVIEW_H_
 
-class WebView 
+namespace davinci {
+
+/**
+ * \defgroup content WebView
+ * @{
+ */
+
+class EXPORT_API WebView : public WebObject
 {
 };
 
@@ -55,5 +62,9 @@ MACROSS_API MC_STATUS macross_keyboard_event(MaCrossView* view, const MC_KEY_EVE
  * \sa macross_mouse_event, macross_keyboard_event
  */
 MACROSS_API MC_STATUS macross_context_menu_event(MaCrossView* view, const MC_CONTEXT_EVENT *event);
-#endif /*_DAVINCI_WEBVIEW_H_*/
 #endif
+
+/** @} end of content*/
+} /* namespace davinci */
+
+#endif /*_DAVINCI_WEBVIEW_H_*/

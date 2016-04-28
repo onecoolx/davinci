@@ -1,5 +1,5 @@
 /*
- * DavInput.h: Input event and keymap define.
+ * WebInput.h: Input event and keymap define.
  *
  * Copyright(C) 2016 Zhang Ji Peng (onecoolx@gmail.com)
  *
@@ -295,25 +295,25 @@ typedef enum {
  * \defgroup eventclass EventObject
  * @{
  */
-class EXPORT_API Event
+class EXPORT_API WebEvent : public WebObject
 {
 public:
-    virtual ~Event() { }
+    virtual ~WebEvent() { }
 };
 
-class EXPORT_API TouchEvent : public Event
+class EXPORT_API WebTouchEvent : public WebEvent
 {
 };
 
-class EXPORT_API MouseEvent : public Event
+class EXPORT_API WebMouseEvent : public WebEvent
 {
 };
 
-class EXPORT_API KeyboardEvent : public Event
+class EXPORT_API WebKeyboardEvent : public WebEvent
 {
 };
 
-class EXPORT_API ContextMenuEvent : public Event
+class EXPORT_API WebContextMenuEvent : public WebEvent
 {
 };
 

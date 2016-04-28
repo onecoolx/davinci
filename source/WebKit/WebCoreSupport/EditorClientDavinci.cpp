@@ -17,14 +17,16 @@
 #include "PlatformKeyboardEvent.h"
 #include "Settings.h"
 #include "UndoStep.h"
+#if 0
 #include "WebView.h"
+#endif
 
 using namespace WebCore;
 
 namespace WebKit {
 
-EditorClientDavinci::EditorClientDavinci(WebView* webView)
-    : m_webView(webView)
+EditorClientDavinci::EditorClientDavinci(WebViewCore* core)
+    : m_core(core)
 {
 }
 

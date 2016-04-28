@@ -23,18 +23,20 @@
 #include "SystemInfo.h"
 #endif
 #include "WebKitVersion.h"
+#if 0
 #include "WebView.h"
+#endif
 #include <wtf/text/StringConcatenate.h>
 
 using namespace WebCore;
 
 namespace WebKit {
 
-FrameLoaderClientDavinci::FrameLoaderClientDavinci(WebView* view)
-    : m_webView(view)
+FrameLoaderClientDavinci::FrameLoaderClientDavinci(WebViewCore* core)
+    : m_core(core)
     , m_pluginView(0)
 {
-    ASSERT(m_webView);
+    ASSERT(m_core);
 }
 
 FrameLoaderClientDavinci::~FrameLoaderClientDavinci()
@@ -115,7 +117,7 @@ void FrameLoaderClientDavinci::postProgressFinishedNotification()
 
 void FrameLoaderClientDavinci::frameLoaderDestroyed()
 {
-    m_webView = 0;
+    m_core = 0;
     m_frame = 0;
     delete this;
 }

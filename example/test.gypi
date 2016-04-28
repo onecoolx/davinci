@@ -175,6 +175,16 @@
         'msvs_disabled_warnings': [4800, 4805, 4355, 4396, 4244, 4251, 4101, 4291, 4344, 4065, 4018, 4503, 4996, 4005],
       }],
       ['OS=="linux"', {
+        'include_dirs': [
+          '$(builddir)/include',
+          '$(builddir)/include/uv',
+          '$(builddir)/include/uc',
+          '$(builddir)/include/i18n',
+          '$(builddir)/include/freetype',
+          '$(builddir)/include/harfbuzz',
+          '$(builddir)/WebCore',
+          '$(builddir)/../../build',
+        ],
         'sources': [
         ],
         'cflags': [

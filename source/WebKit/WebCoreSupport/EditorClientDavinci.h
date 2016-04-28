@@ -11,13 +11,13 @@
 #include "EditorClient.h"
 #include "TextCheckerClient.h"
 
-class WebView;
+class WebViewCore;
 
 namespace WebKit {
 
 class EditorClientDavinci : public WebCore::EditorClient, public WebCore::TextCheckerClient {
 public:
-    EditorClientDavinci(WebView*);
+    EditorClientDavinci(WebViewCore*);
     ~EditorClientDavinci();
 
     virtual void pageDestroyed();
@@ -90,7 +90,7 @@ public:
     virtual WebCore::TextCheckerClient* textChecker() { return this; }
 
 private:
-    WebView* m_webView;
+    WebViewCore* m_core;
 };
 
 } // namespace WebKit

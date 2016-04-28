@@ -31,10 +31,20 @@
         #define EXPORT_API
     #endif
 #else
-#define EXPORT_API
+#define EXPORT_API __attribute__((visibility("default")))
 #endif
 
-#include "DavInput.h"
+#include "WebCommon.h"
+#include "WebObject.h"
+#include "WebColor.h"
+#include "WebPoint.h"
+#include "WebSize.h"
+#include "WebRect.h"
+#include "WebData.h"
+#include "WebString.h"
+#include "WebUrl.h"
+#include "WebInput.h"
+#include "WebView.h"
 
 typedef int DS_CURSOR;  //tmp implements
 
