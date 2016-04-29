@@ -46,7 +46,7 @@ typedef HICON HCURSOR;
 #elif PLATFORM(BLACKBERRY)
 #include <BlackBerryPlatformCursor.h>
 #elif PLATFORM(DAVINCI)
-#include <davinci.h>
+typedef int DS_CURSOR;
 #endif
 
 #if PLATFORM(MAC) && !PLATFORM(IOS)

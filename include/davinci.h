@@ -16,23 +16,8 @@
  \endverbatim
  */
 
-
 #ifndef _DAVINCI_H_
 #define _DAVINCI_H_
-
-#if defined(WIN32)
-    #ifdef DLL_EXPORT
-        #ifdef EXPORT
-            #define EXPORT_API __declspec(dllexport)
-        #else
-            #define EXPORT_API __declspec(dllimport)
-        #endif
-    #else
-        #define EXPORT_API
-    #endif
-#else
-#define EXPORT_API __attribute__((visibility("default")))
-#endif
 
 #include "WebCommon.h"
 #include "WebObject.h"
@@ -40,14 +25,15 @@
 #include "WebPoint.h"
 #include "WebSize.h"
 #include "WebRect.h"
+#include "WebEvent.h"
+#include "WebContextMenuEvent.h"
+#include "WebMouseEvent.h"
+#include "WebKeyboardEvent.h"
+#include "WebTouchEvent.h"
 #include "WebData.h"
 #include "WebString.h"
 #include "WebUrl.h"
 #include "WebInput.h"
 #include "WebView.h"
-
-typedef int DS_CURSOR;  //tmp implements
-
-
 
 #endif /*_DAVINCI_H_*/

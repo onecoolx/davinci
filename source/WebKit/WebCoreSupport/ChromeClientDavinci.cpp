@@ -16,18 +16,18 @@
 #if 0
 #include "PopupMenuWin.h"
 #include "SearchPopupMenuWin.h"
+#include "WebViewCore.h"
 #endif
-#include "WebView.h"
 #include <wtf/text/CString.h>
 
 using namespace WebCore;
 
 namespace WebKit {
 
-ChromeClientDavinci::ChromeClientDavinci(WebView* webView)
-    : m_webView(webView)
+ChromeClientDavinci::ChromeClientDavinci(WebViewCore* core)
+    : m_core(core)
 {
-    ASSERT(m_webView);
+    ASSERT(m_core);
 }
 
 void ChromeClientDavinci::chromeDestroyed()
@@ -37,11 +37,11 @@ void ChromeClientDavinci::chromeDestroyed()
 
 FloatRect ChromeClientDavinci::windowRect()
 {
-    if (!m_webView)
+    if (!m_core)
         return FloatRect();
 
 #if 0
-    m_webView->frameRect(&rect);
+    m_core->frameRect(&rect);
     return rect;
 #else
 	return FloatRect();
@@ -180,14 +180,14 @@ void ChromeClientDavinci::addMessageToConsole(MessageSource, MessageLevel, const
 void ChromeClientDavinci::runJavaScriptAlert(Frame*, const String& message)
 {
 #if 0
-    m_webView->runJavaScriptAlert(message);
+    m_core->runJavaScriptAlert(message);
 #endif
 }
 
 bool ChromeClientDavinci::runJavaScriptConfirm(Frame*, const String& message)
 {
 #if 0
-    return m_webView->runJavaScriptConfirm(message);
+    return m_core->runJavaScriptConfirm(message);
 #else
 	return false;
 #endif
@@ -196,7 +196,7 @@ bool ChromeClientDavinci::runJavaScriptConfirm(Frame*, const String& message)
 bool ChromeClientDavinci::runJavaScriptPrompt(Frame*, const String& message, const String& defaultValue, String& result)
 {
 #if 0
-    return m_webView->runJavaScriptPrompt(message, defaultValue, result);
+    return m_core->runJavaScriptPrompt(message, defaultValue, result);
 #else
 	return false;
 #endif
@@ -233,10 +233,10 @@ void ChromeClientDavinci::invalidateContentsAndRootView(const IntRect& updateRec
 {
 #if 0
     RECT rect = updateRect;
-    InvalidateRect(m_webView->windowHandle(), &rect, FALSE);
+    InvalidateRect(m_core->windowHandle(), &rect, FALSE);
 
     if (immediate)
-        UpdateWindow(m_webView->windowHandle());
+        UpdateWindow(m_core->windowHandle());
 #endif
 }
 

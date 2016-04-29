@@ -44,7 +44,7 @@ public:
 
     WebString toString(void) const;
 public:
-    WebUrlImpl* impl(void) const;	
+    WebUrlImpl* impl(void) const;
 private:
     WebUrlImpl* m_impl;
 };

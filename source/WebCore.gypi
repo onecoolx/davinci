@@ -8,6 +8,8 @@
     'lib_root_dir': 'webkit-2.2.8/Source',
     'lib_dir': 'webkit-2.2.8/Source/WebCore',
     'lib_src': '<(lib_dir)/../../../WebKit',
+    'lib_inc': '<(lib_dir)/../../../../include',
+    'lib_build': '<(lib_dir)/../../../../build',
     'lib_name': 'WebCore',
   },
   'target_name': '<(lib_name)',
@@ -169,6 +171,8 @@
     '<(lib_root_dir)/ThirdParty/ANGLE/include',
     '<(lib_root_dir)/ThirdParty/ANGLE/include/GLSLANG',
     '<(lib_root_dir)/ThirdParty/ANGLE/include/KHR',
+    '<(lib_inc)',
+    '<(lib_build)',
   ],
   'conditions': [
     ['OS=="win"', {

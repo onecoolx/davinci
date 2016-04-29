@@ -10,13 +10,13 @@
 
 #include "ChromeClient.h"
 
-class WebView;
+class WebViewCore;
 
 namespace WebKit {
 
 class ChromeClientDavinci : public WebCore::ChromeClient {
 public:
-    ChromeClientDavinci(WebView* webView);
+    ChromeClientDavinci(WebViewCore* webView);
 
     virtual void chromeDestroyed();
 
@@ -154,7 +154,7 @@ public:
     virtual void numWheelEventHandlersChanged(unsigned) { }
 
 private:
-    WebView* m_webView;
+    WebViewCore* m_core;
 };
 
 } // namespace WebKit

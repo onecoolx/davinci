@@ -18,30 +18,30 @@ namespace davinci {
 class EXPORT_API WebPoint
 {
 public:
-	WebPoint()
-		:m_x(0), m_y(0)
-	{
-	}
+    WebPoint()
+        :m_x(0), m_y(0)
+    {
+    }
 
-	WebPoint(int x, int y)
-		:m_x(x), m_y(y)
-	{
-	}
+    WebPoint(int x, int y)
+        :m_x(x), m_y(y)
+    {
+    }
 
-	void setPoint(int x, int y)
-	{
-		m_x = x;
-		m_y = y;
-	}
-	
-	int x(void) const { return m_x; }
-	int y(void) const { return m_y; }
+    void setPoint(int x, int y)
+    {
+        m_x = x;
+        m_y = y;
+    }
 
-	void setX(int x) { m_x = x; }
-	void setY(int y) { m_y = y; }
+    int x(void) const { return m_x; }
+    int y(void) const { return m_y; }
+
+    void setX(int x) { m_x = x; }
+    void setY(int y) { m_y = y; }
 private:
-	int m_x;
-	int m_y;
+    int m_x;
+    int m_y;
 };
 
 /** @} end of utils*/

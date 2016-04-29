@@ -9,12 +9,26 @@
 #define _DAVINCI_COMMON_H_
 
 #if defined(WIN32)
+    #ifdef DLL_EXPORT
+        #ifdef EXPORT
+            #define EXPORT_API __declspec(dllexport)
+        #else
+            #define EXPORT_API __declspec(dllimport)
+        #endif
+    #else
+        #define EXPORT_API
+    #endif
+#else
+#define EXPORT_API __attribute__((visibility("default")))
+#endif
+
+#include <limits.h>
+#if defined(WIN32)
 typedef wchar_t UChar;
 typedef unsigned char Byte;
 typedef unsigned int UInt32;
 #else
 #include <stdint.h>
-#include <limits.h>
 typedef uint16_t UChar;
 typedef uint8_t Byte;
 typedef uint32_t UInt32;
