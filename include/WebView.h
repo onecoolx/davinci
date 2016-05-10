@@ -14,55 +14,46 @@ namespace davinci {
  * \defgroup content WebView
  * @{
  */
-
-class EXPORT_API WebView : public WebObject
+class WebViewClient
 {
 };
 
-#if 0
-/**
- * \fn MC_STATUS macross_mouse_event(MaCrossView* view, const MC_MOUSE_EVENT *event)
- * \brief Process a mouse event for web view.
- *
- * \param view     Pointer to an existing webview object.
- * \param event    Pointer to a mouse event.
- *
- * \return
- *         - MC_STATUS_SUCCESS on success.
- *         - Other status code on failed.
- *
- * \sa macross_keyboard_event, macross_context_menu_event
- */
-MACROSS_API MC_STATUS macross_mouse_event(MaCrossView* view, const MC_MOUSE_EVENT *event);
-/**
- * \fn MC_STATUS macross_keyboard_event(MaCrossView* view, const MC_KEY_EVENT *event)
- * \brief Process a key board event for web view.
- *
- * \param view     Pointer to an existing webview object.
- * \param event    Pointer to a key board event.
- *
- * \return
- *         - MC_STATUS_SUCCESS on success.
- *         - Other status code on failed.
- *
- * \sa macross_mouse_event, macross_context_menu_event
- */
-MACROSS_API MC_STATUS macross_keyboard_event(MaCrossView* view, const MC_KEY_EVENT *event);
-/**
- * \fn MC_STATUS macross_context_menu_event(MaCrossView* view, const MC_CONTEXT_EVENT *event)
- * \brief Process a context menu event for web view.
- *
- * \param view     Pointer to an existing webview object.
- * \param event    Pointer to a context menu event.
- *
- * \return
- *         - MC_STATUS_SUCCESS on success.
- *         - Other status code on failed.
- *
- * \sa macross_mouse_event, macross_keyboard_event
- */
-MACROSS_API MC_STATUS macross_context_menu_event(MaCrossView* view, const MC_CONTEXT_EVENT *event);
-#endif
+class WebViewImpl;
+
+class EXPORT_API WebView : public WebObject
+{
+public:
+    WebView(WebViewClient& client, const WebSize& size);
+    virtual ~WebView();
+
+    WebViewClient& client(void) const;
+
+    void loadUrl(const WebUrl& url);
+    void loadUrl(const char* url);
+    void stop(void);
+    void reload(void);
+    void forward(void);
+    void backward(void);
+
+    void paint(const WebRect& rect);
+    void resize(const WebSize& size);
+
+    void setContentsPosition(const WebPoint& pos);
+    WebPoint contentsPosition(void) const;
+
+    bool handleMouseEvent(const WebMouseEvent& event);
+    bool handleKeyboardEvent(const WebKeyboardEvent& event);
+    bool handleTouchEvent(const WebTouchEvent& event);
+    bool handleTextInput(unsigned int inputChar, const char* encoding);
+    bool handleTextInput(const WebString& text);
+
+    void setFocus(void);
+    void killFocus(void);
+
+private:
+    DECLARE_NO_COPY_AND_ASSIGN(WebView);
+    WebViewImpl* m_impl;
+};
 
 /** @} end of content*/
 } /* namespace davinci */
