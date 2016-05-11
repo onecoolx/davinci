@@ -364,6 +364,9 @@ private:
         STRING_STATS_ADD_16BIT_STRING(m_length);
     }
 #endif
+#if PLATFORM(DAVINCI)
+public:
+#endif
     ~StringImpl();
 
 public:

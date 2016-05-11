@@ -5565,8 +5565,10 @@
     '<(lib_src)/WebCoreSupport/PlatformStrategiesDavinci.h',
     '<(lib_src)/WebCoreSupport/PlatformStrategiesDavinci.cpp',
     # webview
+    '<(lib_src)/WebView/WebData.cpp',
     '<(lib_src)/WebView/WebObject.cpp',
     '<(lib_src)/WebView/WebView.cpp',
+    '<(lib_src)/WebView/WebString.cpp',
   ],
   'conditions': [
     ['OS=="win"', {
