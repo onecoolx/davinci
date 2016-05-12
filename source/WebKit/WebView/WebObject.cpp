@@ -5,7 +5,7 @@
  *
  */
 
-#include "mconfig.h"
+#include "config.h"
 
 #include <new>
 #include <stdlib.h>

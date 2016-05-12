@@ -28,6 +28,9 @@
 #ifndef WTF_Platform_h
 #define WTF_Platform_h
 
+/* Davinci special */
+#include "mconfig.h" 
+
 /* Include compiler specific macros */
 #include <wtf/Compiler.h>
 

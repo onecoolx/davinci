@@ -192,8 +192,11 @@
         'cflags_cc': [
         ],
         'libraries': [
+	  '-lEGL',
+	  '-lGLESv2',
           '-lpthread',
           '-ldl',
+          '-lz',
         ],
       }],
     ],

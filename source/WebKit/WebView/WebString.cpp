@@ -5,14 +5,14 @@
  *
  */
 
-#include "mconfig.h"
+#include "config.h"
 
 #include "WebCommon.h"
 #include "WebObject.h"
 #include "WebData.h"
 #include "WebString.h"
 
-#include "config.h"
+#include <stdio.h>
 #include <stdarg.h>
 #include <wtf/text/StringImpl.h>
 #include <wtf/unicode/UTF8.h>

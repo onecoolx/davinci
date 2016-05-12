@@ -7,6 +7,7 @@
   'variables': {
     'lib_root_dir': 'webkit-2.2.8/Source',
     'lib_dir': 'webkit-2.2.8/Source/WTF',
+    'lib_build': '<(lib_dir)/../../../../build',
     'lib_name': 'WTF',
   },
   'target_name': '<(lib_name)',
@@ -23,6 +24,7 @@
     '<(lib_root_dir)',
     '<(lib_dir)',
     '<(lib_dir)/wtf',
+    '<(lib_build)',
   ],
   'sources': [ 
     '<(lib_dir)/wtf/ASCIICType.h',

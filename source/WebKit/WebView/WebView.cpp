@@ -5,7 +5,7 @@
  *
  */
 
-#include "mconfig.h"
+#include "config.h"
 
 #include "WebCommon.h"
 #include "WebObject.h"

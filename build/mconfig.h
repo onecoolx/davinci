@@ -1,3 +1,7 @@
+
+#ifndef _GLOBAL_DAVINCI_CONF_H_
+#define _GLOBAL_DAVINCI_CONF_H_
+
 #define VERSION "1.0.0"
 
 #define ENABLE_AJAX 1
@@ -15,8 +19,6 @@
 #define ENABLE_EUCKR_SUPPORT 1
 
 #define ENABLE_FILESYSTEM 1
-
-#define ENABLE_FTPDIR 1
 
 #define ENABLE_GB2312_SUPPORT 1
 
@@ -130,3 +132,4 @@
 
 #define USE_SYSTEM_MALLOC 1
 
+#endif /*_GLOBAL_DAVINCI_CONF_H_*/

@@ -5,13 +5,12 @@
  *
  */
 
-#include "mconfig.h"
+#include "config.h"
 
 #include "WebCommon.h"
 #include "WebObject.h"
 #include "WebData.h"
 
-#include "config.h"
 #include "SharedBuffer.h"
 
 namespace davinci {
@@ -28,7 +27,7 @@ WebData::WebData()
     m_impl->ref();
 }
 
-WebData::WebData(const Byte* data, size_t size)
+WebData::WebData(const Byte* data, unsigned int size)
 	: m_impl(0)
 {
     RefPtr<WebCore::SharedBuffer> buffer = WebCore::SharedBuffer::create(data, size);
