@@ -207,16 +207,14 @@
     '<(lib_dir)/src/type42/t42parse.h',
     '<(lib_dir)/src/type42/t42types.h',
     '<(lib_dir)/src/type42/type42.c',
+    '<(lib_dir)/src/winfonts/winfnt.c',
+    '<(lib_dir)/src/winfonts/winfnt.h',
+    '<(lib_dir)/src/winfonts/fnterrs.h',
   ],
   'conditions': [
     ['OS=="win"', {
       'defines': [
         'BUILD_FT2',
-      ],
-      'sources': [
-        '<(lib_dir)/src/winfonts/winfnt.c',
-        '<(lib_dir)/src/winfonts/winfnt.h',
-        '<(lib_dir)/src/winfonts/fnterrs.h',
       ],
       'include_dirs': [
         '$(OutDir)/include',
