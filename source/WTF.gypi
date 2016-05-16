@@ -8,6 +8,7 @@
     'lib_root_dir': 'webkit-2.2.8/Source',
     'lib_dir': 'webkit-2.2.8/Source/WTF',
     'lib_build': '<(lib_dir)/../../../../build',
+    'lib_src': '<(lib_dir)/../../../WebKit',
     'lib_name': 'WTF',
   },
   'target_name': '<(lib_name)',
@@ -254,6 +255,8 @@
     '<(lib_dir)/wtf/unicode/CollatorDefault.cpp',
     '<(lib_dir)/wtf/unicode/UTF8.cpp',
     '<(lib_dir)/wtf/unicode/icu/CollatorICU.cpp',
+    #davinci
+    '<(lib_src)/wtf/MainThreadDavinci.cpp',
   ],
   'conditions': [
     ['OS=="win"', {
@@ -269,8 +272,6 @@
         '<(lib_dir)/wtf/OSAllocatorWin.cpp',
         '<(lib_dir)/wtf/ThreadSpecificWin.cpp',
         '<(lib_dir)/wtf/ThreadingWin.cpp',
-        '<(lib_dir)/wtf/win/OwnPtrWin.cpp',
-        '<(lib_dir)/wtf/win/MainThreadWin.cpp',
         '<(lib_dir)/wtf/threads/win/BinarySemaphoreWin.cpp',
       ],
       'libraries': [

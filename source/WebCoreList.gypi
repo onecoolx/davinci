@@ -5486,6 +5486,7 @@
     '<(lib_src)/platform/DragControllerDavinci.cpp',
     '<(lib_src)/platform/DragDataDavinci.cpp',
     '<(lib_src)/platform/DragImageDavinci.cpp',
+    '<(lib_src)/platform/FileSystemDavinci.cpp',
     '<(lib_src)/platform/MediaControlsDavinci.cpp',
     '<(lib_src)/platform/MediaControlsDavinci.h',
     '<(lib_src)/platform/EventHandlerDavinci.cpp',
@@ -5569,6 +5570,7 @@
     '<(lib_src)/WebView/WebObject.cpp',
     '<(lib_src)/WebView/WebView.cpp',
     '<(lib_src)/WebView/WebString.cpp',
+    '<(lib_src)/WebView/WebUrl.cpp',
   ],
   'conditions': [
     ['OS=="win"', {
