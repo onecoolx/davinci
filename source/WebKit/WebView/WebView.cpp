@@ -127,11 +127,11 @@ void WebView::killFocus(void)
 {
 }
 
-void WebView::setEncoding(WebEncodingType encoding)
+void WebView::setTextEncoding(WebEncodingType encoding)
 {
 }
 
-WebEncodingType WebView::encoding(void) const
+WebEncodingType WebView::textEncoding(void) const
 {
     return CHARSET_AUTO_DETECT;
 }

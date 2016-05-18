@@ -50,8 +50,8 @@ public:
     void setFocus(void);
     void killFocus(void);
 
-    void setEncoding(WebEncodingType encoding);
-    WebEncodingType encoding(void) const;
+    void setTextEncoding(WebEncodingType encoding);
+    WebEncodingType textEncoding(void) const;
 private:
     DECLARE_NO_COPY_AND_ASSIGN(WebView);
     WebViewImpl* m_impl;
