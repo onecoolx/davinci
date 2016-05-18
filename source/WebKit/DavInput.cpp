@@ -104,3 +104,35 @@ MACROSS_API MC_STATUS macross_keyboard_event(MaCrossView* view, const MC_KEY_EVE
 MACROSS_API MC_STATUS macross_context_menu_event(MaCrossView* view, const MC_CONTEXT_EVENT *event);
 #endif
 
+#if 0
+/**
+ * \fn MC_STATUS macross_view_set_encoding(MaCrossView* view, MC_ENCODING_NAME encoding)
+ * \brief Set the text encoding name for the webview.
+ *
+ * \param view  	Pointer to an existing webview object.
+ * \param encoding  The encoding name. 
+ *
+ * \return
+ * 		- MC_STATUS_SUCCESS on success.
+ * 		- Other status code on failed.
+ *
+ * \sa macross_view_get_encoding
+ */
+MACROSS_API MC_STATUS macross_view_set_encoding(MaCrossView* view, MC_ENCODING_NAME encoding);
+
+/**
+ * \fn MC_STATUS macross_view_get_encoding(MaCrossView* view, MC_ENCODING_NAME* encoding)
+ * \brief Get the text encoding name of the webview.
+ *
+ * \param view  	Pointer to an existing webview object.
+ * \param encoding  Pointer to a buffer receiving the encoding name.
+ *
+ * \return
+ * 		- MC_STATUS_SUCCESS on success.
+ * 		- Other status code on failed.
+ *
+ * \sa macross_view_set_encoding
+ */
+MACROSS_API MC_STATUS macross_view_get_encoding(MaCrossView* view, MC_ENCODING_NAME* encoding);
+
+#endif

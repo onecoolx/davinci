@@ -26,6 +26,7 @@
 #include "WebSize.h"
 #include "WebRect.h"
 #include "WebEvent.h"
+#include "WebEncoding.h"
 #include "WebContextMenuEvent.h"
 #include "WebMouseEvent.h"
 #include "WebKeyboardEvent.h"

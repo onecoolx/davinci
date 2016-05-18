@@ -127,4 +127,13 @@ void WebView::killFocus(void)
 {
 }
 
+void WebView::setEncoding(WebEncodingType encoding)
+{
+}
+
+WebEncodingType WebView::encoding(void) const
+{
+    return CHARSET_AUTO_DETECT;
+}
+
 }
