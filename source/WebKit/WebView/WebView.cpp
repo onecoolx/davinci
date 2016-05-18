@@ -11,6 +11,7 @@
 #include "WebObject.h"
 #include "WebData.h"
 #include "WebEvent.h"
+#include "WebEncoding.h"
 #include "WebPoint.h"
 #include "WebSize.h"
 #include "WebRect.h"
