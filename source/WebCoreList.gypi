@@ -5571,6 +5571,10 @@
     '<(lib_src)/WebView/WebView.cpp',
     '<(lib_src)/WebView/WebString.cpp',
     '<(lib_src)/WebView/WebUrl.cpp',
+    '<(lib_src)/WebView/WebViewCore.h',
+    '<(lib_src)/WebView/WebViewCore.cpp',
+    '<(lib_src)/WebView/WebViewController.h',
+    '<(lib_src)/WebView/WebViewController.cpp',
   ],
   'conditions': [
     ['OS=="win"', {

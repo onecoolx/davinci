@@ -20,7 +20,9 @@
 #include "WebMouseEvent.h"
 #include "WebTouchEvent.h"
 #include "WebKeyboardEvent.h"
+#include "WebContextMenuEvent.h"
 #include "WebView.h"
+#include "WebViewCore.h"
 
 namespace davinci {
 
@@ -106,6 +108,11 @@ bool WebView::handleKeyboardEvent(const WebKeyboardEvent& event)
 }
 
 bool WebView::handleTouchEvent(const WebTouchEvent& event)
+{
+    return false;
+}
+
+bool WebView::handleContextMenuEvent(const WebContextMenuEvent& event)
 {
     return false;
 }

@@ -44,6 +44,7 @@ public:
     bool handleMouseEvent(const WebMouseEvent& event);
     bool handleKeyboardEvent(const WebKeyboardEvent& event);
     bool handleTouchEvent(const WebTouchEvent& event);
+    bool handleContextMenuEvent(const WebContextMenuEvent& event);
     bool handleTextInput(unsigned int inputChar, const char* encoding);
     bool handleTextInput(const WebString& text);
 
