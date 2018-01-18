@@ -10,6 +10,7 @@
     'lib_src': '<(lib_dir)/../../../WebKit',
     'lib_inc': '<(lib_dir)/../../../../include',
     'lib_build': '<(lib_dir)/../../../../build',
+    'lib_tools': '<(lib_dir)/../../../../tools',
     'lib_name': 'WebCore',
   },
   'target_name': '<(lib_name)',
@@ -214,7 +215,7 @@
        ],
        'action': [
          'call',
-         '<(lib_dir)/generated_files.bat',
+         '<(lib_tools)/generated_webcore_files.bat',
          '<(_inputs)',
          '<(lib_dir)/Generated',
        ],
@@ -245,6 +246,10 @@
         '-fvisibility-inlines-hidden',
         '-fno-rtti',
       ],
+      'libraries': [
+        '-lpthread',
+        '-ldl',
+      ],
       'actions': [
       {
        'action_name': 'generated_files',
@@ -256,15 +261,11 @@
        ],
        'action': [
          'python',
-         '<(lib_dir)/generated_files.py',
+         '<(lib_tools)/generated_webcore_files.py',
          '<(_inputs)',
          'Generated',
        ],
       }],
-      'libraries': [
-        '-lpthread',
-        '-ldl',
-      ],
     }],
   ],
   'includes': [

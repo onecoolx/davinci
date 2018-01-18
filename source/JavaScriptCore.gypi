@@ -8,6 +8,7 @@
     'lib_root_dir': 'webkit-2.2.8/Source',
     'lib_dir': 'webkit-2.2.8/Source/JavaScriptCore',
     'lib_build': '<(lib_dir)/../../../../build',
+    'lib_tools': '<(lib_dir)/../../../../tools',
     'lib_name': 'JavaScriptCore',
   },
   'target_name': '<(lib_name)',
@@ -1005,7 +1006,7 @@
        ],
        'action': [
          'call',
-         '<(lib_dir)/generated_files.bat',
+         '<(lib_tools)/generated_javascriptcore_files.bat',
          '<(_inputs)',
          '$(OutDir)/<(lib_name)',
        ],
@@ -1043,7 +1044,7 @@
        ],
        'action': [
          'python',
-         '<(lib_dir)/generated_files.py',
+         '<(lib_tools)/generated_javascriptcore_files.py',
          '<(_inputs)',
          '$(builddir)/<(lib_name)',
        ],

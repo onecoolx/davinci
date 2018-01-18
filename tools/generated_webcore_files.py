@@ -138,7 +138,7 @@ def Main(src_dir, dst_dir):
   css_props = ReadLinesFromFile("css/SVGCSSPropertyNames.in")
   AppendLinesToFile(css_props, dst_dir+"/CSSPropertyNames.in")
   os.chdir(dst_dir)
-  subprocess.call(["perl", "-I../bindings/scripts", "../css/makeprop.pl", "--defines", feature_list])
+  subprocess.call(["perl", "-I"+curr_dir+"/"+src_dir+"/bindings/scripts", curr_dir+"/"+src_dir+"/css/makeprop.pl", "--defines", feature_list])
   os.chdir(curr_dir)
   os.chdir(src_dir)
 
@@ -148,7 +148,7 @@ def Main(src_dir, dst_dir):
   css_values = ReadLinesFromFile("css/SVGCSSValueKeywords.in")
   AppendLinesToFile(css_values, dst_dir+"/CSSValueKeywords.in")
   os.chdir(dst_dir)
-  subprocess.call(["perl", "-I../bindings/scripts", "../css/makevalues.pl", "--defines", feature_list])
+  subprocess.call(["perl", "-I"+curr_dir+"/"+src_dir+"/bindings/scripts", curr_dir+"/"+src_dir+"/css/makevalues.pl", "--defines", feature_list])
   os.chdir(curr_dir)
   os.chdir(src_dir)
 
@@ -220,15 +220,15 @@ def Main(src_dir, dst_dir):
 
   # step20, glslang_tab.cpp
   subprocess.call(["bison", "--no-lines", "--defines="+dst_dir+"/glslang_tab.h",\
-  "--skeleton=yacc.c", "--output="+dst_dir+"/glslang_tab.cpp", "../ThirdParty/ANGLE/src/compiler/glslang.y"])
+  "--skeleton=yacc.c", "--output="+dst_dir+"/glslang_tab.cpp", curr_dir+"/"+src_dir+"/../ThirdParty/ANGLE/src/compiler/glslang.y"])
 
   # step21, ANGLE tokenizer & parser
   subprocess.call(["flex", "--noline", "--nounistd", "--outfile="+dst_dir+"/glslang.cpp",\
-  "../ThirdParty/ANGLE/src/compiler/glslang.l", dst_dir+"/glslang_tab.cpp"])
+  curr_dir+"/"+src_dir+"/../ThirdParty/ANGLE/src/compiler/glslang.l", dst_dir+"/glslang_tab.cpp"])
 
   # step22, ColorData.cpp
   os.chdir(dst_dir)
-  subprocess.call(["perl", "../make-hash-tools.pl", ".", "../platform/ColorData.gperf"])
+  subprocess.call(["perl", curr_dir+"/"+src_dir+"/make-hash-tools.pl", ".", curr_dir+"/"+src_dir+"/platform/ColorData.gperf"])
   os.chdir(curr_dir)
   os.chdir(src_dir)
 
