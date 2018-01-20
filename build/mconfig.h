@@ -2,7 +2,7 @@
 #ifndef _GLOBAL_DAVINCI_CONF_H_
 #define _GLOBAL_DAVINCI_CONF_H_
 
-#define VERSION "1.0.0"
+#define DAVINCI_VERSION "1.0.0"
 
 #define ENABLE_AJAX 1
 
