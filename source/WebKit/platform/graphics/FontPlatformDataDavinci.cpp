@@ -7,6 +7,7 @@
 
 #include "config.h"
 #include "FontPlatformData.h"
+#include <wtf/text/WTFString.h>
 
 namespace WebCore {
 
@@ -27,5 +28,12 @@ bool FontPlatformData::platformIsEqual(const FontPlatformData& other) const
 {
 	return false;
 }
+
+#ifndef NDEBUG
+String FontPlatformData::description() const
+{
+    return "iType Font Data";
+}
+#endif
 
 }

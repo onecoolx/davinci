@@ -30,6 +30,7 @@
 
 namespace WebCore {
 
+#if !OS(WINCE) && !OS(WINDOWS)
 String homeDirectoryPath()
 {
     return "";
@@ -44,5 +45,6 @@ bool unloadModule(PlatformModule)
 {
     return false;
 }
+#endif
 
 } // namespace WebCore

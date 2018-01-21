@@ -5494,6 +5494,7 @@
     '<(lib_src)/platform/KeyGenDavinci.cpp',
     '<(lib_src)/platform/LanguageDavinci.cpp',
     '<(lib_src)/platform/LocalizedStringsDavinci.cpp',
+    '<(lib_src)/platform/LoggingDavinci.cpp',
     '<(lib_src)/platform/MIMETypeRegistryDavinci.cpp',
     '<(lib_src)/platform/PlatformKeyboardEventDavinci.cpp',
     '<(lib_src)/platform/PlatformScreenDavinci.cpp',
