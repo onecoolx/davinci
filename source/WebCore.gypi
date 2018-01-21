@@ -178,6 +178,7 @@
   'conditions': [
     ['OS=="win"', {
       'include_dirs': [
+        '<(lib_root_dir)/JavaScriptCore/os-win32',
         '<(lib_dir)/platform/win',
         '$(OutDir)/include',
         '$(OutDir)/include/uv',
