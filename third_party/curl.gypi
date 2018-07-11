@@ -138,6 +138,7 @@
         'CURL_PULL_WS2TCPIP_H',
         'CURL_DISABLE_LDAPS',
         'CURL_DISABLE_LDAP',
+        '__SIZEOF_LONG__=4',
       ],
       'sources': [
         '<(lib_dir)/lib/idn_win32.c',
