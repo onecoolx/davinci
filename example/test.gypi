@@ -14,9 +14,9 @@
     'target_name': 'test',
     'type': 'executable',
     'dependencies': [
-      'WTF',
-      'JavaScriptCore',
       'WebCore',
+      'JavaScriptCore',
+      'WTF',
     ],
     'include_dirs': [
       '<(webkit_dir)/',

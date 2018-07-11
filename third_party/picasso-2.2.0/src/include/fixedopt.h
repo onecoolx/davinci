@@ -10,7 +10,7 @@
 //32 bit system value define
 typedef int int32_t;
 #if defined(__GNUC__)
-typedef long long int64_t;
+#include <stdint.h>
 #elif defined(_MSC_VER)
 typedef __int64 int64_t;
 #elif defined(__WATCOMC__)

@@ -26,7 +26,7 @@ public:
     WebData& operator=(const WebData& other);
     virtual ~WebData();
 public:
-    unsigned int size(void) const;
+    size_t size(void) const;
     const Byte* data(void) const;
     const char* toString(void) const;
 
