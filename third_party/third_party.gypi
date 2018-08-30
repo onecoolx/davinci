@@ -75,6 +75,11 @@
             './picasso.gypi'
           ],
        },
+       {
+          'includes': [
+            './gtest.gypi'
+          ],
+       },
    ],
 }
 
