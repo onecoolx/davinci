@@ -193,6 +193,7 @@
         'EXPORT',
         'HAVE_BOOLEAN',
         'XMD_H',
+        '__SIZEOF_LONG__=4',
       ],
       'dependencies': [
         'EGL',
