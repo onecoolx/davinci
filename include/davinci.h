@@ -1,13 +1,13 @@
 /**
  * \file davinci.h
  * \author Zhang Ji Peng (onecoolx@gmail.com)
- * \date 2016/04/26
+ * \date 2018/09/26
  *
  * This file includes interfaces of davinci engine.
  *
  \verbatim
 
-    Copyright (C) 2009 ~ 2016 Zhang Ji Peng
+    Copyright (C) 2009 ~ 2018 Zhang Ji Peng
 
     All rights reserved.
 

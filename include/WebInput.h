@@ -97,7 +97,7 @@ typedef enum {
     /**
      * Mouse wheel down.
      */
-    MOUSE_WHEEL_DOWN = 8,
+    MOUSE_WHEEL_DOWN = 5,
 } MouseButtonType;
 
 /**

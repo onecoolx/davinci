@@ -1820,7 +1820,7 @@ def AdjustStaticLibraryDependencies(flat_list, targets, dependency_nodes,
 
 
 # Initialize this here to speed up MakePathRelative.
-exception_re = re.compile(r'''["']?[-/$<>^]''')
+exception_re = re.compile(r'''["']?[-`/$<>^]''')
 
 
 def MakePathRelative(to_file, fro_file, item):

@@ -11,7 +11,7 @@
   },
   'targets': [
   {
-    'target_name': 'test',
+    'target_name': 'demo',
     'type': 'executable',
     'dependencies': [
       'WebCore',
@@ -157,7 +157,7 @@
       '<(webkit_dir)/ThirdParty/ANGLE/include/KHR',
     ],
     'sources': [
-      'test.cpp',
+      'MainApp.cpp',
     ],
     'conditions': [
       ['OS=="win"', {
@@ -186,14 +186,17 @@
           '$(builddir)/../../build',
         ],
         'sources': [
+          'gtk/Main.cpp',
         ],
         'cflags': [
+          '`pkg-config --cflags gtk+-2.0`',
         ],
         'cflags_cc': [
         ],
         'libraries': [
-	  '-lEGL',
-	  '-lGLESv2',
+          '`pkg-config --libs gtk+-2.0`',
+	      '-lEGL',
+	      '-lGLESv2',
           '-lpthread',
           '-ldl',
           '-lz',
