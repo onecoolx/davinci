@@ -10,16 +10,13 @@
 
 namespace davinci {
 
+class WebViewClient;
+class WebViewImpl;
+
 /**
  * \defgroup content WebView
  * @{
  */
-class WebViewClient
-{
-};
-
-class WebViewImpl;
-
 class EXPORT_API WebView : public WebObject
 {
 public:

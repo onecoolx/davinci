@@ -9,13 +9,14 @@
 #define _MAIN_APPLICATION_H_
 
 #include "davinci.h"
+#include "ViewClient.h"
 
 using namespace davinci;
 
 class MainApp
 {
 public:
-    MainApp();
+    MainApp(ViewClient& client, const WebSize& size);
     ~MainApp();
     
     void onInit(const WebSize& windowSize);
@@ -33,5 +34,6 @@ public:
 public:
     int dispatchEvents(void);
 private:
+    WebView* m_view;
 };
 #endif /*_MAIN_APPLICATION_H_*/

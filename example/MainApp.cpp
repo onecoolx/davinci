@@ -12,12 +12,14 @@
 
 using namespace davinci;
 
-MainApp::MainApp()
+MainApp::MainApp(ViewClient& client, const WebSize& size)
+    : m_view(new WebView(client, size))
 {
 }
 
 MainApp::~MainApp()
 {
+    delete m_view;
 }
 
 void MainApp::onInit(const WebSize& windowSize)

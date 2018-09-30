@@ -35,6 +35,7 @@
 #include "WebString.h"
 #include "WebUrl.h"
 #include "WebInput.h"
+#include "WebViewClient.h"
 #include "WebView.h"
 
 #endif /*_DAVINCI_H_*/

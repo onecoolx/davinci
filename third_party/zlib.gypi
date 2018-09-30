@@ -30,21 +30,17 @@
     '<(lib_dir)/trees.c',
     '<(lib_dir)/uncompr.c',
     '<(lib_dir)/zutil.c',
+    '<(lib_dir)/gzclose.c',
+    '<(lib_dir)/gzlib.c',
+    '<(lib_dir)/gzread.c',
+    '<(lib_dir)/gzwrite.c',
   ],
   'conditions': [
     ['OS=="win"', {
       'sources': [
-        '<(lib_dir)/gzclose.c',
-        '<(lib_dir)/gzlib.c',
-        '<(lib_dir)/gzread.c',
-        '<(lib_dir)/gzwrite.c',
         '<(lib_dir)/win32/zlib.def',
         '<(lib_dir)/win32/zlib1.rc',
       ],
-    }],
-  ],
-  'conditions': [
-    ['OS=="win"', {
       'include_dirs': [
         '$(OutDir)/include',
       ],
