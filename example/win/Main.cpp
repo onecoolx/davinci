@@ -59,7 +59,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(NULL, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = 0;
-    wcex.lpszClassName  = L"Davinci";
+    wcex.lpszClassName  = L"Demo";
     wcex.hIconSm        = 0;
     
     return RegisterClassEx(&wcex);
