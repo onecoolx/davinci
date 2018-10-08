@@ -19,6 +19,7 @@
     '<(lib_dir)/include',
     '<(lib_dir)/src',
     '<(lib_dir)/src/libGLESv2',
+    '$(DXSDK_DIR)/include',
   ],
   'sources': [
     '<(lib_dir)/src/third_party/murmurhash/MurmurHash3.h',
@@ -158,9 +159,9 @@
     '<(lib_dir)/src/libGLESv2/libGLESv2.rc',
   ],
   'libraries': [
-    '-ld3d11',
-    '-ld3d9',
-    '-ldxguid',
+    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/d3d11.lib',
+    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/d3d9.lib',
+    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/dxguid.lib',
   ],
   'msvs_disabled_warnings': [ 4267, 4996 ],
   'includes': [

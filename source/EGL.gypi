@@ -20,6 +20,7 @@
     '<(lib_dir)/src',
     '<(lib_dir)/src/libEGL',
     '<(lib_dir)/src/libGLESv2',
+    '$(DXSDK_DIR)/include',
   ],
   'sources': [
     '<(lib_dir)/src/common/angleutils.h',
@@ -41,8 +42,8 @@
     '<(lib_dir)/src/libEGL/Surface.h',
   ],
   'libraries': [
-    '-ld3d11',
-    '-ld3d9',
+    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/d3d11.lib',
+    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/d3d9.lib',
   ],
   'msvs_disabled_warnings': [ 4267, 4996 ],
   'includes': [
