@@ -16,6 +16,8 @@
 static int width = 0;
 static int height = 0;
 
+MainApp* mainApp = NULL;
+
 HINSTANCE hInst;    
 HWND hmWnd;
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -68,7 +70,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance;
-    hmWnd = CreateWindow(L"Demo", L"Davinci", WS_OVERLAPPEDWINDOW,
+    hmWnd = CreateWindow(L"Demo", L"davinci demo", WS_OVERLAPPEDWINDOW,
         0, 0, width, height, NULL, NULL, hInstance, NULL);
     if (!hmWnd) {
         return FALSE;
@@ -86,8 +88,58 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     HDC hdc;
     
     switch (message) {
+    case WM_CREATE:
+        {
+            mainApp = new MainApp(1, "demo");
+            mainApp->onInit(WebSize(width, height));
+        }
+        break;
+    case WM_PAINT:
+        {
+        }
+        break;
+    case WM_SIZE:
+        {
+        }
+        break;
+    case WM_LBUTTONDOWN:
+        {
+        }
+        break;
+    case WM_LBUTTONUP:
+        {
+        }
+        break;
+    case WM_RBUTTONDOWN:
+        {
+        }
+        break;
+    case WM_MOUSEMOVE:
+        {
+        }
+        break;
+    case WM_KEYDOWN:
+        {
+        }
+        break;
+    case WM_KEYUP:
+        {
+        }
+        break;
+    case WM_IME_CHAR:
+        {
+        }
+        break;
+	case WM_SETFOCUS:
+		break;
+	case WM_KILLFOCUS:
+		break;
+	case WM_ERASEBKGND:
+		break;    
     case WM_DESTROY:
         {
+            mainApp->onDestroy();
+            delete mainApp;
             PostQuitMessage(0);
         }
         break;
