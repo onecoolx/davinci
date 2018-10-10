@@ -16,7 +16,7 @@ using namespace davinci;
 class MainApp
 {
 public:
-    MainApp(ViewClient& client, const WebSize& size);
+    MainApp(int argc, const char* argv[]);
     ~MainApp();
     
     void onInit(const WebSize& windowSize);
@@ -35,5 +35,6 @@ public:
     int dispatchEvents(void);
 private:
     WebView* m_view;
+    ViewClient* m_client;
 };
 #endif /*_MAIN_APPLICATION_H_*/
