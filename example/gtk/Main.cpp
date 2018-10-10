@@ -188,7 +188,7 @@ int main(int argc, char* argv[])
 
     gtk_init(&argc, &argv);
 
-    mainApp = new MainApp(argc, const_cast<const char**>(argv));
+    mainApp = new MainApp();
 
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 

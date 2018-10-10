@@ -16,7 +16,7 @@ using namespace davinci;
 class MainApp
 {
 public:
-    MainApp(int argc, const char* argv[]);
+    MainApp();
     ~MainApp();
     
     void onInit(const WebSize& windowSize);

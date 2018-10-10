@@ -13,6 +13,9 @@
 
 #include "../MainApp.h"
 
+// console debug
+// #pragma comment( linker, "/subsystem:\"console\" /entry:\"WinMainCRTStartup\"")
+
 static int width = 0;
 static int height = 0;
 
@@ -90,7 +93,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message) {
     case WM_CREATE:
         {
-            mainApp = new MainApp(1, "demo");
+            mainApp = new MainApp();
             mainApp->onInit(WebSize(width, height));
         }
         break;
