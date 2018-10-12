@@ -14,7 +14,7 @@
 #include "../MainApp.h"
 
 // console debug
-#pragma comment( linker, "/subsystem:\"console\" /entry:\"WinMainCRTStartup\"")
+// #pragma comment( linker, "/subsystem:\"console\" /entry:\"WinMainCRTStartup\"")
 
 static int width = 0;
 static int height = 0;
@@ -26,6 +26,13 @@ HWND hmWnd;
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+
+void CALLBACK Func(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime)
+{
+    if (mainApp) {
+        mainApp->dispatchEvents();
+    }
+}
 
 int APIENTRY WinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
@@ -42,10 +49,12 @@ int APIENTRY WinMain(HINSTANCE hInstance,
         return FALSE;
     }
 
+    SetTimer(NULL, 999, 10, (TIMERPROC)Func);
     while (GetMessage(&msg, NULL, 0, 0)) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
+    KillTimer(NULL, 999);
     return (int)msg.wParam;
 }
 
