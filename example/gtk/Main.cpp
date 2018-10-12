@@ -161,7 +161,7 @@ static gboolean mouse_button_release(GtkWidget *widget, GdkEventButton *event)
 
 static gboolean mouse_motion_notify(GtkWidget *widget, GdkEventMotion *event)
 {
-    MouseButtonType key = MOUSE_BTN_LEFT;
+    MouseButtonType key = MOUSE_BTN_NONE;
     unsigned int modifiers = 0;
     if (event->state & 1)
         modifiers |= DF_SHIFT;
