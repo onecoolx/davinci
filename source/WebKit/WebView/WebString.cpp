@@ -25,63 +25,64 @@ class WebStringImpl : public WTF::StringImpl
 };
 
 WebString::WebString()
-	: m_impl(0)
+    : m_impl(0)
 {
 }
 
 WebString::~WebString()
 {
-	if (m_impl)
-		m_impl->deref();
+    if (m_impl)
+        m_impl->deref();
 }
 
 WebString::WebString(const char* s)
-	: m_impl(0)
+    : m_impl(0)
 {
-	RefPtr<StringImpl> string = WTF::StringImpl::create(s);
-	m_impl = static_cast<WebStringImpl*>(string.get());
-	m_impl->ref();
+    RefPtr<StringImpl> string = WTF::StringImpl::create(s);
+    m_impl = static_cast<WebStringImpl*>(string.get());
+    m_impl->ref();
 }
 
 WebString::WebString(const UChar* s, unsigned int len)
-	: m_impl(0)
+    : m_impl(0)
 {
-	RefPtr<StringImpl> string = WTF::StringImpl::create(s, len);
-	m_impl = static_cast<WebStringImpl*>(string.get());
-	m_impl->ref();
+    RefPtr<StringImpl> string = WTF::StringImpl::create(s, len);
+    m_impl = static_cast<WebStringImpl*>(string.get());
+    m_impl->ref();
 }
 
 WebString::WebString(WebStringImpl* impl)
-	: m_impl(impl)
+    : m_impl(impl)
 {
-	m_impl->ref();
+    m_impl->ref();
 }
 
 WebString::WebString(const WebString& o)
 {
-	if (o.m_impl)
-		o.m_impl->ref();
-	m_impl = o.m_impl;
+    if (o.m_impl)
+        o.m_impl->ref();
+
+    m_impl = o.m_impl;
 }
 
 WebString& WebString::operator=(const WebString& o)
 {
-	if (this == &o)
-		return *this;
+    if (this == &o)
+        return *this;
 
-	if (o.m_impl)
-		o.m_impl->ref();
+    if (o.m_impl)
+        o.m_impl->ref();
 
-	if (m_impl)
-		m_impl->deref();
+    if (m_impl)
+        m_impl->deref();
 
-	m_impl = o.m_impl;
-	return *this;
+    m_impl = o.m_impl;
+    return *this;
 }
 
 WebStringImpl* WebString::impl(void) const
 {
-	return m_impl;
+    return m_impl;
 }
 
 const UChar* WebString::data(void) const
@@ -91,10 +92,10 @@ const UChar* WebString::data(void) const
 
 UChar WebString::operator[](unsigned int index) const
 {
-	if (!m_impl || index >= length())
-		return 0;
+    if (!m_impl || index >= length())
+        return 0;
 
-	return m_impl->characters()[index];
+    return m_impl->characters()[index];
 }
 
 unsigned int WebString::length(void) const
@@ -109,40 +110,40 @@ bool WebString::equals(const WebString& s) const
 
 unsigned int WebString::hash(void) const
 {
-	return m_impl ? const_cast<WebStringImpl*>(m_impl)->hash() : 0;
+    return m_impl ? const_cast<WebStringImpl*>(m_impl)->hash() : 0;
 }
 
 bool WebString::isEmpty(void) const
 {
-	return !m_impl || !m_impl->length();
+    return !m_impl || !m_impl->length();
 }
 
 bool WebString::isNull(void) const
 {
-	return !m_impl;
+    return !m_impl;
 }
 
 WebString WebString::subString(unsigned int start, unsigned int len) const
 {
-	if (!m_impl)
-		return WebString();
+    if (!m_impl)
+        return WebString();
 
-	return WebString(static_cast<WebStringImpl*>(m_impl->substring(start, len).get()));
+    return WebString(static_cast<WebStringImpl*>(m_impl->substring(start, len).get()));
 }
 
 WebString WebString::left(unsigned int len) const 
 { 
-	return subString(0, len);
+    return subString(0, len);
 }
 
 WebString WebString::right(unsigned int len) const 
 { 
-	return subString(length() - len, len); 
+    return subString(length() - len, len); 
 }
 
 static inline void putUTF8Triple(char*& buffer, UChar ch)
 {
-	// Helper to write a three-byte UTF-8 code point to the buffer, caller must check room is available.
+    // Helper to write a three-byte UTF-8 code point to the buffer, caller must check room is available.
     *buffer++ = static_cast<char>(((ch >> 12) & 0x0F) | 0xE0);
     *buffer++ = static_cast<char>(((ch >> 6) & 0x3F) | 0x80);
     *buffer++ = static_cast<char>((ch & 0x3F) | 0x80);
@@ -170,7 +171,7 @@ WebData WebString::utf8(void)
 
     char* buffer = bufferVector.data();
     WTF::Unicode::ConversionResult result = 
-		WTF::Unicode::convertUTF16ToUTF8(&characters, characters + length, &buffer, buffer + bufferVector.size(), false);
+        WTF::Unicode::convertUTF16ToUTF8(&characters, characters + length, &buffer, buffer + bufferVector.size(), false);
 
     // Only produced from strict conversion.
     if (result == WTF::Unicode::sourceIllegal)
@@ -191,94 +192,94 @@ WebData WebString::utf8(void)
 
 bool WebString::startsWith(const WebString& str, bool caseSensitive)
 {
-	if (isNull() || str.isNull())
-		return false;
+    if (isNull() || str.isNull())
+        return false;
 
-	if (isEmpty() || str.isEmpty())
-		return false;
+    if (isEmpty() || str.isEmpty())
+        return false;
 
-	return m_impl->startsWith(str.m_impl, caseSensitive);
+    return m_impl->startsWith(str.m_impl, caseSensitive);
 }
 
 bool WebString::startsWith(const char* str, bool caseSensitive)
 {
-	return startsWith(WebString(str), caseSensitive);
+    return startsWith(WebString(str), caseSensitive);
 }
 
 bool WebString::startsWith(const UChar* str, unsigned int len, bool caseSensitive)
 {
-	return startsWith(WebString(str, len), caseSensitive);
+    return startsWith(WebString(str, len), caseSensitive);
 }
 
 bool WebString::endsWith(const WebString& str, bool caseSensitive)
 {
-	if (isNull() || str.isNull())
-		return false;
+    if (isNull() || str.isNull())
+        return false;
 
-	if (isEmpty() || str.isEmpty())
-		return false;
+    if (isEmpty() || str.isEmpty())
+        return false;
 
-	return m_impl->endsWith(str.m_impl, caseSensitive);
+    return m_impl->endsWith(str.m_impl, caseSensitive);
 }
 
 bool WebString::endsWith(const char* str, bool caseSensitive)
 {
-	return endsWith(WebString(str), caseSensitive);
+    return endsWith(WebString(str), caseSensitive);
 }
 
 bool WebString::endsWith(const UChar* str, unsigned int len, bool caseSensitive)
 {
-	return endsWith(WebString(str, len), caseSensitive);
+    return endsWith(WebString(str, len), caseSensitive);
 }
 
 int WebString::find(const WebString& str, unsigned int startPos, bool caseSensitive)
 {
-	if (isNull() || str.isNull())
-		return -1; // not found
+    if (isNull() || str.isNull())
+        return -1; // not found
 
-	if (isEmpty() || str.isEmpty())
-		return -1; // not found
+    if (isEmpty() || str.isEmpty())
+        return -1; // not found
 
-	if (caseSensitive) {
-		return (int)m_impl->find(str.m_impl, startPos);
-	} else {
-		return (int)m_impl->findIgnoringCase(str.m_impl, startPos);
-	}
+    if (caseSensitive) {
+        return (int)m_impl->find(str.m_impl, startPos);
+    } else {
+        return (int)m_impl->findIgnoringCase(str.m_impl, startPos);
+    }
 }
 
 int WebString::find(const char* str, unsigned int startPos, bool caseSensitive)
 {
-	return find(WebString(str), startPos, caseSensitive);
+    return find(WebString(str), startPos, caseSensitive);
 }
 
 int WebString::find(const UChar* str, unsigned int len, unsigned int startPos, bool caseSensitive)
 {
-	return find(WebString(str, len), startPos, caseSensitive);
+    return find(WebString(str, len), startPos, caseSensitive);
 }
 
 int WebString::rfind(const WebString& str, unsigned int startPos, bool caseSensitive)
 {
-	if (isNull() || str.isNull())
-		return -1; // not found
+    if (isNull() || str.isNull())
+        return -1; // not found
 
-	if (isEmpty() || str.isEmpty())
-		return -1; // not found
+    if (isEmpty() || str.isEmpty())
+        return -1; // not found
 
-	if (caseSensitive) {
-		return (int)m_impl->reverseFind(str.m_impl, startPos);
-	} else {
-		return (int)m_impl->reverseFindIgnoringCase(str.m_impl, startPos);
-	}
+    if (caseSensitive) {
+        return (int)m_impl->reverseFind(str.m_impl, startPos);
+    } else {
+        return (int)m_impl->reverseFindIgnoringCase(str.m_impl, startPos);
+    }
 }
 
 int WebString::rfind(const char* str, unsigned int startPos, bool caseSensitive)
 {
-	return rfind(WebString(str), startPos, caseSensitive);
+    return rfind(WebString(str), startPos, caseSensitive);
 }
 
 int WebString::rfind(const UChar* str, unsigned int len, unsigned int startPos, bool caseSensitive)
 {
-	return rfind(WebString(str, len), startPos, caseSensitive);
+    return rfind(WebString(str, len), startPos, caseSensitive);
 }
 
 WebString WebString::fromUTF8(const char* string)
@@ -348,89 +349,89 @@ WebString WebString::format(const char* format, ...)
 
 bool WebString::append(const WebString& str)
 {
-	if (str.isNull() || str.isEmpty())
-		return false;
+    if (str.isNull() || str.isEmpty())
+        return false;
 
-	if (!isNull() && !isEmpty()) {
-		UChar* data;
-		if (str.length() > (UINT_MAX - length()))
-			return false;
+    if (!isNull() && !isEmpty()) {
+        UChar* data;
+        if (str.length() > (UINT_MAX - length()))
+            return false;
 
-		WTF::RefPtr<StringImpl> newImpl = StringImpl::createUninitialized(length() + str.length(), data);
-		memcpy(data, this->data(), length() * sizeof(UChar));
-		memcpy(data + length(), str.data(), str.length() * sizeof(UChar));
-		*this = WebString(static_cast<WebStringImpl*>(newImpl.get()));
-		return true;
-	} else {
-		*this = str;
-		return true;
-	}
+        WTF::RefPtr<StringImpl> newImpl = StringImpl::createUninitialized(length() + str.length(), data);
+        memcpy(data, this->data(), length() * sizeof(UChar));
+        memcpy(data + length(), str.data(), str.length() * sizeof(UChar));
+        *this = WebString(static_cast<WebStringImpl*>(newImpl.get()));
+        return true;
+    } else {
+        *this = str;
+        return true;
+    }
 }
 
 bool WebString::append(const char* str)
 {
-	return append(WebString(str));
+    return append(WebString(str));
 }
 
 bool WebString::append(const UChar* str, unsigned int len)
 {
-	return append(WebString(str, len));
+    return append(WebString(str, len));
 }
 
 bool WebString::insert(const WebString& str, unsigned int pos)
 {
-	if (str.isNull() || str.isEmpty())
-		return false;
+    if (str.isNull() || str.isEmpty())
+        return false;
 
-	if (isNull() || isEmpty()) {
-		*this = str;
-		return true;
-	}
+    if (isNull() || isEmpty()) {
+        *this = str;
+        return true;
+    }
 
-	if (pos > length()) {
-		append(str);
-		return true;
-	}
+    if (pos > length()) {
+        append(str);
+        return true;
+    }
 
     UChar* data;
     if (str.length() > (UINT_MAX - length()))
-		return false;
+        return false;
 
     WTF::RefPtr<StringImpl> newImpl = StringImpl::createUninitialized(length() + str.length(), data);
     memcpy(data, this->data(), pos * sizeof(UChar));
     memcpy(data + pos, str.data(), str.length() * sizeof(UChar));
     memcpy(data + pos + str.length(), this->data() + pos, (length() - pos) * sizeof(UChar));
-	*this = WebString(static_cast<WebStringImpl*>(newImpl.get()));
-	return true;
+    *this = WebString(static_cast<WebStringImpl*>(newImpl.get()));
+    return true;
 }
 
 bool WebString::insert(const char* str, unsigned int pos)
 {
-	return insert(WebString(str), pos);
+    return insert(WebString(str), pos);
 }
 
 bool WebString::insert(const UChar* str, unsigned int len, unsigned int pos)
 {
-	return insert(WebString(str, len), pos);
+    return insert(WebString(str, len), pos);
 }
 
 bool WebString::remove(unsigned int start, unsigned int len)
 {
-	if (isNull() || isEmpty())
-		return false;
+    if (isNull() || isEmpty())
+        return false;
 
-	if (start >= length())
-		return false;
+    if (start >= length())
+        return false;
 
-	if (len > (length() - start))
-		len = length() - start;
+    if (len > (length() - start))
+        len = length() - start;
 
     UChar* data;
     WTF::RefPtr<StringImpl> newImpl = StringImpl::createUninitialized(length() - len, data);
     memcpy(data, this->data(), start * sizeof(UChar));
     memcpy(data + start, this->data() + start + len, (length() - len - start) * sizeof(UChar));
-	*this = WebString(static_cast<WebStringImpl*>(newImpl.get()));
-	return true;
+    *this = WebString(static_cast<WebStringImpl*>(newImpl.get()));
+    return true;
 }
 
 }

@@ -25,9 +25,9 @@ public:
         : m_color((a << 24) | (b << 16) | (g << 8) | r)
     {
     }
+    //8-bit type for an alpha value. 0xFF is 100% opaque, 0x00 is 100% transparent.
+    //Return a WebColor value from 8 bit component values, with an implied value
 
-//8-bit type for an alpha value. 0xFF is 100% opaque, 0x00 is 100% transparent.
-//Return a WebColor value from 8 bit component values, with an implied value
     UInt32 alpha(void) const { return ((m_color) >> 24) & 0xFF; }
     UInt32 blue(void) const { return ((m_color) >> 16) & 0xFF; }
     UInt32 green(void) const { return ((m_color) >> 8) & 0xFF; }
