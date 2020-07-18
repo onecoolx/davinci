@@ -20,9 +20,7 @@ jobs:
       with:
         python-version: 2.7
     - name: install gperf flex bison 
-      uses: ryankurte/action-apt@v0.1.0
-      with:
-        packages: gperf flex bison
+      run: /usr/bin/sudo apt-get install gperf flex bison
     - name: generate javascript binding
       run: python ./tools/generated_javascriptcore_files.py ./source/webkit-2.2.8/Source/JavaScriptCore ./proj/JavaScriptCore/
     - name: generate webcore binding
