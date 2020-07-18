@@ -1,0 +1,23 @@
+name: Linux Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build project
+      run: ./build_proj.sh
+    - shell: bash
+      run: cd proj
+    - name: build debug
+      run: make -j1
+    - name: build release
+      run: make BUILDTYPE=Release -j1
