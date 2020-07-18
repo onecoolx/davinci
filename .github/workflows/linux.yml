@@ -20,7 +20,7 @@ jobs:
       with:
         python-version: 2.7
     - name: generate javascript binding
-      run: python ./tools/generated_javascriptcore_files.py
+      run: python ./tools/generated_javascriptcore_files.py ./source/webkit-2.2.8/Source/JavaScriptCore ./proj/JavaScriptCore/
     - name: generate webcore binding
       run: python ./tools/generated_webcore_files.py
     - shell: bash
