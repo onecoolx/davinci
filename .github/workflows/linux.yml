@@ -15,9 +15,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: build project
       run: ./build_proj.sh
+    - name: generate javascript binding
+      run: python ./tools/generated_javascriptcore_files.py
+    - name: generate webcore binding
+      run: python ./tools/generated_webcore_files.py
     - shell: bash
-      run: cd proj
+      run: cd ./proj
     - name: build debug
-      run: make -j1
+      run: make
     - name: build release
-      run: make BUILDTYPE=Release -j1
+      run: make BUILDTYPE=Release
