@@ -15,6 +15,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: build project
       run: ./build_proj.sh
+    - name: Setup Python 2.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 2.7
     - name: generate javascript binding
       run: python ./tools/generated_javascriptcore_files.py
     - name: generate webcore binding
