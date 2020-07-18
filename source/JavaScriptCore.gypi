@@ -23,6 +23,7 @@
   ],
   'include_dirs': [
     '<(lib_dir)',
+    '<(lib_dir)/Generated',
     '<(lib_dir)/API',
     '<(lib_dir)/ForwardingHeaders',
     '<(lib_dir)/assembler',
@@ -1040,13 +1041,13 @@
          '<(lib_dir)', 
        ],
        'outputs': [
-         '$(builddir)/<(lib_name)', 
+         '$(lib_dir)/Generated',
        ],
        'action': [
          'python',
          '<(lib_tools)/generated_javascriptcore_files.py',
          '<(_inputs)',
-         '$(builddir)/<(lib_name)',
+         'Generated',
        ],
       }],
       'libraries': [
