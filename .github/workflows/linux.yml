@@ -22,8 +22,8 @@ jobs:
     - name: install gperf flex bison 
       run: /usr/bin/sudo apt-get install gperf flex bison
     - name: generate javascript binding
-      run: python ./tools/generated_javascriptcore_files.py ./source/webkit-2.2.8/Source/JavaScriptCore ./source/webkit-2.2.8/Source/JavaScriptCore/Generated/
+      run: python ./tools/generated_javascriptcore_files.py "/home/runner/work/davinci/davinci/source/webkit-2.2.8/Source/JavaScriptCore" "/home/runner/work/davinci/davinci/source/webkit-2.2.8/Source/JavaScriptCore/Generated/"
     - name: generate webcore binding
-      run: python ./tools/generated_webcore_files.py  ./source/webkit-2.2.8/Source/WebCore ./source/webkit-2.2.8/Source/WebCore/Generated/
+      run: python ./tools/generated_webcore_files.py "/home/runner/work/davinci/davinci/source/webkit-2.2.8/Source/WebCore" "/home/runner/work/davinci/davinci/source/webkit-2.2.8/Source/WebCore/Generated/"
     - name: build release
       run: make -C ./proj/ BUILDTYPE=Release -j32
