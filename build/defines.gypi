@@ -18,6 +18,10 @@
         '_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS',
         '_HAS_EXCEPTIONS=0',
       ],
+      'libraries': [
+        '-lgdi32',
+        '-luser32',
+      ],
     }],
   ],
 }

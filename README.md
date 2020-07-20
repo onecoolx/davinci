@@ -1,4 +1,4 @@
-![Linux Build](https://github.com/onecoolx/davinci/workflows/Linux%20Build/badge.svg)
+![Linux Build](https://github.com/onecoolx/davinci/workflows/Linux%20Build/badge.svg) ![Windows Build](https://github.com/onecoolx/davinci/workflows/Windows%20Build/badge.svg)
 
 #### HOW TO BUILD:
 
