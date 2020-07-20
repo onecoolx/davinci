@@ -1,3 +1,5 @@
+![Linux Build](https://github.com/onecoolx/davinci/workflows/Linux%20Build/badge.svg)
+
 HOW TO BUILD:
 
 ------------------------------------

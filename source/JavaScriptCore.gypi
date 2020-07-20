@@ -1009,7 +1009,7 @@
          'call',
          '<(lib_tools)/generated_javascriptcore_files.bat',
          '<(_inputs)',
-         '$(OutDir)/<(lib_name)',
+         '<(lib_dir)/Generated',
        ],
        'msvs_cygwin_shell': 0,
       }],
@@ -1047,7 +1047,7 @@
          'python',
          '<(lib_tools)/generated_javascriptcore_files.py',
          '<(_inputs)',
-         'Generated',
+         '<(lib_dir)/Generated',
        ],
       }],
       'libraries': [
