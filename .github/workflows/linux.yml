@@ -19,6 +19,8 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 2.7
+    - name: Setup APT
+      run: /usr/bin/sudo apt-get update --fix-missing
     - name: install gperf flex bison 
       run: /usr/bin/sudo apt-get install gperf flex bison libgtk2.0-dev libgles2-mesa-dev libegl1-mesa-dev
     - name: generate javascript binding
