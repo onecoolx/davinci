@@ -37,7 +37,7 @@ jobs:
         Configuration: ${{ matrix.configuration }}
      
     - name: Build Solution
-    run: msbuild ./vcproj/all.sln /p:Configuration=$env:Configuration -m
+      run: msbuild ./vcproj/all.sln /p:Configuration=$env:Configuration -m
       env:
         Configuration: ${{ matrix.configuration }}   
 
