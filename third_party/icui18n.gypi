@@ -239,7 +239,7 @@
        ],
        'msvs_cygwin_shell': 0,
       }],
-      'msvs_disabled_warnings': [4251, 4244, 4138, 4355],
+      'msvs_disabled_warnings': [4251, 4244, 4138, 4355, 4595],
     }],
     ['OS=="linux"', {
       'include_dirs': [

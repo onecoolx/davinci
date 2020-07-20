@@ -21,6 +21,7 @@
       'libraries': [
         '-lgdi32',
         '-luser32',
+        '-ladvapi32',
       ],
     }],
   ],
