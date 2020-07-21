@@ -32,10 +32,10 @@ jobs:
       run: ./build_proj.bat
   
     - name: generate javascript binding
-      run: python ./tools/generated_javascriptcore_files.py ./source/webkit-2.2.8/Source/JavaScriptCore ./source/webkit-2.2.8/Source/JavaScriptCore/Generated
+      run: ./tools/generated_javascriptcore_files.bat ./source/webkit-2.2.8/Source/JavaScriptCore ./source/webkit-2.2.8/Source/JavaScriptCore/Generated
    
     - name: generate webcore binding
-      run: python ./tools/generated_webcore_files.py ./source/webkit-2.2.8/Source/WebCore Generated
+      run: ./tools/generated_webcore_files.bat ./source/webkit-2.2.8/Source/WebCore Generated
     
     - name: Restore Project
       run: msbuild ./vcproj/all.sln /t:Restore /p:Configuration=$env:Configuration
