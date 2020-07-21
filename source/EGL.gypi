@@ -42,8 +42,8 @@
     '<(lib_dir)/src/libEGL/Surface.h',
   ],
   'libraries': [
-    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/d3d11.lib',
-    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/d3d9.lib',
+    '-ld3d11',
+    '-ld3d9',
   ],
   'msvs_disabled_warnings': [ 4267, 4996 ],
   'includes': [

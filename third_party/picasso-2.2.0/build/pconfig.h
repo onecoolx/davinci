@@ -2,7 +2,7 @@
 
 //#define ENABLE_LOW_MEMORY 1
 
-//#define ENABLE_SYSTEM_MALLOC 1
+#define ENABLE_SYSTEM_MALLOC 1
 
 #define ENABLE_FAST_COPY 1
 

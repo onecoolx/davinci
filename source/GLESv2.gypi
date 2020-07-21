@@ -159,9 +159,9 @@
     '<(lib_dir)/src/libGLESv2/libGLESv2.rc',
   ],
   'libraries': [
-    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/d3d11.lib',
-    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/d3d9.lib',
-    '$(DXSDK_DIR)/lib/$(ProcessorArchitecture)/dxguid.lib',
+    '-ld3d11',
+    '-ld3d9',
+    '-ldxguid',
   ],
   'msvs_disabled_warnings': [ 4267, 4996 ],
   'includes': [

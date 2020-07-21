@@ -158,6 +158,7 @@
       '<(webkit_dir)/ThirdParty/ANGLE/include/KHR',
     ],
     'sources': [
+      'main.cpp',
     ],
     'conditions': [
       ['OS=="win"', {
