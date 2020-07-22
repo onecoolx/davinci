@@ -30,17 +30,12 @@ jobs:
 
     - name: Generate Project
       run: ./build_proj.bat
-    
-    - name: set environment variables
-      uses: allenevans/set-env@v1.0.0
-      with:
-        GPERF: ./tools/win32/msys/bin/gperf.exe
   
     - name: generate javascript binding
-      run: python ./tools/generated_javascriptcore_files.py ./source/webkit-2.2.8/Source/JavaScriptCore ./source/webkit-2.2.8/Source/JavaScriptCore/Generated
+      run: .\\tools\\generated_javascriptcore_files.bat ./source/webkit-2.2.8/Source/JavaScriptCore ./source/webkit-2.2.8/Source/JavaScriptCore/Generated
    
     - name: generate webcore binding
-      run: python ./tools/generated_webcore_files.py ./source/webkit-2.2.8/Source/WebCore Generated
+      run: .\\tools\\generated_webcore_files.bat ./source/webkit-2.2.8/Source/WebCore Generated
     
     - name: Restore Project
       run: msbuild ./vcproj/all.sln /t:Restore /p:Configuration=$env:Configuration
