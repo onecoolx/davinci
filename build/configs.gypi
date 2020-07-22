@@ -74,7 +74,7 @@
               'Optimization': '2',
               'InlineFunctionExpansion': '2',
               'FavorSizeOrSpeed': '1',
-              'WholeProgramOptimization': 'true',
+              'WholeProgramOptimization': 'false',
               'StringPooling': 'true',
               'ExceptionHandling': '1',
               'RuntimeLibrary': '0',
