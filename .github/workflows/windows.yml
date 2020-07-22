@@ -34,8 +34,7 @@ jobs:
     - name: set environment variables
       uses: allenevans/set-env@v1.0.0
       with:
-        PATH: ./tools/win32/msys/bin:${PATH}
-        GPERF: gperf.exe
+        GPERF: ./tools/win32/msys/bin/gperf.exe
   
     - name: generate javascript binding
       run: python ./tools/generated_javascriptcore_files.py ./source/webkit-2.2.8/Source/JavaScriptCore ./source/webkit-2.2.8/Source/JavaScriptCore/Generated
