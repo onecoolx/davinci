@@ -235,6 +235,7 @@ extern "C" inline double wtf_pow(double x, double y) { return y == 0 ? 1 : pow(x
 #define fmod(x, y) wtf_fmod(x, y)
 #define pow(x, y) wtf_pow(x, y)
 
+#if _MSC_VER < 1928
 // MSVC's math functions do not bring lrint.
 inline long int lrint(double flt)
 {
@@ -256,6 +257,7 @@ inline long int lrint(double flt)
 #endif
     return static_cast<long int>(intgr);
 }
+#endif
 
 #endif // COMPILER(MSVC)
 
