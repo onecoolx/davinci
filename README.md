@@ -4,6 +4,17 @@
 
 **linux:**
 
+1. Install required tools and libraries (gperf, flex, bison, libGtk2.0-dev, libgles2-mesa-dev, libegl1-mesa-dev)
+
+For example on ubuntu:
+
+```
+sudo apt-get update --fix-missing
+sudo apt-get install gperf flex bison libgtk2.0-dev libgles2-mesa-dev libegl1-mesa-dev
+```
+
+2. Build project
+
 ```
 ./build_proj.sh
 cd proj
