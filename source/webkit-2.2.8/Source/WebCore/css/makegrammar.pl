@@ -30,6 +30,7 @@ my $extraDefines = "";
 my $symbolsPrefix = "";
 my $preprocessor = "";
 my $preprocessOnly = 0;
+# need bison above 3.7
 my $bison = "bison";
 
 GetOptions(
@@ -73,23 +74,4 @@ if ($suffix eq ".y.in") {
 }
 
 my $fileBase = File::Spec->join($outputDir, $filename);
-system("$bison -d -p $symbolsPrefix $grammarFilePath -o $fileBase.cpp");
-
-open HEADER, ">$fileBase.h" or die;
-print HEADER << "EOF";
-#ifndef CSSGRAMMAR_H
-#define CSSGRAMMAR_H
-EOF
-
-open HPP, "<$fileBase.cpp.h" or open HPP, "<$fileBase.hpp" or die;
-while (<HPP>) {
-    print HEADER;
-}
-close HPP;
-
-print HEADER "#endif\n";
-close HEADER;
-
-unlink("$fileBase.cpp.h");
-unlink("$fileBase.hpp");
-
+system("$bison --defines=$fileBase.h -p $symbolsPrefix $grammarFilePath -o $fileBase.cpp");
