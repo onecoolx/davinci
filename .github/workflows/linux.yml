@@ -27,5 +27,7 @@ jobs:
       run: python ./tools/generated_javascriptcore_files.py ./source/webkit-2.2.8/Source/JavaScriptCore ./source/webkit-2.2.8/Source/JavaScriptCore/Generated
     - name: generate webcore binding
       run: python ./tools/generated_webcore_files.py ./source/webkit-2.2.8/Source/WebCore Generated
+    - name: build Debug
+      run: make -C ./proj/ BUILDTYPE=Release -j64
     - name: build release
-      run: make -C ./proj/ BUILDTYPE=Release -j32
+      run: make -C ./proj/ BUILDTYPE=Release -j64
