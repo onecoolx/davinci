@@ -1,4 +1,4 @@
-name: Linux Build
+name: Linux Ninja Build
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build project
-      run: ./build_proj.sh
+      run: ./build_proj_ninja.sh
     - name: Setup Python 2.7
       uses: actions/setup-python@v2
       with:
