@@ -1,0 +1,33 @@
+name: Linux Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: build project
+      run: ./build_proj.sh
+    - name: Setup Python 2.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 2.7
+    - name: Setup APT
+      run: /usr/bin/sudo apt-get update --fix-missing
+    - name: install gperf flex bison make
+      run: /usr/bin/sudo apt-get install gperf flex bison ninja-build libgtk2.0-dev libgles2-mesa-dev libegl1-mesa-dev
+    - name: generate javascript binding
+      run: python ./tools/generated_javascriptcore_files.py ./source/webkit-2.2.8/Source/JavaScriptCore ./source/webkit-2.2.8/Source/JavaScriptCore/Generated
+    - name: generate webcore binding
+      run: python ./tools/generated_webcore_files.py ./source/webkit-2.2.8/Source/WebCore Generated
+    - name: build Debug
+      run: ninja -C ./proj/out/Debug -j32
+    - name: build release
+      run: ninja -C ./proj/out/Release -j32
