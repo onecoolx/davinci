@@ -25,6 +25,8 @@ def Main(src, dst):
           shutil.rmtree(dst)
       return shutil.copytree(src, dst)
   else:
+      if os.path.exists(dst):
+          os.remove(dst)
       return shutil.copy(src, dst)
 
 

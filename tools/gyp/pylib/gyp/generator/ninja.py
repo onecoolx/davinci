@@ -277,6 +277,15 @@ class NinjaWriter(object):
                 path = path.replace(PRODUCT_DIR + "\\", "")
                 path = path.replace(PRODUCT_DIR, ".")
 
+        LIB_DIR = "$(lib_dir)" #davinci special
+        if LIB_DIR in path:
+            if product_dir:
+                path = path.replace(LIB_DIR, product_dir)
+            else:
+                path = path.replace(LIB_DIR + "/", "")
+                path = path.replace(LIB_DIR + "\\", "")
+                path = path.replace(LIB_DIR, ".")
+
         INTERMEDIATE_DIR = "$!INTERMEDIATE_DIR"
         if INTERMEDIATE_DIR in path:
             int_dir = self.GypPathToUniqueOutput("gen")
@@ -285,6 +294,10 @@ class NinjaWriter(object):
             path = path.replace(
                 INTERMEDIATE_DIR, os.path.join(product_dir or "", int_dir)
             )
+
+        BUILDDIR_DIR = "$(builddir)" #davinci special
+        if BUILDDIR_DIR in path:
+            path = path.replace(BUILDDIR_DIR, self.build_dir)
 
         CONFIGURATION_NAME = "$|CONFIGURATION_NAME"
         path = path.replace(CONFIGURATION_NAME, self.config_name)
@@ -318,7 +331,9 @@ class NinjaWriter(object):
             return expanded
         if "$|" in path:
             path = self.ExpandSpecial(path)
-        assert "$" not in path, path
+        if "$(" in path: # davinci special fixed
+            path = self.ExpandSpecial(path)
+        #assert "$" not in path, path
         return os.path.normpath(os.path.join(self.build_to_base, path))
 
     def GypPathToUniqueOutput(self, path, qualified=True):
