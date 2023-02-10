@@ -57,6 +57,7 @@
           'cflags_cc': [
             '-fno-exceptions',
             '-Wno-c++0x-compat',
+            '-std=gnu++98',
           ],
         }],
       ],
@@ -119,6 +120,7 @@
           'cflags_cc': [
             '-fno-exceptions',
             '-Wno-c++0x-compat',
+            '-std=gnu++98',
           ],
         }],
       ],
