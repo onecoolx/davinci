@@ -1,4 +1,4 @@
-![Linux Build](https://github.com/onecoolx/davinci/workflows/Linux%20Build/badge.svg) ![Windows Build](https://github.com/onecoolx/davinci/workflows/Windows%20Build/badge.svg)
+![Linux Make Build](https://github.com/onecoolx/davinci/workflows/Linux%20Make%20Build/badge.svg) ![Linux Ninja Build](https://github.com/onecoolx/davinci/workflows/Linux%20Ninja%20Build/badge.svg)![Windows Build](https://github.com/onecoolx/davinci/workflows/Windows%20Build/badge.svg)
 
 #### HOW TO BUILD:
 
@@ -10,7 +10,7 @@ For example on ubuntu:
 
 ```
 sudo apt-get update --fix-missing
-sudo apt-get install gperf flex bison libgtk2.0-dev libgles2-mesa-dev libegl1-mesa-dev
+sudo apt-get install gperf flex bison make libgtk2.0-dev libgles2-mesa-dev libegl1-mesa-dev
 ```
 
 2. Build project
