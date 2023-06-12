@@ -21,6 +21,14 @@ cd proj
 make
 ```
 
+3. Build project with ninja (recommended)
+
+```
+./build_proj_ninja.sh
+cd proj
+./ninja-build Debug
+```
+
 **windows:**
 
 1. Install Active Python 2.7 on your windows system and register path environment variables.
