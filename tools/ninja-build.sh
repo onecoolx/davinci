@@ -6,3 +6,5 @@ python ./tools/generated_webcore_files.py ./source/webkit-2.2.8/Source/WebCore G
 cd -
 
 ninja -j32 -C ./out/$1
+
+cp ../tools/start_demo.sh ./out/$1/
