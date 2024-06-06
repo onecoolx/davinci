@@ -23,11 +23,11 @@ def Main(src, dst):
   if os.path.isdir(src):
       if os.path.exists(dst):
           shutil.rmtree(dst)
-      return shutil.copytree(src, dst)
+      shutil.copytree(src, dst)
   else:
       if os.path.exists(dst):
           os.remove(dst)
-      return shutil.copy(src, dst)
+      shutil.copy(src, dst)
 
 
 if __name__ == '__main__':
