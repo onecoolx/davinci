@@ -19,10 +19,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: build project
       run: ./build_linux.sh
-    - name: Setup Python 2.7
-      uses: actions/setup-python@v2
-      with:
-        python-version: 2.7
+    - name: Setup Python
+      uses: actions/setup-python@v5.1.0
     - name: Setup APT
       run: /usr/bin/sudo apt-get update --fix-missing
     - name: install gperf flex bison make
