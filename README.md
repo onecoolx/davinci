@@ -1,4 +1,4 @@
-[![Linux Ninja Build](https://github.com/onecoolx/davinci/actions/workflows/linux.yml/badge.svg)](https://github.com/onecoolx/davinci/actions/workflows/linux.yml)
+[![Linux Build](https://github.com/onecoolx/davinci/actions/workflows/linux.yml/badge.svg)](https://github.com/onecoolx/davinci/actions/workflows/linux.yml)
 [![Windows Build](https://github.com/onecoolx/davinci/actions/workflows/windows.yml/badge.svg)](https://github.com/onecoolx/davinci/actions/workflows/windows.yml)
 
 #### HOW TO BUILD:
