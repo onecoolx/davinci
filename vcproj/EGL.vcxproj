@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9C7F128E-D704-AB7A-2C6D-36125C807404}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>EGL</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetPath>$(OutDir)\$(ProjectName)$(TargetExt)</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libGLESv2;$(DXSDK_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>NOMINMAX;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;d3d9.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\libEGL.def</ModuleDefinitionFile>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libGLESv2;$(DXSDK_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NOMINMAX;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libGLESv2;$(DXSDK_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>NOMINMAX;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;d3d9.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <ModuleDefinitionFile>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\libEGL.def</ModuleDefinitionFile>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libGLESv2;$(DXSDK_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NOMINMAX;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\libEGL.def"/>
+    <None Include="..\all.gyp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\common\angleutils.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\common\debug.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\common\RefCountObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\common\version.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\Config.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\Display.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\main.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\Surface.h"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\common\debug.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\common\RefCountObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\Config.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\Display.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\libEGL.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\main.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\Surface.cpp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\libEGL\libEGL.rc"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="GLESv2.vcxproj">
+      <Project>{12D99C1E-DAB6-CDA8-C7A5-F901E46FBBD6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

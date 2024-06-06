@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{080E9DFF-21D5-16F5-C77F-6C8DB44510DE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>JavaScriptCore</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetPath>$(OutDir)\$(ProjectName)$(TargetExt)</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\JavaScriptCore;..\source\webkit-2.2.8\Source\JavaScriptCore\Generated;..\source\webkit-2.2.8\Source\JavaScriptCore\API;..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders;..\source\webkit-2.2.8\Source\JavaScriptCore\assembler;..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode;..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler;..\source\webkit-2.2.8\Source\JavaScriptCore\debugger;..\source\webkit-2.2.8\Source\JavaScriptCore\dfg;..\source\webkit-2.2.8\Source\JavaScriptCore\disassembler;..\source\webkit-2.2.8\Source\JavaScriptCore\ftl;..\source\webkit-2.2.8\Source\JavaScriptCore\heap;..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter;..\source\webkit-2.2.8\Source\JavaScriptCore\jit;..\source\webkit-2.2.8\Source\JavaScriptCore\llint;..\source\webkit-2.2.8\Source\JavaScriptCore\parser;..\source\webkit-2.2.8\Source\JavaScriptCore\profiler;..\source\webkit-2.2.8\Source\JavaScriptCore\runtime;..\source\webkit-2.2.8\Source\JavaScriptCore\tools;..\source\webkit-2.2.8\Source\JavaScriptCore\yarr;..\source\webkit-2.2.8\Source;..\source\webkit-2.2.8\Source\WTF;..\build;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;$(OutDir)JavaScriptCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4800;4355;4396;4244;4251;4267;4312;4344;4291;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>BUILDING_JavaScriptCore;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\JavaScriptCore;..\source\webkit-2.2.8\Source\JavaScriptCore\Generated;..\source\webkit-2.2.8\Source\JavaScriptCore\API;..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders;..\source\webkit-2.2.8\Source\JavaScriptCore\assembler;..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode;..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler;..\source\webkit-2.2.8\Source\JavaScriptCore\debugger;..\source\webkit-2.2.8\Source\JavaScriptCore\dfg;..\source\webkit-2.2.8\Source\JavaScriptCore\disassembler;..\source\webkit-2.2.8\Source\JavaScriptCore\ftl;..\source\webkit-2.2.8\Source\JavaScriptCore\heap;..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter;..\source\webkit-2.2.8\Source\JavaScriptCore\jit;..\source\webkit-2.2.8\Source\JavaScriptCore\llint;..\source\webkit-2.2.8\Source\JavaScriptCore\parser;..\source\webkit-2.2.8\Source\JavaScriptCore\profiler;..\source\webkit-2.2.8\Source\JavaScriptCore\runtime;..\source\webkit-2.2.8\Source\JavaScriptCore\tools;..\source\webkit-2.2.8\Source\JavaScriptCore\yarr;..\source\webkit-2.2.8\Source;..\source\webkit-2.2.8\Source\WTF;..\build;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;$(OutDir)JavaScriptCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDING_JavaScriptCore;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\JavaScriptCore;..\source\webkit-2.2.8\Source\JavaScriptCore\Generated;..\source\webkit-2.2.8\Source\JavaScriptCore\API;..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders;..\source\webkit-2.2.8\Source\JavaScriptCore\assembler;..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode;..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler;..\source\webkit-2.2.8\Source\JavaScriptCore\debugger;..\source\webkit-2.2.8\Source\JavaScriptCore\dfg;..\source\webkit-2.2.8\Source\JavaScriptCore\disassembler;..\source\webkit-2.2.8\Source\JavaScriptCore\ftl;..\source\webkit-2.2.8\Source\JavaScriptCore\heap;..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter;..\source\webkit-2.2.8\Source\JavaScriptCore\jit;..\source\webkit-2.2.8\Source\JavaScriptCore\llint;..\source\webkit-2.2.8\Source\JavaScriptCore\parser;..\source\webkit-2.2.8\Source\JavaScriptCore\profiler;..\source\webkit-2.2.8\Source\JavaScriptCore\runtime;..\source\webkit-2.2.8\Source\JavaScriptCore\tools;..\source\webkit-2.2.8\Source\JavaScriptCore\yarr;..\source\webkit-2.2.8\Source;..\source\webkit-2.2.8\Source\WTF;..\build;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;$(OutDir)JavaScriptCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4800;4355;4396;4244;4251;4267;4312;4344;4291;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>BUILDING_JavaScriptCore;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\JavaScriptCore;..\source\webkit-2.2.8\Source\JavaScriptCore\Generated;..\source\webkit-2.2.8\Source\JavaScriptCore\API;..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders;..\source\webkit-2.2.8\Source\JavaScriptCore\assembler;..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode;..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler;..\source\webkit-2.2.8\Source\JavaScriptCore\debugger;..\source\webkit-2.2.8\Source\JavaScriptCore\dfg;..\source\webkit-2.2.8\Source\JavaScriptCore\disassembler;..\source\webkit-2.2.8\Source\JavaScriptCore\ftl;..\source\webkit-2.2.8\Source\JavaScriptCore\heap;..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter;..\source\webkit-2.2.8\Source\JavaScriptCore\jit;..\source\webkit-2.2.8\Source\JavaScriptCore\llint;..\source\webkit-2.2.8\Source\JavaScriptCore\parser;..\source\webkit-2.2.8\Source\JavaScriptCore\profiler;..\source\webkit-2.2.8\Source\JavaScriptCore\runtime;..\source\webkit-2.2.8\Source\JavaScriptCore\tools;..\source\webkit-2.2.8\Source\JavaScriptCore\yarr;..\source\webkit-2.2.8\Source;..\source\webkit-2.2.8\Source\WTF;..\build;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;$(OutDir)JavaScriptCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDING_JavaScriptCore;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\all.gyp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSContextRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSObjectRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSStringRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSValueRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JavaScript.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\WebKitAvailability.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\APICallbackFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\APICast.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\APIShims.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSAPIWrapperObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSBasePrivate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCTestRunnerUtils.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCallbackConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCallbackFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCallbackObjectFunctions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCallbackObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSClassRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSContextRefPrivate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSObjectRefPrivate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSRetainPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSScriptRefPrivate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSStringRefPrivate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSWeakObjectMapRefInternal.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\ObjCCallbackFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\OpaqueJSString.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\AbstractMacroAssembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\ARMAssembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\ARMv7Assembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\AssemblerBuffer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\AssemblerBufferWithConstantPool.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\CodeLocation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\LinkBuffer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerARM.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerARMv7.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerCodeRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerMIPS.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerSH4.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerX86.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerX86Common.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerX86_64.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MIPSAssembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\RepatchBuffer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\SH4Assembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\X86Assembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ArrayAllocationProfile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ArrayProfile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ByValInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\BytecodeConventions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CallLinkInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CallLinkStatus.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CallReturnOffsetToBytecodeOffset.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeBlockHash.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeBlockWithJITType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeOrigin.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\DFGExitProfile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\DataFormat.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\DeferredCompilationCallback.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\EvalCodeCache.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ExecutionCounter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ExitKind.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ExpressionRangeInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\GetByIdStatus.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\HandlerInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\Instruction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\JumpTable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\LLIntCallLinkInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\LazyOperandValueProfile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\LineInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\MethodOfGettingAValueProfile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ObjectAllocationProfile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\Opcode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\Operands.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\OperandsInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\PolymorphicAccessStructureList.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\PolymorphicPutByIdList.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\PreciseJumpTargets.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\SpeculatedType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\PutByIdStatus.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\PutKind.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ReduceWhitespace.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\SamplingTool.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\SpecialPointer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\StructureSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\StructureStubInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\StructureStubClearingWatchpoint.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\UnlinkedCodeBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ValueProfile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ValueRecovery.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\VirtualRegister.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\Watchpoint.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler\BytecodeGenerator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler\Label.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler\LabelScope.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler\RegisterID.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler\StaticPropertyAnalysis.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler\StaticPropertyAnalyzer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAbstractHeap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAbstractInterpreter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAbstractInterpreterInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAbstractValue.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAdjacencyList.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAnalysis.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGArgumentPosition.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGArgumentsSimplificationPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGArrayMode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGArrayifySlowPathGenerator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAssemblyHelpers.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAtTailAbstractState.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBackwardsPropagationPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBasicBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBasicBlockInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBinarySwitch.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBlockInsertionSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBranchDirection.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGByteCodeParser.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCCallHelpers.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCFGSimplificationPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCallArrayAllocatorSlowPathGenerator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCapabilities.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCFAPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCPSRethreadingPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGClobberize.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGClobberSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCommon.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCommonData.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGConstantFoldingPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCriticalEdgeBreakingPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCSEPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDCEPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredIdentifiers.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredStructureChains.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredTransitions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredWatchpoints.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredWeakReferences.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredWriteBarriers.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDisassembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDominators.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDoubleFormatState.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDriver.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGEdge.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGEdgeDominates.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGEdgeUsesStructure.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFPRInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFailedFinalizer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFiltrationResult.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFinalizer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFixupPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFlushFormat.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFlushLivenessAnalysisPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGGenerationInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGGPRInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGGraph.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGInPlaceAbstractState.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGInsertionSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGJITCode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGJITCompiler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGJITFinalizer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLICMPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLazyJSValue.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLivenessAnalysisPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLongLivedState.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLoopPreHeaderCreationPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGMergeMode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGMinifiedGraph.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGMinifiedID.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGMinifiedNode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGNaturalLoops.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGNode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGNodeAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGNodeFlags.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGNodeType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOperations.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRAvailabilityAnalysisPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSREntry.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitCompilationInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitCompiler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitCompilerCommon.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExit.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitJumpPlaceholder.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitPreparation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGPlan.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGPredictionInjectionPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGPredictionPropagationPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGRegisterBank.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGRegisterSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGRepatch.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSafeToExecute.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSaneStringGetByValSlowPathGenerator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGScoreBoard.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGScratchRegisterAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSilentRegisterSavePlan.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSlowPathGenerator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSpeculativeJIT.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSSAConversionPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGStructureAbstractValue.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGThunks.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGTypeCheckHoistingPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGUnificationPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGUseKind.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGValidate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGValueRecoveryOverride.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGValueSource.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVariableAccessData.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVariableAccessDataDump.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVariableEvent.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVariableEventStream.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVariadicFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVirtualRegisterAllocationPhase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGWorklist.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\disassembler\Disassembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopiedAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopiedBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopiedBlockInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopiedSpace.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopiedSpaceInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopyToken.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopyVisitor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopyVisitorInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopyWorkList.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\ConservativeRoots.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\DeferGC.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\DFGCodeBlocks.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCAssertions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCIncomingRefCounted.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCIncomingRefCountedInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCIncomingRefCountedSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCIncomingRefCountedSetInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\Handle.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HandleBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HandleBlockInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HandleSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HeapBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HeapTimer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\IncrementalSweeper.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\SlotVisitor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\SlotVisitorInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HandleStack.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HandleTypes.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\BlockAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCThreadSharedData.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCThread.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\Heap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HeapStatistics.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\JITStubRoutineSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\ListableHandler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\Local.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\LocalScope.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MachineStackMarker.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkStack.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkStackInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HeapRootVisitor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkedAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkedBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkedBlockSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\TinyBloomFilter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkedSpace.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\PassWeak.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\Region.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\Strong.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\StrongInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\SuperRegion.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\UnconditionalFinalizer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\VTableSpectrum.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\Weak.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakHandleOwner.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakImpl.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakSetInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakReferenceHarvester.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WriteBarrierSupport.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\debugger\DebuggerActivation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\debugger\DebuggerCallFrame.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\debugger\Debugger.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\APICast.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\APIShims.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\JavaScript.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\JSBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\JSContextRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\JSCTestRunnerUtils.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\JSObjectRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\JSRetainPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\JSStringRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\JSValueRef.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\OpaqueJSString.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\ForwardingHeaders\JavaScriptCore\WebKitAvailability.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\AbstractPC.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\CachedCall.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\CallFrameClosure.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\CallFrame.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\CallFrameInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\Interpreter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\JSStack.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\JSStackInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\Register.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\StackIterator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\StackIteratorPrivate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\VMInspector.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\JavaScriptCorePrefix.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\CompactJITCodeMap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\ClosureCallStubRoutine.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\ExecutableAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\GCAwareJITStubRoutine.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\HostCallReturnValue.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITCode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITCompilationEffort.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITDisassembler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JIT.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITExceptions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubCall.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubRoutine.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubs.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubsARM.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubsARMv7.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubsMIPS.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubsSH4.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubsX86.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubsX86_64.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubsX86Common.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITThunks.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITToDFGDeferredCompilationCallback.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITWriteBarrier.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JSInterfaceJIT.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JumpReplacementWatchpoint.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\SlowPathCall.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\SpecializedThunkJIT.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\ThunkGenerator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\ThunkGenerators.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\UnusedPointer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntCommon.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntCLoop.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntData.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntEntrypoints.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntExceptions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntOfflineAsmConfig.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntOpcode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntSlowPaths.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntThunks.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LowLevelInterpreter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\os-win32\stdbool.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\ASTBuilder.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\Lexer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\NodeConstructors.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\NodeInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\Nodes.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\ParserArena.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\ParserError.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\ParserTokens.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\Parser.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\ParserModes.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\ResultType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\SourceCode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\SourceProvider.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\SourceProviderCache.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\SourceProviderCacheItem.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\SyntaxChecker.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\CallIdentifier.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerBytecode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerBytecodeSequence.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerBytecodes.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerCompilation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerCompilationKind.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerCompiledBytecode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerDatabase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerExecutionCounter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerOrigin.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerOriginStack.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerOSRExit.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerOSRExitSite.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerProfiledBytecodes.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfileGenerator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\Profile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfileNode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\LegacyProfiler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArgList.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Arguments.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayBuffer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayBufferView.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayConventions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayStorage.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\BatchedTransitionOptimizer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\BigInteger.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\BooleanConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\BooleanObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\BooleanPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ButterflyInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Butterfly.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CachedTranscendentalFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CallData.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ClassInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CodeCache.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CodeSpecializationKind.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CommonIdentifiers.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CommonSlowPathsExceptions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CommonSlowPaths.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CompilationResult.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Completion.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ConcurrentJITLock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ConstructData.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DataView.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DateConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DateConversion.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DateInstanceCache.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DateInstance.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DatePrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DumpContext.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ErrorConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Error.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ErrorInstance.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ErrorPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ExceptionHelpers.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Executable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Float32Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Float64Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\FunctionConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\FunctionExecutableDump.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\FunctionPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\GCActivityCallback.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\GenericTypedArrayView.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\GenericTypedArrayViewInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\GetterSetter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Identifier.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\IndexingHeaderInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\IndexingHeader.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\IndexingType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\InitializeThreading.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Int16Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Int32Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Int8Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\IntegralTypedArrayBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\IntendedStructureChain.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\InternalFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Intrinsic.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSActivation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSAPIValueWrapper.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBuffer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBufferConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBufferPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBufferView.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBufferViewInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSCell.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSDataView.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSDataViewPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSCellInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSDateMath.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSDestructibleObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSFloat32Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSFloat64Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSBoundFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSExportMacros.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\VM.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSFunctionInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGenericTypedArrayView.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGenericTypedArrayViewConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGenericTypedArrayViewConstructorInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGenericTypedArrayViewInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGenericTypedArrayViewPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGenericTypedArrayViewPrototypeInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGlobalObjectFunctions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGlobalObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSProxy.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSInt16Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSInt32Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSInt8Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSLock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSNotAnObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSONObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSPropertyNameIterator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSSegmentedVariableObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSTypedArrayConstructors.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSTypedArrayPrototypes.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSTypedArrays.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSUint16Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSUint32Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSUint8Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSUint8ClampedArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSNameScope.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSScope.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSStringBuilder.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSStringJoiner.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSString.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSSymbolTableObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSTypeInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSCJSValue.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSCJSValueInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSVariableObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSWithScope.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSWrapperObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\LiteralParser.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Lookup.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\MatchResult.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\MathObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\MemoryStatistics.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NameConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NameInstance.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NamePrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NativeErrorConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NativeErrorPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NumberConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NumberObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NumberPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NumericStrings.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ObjectConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ObjectPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Operations.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Options.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PrivateName.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyDescriptor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyMapHashTable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyName.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyNameArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyOffset.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertySlot.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PrototypeMap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyStorage.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Protect.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PutDirectIndexMode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PutPropertySlot.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpCache.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExp.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpKey.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpMatchesArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpCachedResult.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Reject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SamplingCounter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SimpleTypedArrayController.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SmallStrings.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SparseArrayValueMap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StrictEvalActivation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StringConstructor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StringObject.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StringPrototype.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StringRecursionChecker.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StructureChain.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Structure.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StructureInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StructureRareData.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StructureRareDataInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StructureTransitionTable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SymbolTable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ToNativeFromValue.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Tracing.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\TypedArrayAdaptors.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\TypedArrayBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\TypedArrayController.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\TypedArrayInlines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\TypedArrayType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\TypedArrays.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Uint16Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Uint16WithFraction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Uint32Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Uint8Array.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Uint8ClampedArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\VMStackBounds.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Watchdog.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\WeakGCMap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\WeakRandom.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\WriteBarrier.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\tools\CodeProfile.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\tools\CodeProfiling.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\tools\ProfileTreeNode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\tools\TieredMMapArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\Yarr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrCanonicalizeUCS2.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrInterpreter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrJIT.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrParser.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrPattern.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrSyntaxChecker.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\JavaScriptCore\JavaScriptCore.vcxproj\resource.h"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSBase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCTestRunnerUtils.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCallbackConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCallbackFunction.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSCallbackObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSClassRef.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSContextRef.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSObjectRef.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSScriptRef.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSStringRef.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\JSValueRef.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\API\OpaqueJSString.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\ARMAssembler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\ARMv7Assembler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\LinkBuffer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssembler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerARM.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\assembler\MacroAssemblerX86Common.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ArrayAllocationProfile.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ArrayProfile.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CallLinkInfo.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CallLinkStatus.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeType.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeBlock.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeBlockHash.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\CodeOrigin.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\DFGExitProfile.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\DeferredCompilationCallback.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ExecutionCounter.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ExitKind.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\GetByIdStatus.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\JumpTable.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\LazyOperandValueProfile.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\MethodOfGettingAValueProfile.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\Opcode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\PolymorphicPutByIdList.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\PreciseJumpTargets.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\SpeculatedType.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\PutByIdStatus.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\ReduceWhitespace.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\SamplingTool.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\SpecialPointer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\StructureStubInfo.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\StructureStubClearingWatchpoint.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\UnlinkedCodeBlock.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecode\Watchpoint.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler\BytecodeGenerator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\bytecompiler\NodesCodegen.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAbstractHeap.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAbstractValue.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGArgumentsSimplificationPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGArrayMode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAssemblyHelpers.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGAtTailAbstractState.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBackwardsPropagationPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBasicBlock.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBinarySwitch.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGBlockInsertionSet.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGByteCodeParser.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCFGSimplificationPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCapabilities.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCFAPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCPSRethreadingPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGClobberize.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGClobberSet.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCommon.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCommonData.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGConstantFoldingPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCriticalEdgeBreakingPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGCSEPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDCEPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredIdentifiers.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredStructureChains.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredTransitions.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredWatchpoints.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredWeakReferences.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDesiredWriteBarriers.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDisassembler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDominators.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGDriver.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGEdge.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFailedFinalizer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFinalizer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFixupPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFlushFormat.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGFlushLivenessAnalysisPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGGraph.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGInPlaceAbstractState.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGJITCode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGJITCompiler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGJITFinalizer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLICMPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLazyJSValue.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLivenessAnalysisPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLongLivedState.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGLoopPreHeaderCreationPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGMinifiedNode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGNaturalLoops.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGNode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGNodeFlags.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOperations.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRAvailabilityAnalysisPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSREntry.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitCompiler32_64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitCompiler64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitCompiler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitCompilerCommon.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExit.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitBase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitJumpPlaceholder.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGOSRExitPreparation.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGPlan.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGPredictionInjectionPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGPredictionPropagationPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGRepatch.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSpeculativeJIT32_64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSpeculativeJIT64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSpeculativeJIT.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGSSAConversionPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGThunks.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGTypeCheckHoistingPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGUnificationPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGUseKind.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGValidate.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGValueSource.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVariableAccessDataDump.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVariableEvent.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVariableEventStream.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGVirtualRegisterAllocationPhase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\dfg\DFGWorklist.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\disassembler\Disassembler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopiedSpace.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\CopyVisitor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\ConservativeRoots.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\DFGCodeBlocks.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HandleSet.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HeapTimer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\IncrementalSweeper.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\SlotVisitor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HandleStack.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\BlockAllocator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCThreadSharedData.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\GCThread.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\Heap.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\HeapStatistics.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\JITStubRoutineSet.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MachineStackMarker.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkStack.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkedAllocator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkedBlock.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\MarkedSpace.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\SuperRegion.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\VTableSpectrum.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\Weak.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakBlock.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakHandleOwner.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WeakSet.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\heap\WriteBarrierSupport.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\debugger\DebuggerActivation.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\debugger\DebuggerCallFrame.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\debugger\Debugger.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\AbstractPC.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\CallFrame.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\Interpreter.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\JSStack.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\StackIterator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\interpreter\VMInspector.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\ClosureCallStubRoutine.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\ExecutableAllocator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\ExecutableAllocatorFixedVMPool.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\GCAwareJITStubRoutine.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\HostCallReturnValue.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITArithmetic32_64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITArithmetic.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITCall32_64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITCall.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITCode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITDisassembler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JIT.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITExceptions.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITOpcodes32_64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITOpcodes.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITPropertyAccess32_64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITPropertyAccess.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubRoutine.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITStubs.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITThunks.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JITToDFGDeferredCompilationCallback.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\JumpReplacementWatchpoint.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\jit\ThunkGenerators.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntCLoop.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntData.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntEntrypoints.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntExceptions.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntSlowPaths.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LLIntThunks.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\llint\LowLevelInterpreter.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\Lexer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\Nodes.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\ParserArena.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\Parser.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\SourceCode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\SourceProvider.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\parser\SourceProviderCache.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerBytecode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerBytecodeSequence.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerBytecodes.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerCompilation.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerCompilationKind.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerCompiledBytecode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerDatabase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerOrigin.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerOriginStack.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerOSRExit.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerOSRExitSite.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfilerProfiledBytecodes.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\Profile.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfileGenerator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\ProfileNode.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\profiler\LegacyProfiler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArgList.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Arguments.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayBuffer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayBufferView.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ArrayPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\BooleanConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\BooleanObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\BooleanPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CallData.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CodeCache.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CodeSpecializationKind.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CommonIdentifiers.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CommonSlowPathsExceptions.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CommonSlowPaths.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\CompilationResult.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Completion.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ConstructData.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DataView.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DateConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DateConversion.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DateInstance.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DatePrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\DumpContext.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ErrorConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Error.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ErrorInstance.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ErrorPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ExceptionHelpers.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Executable.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\FunctionConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\FunctionExecutableDump.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\FunctionPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\GCActivityCallback.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\GetterSetter.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Identifier.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\IndexingType.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\InitializeThreading.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\IntendedStructureChain.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\InternalFunction.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSActivation.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSAPIValueWrapper.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArray.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBuffer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBufferConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBufferPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSArrayBufferView.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSCell.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSDataView.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSDataViewPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSDateMath.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSFunction.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSBoundFunction.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\VM.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGlobalObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSGlobalObjectFunctions.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSProxy.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSLock.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSNotAnObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSONObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSPropertyNameIterator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSSegmentedVariableObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSTypedArrayConstructors.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSTypedArrayPrototypes.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSTypedArrays.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSWithScope.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSNameScope.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSScope.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSStringJoiner.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSString.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSSymbolTableObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSCJSValue.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSVariableObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\JSWrapperObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\LiteralParser.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Lookup.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\MathObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NameConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NameInstance.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NamePrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NativeErrorConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NativeErrorPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NumberConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NumberObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\NumberPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ObjectConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\ObjectPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Operations.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Options.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyDescriptor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyNameArray.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertySlot.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PropertyTable.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\PrototypeMap.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpCache.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExp.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpMatchesArray.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpCachedResult.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\RegExpPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SamplingCounter.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SimpleTypedArrayController.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SmallStrings.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SparseArrayValueMap.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StrictEvalActivation.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StringConstructor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StringObject.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StringPrototype.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StringRecursionChecker.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StructureChain.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Structure.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\StructureRareData.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\SymbolTable.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\TypedArrayController.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\TypedArrayType.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\Watchdog.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\runtime\WatchdogNone.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\tools\CodeProfile.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\tools\CodeProfiling.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrCanonicalizeUCS2.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrInterpreter.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrJIT.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrPattern.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\JavaScriptCore\yarr\YarrSyntaxChecker.cpp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\source\webkit-2.2.8\Source\JavaScriptCore">
+      <FileType>Document</FileType>
+      <Command>call call call &quot;..\tools\generated_javascriptcore_files.bat&quot; &quot;..\source\webkit-2.2.8\Source\JavaScriptCore&quot; &quot;..\source\webkit-2.2.8\Source\JavaScriptCore\Generated&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>generated_files</Message>
+      <Outputs>$(OutDir)\JavaScriptCore</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="WTF.vcxproj">
+      <Project>{747885EC-7BAA-7F2B-B15B-E196A52DBE82}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="icuuc.vcxproj">
+      <Project>{891EDF98-1FF6-402D-5ACE-87E56A590AD2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="icui18n.vcxproj">
+      <Project>{38D7C7E1-0E89-01A9-C21D-B4F3AD0B14CA}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

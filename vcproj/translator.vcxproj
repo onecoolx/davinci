@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AE86A079-4BA5-E926-516A-4CA967AEA4BE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>translator</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetPath>$(OutDir)lib\$(ProjectName)$(TargetExt)</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>ANGLE_TRANSLATOR_IMPLEMENTATION;ANGLE_DISABLE_TRACE;ANGLE_COMPILE_OPTIMIZATION_LEVEL=D3DCOMPILE_OPTIMIZATION_LEVEL1;ANGLE_PRELOADED_D3DCOMPILER_MODULE_NAMES={ TEXT(&quot;d3dcompiler_46.dll&quot;), TEXT(&quot;d3dcompiler_43.dll&quot;) };WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)lib\$(ProjectName)$(TargetExt)</OutputFile>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ANGLE_TRANSLATOR_IMPLEMENTATION;ANGLE_DISABLE_TRACE;ANGLE_COMPILE_OPTIMIZATION_LEVEL=D3DCOMPILE_OPTIMIZATION_LEVEL1;ANGLE_PRELOADED_D3DCOMPILER_MODULE_NAMES={ TEXT(&quot;d3dcompiler_46.dll&quot;), TEXT(&quot;d3dcompiler_43.dll&quot;) };WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>ANGLE_TRANSLATOR_IMPLEMENTATION;ANGLE_DISABLE_TRACE;ANGLE_COMPILE_OPTIMIZATION_LEVEL=D3DCOMPILE_OPTIMIZATION_LEVEL1;ANGLE_PRELOADED_D3DCOMPILER_MODULE_NAMES={ TEXT(&quot;d3dcompiler_46.dll&quot;), TEXT(&quot;d3dcompiler_43.dll&quot;) };WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)lib\$(ProjectName)$(TargetExt)</OutputFile>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ANGLE_TRANSLATOR_IMPLEMENTATION;ANGLE_DISABLE_TRACE;ANGLE_COMPILE_OPTIMIZATION_LEVEL=D3DCOMPILE_OPTIMIZATION_LEVEL1;ANGLE_PRELOADED_D3DCOMPILER_MODULE_NAMES={ TEXT(&quot;d3dcompiler_46.dll&quot;), TEXT(&quot;d3dcompiler_43.dll&quot;) };WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\all.gyp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\third_party\compiler\ArrayBoundsClamper.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\BaseTypes.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\BuiltInFunctionEmulator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Common.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ConstantUnion.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\debug.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\DetectCallDepth.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\DetectDiscontinuity.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Diagnostics.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\DirectiveHandler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ExtensionBehavior.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ForLoopUnroll.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\glslang.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\glslang_tab.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\HashNames.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InfoSink.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Initialize.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InitializeDll.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InitializeGlobals.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InitializeGLPosition.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InitializeParseContext.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\intermediate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\localintermediate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\MapLongVariableNames.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\MMap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\osinclude.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\OutputESSL.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\OutputGLSLBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\OutputGLSL.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\OutputHLSL.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ParseContext.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\PoolAlloc.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\QualifierAlive.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\RemoveTree.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\RenameFunction.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\SearchSymbol.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ShHandle.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\SymbolTable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\TranslatorESSL.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\TranslatorGLSL.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\TranslatorHLSL.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Types.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\UnfoldShortCircuitAST.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\UnfoldShortCircuit.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Uniform.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\util.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ValidateLimitations.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\VariableInfo.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\VariablePacker.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\VersionGLSL.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\depgraph\DependencyGraph.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\depgraph\DependencyGraphBuilder.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\depgraph\DependencyGraphOutput.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\timing\RestrictFragmentShaderTiming.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\timing\RestrictVertexShaderTiming.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\DiagnosticsBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\DirectiveHandlerBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\DirectiveParser.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\ExpressionParser.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Input.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\length_limits.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Lexer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Macro.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\MacroExpander.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\numeric_lex.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\pp_utils.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Preprocessor.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\SourceLocation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Token.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Tokenizer.h"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\third_party\compiler\ArrayBoundsClamper.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\BuiltInFunctionEmulator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\CodeGen.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Compiler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\debug.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\DetectCallDepth.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\DetectDiscontinuity.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Diagnostics.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\DirectiveHandler.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ForLoopUnroll.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\glslang_lex.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\glslang_tab.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InfoSink.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Initialize.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InitializeDll.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InitializeGLPosition.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\InitializeParseContext.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Intermediate.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\intermOut.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\IntermTraverse.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\MapLongVariableNames.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\OutputESSL.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\OutputGLSLBase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\OutputGLSL.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\OutputHLSL.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\parseConst.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ParseContext.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\PoolAlloc.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\QualifierAlive.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\RemoveTree.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\SearchSymbol.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ShaderLang.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\SymbolTable.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\TranslatorESSL.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\TranslatorGLSL.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\TranslatorHLSL.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\UnfoldShortCircuitAST.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\UnfoldShortCircuit.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\Uniform.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\util.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ValidateLimitations.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\VariableInfo.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\VariablePacker.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\VersionGLSL.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\depgraph\DependencyGraph.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\depgraph\DependencyGraphBuilder.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\depgraph\DependencyGraphOutput.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\depgraph\DependencyGraphTraverse.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\timing\RestrictFragmentShaderTiming.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\timing\RestrictVertexShaderTiming.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\DiagnosticsBase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\DirectiveHandlerBase.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\DirectiveParser.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\ExpressionParser.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Input.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Lexer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Macro.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\MacroExpander.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Preprocessor.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Token.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\preprocessor\Tokenizer.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\src\compiler\ossource_win.cpp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include\GLES2">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include\GLES2&quot; &quot;$(OutDir)include\GLES2&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_headers2</Message>
+      <Outputs>$(OutDir)\include\GLES2</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include\EGL">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include\EGL&quot; &quot;$(OutDir)include\EGL&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_headers1</Message>
+      <Outputs>$(OutDir)\include\EGL</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include\GLSLANG">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include\GLSLANG&quot; &quot;$(OutDir)include\GLSLANG&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_headers3</Message>
+      <Outputs>$(OutDir)\include\GLSLANG</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include\KHR">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\source\webkit-2.2.8\Source\ThirdParty\ANGLE\include\KHR&quot; &quot;$(OutDir)include\KHR&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_headers4</Message>
+      <Outputs>$(OutDir)\include\KHR</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

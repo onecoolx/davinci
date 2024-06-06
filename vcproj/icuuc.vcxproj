@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{891EDF98-1FF6-402D-5ACE-87E56A590AD2}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>icuuc</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetPath>$(OutDir)\$(ProjectName)$(TargetExt)</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\third_party\icu_55\source\common;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4244;4996;4595;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>U_COMMON_IMPLEMENTATION;U_ATTRIBUTE_DEPRECATED=;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(OutDir)lib\icudt.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\third_party\icu_55\source\common;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>U_COMMON_IMPLEMENTATION;U_ATTRIBUTE_DEPRECATED=;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\third_party\icu_55\source\common;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4244;4996;4595;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>U_COMMON_IMPLEMENTATION;U_ATTRIBUTE_DEPRECATED=;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(OutDir)lib\icudt.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\third_party\icu_55\source\common;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>U_COMMON_IMPLEMENTATION;U_ATTRIBUTE_DEPRECATED=;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\all.gyp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\third_party\icu_55\source\common\appendable.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\bmpset.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\brkeng.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\brkiter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\bytestream.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\bytestriebuilder.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\bytestrie.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\bytestrieiterator.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\caniter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\chariter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\charstr.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\dictbe.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\dictionarydata.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\dtintrv.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\errorcode.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\filterednormalizer2.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\icuplug.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\listformatter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\loadednormalizer2impl.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\locavailable.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\locbased.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\locdispnames.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\locid.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\loclikely.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\locresdata.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\locutil.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\messagepattern.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\normalizer2.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\normalizer2impl.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\normlzr.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\parsepos.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\patternprops.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\propname.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\punycode.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\putil.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\rbbi.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\rbbidata.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\rbbinode.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\rbbirb.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\rbbiscan.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\rbbisetb.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\rbbistbl.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\rbbitblb.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\resbund_cnv.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\resbund.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ruleiter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\schriter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\serv.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\servlk.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\servlkf.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\servls.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\servnotf.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\servrbf.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\servslkf.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\sharedobject.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\simplepatternformatter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\stringpiece.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\stringtriebuilder.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ubrk.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucase.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucasemap.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucasemap_titlecase_brkiter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucharstriebuilder.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucharstrie.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucharstrieiterator.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uchriter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucln_cmn.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv2022.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_bld.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnvbocu.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_ext.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_io.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnvmbcs.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnvsel.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucol_swp.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\udata.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uhash_us.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uidna.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uinit.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uiter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ulistformatter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uloc.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uloc_keytype.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\umutex.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unames.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unifiedcache.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unifilt.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unifunct.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uniset_closure.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uniset.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uniset_props.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unisetspan.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unistr_case.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unistr_case_locale.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unistr_cnv.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unistr.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unistr_props.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unistr_titlecase_brkiter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unormcmp.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\unorm.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uobject.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uprops.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uresbund.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uscript_props.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uset.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\usetiter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uset_props.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ushape.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\usprep.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustack.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustrcase.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustrcase_locale.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustr_cnv.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustrenum.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustring.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustr_titlecase_brkiter.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustrtrns.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustr_wcs.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\utext.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\util.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\util_props.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\utrie2_builder.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\utrie2.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\utrie.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uts46.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uvector.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uvectr32.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uvectr64.cpp"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\cmemory.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\cstring.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\cwchar.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\icudataver.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\locmap.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\propsvec.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uarrsort.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ubidi.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ubidiln.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ubidi_props.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ubidiwrt.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucat.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uchar.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucmndata.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_cb.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_cnv.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_ct.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnvdisp.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_err.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnvhz.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnvisci.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnvlat1.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_lmb.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnvscsu.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_set.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_u16.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_u32.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_u7.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ucnv_u8.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\udatamem.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\udataswp.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uenum.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uhash.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uinvchar.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ulist.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uloc_tag.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\umapfile.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\umath.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ures_cnv.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uresdata.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\usc_impl.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\uscript.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\ustrfmt.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\utf_impl.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\utrace.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\utypes.c"/>
+    <ClCompile Include="..\third_party\icu_55\source\common\wintz.c"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\third_party\icu_55\source\common\common.rc"/>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\third_party\icu_55\source\common\unicode">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\third_party\icu_55\source\common\unicode&quot; &quot;$(OutDir)include\uc\unicode&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_headers</Message>
+      <Outputs>$(OutDir)\include\uc\unicode</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\third_party\icu_55\win32\icudt.lib">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\third_party\icu_55\win32\icudt.lib&quot; &quot;$(OutDir)lib\icudt.lib&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_libs</Message>
+      <Outputs>$(OutDir)\lib\icudt.lib</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\third_party\icu_55\win32\icudt55.dll">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\third_party\icu_55\win32\icudt55.dll&quot; &quot;$(OutDir)icudt55.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_dll</Message>
+      <Outputs>$(OutDir)\icudt55.dll</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

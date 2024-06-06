@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{747885EC-7BAA-7F2B-B15B-E196A52DBE82}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>WTF</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetPath>$(OutDir)\$(ProjectName)$(TargetExt)</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source;..\source\webkit-2.2.8\Source\WTF;..\source\webkit-2.2.8\Source\WTF\wtf;..\build;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;..\source\webkit-2.2.8\Source\WTF\wtf\threads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4800;4355;4396;4244;4267;4291;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>BUILDING_WTF;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source;..\source\webkit-2.2.8\Source\WTF;..\source\webkit-2.2.8\Source\WTF\wtf;..\build;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;..\source\webkit-2.2.8\Source\WTF\wtf\threads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDING_WTF;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source;..\source\webkit-2.2.8\Source\WTF;..\source\webkit-2.2.8\Source\WTF\wtf;..\build;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;..\source\webkit-2.2.8\Source\WTF\wtf\threads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4800;4355;4396;4244;4267;4291;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>BUILDING_WTF;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source\webkit-2.2.8\Source;..\source\webkit-2.2.8\Source\WTF;..\source\webkit-2.2.8\Source\WTF\wtf;..\build;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;..\source\webkit-2.2.8\Source\WTF\wtf\threads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDING_WTF;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\all.gyp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ASCIICType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\AVLTree.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Alignment.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Assertions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Atomics.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\AutodrainedPool.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\BitArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\BitVector.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Bitmap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\BlockStack.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\BloomFilter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\BoundsCheckedPointer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\BumpPointerAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ByteOrder.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ByteSpinLock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\CheckedArithmetic.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\CheckedBoolean.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\CommaPrinter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\CompilationThread.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Compiler.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Compression.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\CryptographicallyRandomNumber.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\CurrentTime.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\DataLog.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\DateMath.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\DecimalNumber.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Decoder.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\DeferrableRefCounted.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Deque.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\DisallowCType.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\DoublyLinkedList.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\DynamicAnnotations.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Encoder.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\EnumClass.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ExportMacros.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\FastAllocBase.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\FastBitVector.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\FastMalloc.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\FeatureDefines.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\FilePrintStream.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\FixedArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\FlipBytes.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Forward.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\FunctionDispatcher.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Functional.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\GetPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\GregorianDateTime.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\HashCountedSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\HashFunctions.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\HashIterators.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\HashMap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\HashSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\HashTable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\HashTraits.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\HexNumber.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\InlineASM.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Insertion.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\LLVMHeaders.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ListDump.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ListHashSet.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Locker.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\MD5.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\MainThread.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\MathExtras.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\MediaTime.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\MessageQueue.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\MetaAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\MetaAllocatorHandle.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\NeverDestroyed.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\NoLock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\NonCopyingSort.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Noncopyable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\NotFound.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\NullPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\NumberOfCores.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\OSAllocator.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\OSRandomSource.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ObjcRuntimeExtras.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\OwnArrayPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\OwnPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\OwnPtrCommon.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PackedIntVector.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PageAllocation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PageAllocationAligned.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PageBlock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PageReservation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ParallelJobs.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ParallelJobsGeneric.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ParallelJobsLibdispatch.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ParallelJobsOpenMP.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PassOwnArrayPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PassOwnPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PassRefPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PassTraits.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Platform.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PossiblyNull.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\PrintStream.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ProcessID.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RAMSize.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RandomNumber.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RandomNumberSeed.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RawPointer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RedBlackTree.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RefCounted.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RefCountedArray.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RefCountedLeakCounter.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RefPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RefPtrHashMap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RetainPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\RunLoopTimer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\SHA1.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\SaturatedArithmetic.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\SchedulePair.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\SegmentedVector.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\SentinelLinkedList.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\SimpleStats.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\SinglyLinkedList.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\SixCharacterHash.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Spectrum.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StackBounds.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StackStats.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StaticConstructors.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StdLibExtras.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StreamBuffer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StringExtras.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StringHashDumpContext.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StringHasher.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\StringPrintStream.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\TCPackedCache.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\TCPageMap.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\TCSpinLock.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\TCSystemAlloc.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\TemporaryChange.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ThreadFunctionInvocation.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ThreadIdentifierDataPthreads.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ThreadRestrictionVerifier.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ThreadSafeRefCounted.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ThreadSpecific.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Threading.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ThreadingPrimitives.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\TriState.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\TypeTraits.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\UniStdExtras.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\UnionFind.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\VMTags.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\ValueCheck.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\Vector.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\VectorTraits.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\WTFThreadData.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\WeakPtr.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\WindowsExtras.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\ASCIIFastPath.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\AtomicString.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\AtomicStringHash.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\AtomicStringImpl.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\AtomicStringTable.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\Base64.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\CString.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\ConversionMode.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\IntegerToStringConversion.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringBuffer.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringBuilder.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringConcatenate.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringHash.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringImpl.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringOperators.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\TextPosition.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\WTFString.h"/>
+    <ClInclude Include="..\source\webkit-2.2.8\Source\WTF\wtf\threads\BinarySemaphore.h"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\Assertions.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\Atomics.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\BitVector.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\CompilationThread.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\Compression.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\CryptographicallyRandomNumber.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\CurrentTime.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\DataLog.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\DateMath.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\DecimalNumber.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\DynamicAnnotations.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\FastMalloc.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\FilePrintStream.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\FunctionDispatcher.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\GregorianDateTime.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\HashTable.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\MD5.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\MainThread.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\MediaTime.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\MetaAllocator.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\NumberOfCores.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\RAMSize.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\OSRandomSource.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\PageAllocationAligned.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\PageBlock.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\ParallelJobsGeneric.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\PrintStream.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\RandomNumber.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\RefCountedLeakCounter.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\SHA1.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\SixCharacterHash.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\StackBounds.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\StringPrintStream.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\TCSystemAlloc.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\Threading.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\TypeTraits.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\WTFThreadData.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa\bignum-dtoa.cc"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa\bignum.cc"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa\cached-powers.cc"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa\diy-fp.cc"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa\double-conversion.cc"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa\fast-dtoa.cc"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa\fixed-dtoa.cc"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\dtoa\strtod.cc"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\AtomicString.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\AtomicStringTable.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\Base64.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\CString.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringBuilder.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringImpl.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\StringStatics.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\text\WTFString.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\unicode\CollatorDefault.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\unicode\UTF8.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\unicode\icu\CollatorICU.cpp"/>
+    <ClCompile Include="..\source\WebKit\wtf\MainThreadDavinci.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\OSAllocatorWin.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\ThreadSpecificWin.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\ThreadingWin.cpp"/>
+    <ClCompile Include="..\source\webkit-2.2.8\Source\WTF\wtf\threads\win\BinarySemaphoreWin.cpp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="icuuc.vcxproj">
+      <Project>{891EDF98-1FF6-402D-5ACE-87E56A590AD2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="icui18n.vcxproj">
+      <Project>{38D7C7E1-0E89-01A9-C21D-B4F3AD0B14CA}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="zlib.vcxproj">
+      <Project>{1871EEC3-AD14-955D-13A1-0528D820F387}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

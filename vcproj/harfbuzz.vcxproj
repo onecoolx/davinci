@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E1EB6211-0555-55B5-0396-B0BAC64CA009}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>harfbuzz</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetPath>$(OutDir)\$(ProjectName)$(TargetExt)</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\third_party\harfbuzz-1.0.6;..\third_party\harfbuzz-1.0.6\src\hb-ucdn;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4800;4244;4267;4312;4334;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;HAVE_UNISCRIBE;HAVE_USP10_H;HAVE_WINDOWS_H;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>usp10.lib;rpcrt4.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>..\third_party\harfbuzz-1.0.6\libharfbuzz.def</ModuleDefinitionFile>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\third_party\harfbuzz-1.0.6;..\third_party\harfbuzz-1.0.6\src\hb-ucdn;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;HAVE_UNISCRIBE;HAVE_USP10_H;HAVE_WINDOWS_H;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\third_party\harfbuzz-1.0.6;..\third_party\harfbuzz-1.0.6\src\hb-ucdn;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4800;4244;4267;4312;4334;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;HAVE_UNISCRIBE;HAVE_USP10_H;HAVE_WINDOWS_H;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>usp10.lib;rpcrt4.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <ModuleDefinitionFile>..\third_party\harfbuzz-1.0.6\libharfbuzz.def</ModuleDefinitionFile>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\third_party\harfbuzz-1.0.6;..\third_party\harfbuzz-1.0.6\src\hb-ucdn;$(OutDir)include;$(OutDir)include\uc;$(OutDir)include\i18n;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;HAVE_UNISCRIBE;HAVE_USP10_H;HAVE_WINDOWS_H;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-atomic-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-buffer-deserialize-json.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-buffer-deserialize-text.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-buffer-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-cache-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-face-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-font-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-mutex-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-object-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-open-file-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-open-type-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-cmap-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-glyf-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-head-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-hhea-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-hmtx-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout-common-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout-gdef-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout-gpos-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout-gsub-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout-gsubgpos-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout-jstf-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-map-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-maxp-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-name-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-arabic-fallback.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-arabic-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-arabic-table.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-arabic-win1256.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-indic-machine.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-indic-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-myanmar-machine.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-use-machine.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-use-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-fallback-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-normalize-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-set-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-shape-plan-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-shaper-impl-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-shaper-list.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-shaper-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-unicode-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\src\hb-utf-private.hh"/>
+    <None Include="..\third_party\harfbuzz-1.0.6\libharfbuzz.def"/>
+    <None Include="..\all.gyp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-ucdn\ucdn.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-ucdn\unicodedata_db.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-blob.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-buffer.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-common.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-deprecated.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-face.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-font.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-ft.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-icu.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-font.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-tag.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-ot.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-set.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-shape-plan.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-shape.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-unicode.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-version.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb.h"/>
+    <ClInclude Include="..\third_party\harfbuzz-1.0.6\src\hb-uniscribe.h"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ucdn\ucdn.c"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-blob.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-buffer-serialize.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-buffer.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-common.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-face.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-fallback-shape.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-font.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ft.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-icu.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-font.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-layout.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-map.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-arabic.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-default.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-hangul.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-hebrew.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-indic-table.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-indic.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-myanmar.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-thai.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-tibetan.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-use-table.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-complex-use.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-fallback.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape-normalize.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-shape.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ot-tag.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-set.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-shape-plan.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-shape.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-shaper.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-ucdn.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-unicode.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-warning.cc"/>
+    <ClCompile Include="..\third_party\harfbuzz-1.0.6\src\hb-uniscribe.cc"/>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\third_party\harfbuzz-1.0.6\src">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\third_party\harfbuzz-1.0.6\src&quot; &quot;$(OutDir)include\harfbuzz&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_header</Message>
+      <Outputs>$(OutDir)\include\harfbuzz</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="freetype2.vcxproj">
+      <Project>{5B596BA9-22B9-28A1-50B6-3AB7B15F9E60}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="icuuc.vcxproj">
+      <Project>{891EDF98-1FF6-402D-5ACE-87E56A590AD2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="icui18n.vcxproj">
+      <Project>{38D7C7E1-0E89-01A9-C21D-B4F3AD0B14CA}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

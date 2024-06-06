@@ -44,7 +44,7 @@ WHICH GENERATES THE GLSL ES PARSER (glslang_tab.cpp AND glslang_tab.h).
 %}
 
 %expect 1 /* One shift reduce conflict because of if | else */
-%pure-parser
+%define api.pure
 %parse-param {TParseContext* context}
 %locations
 %lex-param {YYLEX_PARAM}

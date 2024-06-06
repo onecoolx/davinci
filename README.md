@@ -1,4 +1,4 @@
-![Linux Make Build](https://github.com/onecoolx/davinci/workflows/Linux%20Make%20Build/badge.svg) ![Linux Ninja Build](https://github.com/onecoolx/davinci/workflows/Linux%20Ninja%20Build/badge.svg)![Windows Build](https://github.com/onecoolx/davinci/workflows/Windows%20Build/badge.svg)
+![Linux Build](https://github.com/onecoolx/davinci/workflows/Linux%20Build/badge.svg)![Windows Build](https://github.com/onecoolx/davinci/workflows/Windows%20Build/badge.svg)
 
 #### HOW TO BUILD:
 
@@ -13,20 +13,12 @@ sudo apt-get update --fix-missing
 sudo apt-get install gperf flex bison make libgtk2.0-dev libgles2-mesa-dev libegl1-mesa-dev ninja-build
 ```
 
-2. Build project
+2. Build project with ninja
 
 ```
-./build_proj.sh
+./build_linux.sh
 cd proj
-make
-```
-
-3. Build project with ninja (recommended)
-
-```
-./build_proj_ninja.sh
-cd proj
-./ninja-build Debug
+./ninja-build.sh Debug <Release>
 ```
 
 **windows:**
@@ -38,7 +30,7 @@ cd proj
 2. Build project
 
 ```
-./build_proj.bat
+./build_windows.bat
 cd vcproj
 <open "all.sln" with visual studio>
 ```

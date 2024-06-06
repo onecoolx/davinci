@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0D88CCFE-287D-F543-DFF1-8AFC59533BFC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>curl</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetPath>$(OutDir)\$(ProjectName)$(TargetExt)</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\third_party\curl-7.43.0\lib;..\third_party\curl-7.43.0\lib\vtls;..\third_party\curl-7.43.0\include;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>BUILDING_LIBCURL;CURL_PULL_WS2TCPIP_H;CURL_DISABLE_LDAPS;CURL_DISABLE_LDAP;__SIZEOF_LONG__=4;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\third_party\curl-7.43.0\lib;..\third_party\curl-7.43.0\lib\vtls;..\third_party\curl-7.43.0\include;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDING_LIBCURL;CURL_PULL_WS2TCPIP_H;CURL_DISABLE_LDAPS;CURL_DISABLE_LDAP;__SIZEOF_LONG__=4;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\third_party\curl-7.43.0\lib;..\third_party\curl-7.43.0\lib\vtls;..\third_party\curl-7.43.0\include;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>BUILDING_LIBCURL;CURL_PULL_WS2TCPIP_H;CURL_DISABLE_LDAPS;CURL_DISABLE_LDAP;__SIZEOF_LONG__=4;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ws2_32.lib;gdi32.lib;user32.lib;advapi32.lib</AdditionalDependencies>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\third_party\curl-7.43.0\lib;..\third_party\curl-7.43.0\lib\vtls;..\third_party\curl-7.43.0\include;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILDING_LIBCURL;CURL_PULL_WS2TCPIP_H;CURL_DISABLE_LDAPS;CURL_DISABLE_LDAP;__SIZEOF_LONG__=4;WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\all.gyp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\asyn-ares.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\asyn-thread.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\base64.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\conncache.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\connect.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\content_encoding.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\cookie.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_addrinfo.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_des.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_endian.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_fnmatch.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_gethostname.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_gssapi.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_memrchr.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_multibyte.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_ntlm.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_ntlm_core.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_ntlm_msgs.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_ntlm_wb.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_rtmp.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_sasl.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_sasl_gssapi.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_sasl_sspi.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_sspi.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\curl_threads.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\dict.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\dotdot.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\easy.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\escape.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\file.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\fileinfo.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\formdata.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\ftp.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\ftplistparser.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\getenv.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\getinfo.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\gopher.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\hash.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\hmac.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\hostasyn.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\hostcheck.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\hostip.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\hostip4.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\hostip6.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\hostsyn.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\http.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\http2.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\http_chunks.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\http_digest.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\http_negotiate.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\http_negotiate_sspi.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\http_proxy.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\if2ip.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\imap.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\inet_ntop.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\inet_pton.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\krb5.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\ldap.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\llist.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\md4.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\md5.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\memdebug.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\mprintf.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\multi.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\netrc.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\non-ascii.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\nonblock.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\openldap.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\parsedate.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\pingpong.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\pipeline.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\pop3.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\progress.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\rawstr.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\rtsp.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\security.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\select.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\sendf.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\share.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\slist.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\smb.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\smtp.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\socks.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\socks_gssapi.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\socks_sspi.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\speedcheck.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\splay.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\ssh.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\strdup.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\strequal.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\strerror.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\strtok.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\strtoofft.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\telnet.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\tftp.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\timeval.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\transfer.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\url.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\version.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\warnless.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\wildcard.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\x509asn1.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\vtls\polarssl.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\vtls\polarssl_threadlock.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\vtls\vtls.c"/>
+    <ClCompile Include="..\third_party\curl-7.43.0\lib\idn_win32.c"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\third_party\curl-7.43.0\lib\libcurl.rc"/>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\third_party\curl-7.43.0\include\curl">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\third_party\curl-7.43.0\include\curl&quot; &quot;$(OutDir)include\curl&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_headers</Message>
+      <Outputs>$(OutDir)\include\curl</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="mbedtls.vcxproj">
+      <Project>{2239ACDA-EEFF-71EA-2273-E008C7846407}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="zlib.vcxproj">
+      <Project>{1871EEC3-AD14-955D-13A1-0528D820F387}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

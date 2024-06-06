@@ -26,7 +26,7 @@ def Main(src_dir, dst_dir):
   curr_dir = os.getcwd()
   # make output dir.
   if not MakeDirIfNotExists(dst_dir):
-    print "Generated code is existed!"
+    print ("Generated code is existed!")
     return 0
 
   # step 1, KeywordLookup.h 

@@ -21,7 +21,7 @@
  *
  */
 
-%pure_parser
+%define api.pure
 
 %parse-param { CSSParser* parser }
 %lex-param { CSSParser* parser }

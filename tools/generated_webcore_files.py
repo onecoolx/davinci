@@ -17,21 +17,21 @@ def MakeDirIfNotExists(path):
 def WriteLinesToFile(contents, path):
   f = open(path, "wb")
   for line in contents:
-    f.write(line)
+    f.write(line.encode())
   f.close()
 
 # write lines file
 def AppendLinesToFile(contents, path):
   f = open(path, "ab")
   for line in contents:
-    f.write(line)
+    f.write(line.encode())
   f.close()
 
 # write lines to br file
 def WriteLinesWithBrToFile(contents, path):
   f = open(path, "wb")
   for line in contents:
-    f.write(line+"\n")
+    f.write((line +"\n").encode())
   f.close()
 
 # read lines file
@@ -109,7 +109,7 @@ def Main(src_dir, dst_dir):
   # make output dir.
   os.chdir(src_dir)
   if not MakeDirIfNotExists(dst_dir):
-    print "Generated code is existed!"
+    print ("Generated code is existed!")
     return 0
 
   feature_list = ReadFromFile("WebKitFeatures.txt")
@@ -249,7 +249,7 @@ def Main(src_dir, dst_dir):
   idl_files.append(dst_dir + "/SharedWorkerGlobalScopeConstructors.idl")
   idl_files.append(dst_dir + "/DedicatedWorkerGlobalScopeConstructors.idl")
   for file_name in idl_files:
-    print "Generate idl file : " + file_name
+    print ("Generate idl file : " + file_name)
     base_name = os.path.splitext(file_name)[0]
     subprocess.call(["perl", "-Ibindings/scripts", "bindings/scripts/generate-bindings.pl", file_name,\
     "--outputDir", dst_dir, "--include", dst_dir, "--defines", "\"LANGUAGE_JAVASCRIPT=1 "+feature_list+"\"", "--generator", "JS", "--idlAttributesFile",\
