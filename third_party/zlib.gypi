@@ -1,11 +1,11 @@
 # HTML5 runtime
 # 
-# Copyright (C) 2015 Zhang Ji Peng
+# Copyright (C) 2024 Zhang Ji Peng
 # Contact: onecoolx@gmail.com
 
 {
   'variables': {
-    'lib_dir': 'zlib-1.2.8',
+    'lib_dir': 'zlib-1.3.1',
     'lib_name': 'zlib',
   },
   'target_name': '<(lib_name)',

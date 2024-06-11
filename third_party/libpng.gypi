@@ -1,11 +1,11 @@
 # HTML5 runtime
 # 
-# Copyright (C) 2015 Zhang Ji Peng
+# Copyright (C) 2024 Zhang Ji Peng
 # Contact: onecoolx@gmail.com
 
 {
   'variables': {
-    'lib_dir': 'libpng-1.6.17',
+    'lib_dir': 'libpng-1.6.43',
     'lib_name': 'png',
   },
   'target_name': '<(lib_name)',
