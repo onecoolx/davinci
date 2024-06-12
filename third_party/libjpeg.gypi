@@ -1,11 +1,11 @@
 # HTML5 runtime
 # 
-# Copyright (C) 2015 Zhang Ji Peng
+# Copyright (C) 2024 Zhang Ji Peng
 # Contact: onecoolx@gmail.com
 
 {
   'variables': {
-    'lib_dir': 'libjpeg-turbo-1.4.1',
+    'lib_dir': 'libjpeg-turbo-3.0.3',
     'lib_name': 'jpeg',
   },
   'target_name': '<(lib_name)',
@@ -25,8 +25,12 @@
     '<(lib_dir)/jccoefct.c',
     '<(lib_dir)/jccolor.c',
     '<(lib_dir)/jcdctmgr.c',
+    '<(lib_dir)/jcdiffct.c',
     '<(lib_dir)/jchuff.c',
     '<(lib_dir)/jcinit.c',
+    '<(lib_dir)/jcicc.c',
+    '<(lib_dir)/jclhuff.c',
+    '<(lib_dir)/jclossls.c',
     '<(lib_dir)/jcmainct.c',
     '<(lib_dir)/jcmarker.c',
     '<(lib_dir)/jcmaster.c',
@@ -43,8 +47,12 @@
     '<(lib_dir)/jdcoefct.c',
     '<(lib_dir)/jdcolor.c',
     '<(lib_dir)/jddctmgr.c',
+    '<(lib_dir)/jddiffct.c',
     '<(lib_dir)/jdhuff.c',
     '<(lib_dir)/jdinput.c',
+    '<(lib_dir)/jdicc.c',
+    '<(lib_dir)/jdlhuff.c',
+    '<(lib_dir)/jdlossls.c',
     '<(lib_dir)/jdmainct.c',
     '<(lib_dir)/jdmarker.c',
     '<(lib_dir)/jdmaster.c',
@@ -71,9 +79,13 @@
     '<(lib_dir)/jdarith.c',
     '<(lib_dir)/turbojpeg.c',
     '<(lib_dir)/transupp.c',
+    '<(lib_dir)/jpeg_nbits.c',
     '<(lib_dir)/jdatadst-tj.c',
     '<(lib_dir)/jdatasrc-tj.c',
-    '<(lib_dir)/jsimd_none.c',
+    '<(lib_dir)/rdbmp.c',
+    '<(lib_dir)/rdppm.c',
+    '<(lib_dir)/wrbmp.c',
+    '<(lib_dir)/wrppm.c',
   ],
   'conditions': [
     ['OS=="win"', {

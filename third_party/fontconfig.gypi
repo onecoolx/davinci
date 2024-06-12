@@ -5,7 +5,7 @@
 
 {
   'variables': {
-    'lib_dir': 'fontconfig-2.11.94',
+    'lib_dir': 'fontconfig-2.15.0',
     'lib_name': 'fontconfig',
   },
   'target_name': '<(lib_name)',
@@ -23,7 +23,8 @@
 	'<(lib_dir)/src/fcarch.h',
 	'<(lib_dir)/src/fcatomic.c',
 	'<(lib_dir)/src/fcatomic.h',
-	'<(lib_dir)/src/fcblanks.c',
+	'<(lib_dir)/src/fchash.c',
+	'<(lib_dir)/src/fcptrlist.c',
 	'<(lib_dir)/src/fccache.c',
 	'<(lib_dir)/src/fccfg.c',
 	'<(lib_dir)/src/fccharset.c',
@@ -43,7 +44,6 @@
 	'<(lib_dir)/src/fcname.c',
 	'<(lib_dir)/src/fcobjs.c',
 	'<(lib_dir)/src/fcobjs.h',
-	'<(lib_dir)/src/fcobjshash.h',
 	'<(lib_dir)/src/fcpat.c',
 	'<(lib_dir)/src/fcrange.c',
 	'<(lib_dir)/src/fcserialize.c',

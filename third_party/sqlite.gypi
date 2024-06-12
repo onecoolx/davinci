@@ -1,11 +1,11 @@
 # HTML5 runtime
 # 
-# Copyright (C) 2015 Zhang Ji Peng
+# Copyright (C) 2024 Zhang Ji Peng
 # Contact: onecoolx@gmail.com
 
 {
   'variables': {
-    'lib_dir': 'sqlite-3.9.1',
+    'lib_dir': 'sqlite-3.46.0',
     'lib_name': 'sqlite',
   },
   'target_name': '<(lib_name)',
