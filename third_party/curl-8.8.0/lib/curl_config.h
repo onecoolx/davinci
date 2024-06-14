@@ -401,7 +401,7 @@
 #define HAVE_LIBIDN2 1
 
 /* Define to 1 if you have the <libpsl.h> header file. */
-#define HAVE_LIBPSL_H 1
+/* #define HAVE_LIBPSL_H 1 */
 
 /* Define to 1 if using libressl. */
 /* #undef HAVE_LIBRESSL */
