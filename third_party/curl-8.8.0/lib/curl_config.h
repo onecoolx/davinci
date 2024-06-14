@@ -865,7 +865,7 @@
 #define USE_IPV6 1
 
 /* if libpsl is in use */
-#define USE_LIBPSL 1
+/* #define USE_LIBPSL 1 */
 
 /* if librtmp is in use */
 /* #undef USE_LIBRTMP */
