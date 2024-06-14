@@ -331,7 +331,7 @@
 /* #undef HAVE_HYPER_H */
 
 /* Define to 1 if you have the <idn2.h> header file. */
-#define HAVE_IDN2_H 1
+/* #define HAVE_IDN2_H 1 */
 
 /* Define to 1 if you have the <ifaddrs.h> header file. */
 #define HAVE_IFADDRS_H 1
@@ -398,7 +398,7 @@
 #define HAVE_LIBGEN_H 1
 
 /* Define to 1 if you have the `idn2' library (-lidn2). */
-#define HAVE_LIBIDN2 1
+/* #define HAVE_LIBIDN2 1 */
 
 /* Define to 1 if you have the <libpsl.h> header file. */
 /* #define HAVE_LIBPSL_H 1 */
