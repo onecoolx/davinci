@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\third_party\mbedtls-1.3.11;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third_party\mbedtls-3.6.0;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -70,13 +70,13 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>..\third_party\mbedtls-1.3.11;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third_party\mbedtls-3.6.0;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;_DEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\third_party\mbedtls-1.3.11;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third_party\mbedtls-3.6.0;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -111,7 +111,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>..\third_party\mbedtls-1.3.11;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\third_party\mbedtls-3.6.0;$(OutDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WIN32;DLL_EXPORT;_USE_MATH_DEFINES;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS;_HAS_EXCEPTIONS=0;NDEBUG;BUILDING_DAVINCI__;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
@@ -119,81 +119,124 @@
     <None Include="..\all.gyp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\aes.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\aesni.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\arc4.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\asn1parse.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\asn1write.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\base64.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\bignum.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\blowfish.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\camellia.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ccm.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\certs.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\cipher.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\cipher_wrap.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ctr_drbg.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\debug.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\des.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\dhm.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ecp.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ecp_curves.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ecdh.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ecdsa.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\entropy.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\entropy_poll.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\error.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\gcm.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\havege.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\hmac_drbg.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\md.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\md_wrap.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\md2.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\md4.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\md5.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\memory_buffer_alloc.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\net.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\oid.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\padlock.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pbkdf2.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pem.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pkcs5.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pkcs11.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pkcs12.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pk.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pk_wrap.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pkparse.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\pkwrite.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\platform.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ripemd160.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\rsa.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\sha1.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\sha256.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\sha512.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ssl_cache.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ssl_ciphersuites.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ssl_cli.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ssl_srv.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\ssl_tls.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\threading.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\timing.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\version.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\version_features.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\x509.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\x509_crt.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\x509_crl.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\x509_csr.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\x509_create.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\x509write_crt.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\x509write_csr.c"/>
-    <ClCompile Include="..\third_party\mbedtls-1.3.11\library\xtea.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\aes.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\aesce.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\aesni.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\aria.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\asn1parse.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\asn1write.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\base64.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\bignum.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\bignum_core.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\bignum_mod.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\bignum_mod_raw.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\block_cipher.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\camellia.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ccm.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\chacha20.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\chachapoly.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\cipher.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\cipher_wrap.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\cmac.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\constant_time.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ctr_drbg.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\debug.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\des.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\dhm.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ecp.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ecp_curves.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ecp_curves_new.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ecdh.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ecdsa.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\entropy.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\entropy_poll.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\error.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\gcm.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\hmac_drbg.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\lmots.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\lms.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\md.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\md5.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\memory_buffer_alloc.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\mps_reader.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\mps_trace.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\net_sockets.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\nist_kw.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\oid.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\padlock.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pem.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pkcs5.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pkcs7.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pkcs12.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pk.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pk_ecc.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pk_wrap.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pkparse.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\pkwrite.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\platform.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\platform_util.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\poly1305.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_aead.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_cipher.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_client.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_driver_wrappers_no_static.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_ecp.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_ffdh.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_hash.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_mac.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_pake.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_rsa.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_se.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_slot_management.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_crypto_storage.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_its_file.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\psa_util.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ripemd160.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\rsa.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\rsa_alt_helpers.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\sha1.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\sha256.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\sha512.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_cache.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_ciphersuites.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_client.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_cookie.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_msg.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_debug_helpers_generated.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_ticket.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_tls.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_tls12_client.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_tls12_server.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_tls13_client.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_tls13_generic.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_tls13_keys.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\ssl_tls13_server.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\threading.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\timing.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\version.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\version_features.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\x509.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\x509_crt.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\x509_crl.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\x509_csr.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\x509_create.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\x509write.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\x509write_crt.c"/>
+    <ClCompile Include="..\third_party\mbedtls-3.6.0\library\x509write_csr.c"/>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\third_party\mbedtls-1.3.11\include\polarssl">
+    <CustomBuild Include="..\third_party\mbedtls-3.6.0\include\mbedtls">
       <FileType>Document</FileType>
-      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\third_party\mbedtls-1.3.11\include\polarssl&quot; &quot;$(OutDir)include\polarssl&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\third_party\mbedtls-3.6.0\include\mbedtls&quot; &quot;$(OutDir)include\mbedtls&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
       <Message>install_headers</Message>
-      <Outputs>$(OutDir)\include\polarssl</Outputs>
+      <Outputs>$(OutDir)\include\mbedtls</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\third_party\mbedtls-3.6.0\include\psa">
+      <FileType>Document</FileType>
+      <Command>call call python &quot;..\tools\cp.py&quot; &quot;..\third_party\mbedtls-3.6.0\include\psa&quot; &quot;$(OutDir)include\psa&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>install_headers1</Message>
+      <Outputs>$(OutDir)\include\psa</Outputs>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
