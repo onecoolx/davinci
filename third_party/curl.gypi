@@ -152,6 +152,7 @@
     '<(lib_dir)/lib/version.c',
     '<(lib_dir)/lib/warnless.c',
     '<(lib_dir)/lib/ws.c',
+    '<(lib_dir)/lib/vtls/cipher_suite.c',
     '<(lib_dir)/lib/vtls/x509asn1.c',
     '<(lib_dir)/lib/vtls/hostcheck.c',
     '<(lib_dir)/lib/vtls/mbedtls.c',
