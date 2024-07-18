@@ -1,0 +1,21 @@
+# HTML5 runtime
+# 
+# Copyright (C) 2024 Zhang Ji Peng
+# Contact: onecoolx@gmail.com
+
+include(ExternalProject)
+
+set(JPEG_NAME "libjpeg-turbo")
+set(JPEG_VERSION "3.0.3")
+set(JPEG_PACKAGE "${PROJECT_ROOT}/packages/${JPEG_NAME}-${JPEG_VERSION}.tar.gz")
+set(JPEG_HASH "a649205a90e39a548863a3614a9576a3fb4465f8e8e66d54999f127957c25b21")
+
+ExternalProject_Add(
+  ${JPEG_NAME}
+  PREFIX "${PROJECT_OUT}/${JPEG_NAME}"
+  URL "${JPEG_PACKAGE}"
+  URL_HASH SHA256=${JPEG_HASH}
+  BUILD_IN_SOURCE
+  CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DWITH_JPEG8=TRUE -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
+)
+
