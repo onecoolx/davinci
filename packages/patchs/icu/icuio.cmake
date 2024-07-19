@@ -1,0 +1,18 @@
+set(ICUIO_DIR ${CMAKE_CURRENT_LIST_DIR}/source/io)
+
+set(LIB_ICUIO icuio)
+
+file(GLOB_RECURSE ICUIO_SOURCES ${ICUIO_DIR}/*.cpp)
+file(GLOB_RECURSE ICUIO_HEADERS ${ICUIO_DIR}/unicode/*.h)
+
+add_definitions(-DU_IO_IMPLEMENTATION)
+
+add_library(${LIB_ICUIO} ${ICUIO_SOURCES})
+
+set_target_properties(${LIB_ICUIO} PROPERTIES VERSION ${VERSION_INFO} SOVERSION 1)
+
+install(TARGETS ${LIB_ICUIO} LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
+
+install(FILES ${ICUIO_HEADERS} DESTINATION include/unicode/)
+
+include_directories(${ICUIO_DIR})

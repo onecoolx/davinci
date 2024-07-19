@@ -1,0 +1,18 @@
+set(ICUUC_DIR ${CMAKE_CURRENT_LIST_DIR}/source/common)
+
+set(LIB_ICUUC icuuc)
+
+file(GLOB_RECURSE ICUUC_SOURCES ${ICUUC_DIR}/*.cpp)
+file(GLOB_RECURSE ICUUC_HEADERS ${ICUUC_DIR}/unicode/*.h)
+
+add_definitions(-DU_COMMON_IMPLEMENTATION)
+
+add_library(${LIB_ICUUC} ${ICUUC_SOURCES})
+
+set_target_properties(${LIB_ICUUC} PROPERTIES VERSION ${VERSION_INFO} SOVERSION 1)
+
+install(TARGETS ${LIB_ICUUC} LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
+
+install(FILES ${ICUUC_HEADERS} DESTINATION include/unicode/)
+
+include_directories(${ICUUC_DIR})
