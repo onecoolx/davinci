@@ -18,3 +18,7 @@ ExternalProject_Add(
   BUILD_IN_SOURCE
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
 )
+include_directories(${PROJECT_OUT}/include)
+link_directories(${PROJECT_OUT}/lib)
+
+add_dependencies(${FREETYPE_NAME} ${ZLIB_NAME} ${PNG_NAME})

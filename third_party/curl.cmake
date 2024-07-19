@@ -18,3 +18,7 @@ ExternalProject_Add(
   BUILD_IN_SOURCE
   CMAKE_ARGS -DBUILD_CURL_EXE=OFF -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
 )
+include_directories(${PROJECT_OUT}/include)
+link_directories(${PROJECT_OUT}/lib)
+
+add_dependencies(${CURL_NAME} ${ZLIB_NAME} ${MTLS_NAME})
