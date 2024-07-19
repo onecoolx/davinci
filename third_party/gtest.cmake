@@ -1,0 +1,20 @@
+# HTML5 runtime
+# 
+# Copyright (C) 2024 Zhang Ji Peng
+# Contact: onecoolx@gmail.com
+
+include(ExternalProject)
+
+set(GTEST_NAME "gtest")
+set(GTEST_VERSION "1.8.0")
+set(GTEST_PACKAGE "${PROJECT_ROOT}/packages/${GTEST_NAME}-${GTEST_VERSION}.tar.gz")
+set(GTEST_HASH "589974d5e76d14d035999917db7457ab1e1258de3473762d775c1e2ac671d1d8")
+
+ExternalProject_Add(
+  ${GTEST_NAME}
+  PREFIX "${PROJECT_OUT}/${GTEST_NAME}"
+  URL "${GTEST_PACKAGE}"
+  URL_HASH SHA256=${GTEST_HASH}
+  BUILD_IN_SOURCE
+  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
+)

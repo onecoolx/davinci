@@ -1,0 +1,22 @@
+# HTML5 runtime
+# 
+# Copyright (C) 2024 Zhang Ji Peng
+# Contact: onecoolx@gmail.com
+
+include(ExternalProject)
+
+set(SQLITE_NAME "sqlite")
+set(SQLITE_VERSION "autoconf-3460000")
+set(SQLITE_PACKAGE "${PROJECT_ROOT}/packages/${SQLITE_NAME}-${SQLITE_VERSION}.tar.gz")
+set(SQLITE_HASH "6f8e6a7b335273748816f9b3b62bbdc372a889de8782d7f048c653a447417a7d")
+
+ExternalProject_Add(
+  ${SQLITE_NAME}
+  PREFIX "${PROJECT_OUT}/${SQLITE_NAME}"
+  URL "${SQLITE_PACKAGE}"
+  URL_HASH SHA256=${SQLITE_HASH}
+  PATCH_COMMAND ${CMAKE_COMMAND} -E copy 
+    "${PROJECT_ROOT}/packages/patchs/${SQLITE_NAME}-${SQLITE_VERSION}/CMakeLists.txt" "${PROJECT_OUT}/${SQLITE_NAME}/src/${SQLITE_NAME}/"
+  BUILD_IN_SOURCE
+  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
+)

@@ -6,4 +6,12 @@
 include (${CMAKE_CURRENT_LIST_DIR}/zlib.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/png.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/jpeg.cmake)
+include (${CMAKE_CURRENT_LIST_DIR}/sqlite.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/mbedtls.cmake)
+include (${CMAKE_CURRENT_LIST_DIR}/curl.cmake)
+include (${CMAKE_CURRENT_LIST_DIR}/freetype2.cmake)
+include (${CMAKE_CURRENT_LIST_DIR}/harfbuzz.cmake)
+
+if (OPT_UNITTEST)
+include (${CMAKE_CURRENT_LIST_DIR}/gtest.cmake)
+endif(OPT_UNITTEST)

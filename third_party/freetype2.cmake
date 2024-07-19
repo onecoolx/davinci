@@ -1,0 +1,20 @@
+# HTML5 runtime
+# 
+# Copyright (C) 2024 Zhang Ji Peng
+# Contact: onecoolx@gmail.com
+
+include(ExternalProject)
+
+set(FREETYPE_NAME "freetype")
+set(FREETYPE_VERSION "2.13.2")
+set(FREETYPE_PACKAGE "${PROJECT_ROOT}/packages/${FREETYPE_NAME}-${FREETYPE_VERSION}.tar.gz")
+set(FREETYPE_HASH "1ac27e16c134a7f2ccea177faba19801131116fd682efc1f5737037c5db224b5")
+
+ExternalProject_Add(
+  ${FREETYPE_NAME}
+  PREFIX "${PROJECT_OUT}/${FREETYPE_NAME}"
+  URL "${FREETYPE_PACKAGE}"
+  URL_HASH SHA256=${FREETYPE_HASH}
+  BUILD_IN_SOURCE
+  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
+)
