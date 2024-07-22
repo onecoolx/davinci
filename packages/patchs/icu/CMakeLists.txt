@@ -9,4 +9,7 @@ set(VERSION_INFO 75.1)
 include (${CMAKE_CURRENT_LIST_DIR}/icuuc.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/icui18n.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/icuio.cmake)
+include (${CMAKE_CURRENT_LIST_DIR}/icufdt.cmake)
+include (${CMAKE_CURRENT_LIST_DIR}/icutu.cmake)
+#include (${CMAKE_CURRENT_LIST_DIR}/icudt.cmake)
 
