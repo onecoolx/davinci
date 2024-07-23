@@ -4,8 +4,6 @@ set(LIB_ICUDT icudt)
 
 set(OUTTMPDIR ${CMAKE_CURRENT_BINARY_DIR})
 
-set(CMAKE_ASM_CREATE_SHARED_LIBRARY ${CMAKE_C_CREATE_SHARED_LIBRARY})
-
 set(ICUDT_CHAR ${U_ENDIAN_CHAR})
 
 file(GLOB ICUDT_ARCHIVE_FILES LIST_DIRECTORIES false
@@ -38,7 +36,7 @@ if(MSVC)
   set(ICUDT_SOURCES ${OUTTMPDIR}/${LIB_ICUDT}${VERSION_INFO}${ICUDT_CHAR}_dat.obj)
 else()
   set(extract_pattern \\*)
-  set(PKGDATA_VERSIONING -r ${VERSION_INFO})
+  set(PKGDATA_VERSIONING "")
   set(ICUDT_SOURCES ${OUTTMPDIR}/${LIB_ICUDT}${VERSION_INFO}${ICUDT_CHAR}_dat.S)
 endif(MSVC)
 
@@ -81,8 +79,19 @@ add_custom_command(
         "Packing data to the asm file ${ICUDT_SOURCES}"
 )
 
-add_library(${LIB_ICUDT} ${ICUDT_SOURCES})
+add_custom_target(icudt_asm_target
+    DEPENDS ${ICUDT_SOURCES} ${icudt_asm_file_STAMP}
+)
 
-set_target_properties(${LIB_ICUDT} PROPERTIES VERSION ${VERSION_INFO}.${VERSION_MICRO} SOVERSION 1)
+add_library(${LIB_ICUDT} "")
+
+set_target_properties(${LIB_ICUDT} PROPERTIES
+    LINKER_LANGUAGE C
+    OUTPUT_NAME ${LIB_ICUDT}
+    VERSION ${VERSION_INFO}.${VERSION_MICRO} SOVERSION 1)
+
+add_dependencies(${LIB_ICUDT} icudt_asm_target)
+
+target_sources(${LIB_ICUDT} PRIVATE ${ICUDT_SOURCES})
 
 install(TARGETS ${LIB_ICUDT} LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
