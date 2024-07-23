@@ -23,3 +23,12 @@ add_executable(${TOOL_PKGDATA} ${ICU_TOOLS_DIR}/pkgdata/pkgdata.cpp ${ICU_TOOLS_
 target_link_libraries(${TOOL_PKGDATA} PRIVATE ${LIB_ICUTU} ${LIB_ICUI18N} ${LIB_ICUUC} ${LIB_ICUFDT} ${LIB_M} ${CMAKE_DL_LIBS})
 
 
+set(TOOL_ICUPKG icupkg)
+
+add_definitions(-DU_ATTRIBUTE_DEPRECATED=)
+
+add_executable(${TOOL_ICUPKG} ${ICU_TOOLS_DIR}/icupkg/icupkg.cpp)
+
+target_link_libraries(${TOOL_ICUPKG} PRIVATE ${LIB_ICUTU} ${LIB_ICUI18N} ${LIB_ICUUC} ${LIB_ICUFDT} ${LIB_M} ${CMAKE_DL_LIBS})
+
+
