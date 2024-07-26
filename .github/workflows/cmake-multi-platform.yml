@@ -71,6 +71,7 @@ jobs:
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -S ${{ github.workspace }}
+
     - if: ${{matrix.os == 'windows-latest'}}
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
