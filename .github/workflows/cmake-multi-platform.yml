@@ -26,12 +26,12 @@ jobs:
         os: [ubuntu-latest]
         build_type: [Release, Debug]
         c_compiler: [gcc, clang, cl]
-        builder: ["Ninja", "Visual Studio 17 2022"]
+        builder: ["Ninja", "Visual Studio 17"]
         include:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
-            builder: "Visual Studio 17 2022"
+            builder: "Visual Studio 17"
           - os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
@@ -49,16 +49,22 @@ jobs:
             builder: "Ninja"
           - os: windows-latest
             c_compiler: gcc
-            builder: "Visual Studio 17 2022"
+            builder: "Visual Studio 17"
           - os: windows-latest
             c_compiler: clang
-            builder: "Visual Studio 17 2022"
+            builder: "Visual Studio 17"
           - os: ubuntu-latest
             c_compiler: cl
-            builder: "Visual Studio 17 2022"
+            builder: "Visual Studio 17"
           - os: ubuntu-latest
             c_compiler: cl
             builder: "Ninja"
+          - os: ubuntu-latest
+            c_compiler: gcc
+            builder: "Visual Studio 17"
+          - os: ubuntu-latest
+            c_compiler: clang
+            builder: "Visual Studio 17"
 
     steps:
     - uses: actions/checkout@v4
