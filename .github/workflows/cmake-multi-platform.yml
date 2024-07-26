@@ -47,9 +47,18 @@ jobs:
           - os: windows-latest
             c_compiler: clang
             builder: "Ninja"
+          - os: windows-latest
+            c_compiler: gcc
+            builder: "Visual Studio 17 2022"
+          - os: windows-latest
+            c_compiler: clang
+            builder: "Visual Studio 17 2022"
           - os: ubuntu-latest
             c_compiler: cl
             builder: "Visual Studio 17 2022"
+          - os: ubuntu-latest
+            c_compiler: cl
+            builder: "Ninja"
 
     steps:
     - uses: actions/checkout@v4
