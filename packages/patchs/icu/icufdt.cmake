@@ -4,6 +4,6 @@ set(LIB_ICUFDT icufdt)
 
 file(GLOB_RECURSE ICUFDT_SOURCES ${ICUFDT_DIR}/*.cpp)
 
-add_library(${LIB_ICUFDT} ${ICUFDT_SOURCES})
+add_library(${LIB_ICUFDT} SHARED ${ICUFDT_SOURCES})
 
 include_directories(${ICUFDT_DIR})

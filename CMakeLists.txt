@@ -12,6 +12,10 @@ set(VERSION_MINOR 0)
 set(VERSION_MICRO 0)
 set(VERSION_INFO ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 
+if(POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW)
+endif()
+
 option(OPT_SYSTEM_MALLOC "Build System Memory Allocator (new/delete/malloc/free/realloc/calloc) used support." OFF)
 
 option(OPT_UNITTEST "Build Unit tests" OFF)
