@@ -16,6 +16,10 @@ if(POLICY CMP0135)
   cmake_policy(SET CMP0135 NEW)
 endif()
 
+if(POLICY CMP0114)
+  cmake_policy(SET CMP0114 NEW)
+endif()
+
 option(OPT_SYSTEM_MALLOC "Build System Memory Allocator (new/delete/malloc/free/realloc/calloc) used support." OFF)
 
 option(OPT_UNITTEST "Build Unit tests" OFF)
