@@ -42,12 +42,13 @@ target_link_libraries(${LIB_ICUTU} PRIVATE ${LIB_ICUI18N_S} ${LIB_ICUUC_S} ${LIB
 
 include_directories(${ICUTU_DIR} ${ICUUC_S_DIR} ${ICUI18N_S_DIR})
 
+# for macosx  -DU_HAVE_POPEN=0
 # build tool
 set(TOOL_PKGDATA pkgdata)
 
 add_executable(${TOOL_PKGDATA} ${ICU_TOOLS_DIR}/pkgdata/pkgdata.cpp ${ICU_TOOLS_DIR}/pkgdata/pkgtypes.c)
 
-target_compile_definitions(${TOOL_PKGDATA} PRIVATE U_ATTRIBUTE_DEPRECATED= U_COMMON_IMPLEMENTATION U_I18N_IMPLEMENTATION -DU_HAVE_POPEN=0)
+target_compile_definitions(${TOOL_PKGDATA} PRIVATE U_ATTRIBUTE_DEPRECATED= U_COMMON_IMPLEMENTATION U_I18N_IMPLEMENTATION)
 
 target_link_libraries(${TOOL_PKGDATA} PRIVATE ${LIB_ICUTU} ${LIB_ICUI18N_S} ${LIB_ICUUC_S} ${LIB_ICUFDT} ${LIB_M} ${CMAKE_DL_LIBS})
 
