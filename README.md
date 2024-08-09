@@ -11,7 +11,7 @@ For example on ubuntu:
 
 ```
 sudo apt-get update --fix-missing
-sudo apt-get install gperf flex bison make libgtk2.0-dev libgles2-mesa-dev libegl1-mesa-dev ninja-build
+sudo apt-get install gperf flex bison make libgtk2.0-dev libgles2-mesa-dev libegl1-mesa-dev libgles2-mesa libegl1-mesa ninja-build
 ```
 
 2. Build project with ninja
