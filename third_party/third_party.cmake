@@ -19,3 +19,5 @@ include (${CMAKE_CURRENT_LIST_DIR}/harfbuzz.cmake)
 if (OPT_UNITTEST)
 include (${CMAKE_CURRENT_LIST_DIR}/gtest.cmake)
 endif(OPT_UNITTEST)
+
+include (${CMAKE_CURRENT_LIST_DIR}/webkit.cmake)

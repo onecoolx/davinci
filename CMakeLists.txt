@@ -32,8 +32,6 @@ include (${CMAKE_CURRENT_LIST_DIR}/build/configs.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/build/defines.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/third_party/third_party.cmake)
 #include (${CMAKE_CURRENT_LIST_DIR}/src/src.cmake)
-#include (${CMAKE_CURRENT_LIST_DIR}/include/include.cmake)
-#include (${CMAKE_CURRENT_LIST_DIR}/test/test.cmake)
 #include (${CMAKE_CURRENT_LIST_DIR}/demos/demos.cmake)
 
 if (OPT_UNITTEST)
