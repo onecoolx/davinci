@@ -1,16 +1,28 @@
 WEBKIT_OPTION_BEGIN()
 
+set(WEBKIT_API_VERSION "6.0")
+set(WEBKIT_VERSION 6)
+set(WEBKIT_VERSION_MAJOR 1)
+
 add_definitions(-DWTF_PLATFORM_LIBUV=1)
 
 find_package(Threads REQUIRED)
 find_package(OpenGLES2 REQUIRED)
 
+if (MSVC)
+    include(OptionsMSVC)
+else ()
+    set(CMAKE_C_VISIBILITY_PRESET hidden)
+    set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+    set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+endif ()
+
 if(WIN32)
-set(LIB_PREFIX "")
-set(LIB_EXT "lib")
+    set(LIB_PREFIX "")
+    set(LIB_EXT "lib")
 else()
-set(LIB_PREFIX "lib")
-set(LIB_EXT "so")
+    set(LIB_PREFIX "lib")
+    set(LIB_EXT "so")
 endif()
 
 add_library(ICU::data UNKNOWN IMPORTED PUBLIC icudt)
@@ -55,5 +67,21 @@ set_target_properties(ZLIB::ZLIB PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES "${WORKSPACE_OUT}/include"
     IMPORTED_LINK_INTERFACE_LANGUAGES "C"
 )
+
+WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_REMOTE_INSPECTOR PRIVATE OFF)
+
+if (WIN32)
+    # FIXME: Enable FTL on Windows. https://bugs.webkit.org/show_bug.cgi?id=145366
+    WEBKIT_OPTION_DEFAULT_PORT_VALUE(ENABLE_FTL_JIT PRIVATE OFF)
+    # FIXME: Port bmalloc to Windows. https://bugs.webkit.org/show_bug.cgi?id=143310
+    #WEBKIT_OPTION_DEFAULT_PORT_VALUE(USE_SYSTEM_MALLOC PRIVATE ON)
+    add_definitions(-DNOMINMAX)
+    add_definitions(-D_WINDOWS -DWINVER=0x601 -D_WIN32_WINNT=0x601)
+    add_definitions(-DUNICODE -D_UNICODE)
+endif ()
+
+if (NOT WIN32)
+WEBKIT_APPEND_GLOBAL_COMPILER_FLAGS(-pipe)
+endif ()
 
 WEBKIT_OPTION_END()
