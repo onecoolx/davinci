@@ -37,8 +37,14 @@ ExternalProject_Add(
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WTF/PlatformDavinci.cmake"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WTF/wtf/PlatformDavinci.cmake"
   && ${CMAKE_COMMAND} -E copy
+    "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WTF/PlatformEnable.h"
+    "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WTF/wtf/PlatformEnable.h"
+  && ${CMAKE_COMMAND} -E copy
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/JavaScriptCore/PlatformDavinci.cmake"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/JavaScriptCore/PlatformDavinci.cmake"
+  && ${CMAKE_COMMAND} -E copy
+    "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/ThirdParty/ANGLE/PlatformDavinci.cmake"
+    "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/ThirdParty/ANGLE/PlatformDavinci.cmake"
   && ${CMAKE_COMMAND} -E copy
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/OptionsDavinci.cmake"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/cmake/OptionsDavinci.cmake"

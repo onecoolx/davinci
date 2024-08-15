@@ -1,3 +1,5 @@
+WEBKIT_APPEND_GLOBAL_COMPILER_FLAGS(-DWTF_PLATFORM_DAVINCI=1)
+
 list(APPEND WTF_PUBLIC_HEADERS
     linux/RealTimeThreads.h
     unix/UnixFileDescriptor.h
@@ -53,8 +55,12 @@ else ()
     )
 endif ()
 
+list(APPEND WTF_PRIVATE_INCLUDE_DIRECTORIES
+    "${WORKSPACE_DIR}/source/WTF"
+)
+
 list(APPEND WTF_SOURCES
-    ${WORKSPACE_DIR}/source/wtf/LanguageDavinci.cpp
+    ${WORKSPACE_DIR}/source/WTF/wtf/LanguageDavinci.cpp
 )
 
 list(APPEND WTF_LIBRARIES
