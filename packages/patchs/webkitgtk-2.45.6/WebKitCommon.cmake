@@ -48,7 +48,7 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
         Mac
         PlayStation
         WPE
-        WinCairo
+        Win
         Davinci
     )
     set(PORT "NOPORT" CACHE STRING "choose which WebKit port to build (one of ${ALL_PORTS})")
@@ -160,8 +160,8 @@ if (NOT HAS_RUN_WEBKIT_COMMON)
     # shared, because properly building shared libraries that depend on each other
     # can be tricky. Override these in Options*.cmake for your port as needed.
     set(bmalloc_LIBRARY_TYPE STATIC)
-    set(WTF_LIBRARY_TYPE SHARED)
-    set(JavaScriptCore_LIBRARY_TYPE SHARED)
+    set(WTF_LIBRARY_TYPE STATIC)
+    set(JavaScriptCore_LIBRARY_TYPE STATIC)
     set(PAL_LIBRARY_TYPE STATIC)
     set(WebCore_LIBRARY_TYPE STATIC)
     set(WebKitLegacy_LIBRARY_TYPE SHARED)
