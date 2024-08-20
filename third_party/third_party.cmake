@@ -16,6 +16,8 @@ include (${CMAKE_CURRENT_LIST_DIR}/xslt.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/freetype2.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/icu.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/harfbuzz.cmake)
+include (${CMAKE_CURRENT_LIST_DIR}/lcms2.cmake)
+include (${CMAKE_CURRENT_LIST_DIR}/woff2.cmake)
 
 if (OPT_UNITTEST)
 include (${CMAKE_CURRENT_LIST_DIR}/gtest.cmake)

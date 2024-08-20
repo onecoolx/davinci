@@ -1,0 +1,22 @@
+# HTML5 runtime
+# 
+# Copyright (C) 2024 Zhang Ji Peng
+# Contact: onecoolx@gmail.com
+
+include(ExternalProject)
+
+set(LCMS2_NAME "lcms2")
+set(LCMS2_VERSION "2.16")
+set(LCMS2_PACKAGE "${PROJECT_ROOT}/packages/${LCMS2_NAME}-${LCMS2_VERSION}.tar.gz")
+set(LCMS2_HASH "d873d34ad8b9b4cea010631f1a6228d2087475e4dc5e763eb81acc23d9d45a51")
+
+ExternalProject_Add(
+  ${LCMS2_NAME}
+  PREFIX "${PROJECT_OUT}/${LCMS2_NAME}"
+  URL "${LCMS2_PACKAGE}"
+  URL_HASH SHA256=${LCMS2_HASH}
+  PATCH_COMMAND ${CMAKE_COMMAND} -E copy
+    "${PROJECT_ROOT}/packages/patchs/${LCMS2_NAME}-${LCMS2_VERSION}/CMakeLists.txt" "${PROJECT_OUT}/${LCMS2_NAME}/src/${LCMS2_NAME}/"
+  BUILD_IN_SOURCE
+  CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
+)

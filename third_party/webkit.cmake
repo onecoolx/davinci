@@ -69,5 +69,6 @@ add_dependencies(
     ${JPEG_NAME}
     ${PNG_NAME}
     ${ZLIB_NAME}
+    ${LCMS2_NAME}
 )
 

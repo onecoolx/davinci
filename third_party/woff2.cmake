@@ -1,0 +1,20 @@
+# HTML5 runtime
+# 
+# Copyright (C) 2024 Zhang Ji Peng
+# Contact: onecoolx@gmail.com
+
+include(ExternalProject)
+
+set(WOFF2_NAME "woff2")
+set(WOFF2_VERSION "1.0.2")
+set(WOFF2_PACKAGE "${PROJECT_ROOT}/packages/${WOFF2_NAME}-${WOFF2_VERSION}.tar.gz")
+set(WOFF2_HASH "add272bb09e6384a4833ffca4896350fdb16e0ca22df68c0384773c67a175594")
+
+ExternalProject_Add(
+  ${WOFF2_NAME}
+  PREFIX "${PROJECT_OUT}/${WOFF2_NAME}"
+  URL "${WOFF2_PACKAGE}"
+  URL_HASH SHA256=${WOFF2_HASH}
+  BUILD_IN_SOURCE
+  CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
+)
