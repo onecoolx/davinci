@@ -46,6 +46,12 @@ ExternalProject_Add(
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/ThirdParty/skia/CMakeLists.txt"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/ThirdParty/skia/CMakeLists.txt"
   && ${CMAKE_COMMAND} -E copy
+    "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WebCore/PlatformDavinci.cmake"
+    "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WebCore/PlatformDavinci.cmake"
+  && ${CMAKE_COMMAND} -E copy
+    "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WebCore/SourcesDavinci.txt"
+    "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WebCore/SourcesDavinci.txt"
+  && ${CMAKE_COMMAND} -E copy
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/OptionsDavinci.cmake"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/cmake/OptionsDavinci.cmake"
   CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${PROJECT_OUT}
