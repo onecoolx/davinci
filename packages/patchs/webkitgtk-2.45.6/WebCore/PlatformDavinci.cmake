@@ -2,9 +2,10 @@ include(platform/Adwaita.cmake)
 #include(platform/GCrypt.cmake)
 #include(platform/GStreamer.cmake)
 include(platform/ImageDecoders.cmake)
-#include(platform/Curl.cmake)
 include(platform/TextureMapper.cmake)
 include(platform/Skia.cmake)
+
+include(${WORKSPACE_DIR}/source/WebCore/Curl.cmake)
 
 list(APPEND WebCore_UNIFIED_SOURCE_LIST_FILES
     "SourcesDavinci.txt"

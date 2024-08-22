@@ -35,3 +35,4 @@
 
 /* --------- Davinci port --------- */
 
+#define USE_UNIX_DOMAIN_SOCKETS 1
