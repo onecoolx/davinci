@@ -52,6 +52,9 @@ ExternalProject_Add(
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WebCore/PlatformDavinci.cmake"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WebCore/PlatformDavinci.cmake"
   && ${CMAKE_COMMAND} -E copy
+    "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WebCore/PAL/PlatformDavinci.cmake"
+    "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WebCore/PAL/pal/PlatformDavinci.cmake"
+  && ${CMAKE_COMMAND} -E copy
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WebCore/SourcesDavinci.txt"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WebCore/SourcesDavinci.txt"
   && ${CMAKE_COMMAND} -E copy

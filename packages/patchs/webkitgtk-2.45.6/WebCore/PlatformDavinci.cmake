@@ -24,6 +24,10 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/platform/mock/mediasource"
 )
 
+list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
+    "${WORKSPACE_DIR}/source/WTF"
+)
+
 list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     accessibility/atspi/AccessibilityAtspi.h
     accessibility/atspi/AccessibilityAtspiEnums.h

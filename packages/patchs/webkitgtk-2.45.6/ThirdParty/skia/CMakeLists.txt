@@ -897,6 +897,10 @@ else ()
     target_link_libraries(Skia PRIVATE WebKit::WTF)
 endif ()
 
+target_include_directories(Skia PRIVATE
+    "${WORKSPACE_DIR}/source/WTF"
+)
+
 target_link_libraries(Skia PUBLIC
     Freetype::Freetype
     JPEG::JPEG
