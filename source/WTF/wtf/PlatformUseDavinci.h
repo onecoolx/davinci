@@ -36,4 +36,6 @@
 /* --------- Davinci port --------- */
 
 #define USE_UNIX_DOMAIN_SOCKETS 1
-
+#define USE_CURL 1
+#define USE_HARFBUZZ 1
+#define USE_OPENSSL 1
