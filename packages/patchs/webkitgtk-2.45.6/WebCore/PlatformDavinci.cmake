@@ -15,7 +15,6 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_DIR}/accessibility/atspi"
     "${WEBCORE_DIR}/crypto/openssl"
     "${WEBCORE_DIR}/platform/generic"
-    "${WEBCORE_DIR}/platform/graphics/egl"
     "${WEBCORE_DIR}/platform/graphics/gstreamer"
     "${WEBCORE_DIR}/platform/graphics/opengl"
     "${WEBCORE_DIR}/platform/graphics/opentype"
@@ -26,6 +25,7 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
 
 list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WORKSPACE_DIR}/source/WTF"
+    "${WORKSPACE_DIR}/source/WebCore/platform/graphics/egl"
 )
 
 list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS

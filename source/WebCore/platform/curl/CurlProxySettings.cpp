@@ -92,12 +92,13 @@ bool protocolIsInSocksFamily(const URL& url)
 CurlProxySettings::IPCData CurlProxySettings::toIPCData() const
 {
     switch (m_mode) {
-    case Mode::Default:
-        return DefaultData { };
     case Mode::NoProxy:
         return NoProxyData { };
     case Mode::Custom:
         return CustomData { m_url, m_ignoreHosts };
+    case Mode::Default:
+    default:
+        return DefaultData { };
     }
 }
 

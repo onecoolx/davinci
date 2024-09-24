@@ -83,5 +83,6 @@ add_dependencies(
     ${ZLIB_NAME}
     ${LCMS2_NAME}
     ${WOFF2_NAME}
+    ${PSL_NAME}
 )
 

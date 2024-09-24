@@ -50,12 +50,6 @@ platform/graphics/PlatformDisplay.cpp @no-unify
 
 platform/graphics/angle/PlatformDisplayANGLE.cpp @no-unify
 
-platform/graphics/egl/GLContext.cpp @no-unify
-platform/graphics/egl/GLContextLibWPE.cpp @no-unify
-platform/graphics/egl/GLContextWrapper.cpp @no-unify
-platform/graphics/egl/GLFence.cpp @no-unify
-platform/graphics/egl/PlatformDisplaySurfaceless.cpp @no-unify
-
 platform/graphics/opentype/OpenTypeVerticalData.cpp
 
 platform/text/Hyphenation.cpp
