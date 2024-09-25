@@ -25,6 +25,7 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
 
 list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WORKSPACE_DIR}/source/WTF"
+    "${WORKSPACE_DIR}/source/WebCore"
     "${WORKSPACE_DIR}/source/WebCore/platform/graphics/egl"
 )
 

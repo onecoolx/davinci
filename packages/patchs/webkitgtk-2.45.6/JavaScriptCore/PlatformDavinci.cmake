@@ -11,6 +11,7 @@ endif ()
 
 list(APPEND JavaScriptCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WORKSPACE_DIR}/source/WTF"
+    "${WORKSPACE_DIR}/source/WebCore"
 )
 
 if (USE_LIBBACKTRACE)
