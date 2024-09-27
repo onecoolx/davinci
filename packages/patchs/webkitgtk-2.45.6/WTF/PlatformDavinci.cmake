@@ -57,7 +57,6 @@ endif ()
 
 list(APPEND WTF_PRIVATE_INCLUDE_DIRECTORIES
     "${WORKSPACE_DIR}/source/WTF"
-    "${WORKSPACE_DIR}/source/WebCore"
 )
 
 list(APPEND WTF_SOURCES

@@ -21,26 +21,6 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 // THE POSSIBILITY OF SUCH DAMAGE.
 
-accessibility/atspi/AccessibilityAtspi.cpp
-accessibility/atspi/AccessibilityObjectAtspi.cpp
-accessibility/atspi/AccessibilityObjectActionAtspi.cpp
-accessibility/atspi/AccessibilityObjectActiveDescendantAtspi.cpp
-accessibility/atspi/AccessibilityObjectCollectionAtspi.cpp
-accessibility/atspi/AccessibilityObjectComponentAtspi.cpp
-accessibility/atspi/AccessibilityObjectDocumentAtspi.cpp
-accessibility/atspi/AccessibilityObjectHyperlinkAtspi.cpp
-accessibility/atspi/AccessibilityObjectHypertextAtspi.cpp
-accessibility/atspi/AccessibilityObjectImageAtspi.cpp
-accessibility/atspi/AccessibilityObjectSelectionAtspi.cpp
-accessibility/atspi/AccessibilityObjectTableAtspi.cpp
-accessibility/atspi/AccessibilityObjectTableCellAtspi.cpp
-accessibility/atspi/AccessibilityObjectTextAtspi.cpp
-accessibility/atspi/AccessibilityObjectValueAtspi.cpp
-accessibility/atspi/AccessibilityRootAtspi.cpp
-accessibility/atspi/AXObjectCacheAtspi.cpp
-
-editing/atspi/FrameSelectionAtspi.cpp
-
 page/linux/ResourceUsageOverlayLinux.cpp
 page/linux/ResourceUsageThreadLinux.cpp
 

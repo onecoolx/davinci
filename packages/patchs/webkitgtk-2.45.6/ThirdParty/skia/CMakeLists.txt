@@ -899,7 +899,6 @@ endif ()
 
 target_include_directories(Skia PRIVATE
     "${WORKSPACE_DIR}/source/WTF"
-    "${WORKSPACE_DIR}/source/WebCore"
 )
 
 target_link_libraries(Skia PUBLIC

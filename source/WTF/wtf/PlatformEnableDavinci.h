@@ -35,5 +35,3 @@
 
 /* --------- Davinci port --------- */
 
-
-#include "DummyTypeDefine.h"
