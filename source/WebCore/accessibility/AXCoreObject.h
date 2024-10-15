@@ -49,9 +49,7 @@
 #include "COMPtr.h"
 #endif
 
-#elif PLATFORM(DAVINCI)
 class AccessibilityObjectWrapper : public RefCounted<AccessibilityObjectWrapper> { };
-#endif
 
 namespace WTF {
 class TextStream;
@@ -846,9 +844,6 @@ public:
     bool isTreeItem() const { return roleValue() == AccessibilityRole::TreeItem; }
     bool isScrollbar() const { return roleValue() == AccessibilityRole::ScrollBar; }
     bool isRemoteFrame() const { return roleValue() == AccessibilityRole::RemoteFrame; }
-#if PLATFORM(COCOA)
-    virtual RetainPtr<id> remoteFramePlatformElement() const = 0;
-#endif
     virtual bool hasRemoteFrameChild() const = 0;
 
     bool isButton() const;
@@ -1011,9 +1006,6 @@ public:
 
     virtual AXCoreObject* focusedUIElement() const = 0;
 
-#if PLATFORM(COCOA)
-    virtual RemoteAXObjectRef remoteParentObject() const = 0;
-#endif
     virtual AXCoreObject* parentObject() const = 0;
     virtual AXCoreObject* parentObjectUnignored() const = 0;
 
@@ -1048,20 +1040,12 @@ public:
     virtual String description() const = 0;
 
     virtual std::optional<String> textContent() const = 0;
-#if ENABLE(AX_THREAD_TEXT_APIS)
-    virtual bool hasTextRuns() = 0;
-    virtual bool shouldEmitNewlinesBeforeAndAfterNode() const = 0;
-#endif
 
     // Methods for determining accessibility text.
     virtual String stringValue() const = 0;
     virtual String textUnderElement(TextUnderElementMode = { }) const = 0;
     virtual String text() const = 0;
     virtual unsigned textLength() const = 0;
-#if PLATFORM(COCOA)
-    enum class SpellCheck : bool { No, Yes };
-    virtual RetainPtr<NSAttributedString> attributedStringForTextMarkerRange(AXTextMarkerRange&&, SpellCheck) const = 0;
-#endif
     virtual const String placeholderValue() const = 0;
 
     // Abbreviations
@@ -1098,15 +1082,9 @@ public:
     virtual IntPoint remoteFrameOffset() const = 0;
 
     virtual FloatRect convertFrameToSpace(const FloatRect&, AccessibilityConversionSpace) const = 0;
-#if PLATFORM(COCOA)
-    virtual FloatRect convertRectToPlatformSpace(const FloatRect&, AccessibilityConversionSpace) const = 0;
-#endif
 
     // Rect relative to the viewport.
     virtual FloatRect relativeFrame() const = 0;
-#if PLATFORM(MAC)
-    virtual FloatRect primaryScreenRect() const = 0;
-#endif
     virtual FloatRect unobscuredContentRect() const = 0;
     virtual IntSize size() const = 0;
     virtual IntPoint clickPoint() = 0;
@@ -1193,12 +1171,6 @@ public:
     virtual VisiblePositionRange lineRangeForPosition(const VisiblePosition&) const = 0;
 
     virtual std::optional<SimpleRange> rangeForCharacterRange(const CharacterRange&) const = 0;
-#if PLATFORM(COCOA)
-    virtual AXTextMarkerRange textMarkerRangeForNSRange(const NSRange&) const = 0;
-#endif
-#if PLATFORM(MAC)
-    virtual AXTextMarkerRange selectedTextMarkerRange() = 0;
-#endif
 
     virtual String stringForRange(const SimpleRange&) const = 0;
     virtual IntRect boundsForRange(const SimpleRange&) const = 0;
@@ -1303,35 +1275,9 @@ public:
     void setWrapper(AccessibilityObjectWrapper* wrapper) { m_wrapper = wrapper; }
     void detachWrapper(AccessibilityDetachmentType);
 
-#if PLATFORM(IOS_FAMILY)
-    virtual unsigned accessibilitySecureFieldLength() = 0;
-    virtual bool hasTouchEventListener() const = 0;
-#endif
-
     // allows for an AccessibilityObject to update its render tree or perform
     // other operations update type operations
     virtual void updateBackingStore() = 0;
-
-#if PLATFORM(COCOA)
-    virtual bool preventKeyboardDOMEventDispatch() const = 0;
-    virtual void setPreventKeyboardDOMEventDispatch(bool) = 0;
-    virtual String speechHintAttributeValue() const = 0;
-    virtual bool fileUploadButtonReturnsValueInTitle() const = 0;
-    String descriptionAttributeValue() const;
-    bool shouldComputeDescriptionAttributeValue() const;
-    String helpTextAttributeValue() const;
-    // This should be the visible text that's actually on the screen if possible.
-    // If there's alternative text, that can override the title.
-    virtual String titleAttributeValue() const;
-    bool shouldComputeTitleAttributeValue() const;
-
-    virtual bool hasApplePDFAnnotationAttribute() const = 0;
-#endif
-
-#if PLATFORM(MAC)
-    virtual bool caretBrowsingEnabled() const = 0;
-    virtual void setCaretBrowsingEnabled(bool) = 0;
-#endif
 
     virtual AXCoreObject* focusableAncestor() = 0;
     virtual AXCoreObject* editableAncestor() = 0;
@@ -1342,10 +1288,6 @@ public:
 
     virtual String innerHTML() const = 0;
     virtual String outerHTML() const = 0;
-
-#if PLATFORM(COCOA) && ENABLE(MODEL_ELEMENT)
-    virtual Vector<RetainPtr<id>> modelElementChildren() = 0;
-#endif
 
 protected:
     AXCoreObject() = default;
@@ -1359,15 +1301,7 @@ private:
     virtual void detachPlatformWrapper(AccessibilityDetachmentType) = 0;
 
     AXID m_id;
-#if PLATFORM(COCOA)
-    RetainPtr<WebAccessibilityObjectWrapper> m_wrapper;
-#elif PLATFORM(WIN)
-    COMPtr<AccessibilityObjectWrapper> m_wrapper;
-#elif PLATFORM(PLAYSTATION)
     RefPtr<AccessibilityObjectWrapper> m_wrapper;
-#elif USE(ATSPI)
-    RefPtr<AccessibilityObjectAtspi> m_wrapper;
-#endif
 };
 
 inline Vector<AXID> axIDs(const AXCoreObject::AccessibilityChildrenVector& objects)
@@ -1376,20 +1310,6 @@ inline Vector<AXID> axIDs(const AXCoreObject::AccessibilityChildrenVector& objec
         return object ? object->objectID() : AXID();
     });
 }
-
-#if PLATFORM(COCOA)
-inline bool AXCoreObject::shouldComputeDescriptionAttributeValue() const
-{
-    // Static text objects shouldn't return a description. Their content is communicated via AXValue.
-    return roleValue() != AccessibilityRole::StaticText;
-}
-
-inline bool AXCoreObject::shouldComputeTitleAttributeValue() const
-{
-    // Static text objects shouldn't return a title. Their content is communicated via AXValue.
-    return roleValue() != AccessibilityRole::StaticText;
-}
-#endif // PLATFORM(COCOA)
 
 inline bool AXCoreObject::liveRegionStatusIsEnabled(const AtomString& liveRegionStatus)
 {
@@ -1583,17 +1503,6 @@ template<typename T, typename U> inline T retrieveValueFromMainThread(U&& lambda
     });
     return value;
 }
-
-#if PLATFORM(COCOA)
-template<typename T, typename U> inline T retrieveAutoreleasedValueFromMainThread(U&& lambda)
-{
-    RetainPtr<T> value;
-    callOnMainThreadAndWait([&value, &lambda] {
-        value = lambda();
-    });
-    return value.autorelease();
-}
-#endif
 
 bool inRenderTreeOrStyleUpdate(const Document&);
 

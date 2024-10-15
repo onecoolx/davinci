@@ -58,6 +58,9 @@ ExternalProject_Add(
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WebCore/SourcesDavinci.txt"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WebCore/SourcesDavinci.txt"
   && ${CMAKE_COMMAND} -E copy
+    "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WebCore/Sources.txt"
+    "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WebCore/Sources.txt"
+  && ${CMAKE_COMMAND} -E copy
     "${PROJECT_ROOT}/packages/patchs/${WEBKIT_NAME}-${WEBKIT_VERSION}/WebCore/config.h"
     "${PROJECT_OUT}/${WEBKIT_NAME}/src/${WEBKIT_NAME}/Source/WebCore/config.h"
   && ${CMAKE_COMMAND} -E copy
