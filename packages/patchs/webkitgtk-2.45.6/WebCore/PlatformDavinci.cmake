@@ -6,6 +6,7 @@ include(platform/TextureMapper.cmake)
 include(platform/Skia.cmake)
 
 include(${WORKSPACE_DIR}/source/WebCore/Curl.cmake)
+include(${WORKSPACE_DIR}/source/WebCore/Platform.cmake)
 
 list(APPEND WebCore_UNIFIED_SOURCE_LIST_FILES
     "SourcesDavinci.txt"

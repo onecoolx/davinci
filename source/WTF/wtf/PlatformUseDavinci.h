@@ -39,3 +39,10 @@
 #define USE_CURL 1
 #define USE_HARFBUZZ 1
 #define USE_OPENSSL 1
+
+#ifndef FALSE
+#define FALSE   0
+#endif
+#ifndef TRUE
+#define TRUE    1
+#endif

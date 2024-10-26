@@ -27,7 +27,10 @@
 #include "PlatformDisplaySurfaceless.h"
 
 #include "GLContext.h"
-#include <epoxy/egl.h>
+
+#define EGL_EGLEXT_PROTOTYPES 1
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
 
 namespace WebCore {
 
@@ -38,10 +41,6 @@ std::unique_ptr<PlatformDisplaySurfaceless> PlatformDisplaySurfaceless::create()
 
 PlatformDisplaySurfaceless::PlatformDisplaySurfaceless()
 {
-#if PLATFORM(GTK)
-    PlatformDisplay::setSharedDisplayForCompositing(*this);
-#endif
-
     const char* extensions = eglQueryString(nullptr, EGL_EXTENSIONS);
     if (GLContext::isExtensionSupported(extensions, "EGL_EXT_platform_base"))
         m_eglDisplay = eglGetPlatformDisplayEXT(EGL_PLATFORM_SURFACELESS_MESA, EGL_DEFAULT_DISPLAY, nullptr);

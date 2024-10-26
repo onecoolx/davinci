@@ -2241,6 +2241,8 @@ endif ()
 
 if (USE_WOFF2)
     list(APPEND WebCore_LIBRARIES WOFF2::dec)
+    list(APPEND WebCore_LIBRARIES WOFF2::enc)
+    list(APPEND WebCore_LIBRARIES WOFF2::common)
 endif ()
 
 if (USE_XDGMIME)
