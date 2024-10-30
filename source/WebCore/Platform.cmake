@@ -4,7 +4,6 @@ list(APPEND WebCore_PRIVATE_INCLUDE_DIRECTORIES
     "${WEBCORE_IMP_DIR}/platform"
     "${WEBCORE_IMP_DIR}/platform/graphics"
     "${WEBCORE_IMP_DIR}/platform/graphics/egl"
-    "${WEBCORE_IMP_DIR}/platform/accessibility"
 )
 
 list(APPEND WebCore_SOURCES

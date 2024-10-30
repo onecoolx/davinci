@@ -57,6 +57,9 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
     ${WEBCORE_IMP_DIR}/platform/curl/ResourceResponse.h
 )
 
+find_package(OpenSSL)
 list(APPEND WebCore_LIBRARIES
     CURL::libcurl
+    #LibPSL::LibPSL
+    OpenSSL::SSL
 )

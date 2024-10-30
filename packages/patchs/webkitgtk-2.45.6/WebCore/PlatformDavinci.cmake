@@ -7,6 +7,7 @@ include(platform/Skia.cmake)
 
 include(${WORKSPACE_DIR}/source/WebCore/Curl.cmake)
 include(${WORKSPACE_DIR}/source/WebCore/Platform.cmake)
+include(${WORKSPACE_DIR}/source/WebCore/Accessibility.cmake)
 
 list(APPEND WebCore_UNIFIED_SOURCE_LIST_FILES
     "SourcesDavinci.txt"
@@ -39,6 +40,7 @@ list(APPEND WebCore_PRIVATE_FRAMEWORK_HEADERS
 set(CSS_VALUE_PLATFORM_DEFINES "HAVE_OS_DARK_MODE_SUPPORT=1")
 
 list(APPEND WebCore_LIBRARIES
+    OpenGL::GLES
 )
 
 list(APPEND WebCore_SYSTEM_INCLUDE_DIRECTORIES
