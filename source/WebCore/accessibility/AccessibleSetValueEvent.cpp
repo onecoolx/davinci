@@ -25,6 +25,7 @@
 
 #include "config.h"
 #include "AccessibleSetValueEvent.h"
+#include "EventInterfaces.h"
 
 #include <wtf/IsoMallocInlines.h>
 
@@ -33,7 +34,7 @@ namespace WebCore {
 WTF_MAKE_ISO_ALLOCATED_IMPL(AccessibleSetValueEvent);
 
 AccessibleSetValueEvent::AccessibleSetValueEvent(const AtomString& type, const AtomString& value)
-    : Event(type, CanBubble::Yes, IsCancelable::Yes)
+    : Event(EventInterfaceType::UIEvent, type, CanBubble::Yes, IsCancelable::Yes)
     , m_value(value)
 {
 }

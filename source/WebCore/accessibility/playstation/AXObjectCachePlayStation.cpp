@@ -97,8 +97,8 @@ void AXObjectCache::postPlatformNotification(AccessibilityObject& object, AXNoti
         break;
     }
 
-    ChromeClient& client = document().frame()->page()->chrome().client();
-    client.postAccessibilityNotification(*protectedObject, notification);
+   // ChromeClient& client = document().frame()->page()->chrome().client();
+   // client.postAccessibilityNotification(*protectedObject, notification);
 }
 
 void AXObjectCache::nodeTextChangePlatformNotification(AccessibilityObject* object, AXTextChange textChange, unsigned offset, const String& text)
@@ -109,8 +109,8 @@ void AXObjectCache::nodeTextChangePlatformNotification(AccessibilityObject* obje
         || object->document()->view()->layoutContext().layoutState()
         || object->document()->childNeedsStyleRecalc())
         return;
-    ChromeClient& client = document().frame()->page()->chrome().client();
-    client.postAccessibilityNodeTextChangeNotification(object, textChange, offset, text);
+    //ChromeClient& client = document().frame()->page()->chrome().client();
+    //client.postAccessibilityNodeTextChangeNotification(object, textChange, offset, text);
 }
 
 void AXObjectCache::frameLoadingEventPlatformNotification(AccessibilityObject* object, AXLoadingEvent loadingEvent)
@@ -121,8 +121,8 @@ void AXObjectCache::frameLoadingEventPlatformNotification(AccessibilityObject* o
         || object->document()->view()->layoutContext().layoutState()
         || object->document()->childNeedsStyleRecalc())
         return;
-    ChromeClient& client = document().frame()->page()->chrome().client();
-    client.postAccessibilityFrameLoadingEventNotification(object, loadingEvent);
+    //ChromeClient& client = document().frame()->page()->chrome().client();
+    //client.postAccessibilityFrameLoadingEventNotification(object, loadingEvent);
 }
 
 void AXObjectCache::handleScrolledToAnchor(const Node* scrolledToNode)

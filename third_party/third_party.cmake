@@ -18,7 +18,7 @@ include (${CMAKE_CURRENT_LIST_DIR}/psl.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/curl.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/harfbuzz.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/lcms2.cmake)
-include (${CMAKE_CURRENT_LIST_DIR}/woff2.cmake)
+#include (${CMAKE_CURRENT_LIST_DIR}/woff2.cmake)
 
 if (OPT_UNITTEST)
 include (${CMAKE_CURRENT_LIST_DIR}/gtest.cmake)

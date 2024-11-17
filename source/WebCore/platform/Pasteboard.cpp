@@ -18,6 +18,7 @@
  */
 
 #include "config.h"
+#include "DragData.h"
 #include "Pasteboard.h"
 #include "NotImplemented.h"
 
